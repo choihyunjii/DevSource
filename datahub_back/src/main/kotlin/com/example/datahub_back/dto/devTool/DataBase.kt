@@ -1,6 +1,4 @@
-package com.example.datahub_back.dto
-
-import javax.sql.rowset.spi.SyncResolver
+package com.example.datahub_back.dto.devTool
 
 data class DataBase(
     val name : String,
