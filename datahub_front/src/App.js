@@ -1,11 +1,14 @@
 import './App.css';
 import Header from "./components/Layout/Header/Header";
-import DrawHTML from "./components/Front/DrawHTML";
+import DrawApp from "./components/Front/DrawApp";
+import DraggableElement from "./components/Front/DraggableElement";
+
 function App() {
   return (
     <div className="App">
         <Header/>
-        <DrawHTML/>
+        <DrawApp/>
+        <DraggableElement/>
     </div>
   );
 }
