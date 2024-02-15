@@ -7,7 +7,7 @@ data class User(
     val password: String,
     val name: String,
     val phoneNumber: String,
-    val email: String
+    val email: String,
 )
 
 data class Project(
@@ -23,8 +23,7 @@ data class Project(
 
 data class Branch(
     val branchId: Int, // PK
-    val name: String,
-    val userId: User, // FK
+    val userId: User?, // FK
     val projectId: Project, // FK
     val push: Int,
     val pull: Int,
@@ -33,11 +32,11 @@ data class Branch(
 )
 
 data class Commit(
-    val commitId: String, // PK
+    val commitId: Int, // PK
+    val branchId: Branch, // PK, FK
     val comment: String,
     val createTime: LocalDateTime,
-    val createUser: String, // FK
-    val branchId: Branch // FK
+    val createUser: String,
 )
 
 data class Table(
@@ -67,18 +66,31 @@ data class Data(
     val data: String
 )
 
-data class ChangeData(
-    val changeDataId: Int, // PK
-    val columId: Colum, // FK
-    val action: Int, // 삭제 0, 추가 1
-    val data: String
-)
-
 data class Page(
     val pageId: Int, // PK
     val commitId: Commit, // PK, FK
+    val pageName: String,
     val path: String,
     val isFavorite: Int,
     val isDelete: Int,
     val updateTime: LocalDateTime
+)
+
+// 테이블 변경사항
+data class ChangeTable(
+    val commitId: Commit, // PK, FK
+    val tableName: String, // PK
+    val columNumber: Int, // PK
+    val rowNumber: Int, // PK
+    val action: Char, // -, +
+    val columName: String,
+    val data: String
+)
+
+// 페이지 변경사항
+data class ChangePage(
+    val pageId: Int, // PK
+    val commitId: Commit, // PK, FK
+    val pageName: String,
+    val path: String
 )

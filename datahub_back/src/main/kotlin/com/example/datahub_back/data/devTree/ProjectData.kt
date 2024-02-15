@@ -12,7 +12,7 @@ val project1 = Project(
     createTime = LocalDateTime.now(),
     isFavorite = 1,
     isDelete = 0,
-    teamUsers = mutableListOf(user2, user3)
+    teamUsers = mutableListOf(user1, user3)
 )
 
 val project2 = Project(
@@ -23,5 +23,7 @@ val project2 = Project(
     createTime = LocalDateTime.now(),
     isFavorite = 0,
     isDelete = 0,
-    teamUsers = mutableListOf(user1, user3)
+    teamUsers = mutableListOf(user2, user3)
 )
+
+val projectList = listOf(project1, project2)

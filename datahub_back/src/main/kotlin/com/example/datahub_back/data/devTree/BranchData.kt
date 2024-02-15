@@ -2,24 +2,35 @@ package com.example.datahub_back.data.devTree
 
 import com.example.datahub_back.dto.devTree.Branch
 
+
 val branch1 = Branch(
     branchId = 1,
-    name = "Branch 1",
     userId = user1,
     projectId = project1,
-    push = 10,
-    pull = 5,
+    push = 1,
+    pull = 0,
     crash = 0,
-    isMainBranch = 1
+    isMainBranch = 0
 )
 
 val branch2 = Branch(
     branchId = 2,
-    name = "Branch 2",
-    userId = user2,
-    projectId = project2,
-    push = 8,
-    pull = 3,
+    userId = user3,
+    projectId = project1,
+    push = 0,
+    pull = 0,
     crash = 1,
     isMainBranch = 0
 )
+
+val branch3 = Branch(
+    branchId = 3,
+    userId = null,
+    projectId = project1,
+    push = 0,
+    pull = 0,
+    crash = 0,
+    isMainBranch = 1
+)
+
+val branchList = mutableListOf(branch1, branch2, branch3)
