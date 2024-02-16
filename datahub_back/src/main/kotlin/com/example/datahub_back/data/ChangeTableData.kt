@@ -1,28 +1,27 @@
-package com.example.datahub_back.data.devTree
-
+package com.example.datahub_back.data
 import com.example.datahub_back.dto.devTree.ChangePage
 import com.example.datahub_back.dto.devTree.ChangeTable
 import com.example.datahub_back.dto.devTree.Commit
 
 
 val changeTable1 = ChangeTable(
-    commitId = commit1,
-    tableName = "Table1",
+    changeTableId = 1,
     columNumber = 1,
     rowNumber = 1,
+    tableName = "Table1",
     action = '-',
     columName = "이름",
     data = "김보영",
 )
 
 val changeTable2 = ChangeTable(
-    commitId = commit1,
-    tableName = "Table1",
+    changeTableId = 2,
     columNumber = 2,
     rowNumber = 1,
+    tableName = "Table1",
     action = '-',
-    columName = "나이",
-    data = "25",
+    columName = "사는 곳",
+    data = "부천",
 )
 
 val changeTableList = listOf(changeTable1, changeTable2)

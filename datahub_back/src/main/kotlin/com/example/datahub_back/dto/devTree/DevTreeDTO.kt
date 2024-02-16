@@ -5,14 +5,14 @@ import java.time.LocalDateTime
 data class User(
     val userId: String, // PK
     val password: String,
-    val name: String,
+    val userName: String,
     val phoneNumber: String,
     val email: String,
 )
 
 data class Project(
     val projectId: Int, // PK
-    val name: String,
+    val projectName: String,
     val comment: String,
     val createUser: String,
     val createTime: LocalDateTime,
@@ -23,8 +23,8 @@ data class Project(
 
 data class Branch(
     val branchId: Int, // PK
-    val userId: User?, // FK
-    val projectId: Project, // FK
+    val userId: String?, // FK
+    val projectId: Int, // FK
     val push: Int,
     val pull: Int,
     val crash: Int,
@@ -33,16 +33,19 @@ data class Branch(
 
 data class Commit(
     val commitId: Int, // PK
-    val branchId: Branch, // PK, FK
+    val branchId: Int, // PK, FK
     val comment: String,
     val createTime: LocalDateTime,
     val createUser: String,
+    val tables: MutableList<Table>,
+    val pages: MutableList<Page>,
+    val changeTables: MutableList<ChangeTable>,
+    val changePages: MutableList<ChangePage>
 )
 
 data class Table(
     val tableId: Int, // PK
-    val commitId: Commit, // PK, FK
-    val name: String,
+    val tableName: String,
     val comment: String,
     val isFavorite: Int,
     val isDelete: Int,
@@ -50,25 +53,24 @@ data class Table(
 )
 
 data class Colum(
+    val tableId: Int, // PK, FK
     val columId: Int, // PK
-    val tableId: Table, // PK, FK
-    val name: String,
+    val columName: String,
     val dataType: String,
     val isPrimaryKey: Int,
     val isForeignKey: Int,
     val isUniqueKey: Int,
-    val joinColum: Colum?
+    val joinTable: Table?
 )
 
 data class Data(
     val dataId: Int, // PK
-    val columId: Colum, // FK
+    val columId: Int, // FK
     val data: String
 )
 
 data class Page(
     val pageId: Int, // PK
-    val commitId: Commit, // PK, FK
     val pageName: String,
     val path: String,
     val isFavorite: Int,
@@ -78,10 +80,10 @@ data class Page(
 
 // 테이블 변경사항
 data class ChangeTable(
-    val commitId: Commit, // PK, FK
-    val tableName: String, // PK
+    val changeTableId: Int, // PK, Table의 tableId와 일치해야 함
     val columNumber: Int, // PK
     val rowNumber: Int, // PK
+    val tableName: String,
     val action: Char, // -, +
     val columName: String,
     val data: String
@@ -89,8 +91,7 @@ data class ChangeTable(
 
 // 페이지 변경사항
 data class ChangePage(
-    val pageId: Int, // PK
-    val commitId: Commit, // PK, FK
+    val pageId: Int, // PK, Page의 pageId와 일치해야 함
     val pageName: String,
     val path: String
 )

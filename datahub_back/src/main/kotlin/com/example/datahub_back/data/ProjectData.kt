@@ -1,12 +1,11 @@
-package com.example.datahub_back.data.devTree
-
+package com.example.datahub_back.data
 import com.example.datahub_back.dto.devTree.Project
 import java.time.LocalDateTime
 import kotlin.collections.mutableListOf
 
 val project1 = Project(
     projectId = 1,
-    name = "Project A",
+    projectName = "Project A",
     comment = "This is project A",
     createUser = user1.userId,
     createTime = LocalDateTime.now(),
@@ -17,7 +16,7 @@ val project1 = Project(
 
 val project2 = Project(
     projectId = 2,
-    name = "Project B",
+    projectName = "Project B",
     comment = "This is project B",
     createUser = user2.userId,
     createTime = LocalDateTime.now(),
