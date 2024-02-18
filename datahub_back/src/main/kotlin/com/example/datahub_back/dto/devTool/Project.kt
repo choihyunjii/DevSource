@@ -1,8 +1,6 @@
-package com.example.datahub_back.dto
+package com.example.datahub_back.dto.devTool
 
-import java.text.DateFormat
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 data class Project(
     val name : String,
