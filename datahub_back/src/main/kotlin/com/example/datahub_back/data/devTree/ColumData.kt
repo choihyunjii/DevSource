@@ -1,4 +1,4 @@
-package com.example.datahub_back.data
+package com.example.datahub_back.data.devTree
 
 import com.example.datahub_back.dto.devTree.Colum
 

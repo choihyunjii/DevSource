@@ -1,9 +1,7 @@
 package com.example.datahub_back.service
 
-import com.example.datahub_back.data.branchList
+import com.example.datahub_back.data.devTree.branchList
 import com.example.datahub_back.dto.devTree.Branch
-import com.example.datahub_back.dto.devTree.Project
-import com.example.datahub_back.dto.devTree.User
 import org.springframework.stereotype.Service
 
 @Service

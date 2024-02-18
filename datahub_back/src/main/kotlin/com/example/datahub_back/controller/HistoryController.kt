@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/history")
+@RequestMapping("/api/history")
 class HistoryController(
     private val projectService: ProjectService,
     private val branchService: BranchService,
@@ -20,9 +20,8 @@ class HistoryController(
 
     // 프로젝트 목록
     @GetMapping("/{userId}")
-    fun retrieveProjects(@PathVariable userId: String): List<Project> {
-        return projectService.findByUserId(userId)
-    }
+    fun retrieveProjects(@PathVariable userId: String): List<Project> =
+        projectService.findByUserId(userId)
 
     // 커밋 목록
     @GetMapping("/{userId}/{projectId}")

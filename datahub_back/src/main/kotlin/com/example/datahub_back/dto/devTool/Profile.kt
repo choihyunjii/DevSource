@@ -6,5 +6,4 @@ data class Profile(
     val phoneNumber : String,
     val email : String,
     val password : String,
-    val project : MutableList<Project>
 )

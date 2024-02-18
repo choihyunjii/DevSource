@@ -1,6 +1,6 @@
 import './App.css';
 import Header from "./components/Layout/Header/Header";
-import DrawApp from "./components/Front/DrawApp";
+import DrawApp from "./components/Front/TagBar";
 import DraggableElement from "./components/Front/DraggableElement";
 
 function App() {

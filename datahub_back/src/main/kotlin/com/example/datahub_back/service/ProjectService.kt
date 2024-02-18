@@ -1,6 +1,6 @@
 package com.example.datahub_back.service
 
-import com.example.datahub_back.data.projectList
+import com.example.datahub_back.data.devTree.projectList
 import com.example.datahub_back.dto.devTree.Project
 import org.springframework.stereotype.Service
 
