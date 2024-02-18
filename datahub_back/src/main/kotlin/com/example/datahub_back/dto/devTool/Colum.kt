@@ -1,4 +1,4 @@
-package com.example.datahub_back.dto
+package com.example.datahub_back.dto.devTool
 
 data class Colum(
     val name : String,
