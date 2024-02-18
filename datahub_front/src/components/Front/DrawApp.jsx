@@ -37,6 +37,7 @@ function MyComponent() {
             {/* P 추가  */}
             <button onClick={() => addDraggableElement("P")}>P 추가</button>
 
+
             {/* 드래그 가능한 요소들 표시 */}
             {draggableElements.map((tag, index) => (
                 <div key={index} onDoubleClick={() => handleDelete(index)}>
