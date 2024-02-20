@@ -2,11 +2,11 @@
     float: right;
     margin: 50px 20px 10px 0;
     background-color: #EEF1F6;
-    width: 75%;
+    width: 80%;
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개의 카드 */
-    gap: 2px;
+    gap: 10px 10px;
     max-height: 700px; /* 높이 제한 */
     overflow-y: auto; /* 세로 스크롤바 */
 }

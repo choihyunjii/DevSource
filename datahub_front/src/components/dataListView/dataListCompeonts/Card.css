@@ -1,14 +1,13 @@
 .card {
-    margin: 20px;
+    margin: 30px;
     width: 380px;
-
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
     background-color: #FFFFFF;
 }
 .card-image-container {
-    margin: 10px;
+    margin: 20px 5px 10px 5px;
     text-align: center;
 }
 
@@ -45,7 +44,7 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 2px 1px;
+    margin: 2px 8px;
     cursor: pointer;
     border-radius: 8px;
     float: right;
