@@ -1,10 +1,8 @@
 import './App.css';
 import Header from "./components/Layout/Header/Header";
 import DataComponentCanvas from "./components/dataListView/DataComponentCanvas";
-import SideBar from "./components/dataListView/sideBarCompoents/SideBar";
-import ListMenuComponent from "./components/dataListView/dataListCompeonts/listMenuComponent/ListMenu";
-import ListMenuExampleData from "./components/dataListView/dataListCompeonts/listMenuComponent/ListMenuExampleData";
-import exampleData from "./components/dataListView/dataListCompeonts/exampleData";
+import SideBar from "./components/dataListView/sideBarCompoent/SideBar";
+import exampleData from "./components/dataListView/dataListCompeonts/cardListComponent/exampleData";
 
 function App() {
   return (

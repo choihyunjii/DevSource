@@ -1,4 +1,4 @@
-import CardDesign from "./dataListCompeonts/CardDesign";
+import CardDesign from "./dataListCompeonts/cardListComponent/CardDesign";
 import './DataComponentCanvas.css';
 export default function DataComponentCanvas({exampleData}){
 
