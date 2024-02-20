@@ -1,9 +1,10 @@
 import './App.css';
 import Header from "./components/Layout/Header/Header";
 import DataComponentCanvas from "./components/dataListView/DataComponentCanvas";
-import SideButton from "./components/dataListView/sideBarCompoents/SideButton";
 import SideBar from "./components/dataListView/sideBarCompoents/SideBar";
-import ProjectApiFetch from "./components/project/ProjectApiFetch";
+import ListMenuComponent from "./components/dataListView/dataListCompeonts/listMenuComponent/ListMenu";
+import ListMenuExampleData from "./components/dataListView/dataListCompeonts/listMenuComponent/ListMenuExampleData";
+import exampleData from "./components/dataListView/dataListCompeonts/exampleData";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
           {/*<ProjectApiFetch/>*/}
           <Header/>
           <SideBar/>
-          <DataComponentCanvas/>
+          {/*<DataComponentCanvas/>*/}
+          {/*<ListMenuComponent title="menu" menus={ListMenuExampleData}/>*/}
+          <DataComponentCanvas exampleData={exampleData}/>
       </div>
 
   );

@@ -1,7 +1,6 @@
-import exampleData from "./dataListCompeonts/exampleData";
 import CardDesign from "./dataListCompeonts/CardDesign";
 import './DataComponentCanvas.css';
-export default function DataComponentCanvas(){
+export default function DataComponentCanvas({exampleData}){
 
     return(
         <div className='card-grid'>
