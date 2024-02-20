@@ -1,4 +1,4 @@
-package com.example.datahub_back.service.BackDataService
+package com.example.datahub_back.service.backDataService
 
 import com.example.datahub_back.data.devTool.exampleProjectList
 import com.example.datahub_back.dto.devTool.Profile
@@ -6,10 +6,10 @@ import com.example.datahub_back.dto.devTool.Project
 import org.springframework.stereotype.Service
 
 @Service
-class ProjectService {
+class DevProjectService {
 
-    fun getProjectsByProfile(profile: Profile): List<Project> {
-        return exampleProjectList.filter { it.profile == profile }
+    fun getProjectsByProfile(profileID: Long): List<Project> {
+        return exampleProjectList.filter { it.profile.id == profileID }
     }
 
     fun getProjectById(id: Long): Project? {

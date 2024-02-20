@@ -12,19 +12,19 @@ const exampleData = [
         description: "This is an example description for Card 2."
     },
     {
-        id: 2,
+        id: 3,
         title: "Example Card 3",
         image: "https://via.placeholder.com/300x200",
         description: "This is an example description for Card 2."
     },
     {
-        id: 2,
+        id: 4,
         title: "Example Card 2",
         image: "https://via.placeholder.com/300x200",
         description: "This is an example description for Card 2."
     },
     {
-        id: 2,
+        id: 5,
         title: "Example Card 2",
         image: "https://via.placeholder.com/300x200",
         description: "This is an example description for Card 2."

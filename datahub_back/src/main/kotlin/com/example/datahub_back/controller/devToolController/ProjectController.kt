@@ -2,10 +2,11 @@ package com.example.datahub_back.controller.devToolController
 
 import com.example.datahub_back.dto.devTool.Profile
 import com.example.datahub_back.dto.devTool.Project
-import com.example.datahub_back.service.BackDataService.ProjectService
+import com.example.datahub_back.service.backDataService.DevProjectService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -13,19 +14,23 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/project")
+@CrossOrigin(origins = ["http://localhost:3000"])
 class ProjectController(
     @Autowired
-    val projectService: ProjectService
+    val projectService: DevProjectService
 ) {
-    @GetMapping
-    fun getProjectsByProfile(@RequestBody profile: Profile): ResponseEntity<List<Project>> {
-        val projectList = projectService.getProjectsByProfile(profile)
+    @GetMapping("/profile/{profileID}")
+    fun getProjectsByProfile(@PathVariable profileID: Long): ResponseEntity<List<Project>> {
+        println(profileID)
+        val projectList = projectService.getProjectsByProfile(profileID)
         return ResponseEntity(projectList, HttpStatus.OK)
     }
+
     // 특정 프로젝트 가져오기
     @GetMapping("/{id}")
     fun getProjectById(@PathVariable id: Long): ResponseEntity<Project> {

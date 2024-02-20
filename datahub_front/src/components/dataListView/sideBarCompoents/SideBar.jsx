@@ -6,6 +6,7 @@ export default function SideBar(){
         <div className="sidebar">
             {sideBarCategories.map(category =>(
                 <SideButton
+                    key = {category.id}
                     category={category.category}
                 />
             ))}

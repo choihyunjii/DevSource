@@ -2,7 +2,7 @@ package com.example.datahub_back.controller.devToolController
 
 import com.example.datahub_back.dto.devTool.Column
 import com.example.datahub_back.dto.devTool.Table
-import com.example.datahub_back.service.BackDataService.ColumnService
+import com.example.datahub_back.service.backDataService.ColumnService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

@@ -2,6 +2,7 @@ import exampleData from "./dataListCompeonts/exampleData";
 import CardDesign from "./dataListCompeonts/CardDesign";
 import './DataComponentCanvas.css';
 export default function DataComponentCanvas(){
+
     return(
         <div className='card-grid'>
             {exampleData.map(data =>(

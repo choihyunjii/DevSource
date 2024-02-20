@@ -1,7 +1,7 @@
 package com.example.datahub_back.controller.devToolController
 
 import com.example.datahub_back.dto.devTool.Data
-import com.example.datahub_back.service.BackDataService.DataService
+import com.example.datahub_back.service.backDataService.DataService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/data")
-class DataController(private val dataService: DataService) {
+class DataController(
+    @Autowired
+     val dataService: DataService
+) {
 
     @GetMapping
     fun getDataByColumn(): ResponseEntity<List<Data>> {

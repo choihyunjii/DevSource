@@ -1,4 +1,4 @@
-package com.example.datahub_back.service.BackDataService
+package com.example.datahub_back.service.backDataService
 
 import com.example.datahub_back.data.devTool.exampleDataBaseList
 import com.example.datahub_back.dto.devTool.DataBase
