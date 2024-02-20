@@ -1,0 +1,15 @@
+.sidebar {
+    position: fixed; /* 상대 위치 설정 */
+    top: 150px; /* 상단 여백 */
+    /* 다른 사이드바 스타일 */
+}
+
+.button-container button {
+    padding: 12px;
+    border: none;
+    background-color: #4EBFFF;
+    color: white;
+    text-align: left;
+    width: 293px; /* 버튼의 너비를 절대값으로 지정합니다 */
+    height: 50px; /* 버튼의 높이를 절대값으로 지정합니다 */
+}

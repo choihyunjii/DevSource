@@ -1,15 +1,17 @@
 import './App.css';
 import Header from "./components/Layout/Header/Header";
-import DrawApp from "./components/Front/TagBar";
-import DraggableElement from "./components/Front/DraggableElement";
+import DataComponentCanvas from "./components/dataListView/DataComponentCanvas";
+import SideButton from "./components/dataListView/sideBarCompoents/SideButton";
+import SideBar from "./components/dataListView/sideBarCompoents/SideBar";
 
 function App() {
   return (
-    <div className="App">
-        <Header/>
-        <DrawApp/>
-        <DraggableElement/>
-    </div>
+      <div>
+          <Header/>
+          <SideBar/>
+          <DataComponentCanvas/>
+      </div>
+
   );
 }
 
