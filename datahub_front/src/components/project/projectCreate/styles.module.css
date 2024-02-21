@@ -1,0 +1,116 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../../font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../../font/GmarketSansTTFBold.ttf");
+}
+
+.titleComponent{
+    width: 60%;
+    margin: 0 auto;
+    padding: 5% 1%;
+}
+.textLine{
+    border: 1px solid #777777;
+}
+.title{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+}
+.formTitle{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+}
+
+.customFormGroup{
+    margin-top: 3%;
+}
+.inputForm{
+    border: 1px solid rgba(119, 119, 119, 0.44);
+    font-size: 12px;
+}
+.memberGroupBox{
+    height: 300px;
+    border: 1px solid rgba(119, 119, 119, 0.44);
+    border-radius: 10px;
+    overflow-y: auto; /* 세로 스크롤바 */
+
+}
+.createButton {
+    margin-top: 3%;
+    background-color: #00A3FF;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    float: right;
+}
+.addButton {
+    margin-top: 3%;
+    background-color: #00A3FF;
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    float: right;
+}
+#projectNameForm{
+    width: 40%;
+}
+.member {
+    display: flex;
+    align-items: center;
+    margin: 30px 40px;
+}
+
+.customButton {
+    background-color: #FF7777; /* 배경색 */
+    border: none; /* 테두리 없음 */
+    color: white; /* 텍스트 색상 */
+    padding: 4px 15px; /* 안쪽 여백 */
+    font-weight: bold; /* 폰트 굵기 */
+    outline: none; /* 포커스 효과 제거 */
+    cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
+    margin-bottom: 20px;
+}
+.member img {
+    margin-left: 20px; /* 이미지 오른쪽에 10px의 마진 적용 */
+}
+.member div{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+}
+.searchComponent {
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid #D0D0D0;
+    padding: 20px;
+    position: absolute; /* 상대적 위치 설정 */
+    z-index: 1;
+    left: 70%;
+    top: 10%;
+    background-color: #FFFFFF;
+}
+
+
+.searchGroup{
+    margin-top: 3%;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    border-bottom: 1px solid #777777;
+    padding: 2%;
+
+}
+.searchMembers{
+    max-height: 300px;
+    height: 200px;
+    overflow-y: auto; /* 세로 스크롤바 */
+}
