@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styles from './styles.module.css';
-import ProjectTeam from "./ProjectTeam";
-import SearchComponent from "./SearchComponent";
+import styles from '../styles.module.css';
+import ProjectTeamLayOut from "./ProjectTeamLayOut";
+import MemberSearchLayOut from "./MemberSearchLayOut";
 
-export default function InputForm() {
+export default function CreateProjectFormLayout() {
     const [showMemberGroupSearchBar, setShowMemberGroupSearchBar] = useState(false);
 
     const toggleMemberGroupSearchBar = () => {
@@ -13,7 +13,7 @@ export default function InputForm() {
     return (
         <div>
             {/* 협업자 검색 바 */}
-            {showMemberGroupSearchBar && <SearchComponent searchTitle={"협업자 검색"} />}
+            {showMemberGroupSearchBar && <MemberSearchLayOut searchTitle={"협업자 검색"} />}
 
             {/* 프로젝트명 입력 폼 */}
             <div className={`"form-group" ${styles.customFormGroup}`}>
@@ -31,7 +31,7 @@ export default function InputForm() {
             <button type="button" className={` ${styles.addButton}`} onClick={toggleMemberGroupSearchBar}>협업자 추가</button>
 
             {/* 프로젝트 팀 */}
-            <ProjectTeam/>
+            <ProjectTeamLayOut/>
 
             {/* 프로젝트 생성 버튼 */}
             <button type="button" className={`btn btn-primary ${styles.createButton}` }>프로젝트 생성</button>

@@ -1,5 +1,6 @@
-import styles from "./styles.module.css";
-export default function SearchMemberComponent({ members }) {
+import styles from "../styles.module.css";
+
+export default function SearchMemberUI({ members }) {
     return (
         <div>
             {members.map((member, index) => (

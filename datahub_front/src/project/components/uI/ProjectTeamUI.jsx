@@ -1,8 +1,8 @@
-import { Image } from "react-bootstrap";
-import styles from './styles.module.css';
+import styles from "../styles.module.css";
+import {Image} from "react-bootstrap";
 
-export default function MemberComponent({ membersData }) {
-    return (
+export default function ProjectTeamUI({membersData}){
+    return(
         membersData.map((user, index) => (
             <div key={index} className={styles.member}>
                 <button className={styles.customButton}> </button>
@@ -13,5 +13,5 @@ export default function MemberComponent({ membersData }) {
                 </div>
             </div>
         ))
-    );
+    )
 }

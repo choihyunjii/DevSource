@@ -1,10 +1,6 @@
 import './App.css';
 import Header from "./components/Layout/Header/Header";
-import DataComponentCanvas from "./components/dataListView/DataComponentCanvas";
-import SideBar from "./components/dataListView/sideBarCompoent/SideBar";
-import exampleData from "./components/dataListView/dataListCompeonts/cardListComponent/exampleData";
-import TitleComponent from "./components/project/projectCreate/TitleComponent";
-import ProjectCreateUI from "./components/project/projectCreate/ProjectCreateUI";
+import CreateProjectPage from "./project/components/page/CreateProjectPage";
 
 function App() {
   return (
@@ -15,7 +11,7 @@ function App() {
           {/*<DataComponentCanvas/>*/}
           {/*<ListMenuComponent title="menu" menus={ListMenuExampleData}/>*/}
           {/*<DataComponentCanvas exampleData={exampleData}/>*/}
-          <ProjectCreateUI/>
+          <CreateProjectPage/>
       </div>
 
   );

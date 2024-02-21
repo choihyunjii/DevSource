@@ -1,13 +1,13 @@
 @font-face {
     font-family: "KoPubWorld Dotum Bold";
-    src: url("../../../font/KoPubWorld Dotum Bold.ttf");
+    src: url("../../font/KoPubWorld Dotum Bold.ttf");
 }
 @font-face {
     font-family: "GmarketSansTTFBold";
-    src: url("../../../font/GmarketSansTTFBold.ttf");
+    src: url("../../font/GmarketSansTTFBold.ttf");
 }
 
-.titleComponent{
+.titleUi{
     width: 60%;
     margin: 0 auto;
     padding: 5% 1%;
