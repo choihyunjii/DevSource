@@ -10,3 +10,5 @@ val page1 = Page(
     isDelete = 0,
     updateTime = LocalDateTime.now()
 )
+
+val pageList = mutableListOf(page1)

@@ -1,4 +1,4 @@
-package com.example.datahub_back.service.devSource
+package com.example.datahub_back.service.devTree
 
 import com.example.datahub_back.data.devTree.commitList
 import com.example.datahub_back.dto.devTree.*
@@ -35,5 +35,11 @@ class CommitService {
     fun findChangeTablesByCommitId(commitId: Int): MutableList<ChangeTable>? {
         val commit = commitList.find { it.commitId == commitId }
         return commit?.changeTables
+    }
+
+    // 커밋 추가
+    fun createCommit(commit: Commit): Commit {
+        commitList.add(commit)
+        return commit
     }
 }

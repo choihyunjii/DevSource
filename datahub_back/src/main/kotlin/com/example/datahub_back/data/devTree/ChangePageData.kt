@@ -14,4 +14,4 @@ val changePage2 = ChangePage(
     path = "C:\\ProgramData"
 )
 
-val changePageList = listOf(changePage1, changePage2)
+val changePageList = mutableListOf(changePage1, changePage2)

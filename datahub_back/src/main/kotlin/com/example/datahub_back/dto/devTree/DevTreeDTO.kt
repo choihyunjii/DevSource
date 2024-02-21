@@ -25,14 +25,14 @@ data class Branch(
     val branchId: Int, // PK
     val userId: String?, // FK
     val projectId: Int, // FK
-    val push: Int,
+    var push: Int,
     val pull: Int,
     val crash: Int,
     val isMainBranch: Int
 )
 
 data class Commit(
-    val commitId: Int, // PK
+    val commitId: Int, // PK (해시코드로 인해 중복)
     val branchId: Int, // PK, FK
     val comment: String,
     val createTime: LocalDateTime,
