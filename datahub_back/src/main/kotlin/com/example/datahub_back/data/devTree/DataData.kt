@@ -1,15 +1,18 @@
 package com.example.datahub_back.data.devTree
 
-import com.example.datahub_back.dto.devTree.Data
+import com.example.datahub_back.dto.devTree.SourceData
 
-val data1 = Data(
+val sourceData1 = SourceData(
     dataId = 1,
-    columId = table1Columns[0].columId,
+    columnId = sourceColumnList[0].columnId,
     data = "Sample data 1"
 )
 
-val data2 = Data(
+val sourceData2 = SourceData(
     dataId = 2,
-    columId = table1Columns[1].columId,
+    columnId = sourceColumnList[1].columnId,
     data = "100"
 )
+
+val sourceDataList = mutableListOf(sourceData1, sourceData2)
+

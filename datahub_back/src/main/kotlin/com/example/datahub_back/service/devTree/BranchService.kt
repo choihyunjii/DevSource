@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service
 @Service
 class BranchService {
     // 브랜치 뽑아오기
-    fun findByProjectIdAndUserId(userId: String, projectId: Int): Branch? =
+    fun getByProjectIdAndUserId(userId: String, projectId: Long): Branch? =
         branchList.find { it.projectId == projectId && it.userId == userId }
 
     // 브랜치 push 업데이트
-    fun updatePushByBranchId(branchId: Int): Branch? {
+    fun updatePushByBranchId(branchId: Long): Branch? {
         val branch = branchList.find { it.branchId == branchId }
         if (branch != null) {
             branch.push++

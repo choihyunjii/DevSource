@@ -9,8 +9,7 @@ val commit1 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 1,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(page1),
+    sourceTables = mutableListOf(sourceTable1),
     changeTables = mutableListOf(changeTable1, changeTable2),
     changePages = mutableListOf(changePage1)
 )
@@ -21,8 +20,7 @@ val commit2 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 1,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
+    sourceTables = mutableListOf(sourceTable1),
     changeTables = mutableListOf(),
     changePages = mutableListOf()
 )
@@ -33,8 +31,7 @@ val commit3 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 2,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
+    sourceTables = mutableListOf(sourceTable1),
     changeTables = mutableListOf(),
     changePages = mutableListOf()
 )
@@ -45,8 +42,7 @@ val commit4 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 2,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
+    sourceTables = mutableListOf(sourceTable1),
     changeTables = mutableListOf(),
     changePages = mutableListOf()
 )
@@ -57,8 +53,7 @@ val commit5 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 3,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
+    sourceTables = mutableListOf(sourceTable1),
     changeTables = mutableListOf(),
     changePages = mutableListOf()
 )
@@ -69,8 +64,7 @@ val commit6 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 3,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
+    sourceTables = mutableListOf(sourceTable1),
     changeTables = mutableListOf(),
     changePages = mutableListOf()
 )

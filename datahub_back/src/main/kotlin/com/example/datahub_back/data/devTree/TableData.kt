@@ -1,9 +1,8 @@
 package com.example.datahub_back.data.devTree
-import com.example.datahub_back.dto.devTree.Table
-import com.example.datahub_back.dto.devTree.User
+import com.example.datahub_back.dto.devTree.SourceTable
 import java.time.LocalDateTime
 
-val table1 = Table(
+val sourceTable1 = SourceTable(
     tableId = 1,
     tableName = "Table 1",
     comment = "This is table 1",
@@ -11,3 +10,5 @@ val table1 = Table(
     isDelete = 0,
     updateTime = LocalDateTime.now()
 )
+
+val sourceTableList = mutableListOf(sourceTable1)

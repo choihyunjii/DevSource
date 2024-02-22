@@ -1,28 +1,28 @@
 package com.example.datahub_back.data.devTree
-import com.example.datahub_back.dto.devTree.Project
+import com.example.datahub_back.dto.devTree.SourceProject
 import java.time.LocalDateTime
 import kotlin.collections.mutableListOf
 
-val project1 = Project(
+val sourceProject1 = SourceProject(
     projectId = 1,
     projectName = "Project A",
     comment = "This is project A",
-    createUser = user1.userId,
+    createUser = sourceUser1.userId,
     createTime = LocalDateTime.now(),
     isFavorite = 1,
     isDelete = 0,
-    teamUsers = mutableListOf(user1, user3)
+    teamSourceUsers = mutableListOf(sourceUser1, sourceUser3)
 )
 
-val project2 = Project(
+val sourceProject2 = SourceProject(
     projectId = 2,
     projectName = "Project B",
     comment = "This is project B",
-    createUser = user2.userId,
+    createUser = sourceUser2.userId,
     createTime = LocalDateTime.now(),
     isFavorite = 0,
     isDelete = 0,
-    teamUsers = mutableListOf(user2, user3)
+    teamSourceUsers = mutableListOf(sourceUser2, sourceUser3)
 )
 
-val projectList = listOf(project1, project2)
+val projectList = listOf(sourceProject1, sourceProject2)

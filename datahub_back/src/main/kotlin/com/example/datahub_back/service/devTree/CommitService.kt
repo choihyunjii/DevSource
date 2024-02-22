@@ -8,31 +8,25 @@ import org.springframework.stereotype.Service
 class CommitService {
 
     // 커밋 리스트 (히스토리) 뽑아오기
-    fun findByBranch(branchId: Int): List<Commit> {
+    fun getByBranch(branchId: Long): List<Commit> {
         return commitList.filter { commit ->
             commit.branchId == branchId }
     }
 
     // 백엔드 리스트 뽑아오기
-    fun findTablesByCommitId(commitId: Int): MutableList<Table>? {
+    fun getTablesByCommitId(commitId: Long): MutableList<SourceTable>? {
         val commit = commitList.find { it.commitId == commitId }
-        return commit?.tables
-    }
-
-    // 프론트 리스트 뽑아오기
-    fun findPagesByCommitId(commitId: Int): MutableList<Page>? {
-        val commit = commitList.find { it.commitId == commitId }
-        return commit?.pages
+        return commit?.sourceTables
     }
 
     // 프론트 변경 리스트 뽑기
-    fun findChangePagesByCommitId(commitId: Int): MutableList<ChangePage>? {
+    fun getChangePagesByCommitId(commitId: Long): MutableList<ChangePage>? {
         val commit = commitList.find { it.commitId == commitId }
         return commit?.changePages
     }
 
     // 백엔드 변경 리스트 뽑기
-    fun findChangeTablesByCommitId(commitId: Int): MutableList<ChangeTable>? {
+    fun getChangeTablesByCommitId(commitId: Long): MutableList<ChangeTable>? {
         val commit = commitList.find { it.commitId == commitId }
         return commit?.changeTables
     }
