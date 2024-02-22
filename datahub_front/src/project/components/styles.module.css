@@ -7,11 +7,17 @@
     src: url("../../font/GmarketSansTTFBold.ttf");
 }
 
-.titleUi{
+.middleBox{
     width: 60%;
     margin: 0 auto;
     padding: 5% 1%;
 }
+.showCase {
+    width: 60%;
+    float: right;
+    margin-left: 10% ;
+}
+
 .textLine{
     border: 1px solid #777777;
 }
@@ -113,4 +119,61 @@
     max-height: 300px;
     height: 200px;
     overflow-y: auto; /* 세로 스크롤바 */
+}
+.linkUI{
+    padding: 10px;
+    float: right;
+}
+.link{
+    color: #000000;
+    text-decoration: none; /* 밑줄 제거 */
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+}
+.cardBox{
+    margin: 15px 10px;
+    border: 2px solid #505050;
+    width: 93%;
+    height: 250px;
+}
+.cardLogo{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.cardTitle{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    margin: 30px 50px 0 30px;
+}
+.cardComment{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    margin: 10px 50px 10px 30px;
+}
+.cardIcon {
+    margin: 20px;
+}
+.cardLink{
+    color: #000000;
+    text-decoration: none; /* 밑줄 제거 */
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    position: relative;
+    float: right; /* 오른쪽으로 이동 */
+    margin: 0 30px;
+}
+.cardLayOutBox{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 두 개의 칼럼으로 설정 */
+    width: 100%;
+    gap: 10px; /* 그리드 아이템 사이의 간격 */
+}
+.projectSideBar{
+    width : 20%;
+    float : left;
+    text-align: left;
+    margin-left: 2%;
+}
+.projectShowCasePage{
+    display: flex;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    padding: 5% 1% 5% 1%;
 }

@@ -1,4 +1,4 @@
-package com.example.datahub_back.controller.devToolController
+package com.example.datahub_back.controller.toolController
 
 import com.example.datahub_back.dto.devTool.Data
 import com.example.datahub_back.service.backDataService.DataService

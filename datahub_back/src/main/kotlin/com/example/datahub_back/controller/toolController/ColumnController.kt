@@ -1,4 +1,4 @@
-package com.example.datahub_back.controller.devToolController
+package com.example.datahub_back.controller.toolController
 
 import com.example.datahub_back.dto.devTool.Column
 import com.example.datahub_back.dto.devTool.Table
@@ -16,7 +16,8 @@ class ColumnController(
 ) {
 
     @GetMapping
-    fun getColumnByTable(@RequestBody table: Table)  = columnService.getColumnByTable(table)
+    fun getColumnByTable(@RequestBody table: Table)
+        = columnService.getColumnByTable(table)
 
     @GetMapping("/{id}")
     fun getColumnById(@PathVariable id: Long): ResponseEntity<Column> {

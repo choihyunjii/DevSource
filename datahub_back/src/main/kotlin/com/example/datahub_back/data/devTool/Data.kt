@@ -3,22 +3,68 @@ import com.example.datahub_back.dto.devTool.*
 import java.time.LocalDateTime
 
 val exampleProfile = Profile(1,"주동호","010-7761-8482","launcher37@naver.com","1234")
+val exampleProfile1 = Profile(1, "주동호", "010-7761-8482", "launcher37@naver.com", "1234")
+val exampleProfile2 = Profile(2, "John Doe", "123-456-7890", "john.doe@example.com", "password")
+val exampleProfile3 = Profile(3, "Jane Doe", "987-654-3210", "jane.doe@example.com", "password")
+val exampleProfile4 = Profile(4, "이순신", "010-1234-5678", "soonshin@example.com", "password")
+
+val exampleProjectMembers1 = mutableListOf(exampleProfile1, exampleProfile2)
+val exampleProjectMembers2 = mutableListOf(exampleProfile3)
+val exampleProjectMembers3 = mutableListOf(exampleProfile4)
 
 val exampleProjectMembers = mutableListOf(exampleProfile)
 
-val exampleProject =
-    Project(1,
-        "학교 관리 웹 사이트",
-        "학교를 관리하는 웹 서비스입니다.",
-        LocalDateTime.now(),
-        LocalDateTime.now(),
-        1, 0,
-        exampleProjectMembers, exampleProfile);
+val exampleProject1 = Project(
+    1,
+    "학교 관리 웹 사이트",
+    "학교를 관리하는 웹 서비스입니다.",
+    LocalDateTime.now(),
+    LocalDateTime.now(),
+    2,
+    2,
+    exampleProjectMembers1,
+    exampleProfile1
+)
+val exampleProject2 = Project(
+    2,
+    "온라인 쇼핑 앱",
+    "다양한 상품을 판매하는 온라인 쇼핑 앱입니다.",
+    LocalDateTime.now(),
+    LocalDateTime.now(),
+    1,
+    1,
+    exampleProjectMembers2,
+    exampleProfile1
+)
+val exampleProject3 = Project(
+    3,
+    "사진 공유 플랫폼",
+    "사진을 공유하고 소통하는 플랫폼입니다.",
+    LocalDateTime.now(),
+    LocalDateTime.now(),
+    1,
+    1,
+    exampleProjectMembers3,
+    exampleProfile1
+)
+val exampleProject4 = Project(
+    4,
+    "온라인 강의 플랫폼",
+    "다양한 주제의 온라인 강의를 제공하는 플랫폼입니다.",
+    LocalDateTime.now(),
+    LocalDateTime.now(),
+    1,
+    1,
+    exampleProjectMembers1,
+    exampleProfile1
+)
 
-val exampleProjectList = mutableListOf(exampleProject)
+
+val exampleProjectList = mutableListOf(exampleProject1,exampleProject2,exampleProject3,exampleProject4)
 
 
-val exampleDataBase = DataBase(1,"학교","학교 정보 데이터베이스",1,0, exampleProject)
+val exampleDataBase = DataBase(1,"학교","학교 정보 데이터베이스",1,0, exampleProject1)
+
 val exampleDataBaseList = mutableListOf(exampleDataBase)
 
 //테이블 예시

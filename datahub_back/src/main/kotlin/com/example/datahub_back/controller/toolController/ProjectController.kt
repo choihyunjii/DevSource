@@ -1,6 +1,5 @@
-package com.example.datahub_back.controller.devToolController
+package com.example.datahub_back.controller.toolController
 
-import com.example.datahub_back.dto.devTool.Profile
 import com.example.datahub_back.dto.devTool.Project
 import com.example.datahub_back.service.backDataService.DevProjectService
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -26,7 +24,6 @@ class ProjectController(
 ) {
     @GetMapping("/profile/{profileID}")
     fun getProjectsByProfile(@PathVariable profileID: Long): ResponseEntity<List<Project>> {
-        println(profileID)
         val projectList = projectService.getProjectsByProfile(profileID)
         return ResponseEntity(projectList, HttpStatus.OK)
     }

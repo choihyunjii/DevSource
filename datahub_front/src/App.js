@@ -1,17 +1,13 @@
 import './App.css';
 import Header from "./components/Layout/Header/Header";
-import CreateProjectPage from "./project/components/page/CreateProjectPage";
+import ProjectShowCasePage from "./project/components/page/ProjectShowCasePage";
 
 function App() {
   return (
       <div>
-          {/*<ProjectApiFetch/>*/}
           <Header/>
-          {/*<SideBar/>*/}
-          {/*<DataComponentCanvas/>*/}
-          {/*<ListMenuComponent title="menu" menus={ListMenuExampleData}/>*/}
-          {/*<DataComponentCanvas exampleData={exampleData}/>*/}
-          <CreateProjectPage/>
+          {/*<CreateProjectPage/> 프로젝트 선택 페이지 */}
+          <ProjectShowCasePage/>
       </div>
 
   );

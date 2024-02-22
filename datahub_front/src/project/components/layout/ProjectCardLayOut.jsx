@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import {useEffect, useState} from "react";
+import CardUI from "../uI/CardUI";
+import styles from "../styles.module.css";
 
-function ProjectApiFetch() {
+export default function ProjectCardLayOut(){
     const [data, setData] = useState([]);
+
     const [profile, setProfile] = useState({
         id: 1,
         name: "주동호",
@@ -33,19 +36,14 @@ function ProjectApiFetch() {
         }
     };
 
-
-    return (
-        <div>
-            <h1>데이터:</h1>
-            <ul>
-                {data.map((item, index) => (
-                    <li key={index}>{item.name}</li>
-                ))}
-
-
-            </ul>
+    return(
+        <div className={styles.cardLayOutBox}>
+            {data.map((item, index) => (
+                <CardUI key={index}
+                        name = {item.name}
+                        comment ={item.comment}
+                />
+            ))}
         </div>
-    );
+    )
 }
-
-export default ProjectApiFetch;

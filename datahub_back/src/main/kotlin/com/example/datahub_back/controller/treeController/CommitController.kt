@@ -1,21 +1,15 @@
-package com.example.datahub_back.controller.devTreeController
+package com.example.datahub_back.controller.treeController
 
 import com.example.datahub_back.dto.devTool.Column
 import com.example.datahub_back.dto.devTool.Data
 import com.example.datahub_back.dto.devTool.Table
 import com.example.datahub_back.dto.devTree.ChangePage
 import com.example.datahub_back.dto.devTree.ChangeTable
-import com.example.datahub_back.dto.devTree.Commit
 import com.example.datahub_back.dto.devTree.Page
 import com.example.datahub_back.service.backDataService.ColumnService
 import com.example.datahub_back.service.backDataService.DataService
 import com.example.datahub_back.service.backDataService.TableService
 import com.example.datahub_back.service.devTree.*
-import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
-import org.springframework.transaction.annotation.Transactional
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 

@@ -1,4 +1,4 @@
-package com.example.datahub_back.controller.devTreeController
+package com.example.datahub_back.controller.treeController
 
 import com.example.datahub_back.dto.devTree.ChangePage
 import com.example.datahub_back.dto.devTree.ChangeTable
