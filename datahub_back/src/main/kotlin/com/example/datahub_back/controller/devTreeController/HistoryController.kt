@@ -1,12 +1,12 @@
-package com.example.datahub_back.controller
+package com.example.datahub_back.controller.devTreeController
 
 import com.example.datahub_back.dto.devTree.ChangePage
 import com.example.datahub_back.dto.devTree.ChangeTable
 import com.example.datahub_back.dto.devTree.Commit
 import com.example.datahub_back.dto.devTree.Project
-import com.example.datahub_back.service.devSource.BranchService
-import com.example.datahub_back.service.devSource.CommitService
-import com.example.datahub_back.service.devSource.ProjectService
+import com.example.datahub_back.service.devTree.BranchService
+import com.example.datahub_back.service.devTree.CommitService
+import com.example.datahub_back.service.devTree.ProjectService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -36,13 +36,12 @@ class HistoryController(
 
     // 프론트 변경 리스트 뽑기
     @GetMapping("/frontChanges/{commitId}")
-    fun findChangePagesByCommitId(@PathVariable commitId: Int): MutableList<ChangePage>? {
-        return commitService.findChangePagesByCommitId(commitId)
-    }
+    fun retrieveChangePages(@PathVariable commitId: Int): MutableList<ChangePage>? =
+        commitService.findChangePagesByCommitId(commitId)
 
     // 백엔드 변경 리스트 뽑기
     @GetMapping("/backendChanges/{commitId}")
-    fun findChangeTablesByCommitId(@PathVariable commitId: Int): MutableList<ChangeTable>? {
-        return commitService.findChangeTablesByCommitId(commitId)
-    }
+    fun retrieveChangeTables(@PathVariable commitId: Int): MutableList<ChangeTable>? =
+        commitService.findChangeTablesByCommitId(commitId)
+
 }

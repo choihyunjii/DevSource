@@ -75,5 +75,5 @@ val commit6 = Commit(
     changePages = mutableListOf()
 )
 
-val commitList = listOf(commit1, commit2, commit3, commit4, commit5, commit6)
+val commitList = mutableListOf(commit1, commit2, commit3, commit4, commit5, commit6)
 

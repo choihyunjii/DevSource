@@ -3,7 +3,7 @@ package com.example.datahub_back.data.devTree
 import com.example.datahub_back.dto.devTree.Branch
 
 
-val branch1 = Branch(
+var branch1 = Branch(
     branchId = 1,
     userId = "user1",
     projectId = 1,
@@ -13,7 +13,7 @@ val branch1 = Branch(
     isMainBranch = 0
 )
 
-val branch2 = Branch(
+var branch2 = Branch(
     branchId = 2,
     userId = "user3",
     projectId = 1,
@@ -23,7 +23,7 @@ val branch2 = Branch(
     isMainBranch = 0
 )
 
-val branch3 = Branch(
+var branch3 = Branch(
     branchId = 3,
     userId = null,
     projectId = 1,
@@ -33,4 +33,4 @@ val branch3 = Branch(
     isMainBranch = 1
 )
 
-val branchList = mutableListOf(branch1, branch2, branch3)
+var branchList = mutableListOf(branch1, branch2, branch3)

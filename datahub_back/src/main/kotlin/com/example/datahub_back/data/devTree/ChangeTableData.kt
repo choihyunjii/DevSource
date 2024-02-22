@@ -22,4 +22,4 @@ val changeTable2 = ChangeTable(
     data = "부천",
 )
 
-val changeTableList = listOf(changeTable1, changeTable2)
+val changeTableList = mutableListOf(changeTable1, changeTable2)
