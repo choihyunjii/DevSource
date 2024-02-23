@@ -1,7 +1,7 @@
 package com.example.datahub_back.controller.treeController
 
-import com.example.datahub_back.dto.devTree.*
-import com.example.datahub_back.service.devTree.*
+import com.example.datahub_back.dto.treeDTO.*
+import com.example.datahub_back.service.treeService.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
@@ -27,16 +27,22 @@ class CommitController (
     fun handleCommit(@RequestBody commitData: List<CommitRequest>): ResponseEntity<String> {
         try {
             for (data in commitData) {
+                // id만 뽑아서 리스트 만들기
+                val sourceTableIds = data.tables.map { it.tableId }.toMutableList()
+                val changeTableIds = data.changeTables.map { it.changeTableId }.toMutableList()
+                val changePageIds = data.changePages.map { it.pageId }.toMutableList()
+
                 val commit = Commit(
                     commitId = data.commitId,
                     branchId = data.branchId,
                     comment = data.comment,
                     createTime = data.createTime,
                     createUser = data.createUser,
-                    sourceTables = data.tables.toMutableList(),
-                    changeTables = data.changeTables.toMutableList(),
-                    changePages = data.changePages.toMutableList()
+                    sourceTableIds = sourceTableIds,
+                    changeTableIds = changeTableIds,
+                    changePageIds = changePageIds
                 )
+
                 commitService.createCommit(commit) // 커밋 추가
                 processDataItems(data) // 나머지 추가
                 branchService.updatePushByBranchId(data.branchId) // 브랜치 push 업데이트

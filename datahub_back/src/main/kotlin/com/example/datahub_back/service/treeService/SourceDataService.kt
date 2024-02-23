@@ -1,7 +1,7 @@
-package com.example.datahub_back.service.devTree
+package com.example.datahub_back.service.treeService
 
-import com.example.datahub_back.data.devTree.sourceDataList
-import com.example.datahub_back.dto.devTree.SourceData
+import com.example.datahub_back.data.treeData.sourceDataList
+import com.example.datahub_back.dto.treeDTO.SourceData
 import org.springframework.stereotype.Service
 
 @Service

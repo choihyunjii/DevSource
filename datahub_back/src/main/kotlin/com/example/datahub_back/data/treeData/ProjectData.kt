@@ -1,5 +1,5 @@
-package com.example.datahub_back.data.devTree
-import com.example.datahub_back.dto.devTree.SourceProject
+package com.example.datahub_back.data.treeData
+import com.example.datahub_back.dto.treeDTO.SourceProject
 import java.time.LocalDateTime
 import kotlin.collections.mutableListOf
 

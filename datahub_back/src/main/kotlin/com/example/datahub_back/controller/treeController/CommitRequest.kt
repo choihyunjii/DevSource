@@ -1,7 +1,7 @@
 package com.example.datahub_back.controller.treeController
 
 
-import com.example.datahub_back.dto.devTree.*
+import com.example.datahub_back.dto.treeDTO.*
 import java.time.LocalDateTime
 
 data class CommitRequest(

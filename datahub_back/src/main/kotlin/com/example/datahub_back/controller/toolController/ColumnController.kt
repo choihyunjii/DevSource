@@ -1,7 +1,7 @@
 package com.example.datahub_back.controller.toolController
 
-import com.example.datahub_back.dto.devTool.Column
-import com.example.datahub_back.dto.devTool.Table
+import com.example.datahub_back.dto.toolDTO.Column
+import com.example.datahub_back.dto.toolDTO.Table
 import com.example.datahub_back.service.backDataService.ColumnService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus

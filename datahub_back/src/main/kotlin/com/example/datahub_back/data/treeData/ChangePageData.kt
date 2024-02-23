@@ -1,6 +1,6 @@
-package com.example.datahub_back.data.devTree
+package com.example.datahub_back.data.treeData
 
-import com.example.datahub_back.dto.devTree.ChangePage
+import com.example.datahub_back.dto.treeDTO.ChangePage
 
 val changePage1 = ChangePage(
     pageId = 1,

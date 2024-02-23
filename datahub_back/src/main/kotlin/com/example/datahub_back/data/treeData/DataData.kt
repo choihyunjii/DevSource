@@ -1,6 +1,6 @@
-package com.example.datahub_back.data.devTree
+package com.example.datahub_back.data.treeData
 
-import com.example.datahub_back.dto.devTree.SourceData
+import com.example.datahub_back.dto.treeDTO.SourceData
 
 val sourceData1 = SourceData(
     dataId = 1,

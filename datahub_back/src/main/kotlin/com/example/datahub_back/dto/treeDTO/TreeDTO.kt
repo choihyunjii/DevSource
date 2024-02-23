@@ -1,4 +1,4 @@
-package com.example.datahub_back.dto.devTree
+package com.example.datahub_back.dto.treeDTO
 
 import java.time.LocalDateTime
 
@@ -33,13 +33,13 @@ data class Branch(
 
 data class Commit(
     val commitId: Long, // PK (해시코드로 인해 중복)
-    val branchId: Long, // PK, FK
+    var branchId: Long, // PK, FK
     val comment: String,
     val createTime: LocalDateTime,
     val createUser: String,
-    val sourceTables: MutableList<SourceTable>,
-    val changeTables: MutableList<ChangeTable>,
-    val changePages: MutableList<ChangePage>
+    val sourceTableIds: MutableList<Long>,
+    val changeTableIds: MutableList<Long>,
+    val changePageIds: MutableList<Long>
 )
 
 data class SourceTable(
@@ -67,15 +67,6 @@ data class SourceData(
     val columnId: Long, // FK
     val data: String
 )
-
-//data class Page(
-//    val pageId: Int, // PK
-//    val pageName: String,
-//    val path: String,
-//    val isFavorite: Int,
-//    val isDelete: Int,
-//    val updateTime: LocalDateTime
-//)
 
 // 테이블 변경사항
 data class ChangeTable(

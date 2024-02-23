@@ -1,5 +1,5 @@
-package com.example.datahub_back.data.devTree
-import com.example.datahub_back.dto.devTree.ChangeTable
+package com.example.datahub_back.data.treeData
+import com.example.datahub_back.dto.treeDTO.ChangeTable
 
 
 val changeTable1 = ChangeTable(

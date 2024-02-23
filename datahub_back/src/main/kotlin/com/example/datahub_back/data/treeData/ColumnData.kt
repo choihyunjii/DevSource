@@ -1,6 +1,6 @@
-package com.example.datahub_back.data.devTree
+package com.example.datahub_back.data.treeData
 
-import com.example.datahub_back.dto.devTree.SourceColumn
+import com.example.datahub_back.dto.treeDTO.SourceColumn
 
 val sourceColumn1 = SourceColumn(
     columnId = 1,
