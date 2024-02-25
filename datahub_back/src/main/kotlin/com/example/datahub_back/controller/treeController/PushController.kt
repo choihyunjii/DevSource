@@ -26,10 +26,11 @@ class PushController(
             val userBranch = branchService.getBranchByUserIdAndProjectId(userId, projectId)
 
             if (mainBranch != null && userBranch != null) {
+                // 커밋 리스트 뽑아와서 브랜치를 메인으로 바꾸기
                 val differentCommits = findDifferentCommits(mainBranch, userBranch)
                     .filter { it.branchId == mainBranch.branchId }
 
-                saveCommitsToMainBranch(differentCommits, mainBranch)
+                saveCommits(differentCommits)
             }
             ResponseEntity.ok("Push processed successfully")
         } catch (e: Exception) {
@@ -37,10 +38,9 @@ class PushController(
         }
     }
 
-    // 메인 브랜치 커밋으로 수정하여 커밋 추가
-    private fun saveCommitsToMainBranch(commits: List<Commit>, mainBranch: Branch) {
+    // 커밋 생성
+    private fun saveCommits(commits: List<Commit>) {
         for (commit in commits) {
-            commit.branchId = mainBranch.branchId
             commitService.createCommit(commit)
         }
     }

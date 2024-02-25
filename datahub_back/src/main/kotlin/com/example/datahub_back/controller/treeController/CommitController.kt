@@ -42,7 +42,6 @@ class CommitController (
                     changeTableIds = changeTableIds,
                     changePageIds = changePageIds
                 )
-
                 commitService.createCommit(commit) // 커밋 추가
                 processDataItems(data) // 나머지 추가
                 branchService.updatePushByBranchId(data.branchId) // 브랜치 push 업데이트
@@ -94,6 +93,7 @@ class CommitController (
 
 
 // 테스트용 JSON 데이터
+// 프론트에서 데이터를 보내지 않고 백엔드에서 저장된 테이블 정보를 가져오는거로 바꿀 예정
 //[
 //{
 //    "commitId": 1,
