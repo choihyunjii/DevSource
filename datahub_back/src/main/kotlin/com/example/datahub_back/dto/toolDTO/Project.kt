@@ -1,4 +1,4 @@
-package com.example.datahub_back.dto.devTool
+package com.example.datahub_back.dto.toolDTO
 
 import java.time.LocalDateTime
 

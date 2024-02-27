@@ -1,5 +1,5 @@
-package com.example.datahub_back.data.devTool
-import com.example.datahub_back.dto.devTool.*
+package com.example.datahub_back.data.toolData
+import com.example.datahub_back.dto.toolDTO.*
 import java.time.LocalDateTime
 
 val exampleProfile = Profile(1,"주동호","010-7761-8482","launcher37@naver.com","1234")

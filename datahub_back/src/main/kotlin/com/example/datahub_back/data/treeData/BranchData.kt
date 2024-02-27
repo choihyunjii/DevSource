@@ -1,6 +1,6 @@
-package com.example.datahub_back.data.devTree
+package com.example.datahub_back.data.treeData
 
-import com.example.datahub_back.dto.devTree.Branch
+import com.example.datahub_back.dto.treeDTO.Branch
 
 
 var branch1 = Branch(

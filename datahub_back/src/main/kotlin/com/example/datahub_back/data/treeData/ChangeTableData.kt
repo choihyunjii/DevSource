@@ -1,10 +1,10 @@
-package com.example.datahub_back.data.devTree
-import com.example.datahub_back.dto.devTree.ChangeTable
+package com.example.datahub_back.data.treeData
+import com.example.datahub_back.dto.treeDTO.ChangeTable
 
 
 val changeTable1 = ChangeTable(
     changeTableId = 1,
-    columNumber = 1,
+    columnNumber = 1,
     rowNumber = 1,
     tableName = "Table1",
     action = '-',
@@ -14,7 +14,7 @@ val changeTable1 = ChangeTable(
 
 val changeTable2 = ChangeTable(
     changeTableId = 2,
-    columNumber = 2,
+    columnNumber = 2,
     rowNumber = 1,
     tableName = "Table1",
     action = '-',

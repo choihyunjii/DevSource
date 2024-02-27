@@ -1,8 +1,8 @@
-package com.example.datahub_back.data.devTree
+package com.example.datahub_back.data.treeData
 
-import com.example.datahub_back.dto.devTree.User
+import com.example.datahub_back.dto.treeDTO.SourceUser
 
-val user1 = User(
+val sourceUser1 = SourceUser(
     userId = "user1",
     password = "password1",
     userName = "John Doe",
@@ -10,7 +10,7 @@ val user1 = User(
     email = "john@example.com"
 )
 
-val user2 = User(
+val sourceUser2 = SourceUser(
     userId = "user2",
     password = "password2",
     userName = "Alice Smith",
@@ -18,7 +18,7 @@ val user2 = User(
     email = "alice@example.com"
 )
 
-val user3 = User(
+val sourceUser3 = SourceUser(
     userId = "user3",
     password = "password3",
     userName = "Bob Johnson",

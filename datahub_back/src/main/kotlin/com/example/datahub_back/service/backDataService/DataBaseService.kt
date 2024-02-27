@@ -1,8 +1,8 @@
 package com.example.datahub_back.service.backDataService
 
-import com.example.datahub_back.data.devTool.exampleDataBaseList
-import com.example.datahub_back.dto.devTool.DataBase
-import com.example.datahub_back.dto.devTool.Project
+import com.example.datahub_back.data.toolData.exampleDataBaseList
+import com.example.datahub_back.dto.toolDTO.DataBase
+import com.example.datahub_back.dto.toolDTO.Project
 import org.springframework.stereotype.Service
 
 @Service

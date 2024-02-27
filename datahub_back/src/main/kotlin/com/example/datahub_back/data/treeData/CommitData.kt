@@ -1,6 +1,6 @@
-package com.example.datahub_back.data.devTree
+package com.example.datahub_back.data.treeData
 
-import com.example.datahub_back.dto.devTree.Commit
+import com.example.datahub_back.dto.treeDTO.Commit
 import java.time.LocalDateTime
 
 val commit1 = Commit(
@@ -9,10 +9,9 @@ val commit1 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 1,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(page1),
-    changeTables = mutableListOf(changeTable1, changeTable2),
-    changePages = mutableListOf(changePage1)
+    sourceTableIds = mutableListOf(1),
+    changeTableIds = mutableListOf(1, 2),
+    changePageIds = mutableListOf(1)
 )
 
 val commit2 = Commit(
@@ -21,10 +20,9 @@ val commit2 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 1,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
-    changeTables = mutableListOf(),
-    changePages = mutableListOf()
+    sourceTableIds = mutableListOf(1),
+    changeTableIds = mutableListOf(),
+    changePageIds = mutableListOf()
 )
 
 val commit3 = Commit(
@@ -33,10 +31,9 @@ val commit3 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 2,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
-    changeTables = mutableListOf(),
-    changePages = mutableListOf()
+    sourceTableIds = mutableListOf(1),
+    changeTableIds = mutableListOf(),
+    changePageIds = mutableListOf()
 )
 
 val commit4 = Commit(
@@ -45,10 +42,9 @@ val commit4 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 2,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
-    changeTables = mutableListOf(),
-    changePages = mutableListOf()
+    sourceTableIds = mutableListOf(1),
+    changeTableIds = mutableListOf(),
+    changePageIds = mutableListOf()
 )
 
 val commit5 = Commit(
@@ -57,10 +53,9 @@ val commit5 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 3,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
-    changeTables = mutableListOf(),
-    changePages = mutableListOf()
+    sourceTableIds = mutableListOf(1),
+    changeTableIds = mutableListOf(),
+    changePageIds = mutableListOf()
 )
 
 val commit6 = Commit(
@@ -69,10 +64,9 @@ val commit6 = Commit(
     createTime = LocalDateTime.now(),
     createUser = "user1",
     branchId = 3,
-    tables = mutableListOf(table1),
-    pages = mutableListOf(),
-    changeTables = mutableListOf(),
-    changePages = mutableListOf()
+    sourceTableIds = mutableListOf(1),
+    changeTableIds = mutableListOf(),
+    changePageIds = mutableListOf()
 )
 
 val commitList = mutableListOf(commit1, commit2, commit3, commit4, commit5, commit6)

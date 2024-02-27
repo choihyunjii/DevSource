@@ -1,8 +1,8 @@
 package com.example.datahub_back.service.backDataService
 
-import com.example.datahub_back.data.devTool.exampleColumnList
-import com.example.datahub_back.dto.devTool.Column
-import com.example.datahub_back.dto.devTool.Table
+import com.example.datahub_back.data.toolData.exampleColumnList
+import com.example.datahub_back.dto.toolDTO.Column
+import com.example.datahub_back.dto.toolDTO.Table
 import org.springframework.stereotype.Service
 
 @Service

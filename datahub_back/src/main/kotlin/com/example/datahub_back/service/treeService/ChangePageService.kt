@@ -1,7 +1,7 @@
-package com.example.datahub_back.service.devTree
+package com.example.datahub_back.service.treeService
 
-import com.example.datahub_back.data.devTree.changePageList
-import com.example.datahub_back.dto.devTree.ChangePage
+import com.example.datahub_back.data.treeData.changePageList
+import com.example.datahub_back.dto.treeDTO.ChangePage
 import org.springframework.stereotype.Service
 
 @Service
