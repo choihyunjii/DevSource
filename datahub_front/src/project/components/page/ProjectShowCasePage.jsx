@@ -2,7 +2,6 @@ import TitleUI from "../uI/TitleUI";
 import LinkUI from "../uI/LinkUI";
 import styles from "../styles.module.css";
 import ProjectCardLayOut from "../layout/ProjectCardLayOut";
-import {Image} from "react-bootstrap";
 import ProjectSideBarLayOut from "../layout/ProjectSideBarLayOut";
 
 export default function ProjectShowCasePage(){

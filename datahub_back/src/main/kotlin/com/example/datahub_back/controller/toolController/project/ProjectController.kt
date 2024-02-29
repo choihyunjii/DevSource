@@ -1,5 +1,6 @@
-package com.example.datahub_back.controller.toolController
+package com.example.datahub_back.controller.toolController.project
 
+import com.example.datahub_back.dto.toolDTO.Profile
 import com.example.datahub_back.dto.toolDTO.Project
 import com.example.datahub_back.service.backDataService.DevProjectService
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.server.ResponseStatusException
+import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/api/project")
@@ -37,10 +40,10 @@ class ProjectController(
 
     // 프로젝트 생성
     @PostMapping
-    fun createProject(@RequestBody project: Project): ResponseEntity<Project> {
-        val createdProject = projectService.createProject(project)
-        return ResponseEntity(createdProject, HttpStatus.CREATED)
-    }
+    fun createProject(@RequestBody projectRequest: ProjectRequest): ProjectResponse =
+        projectService.createProject(projectRequest)
+            ?. toResponse() //Null이 아닐경우
+            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST,"프로젝트 이름이 이미 존재합니다.") // Null일 경우
 
     // 프로젝트 수정
     @PutMapping("/{id}")
@@ -55,4 +58,14 @@ class ProjectController(
         projectService.deleteProject(id)
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
+
+    private fun Project.toResponse() : ProjectResponse =
+        ProjectResponse(
+            projectName = this.name,
+            comment = this.comment,
+            createTime = this.createTime,
+            profile = this.profile,
+            teamProfile = this.teamProfile
+        )
+
 }
