@@ -1,8 +1,10 @@
 package com.example.datahub_back.service.backDataService
 
+import com.example.datahub_back.controller.toolController.project.ProjectRequest
 import com.example.datahub_back.data.toolData.exampleProjectList
 import com.example.datahub_back.dto.toolDTO.Project
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class DevProjectService {
@@ -15,11 +17,27 @@ class DevProjectService {
         return exampleProjectList.find { it.id == id }
     }
 
-    fun createProject(project: Project): Project {
-        project.id = (exampleProjectList.maxByOrNull { it.id }?.id ?: 0) + 1
-        exampleProjectList.add(project)
-        return project
+    fun createProject(projectRequest: ProjectRequest): Project? {
+        val found = exampleProjectList.find { it.name == projectRequest.name }
+        //값이 같은지 확인
+        val newProject = Project(
+            id = 0,
+            name = projectRequest.name,
+            comment = projectRequest.comment,
+            createTime = LocalDateTime.now(),
+            updateTime = LocalDateTime.now(),
+            isFavorite = 0,
+            isDelete = 0,
+            teamProfile = projectRequest.teamProfile,
+            profile = projectRequest.profile
+        )
+
+        return if (found == null) {
+            exampleProjectList.add(newProject)
+            newProject
+        } else null
     }
+
 
     fun updateProject(id: Long, newProject: Project): Project? {
         val index = exampleProjectList.indexOfFirst { it.id == id }
