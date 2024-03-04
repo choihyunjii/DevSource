@@ -1,4 +1,4 @@
-const sideBarCategories = [
+const sideBarCategoriesExampleData = [
     {
         id: 1,
         category: "Card"
@@ -17,4 +17,4 @@ const sideBarCategories = [
     },
 ];
 
-export default sideBarCategories;
+export default sideBarCategoriesExampleData;
