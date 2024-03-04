@@ -5,11 +5,9 @@ export default function SideBarContentUI(){
     return(
         <div>
             <div className={styles.dataBaseMenu}>
-                <div className={styles.dataBaseContent}>
                     <SideBarMenuUI header={"테이블 목록"} data={ProjectExampleData}/>
                     <SideBarMenuUI header={"즐겨찾기 목록"} data={ProjectExampleData}/>
                     <SideBarMenuUI header={"삭제 목록"} data={ProjectExampleData}/>
-                </div>
             </div>
         </div>
     )

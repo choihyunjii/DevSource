@@ -241,29 +241,23 @@
 }
 
 .dataBaseSideBar{
-    margin-top: 3%;
-    background-color: #FFFFFF;
+    position: absolute;
     width: 14%;
-    height: 900px;
+    height: auto;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     overflow-y : scroll;
-}
-.dataBaseContent{
-    margin-top: 10px;
+    border-top: 1px solid #C1C1C1;
+
 }
 .titleBarSide{
     color: #00A3FF ;
     display : flex;
     justify-content: space-between;
     padding: 8px 4px;
-    border-top: 1px solid #C1C1C1;
-}
-.titleBarSide h4{
-    padding: 2px;
 }
 .dataBaseMenu{
     background-color: #4EBFFF;
-    padding: 1px;
+    border-top: 12px solid #4EBFFF; /*위부분 짤림으로 인한 보더설정*/
 }
 .dataBaseMenuHeader{
     padding: 2px 12px;
@@ -279,4 +273,84 @@
     height: 30px;
     padding: 5px;
     color: #FFFFFF;
+}
+.dataBaseMenuBox{
+    width: 83%;
+    margin: 2% 5% 0 auto;
+}
+.dataBaseTitleImage{
+    width: 40px;
+    padding-bottom: 5px;
+}
+.dataBaseTitle{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    width: 30%;
+    text-align: center;
+    padding: 10px;
+    margin: 2% auto 0;
+
+}
+.dataBaseContentBox {
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(32.33%, 1fr)); /* 자동으로 그리드 생성하고 각 요소의 너비를 조정 */
+    grid-gap: 20px; /* 그리드 간격 설정 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    overflow-y : scroll;
+    max-height: 450px;
+}
+
+.dataBaseContentBox > * {
+    justify-self: center; /* 수평 가운데 정렬 */
+}
+
+
+.dataBaseBox{
+    border: 6px solid #00A3FF;
+    width: 300px;
+    height: 300px;
+    background-color: white;
+    border-radius: 12px;
+    text-align: center; /* 이미지를 가운데 정렬 */
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+
+}
+.dataBaseBoxTitle{
+    width: 30%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+}
+.dataBaseBoxImage {
+    padding: 10px;
+    width: 55%;
+}
+.dataBaseBoxTime{
+    padding: 5px;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    text-align: right;
+}
+.dataBaseLogo{
+    text-align: right;
+}
+.blueButton {
+    background-color: #00A3FF;
+    color: #ffffff;
+    padding: 10px 20px;
+    width: 170px;
+    height: 55px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+}
+
+.blueButton:hover {
+    background-color: #0056b3;
+}
+.dataBaseBoxButton{
+    margin: 20px;
+    padding: 20px;
+    float: right;
 }
