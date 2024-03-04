@@ -1,4 +1,4 @@
-import {Image} from "react-bootstrap";
+    import {Image} from "react-bootstrap";
 import styles from "../styles.module.css";
 
 export default function CardUI({key , name , comment}){
