@@ -4,7 +4,6 @@ import com.example.datahub_back.dto.treeDTO.*
 import com.example.datahub_back.service.treeService.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -12,88 +11,23 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/commit")
-class CommitController (
-    private val commitService: CommitService,
-    private val tableService: SourceTableService,
-    private val columnService: SourceColumnService,
-    private val dataService: SourceDataService,
-    private val changePageService: ChangePageService,
-    private val changeTableService: ChangeTableService,
-    private val branchService: BranchService
+class CommitController(
+    private val commitService: CommitService
 ) {
-
     @PostMapping("/")
-    @Transactional(rollbackFor = [RuntimeException::class])
-    fun handleCommit(@RequestBody commitData: List<CommitRequest>): ResponseEntity<String> {
-        try {
-            for (data in commitData) {
-                // id만 뽑아서 리스트 만들기
-                val sourceTableIds = data.tables.map { it.tableId }.toMutableList()
-                val changeTableIds = data.changeTables.map { it.changeTableId }.toMutableList()
-                val changePageIds = data.changePages.map { it.pageId }.toMutableList()
-
-                val commit = Commit(
-                    commitId = data.commitId,
-                    branchId = data.branchId,
-                    comment = data.comment,
-                    createTime = data.createTime,
-                    createUser = data.createUser,
-                    sourceTableIds = sourceTableIds,
-                    changeTableIds = changeTableIds,
-                    changePageIds = changePageIds
-                )
-                commitService.createCommit(commit) // 커밋 추가
-                processDataItems(data) // 나머지 추가
-                branchService.updatePushByBranchId(data.branchId) // 브랜치 push 업데이트
-            }
-            return ResponseEntity.ok("Commit processed successfully")
+    fun handleCommit(@RequestBody commitDataList: List<CommitRequest>): ResponseEntity<String> {
+        return try {
+            commitService.handleCommit(commitDataList)
+            ResponseEntity.ok("Commit processed successfully")
         } catch (e: Exception) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred: ${e.message}")
-        }
-    }
-
-    private fun processDataItems(data: CommitRequest) {
-        addTables(data.tables)
-        addColumns(data.columns)
-        addDataItems(data.data)
-        addChangePages(data.changePages)
-        addChangeTables(data.changeTables)
-    }
-
-    private fun addTables(tables: List<SourceTable>) {
-        for (table in tables) {
-            tableService.createTable(table)
-        }
-    }
-
-    private fun addColumns(columns: List<SourceColumn>) {
-        for (column in columns) {
-            columnService.createColumn(column)
-        }
-    }
-
-    private fun addDataItems(dataItems: List<SourceData>) {
-        for (dataItem in dataItems) {
-            dataService.createData(dataItem)
-        }
-    }
-
-    private fun addChangePages(changePages: List<ChangePage>) {
-        for (changePage in changePages) {
-            changePageService.createChangePage(changePage)
-        }
-    }
-
-    private fun addChangeTables(changeTables: List<ChangeTable>) {
-        for (changeTable in changeTables) {
-            changeTableService.createChangeTable(changeTable)
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred: ${e.message}")
         }
     }
 }
 
 
+
 // 테스트용 JSON 데이터
-// 프론트에서 데이터를 보내지 않고 백엔드에서 저장된 테이블 정보를 가져오는거로 바꿀 예정
 //[
 //{
 //    "commitId": 1,
