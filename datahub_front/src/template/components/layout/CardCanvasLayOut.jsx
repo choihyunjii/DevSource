@@ -1,9 +1,10 @@
-import CardDesign from "./dataListCompeonts/cardListComponent/CardDesign";
-import './DataComponentCanvas.css';
-export default function DataComponentCanvas({exampleData}){
+import CardDesign from "../uI/CardDesignUI";
+import styles from '../../styleModule/canvas.module.css';
+
+export default function CardCanvasLayOut({exampleData}){
 
     return(
-        <div className='card-grid'>
+        <div className={styles.cardGrid}>
             {exampleData.map(data =>(
                 <CardDesign
                     key = {data.id}

@@ -1,41 +1,47 @@
-.card {
+
+@font-face {
+    font-family: "koko";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+
+.card{
     margin: 20px;
-    width: 380px;
+    width: 360px;
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
     background-color: #FFFFFF;
 }
-.card-image-container {
+.cardImageContainer {
     margin: 20px 5px 10px 5px;
     text-align: center;
 }
 
-.card-image {
+.cardImage {
     border-radius: 3px;
-    width: 90%;
+    width: 80%;
     height: 200px;
     object-fit: cover;
 }
 
-.card-content {
-    width: 90%;
+.cardContent {
+    width: 80%;
     margin : 0 auto;
     padding: 15px;
 }
 
-.card-title {
+.cardTitle {
     margin-top: 0;
 }
 
-.card-description {
+.cardDescription {
     margin-bottom: 0;
 }
-.card-button-container{
+.cardButtonContainer{
     margin: 10px;
     float: right;
 }
-.card-button {
+.cardButton {
     background-color: #00A3FF; /* Green */
     border: none;
     color: white;

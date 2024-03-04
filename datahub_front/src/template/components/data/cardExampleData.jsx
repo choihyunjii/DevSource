@@ -1,4 +1,4 @@
-const exampleData = [
+const cardExampleData = [
     {
         id: 1,
         title: "Example Card 1",
@@ -32,4 +32,4 @@ const exampleData = [
     // 추가 데이터를 원하는 만큼 추가할 수 있습니다.
 ];
 
-export default exampleData;
+export default cardExampleData;

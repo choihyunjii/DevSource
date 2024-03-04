@@ -239,3 +239,44 @@
 .commentBox{
     padding: 15px;
 }
+
+.dataBaseSideBar{
+    margin-top: 3%;
+    background-color: #FFFFFF;
+    width: 14%;
+    height: 900px;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    overflow-y : scroll;
+}
+.dataBaseContent{
+    margin-top: 10px;
+}
+.titleBarSide{
+    color: #00A3FF ;
+    display : flex;
+    justify-content: space-between;
+    padding: 8px 4px;
+    border-top: 1px solid #C1C1C1;
+}
+.titleBarSide h4{
+    padding: 2px;
+}
+.dataBaseMenu{
+    background-color: #4EBFFF;
+    padding: 1px;
+}
+.dataBaseMenuHeader{
+    padding: 2px 12px;
+    color: #FFFFFF ;
+    height: 33px;
+    font-weight: bold;
+}
+.dataBaseMenuList{
+    background-color: #249ADD;
+    padding-left: 30px;
+}
+.dataBaseMenuList li{
+    height: 30px;
+    padding: 5px;
+    color: #FFFFFF;
+}

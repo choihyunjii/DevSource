@@ -1,11 +1,14 @@
 @font-face {
     font-family: "GmarketSansTTFBold";
-    src: url("../../../default/font/GmarketSansTTFBold.ttf");
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
 }
 
 .All{
-    font-family: "GmarketSansTTFBold";
-
+    font-family: "GmarketSansTTFBold", serif;
 }
 
 .logo {

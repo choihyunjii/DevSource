@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ListMenuStyle.css'
+import styles from '../../styleModule/listMenuStyle.module.css';
 
 function ListMenuComponent({ title, menus }) {
     // 각 아이템의 체크 상태를 저장하는 2차원 배열
@@ -13,13 +13,13 @@ function ListMenuComponent({ title, menus }) {
     };
 
     return (
-        <div className="menu-container">
-            <h5 className="menu-title">{title}</h5>
+        <div className={styles.menuContainer}>
+            <h5 className={styles.menuTitle}>{title}</h5>
             {menus.map((menu, menuIndex) => (
-                <div key={menuIndex} className="menu">
-                    <ul className="menu-list">
+                <div key={menuIndex} className={styles.menu}>
+                    <ul className={styles.menuList}>
                         {menu.menu.map((item, itemIndex) => (
-                            <li key={itemIndex} className="menu-item">
+                            <li key={itemIndex} className={styles.menuItem}>
                                 <input
                                     type="checkbox"
                                     id={`checkbox_${menuIndex}_${itemIndex}`}
@@ -30,7 +30,7 @@ function ListMenuComponent({ title, menus }) {
                             </li>
                         ))}
                     </ul>
-                    {menuIndex !== menus.length - 1 && <hr className="menu-separator" />} {/* 마지막 메뉴 뒤에는 구분선을 표시하지 않음 */}
+                    {menuIndex !== menus.length - 1 && <hr className={styles.menuSeparator} />} {/* 마지막 메뉴 뒤에는 구분선을 표시하지 않음 */}
                 </div>
             ))}
         </div>
