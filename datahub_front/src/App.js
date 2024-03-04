@@ -1,4 +1,7 @@
 import './App.css';
+
+import TemporaryAppRouter from "./routes/TemporaryAppRouter";
+
 import Header from "./Layout/Header/Header";
 
 import TemplateCodeEditor from "./template/components/page/TemplateCodeEditor";
@@ -7,11 +10,7 @@ import TemplateCodeEditor from "./template/components/page/TemplateCodeEditor";
 function App() {
   return (
       <div>
-          <Header/>
-          {/*<CreateProjectPage/>*/}
-          {/*<DataBaseShowCasePage/>*/}
-          {/*<TemplatePage/>*/}
-          <TemplateCodeEditor/>
+          <TemporaryAppRouter />
       </div>
 
   );

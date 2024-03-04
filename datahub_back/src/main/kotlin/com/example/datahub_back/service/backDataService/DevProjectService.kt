@@ -13,9 +13,16 @@ class DevProjectService {
         return exampleProjectList.filter { it.profile.id == profileID }
     }
 
+    fun getProjectsByTeamProfile(profileID: Long): List<Project> {
+        return exampleProjectList.filter { project ->
+            project.teamProfile.any { user -> user.id == profileID }
+        }
+    }
+
     fun getProjectById(id: Long): Project? {
         return exampleProjectList.find { it.id == id }
     }
+
 
     fun createProject(projectRequest: ProjectRequest): Project? {
         val found = exampleProjectList.find { it.name == projectRequest.name }
