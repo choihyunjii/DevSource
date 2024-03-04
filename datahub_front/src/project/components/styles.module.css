@@ -139,7 +139,7 @@
     margin: 15px 10px;
     border: 2px solid #505050;
     width: 93%;
-    height: 250px;
+    padding: 3px 0;
 }
 .cardLogo{
     display: flex;

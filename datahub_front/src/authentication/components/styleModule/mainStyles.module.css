@@ -97,6 +97,7 @@ body{font-size: 1rem;}
 
 /*MainTopLayout*/
 .mainTopText {
+    font-family: 'KoPubWorld Dotum Bold', serif;
     font-size: 2rem;
     font-weight: bold;
     width: 100%;

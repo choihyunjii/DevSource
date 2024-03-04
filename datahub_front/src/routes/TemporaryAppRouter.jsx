@@ -5,6 +5,7 @@ import DataBaseShowCasePage from '../project/components/page/DataBaseShowCasePag
 import ProjectShowCasePage from '../project/components/page/ProjectShowCasePage'
 import TemplatePage from '../template/components/page/TemplatePage'
 import ErrorPage from "./ErrorPage";
+import TemplateCodeEditor from "../template/components/page/TemplateCodeEditor";
 
 export default function TemporaryAppRouter() {
     return (
@@ -19,7 +20,8 @@ export default function TemporaryAppRouter() {
                     <Route path='/createProject' element={<CreateProjectPage />} />
                     <Route path='/dataBases' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />
-                    <Route path='/template' element={<TemplatePage />} />
+                    <Route path='/template' element={<TemplatePage />} />\
+                    <Route path='/template/codeEditor' element={<TemplateCodeEditor />} />
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />
                 </Routes>
