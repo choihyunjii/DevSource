@@ -4,7 +4,7 @@
 }
 
 .table {
-    font-family: "koko";
+    font-family: "koko", serif;
     border-collapse: collapse; /* 테이블의 경계를 병합하여 테두리 간격을 없앱니다. */
     width:90%;
     background-color: #ffffff;
@@ -15,8 +15,6 @@
 .th,.td {
     padding:15px;
     border-bottom: 1px solid #00A3FF !important;
-
-
 }
 
 .th {

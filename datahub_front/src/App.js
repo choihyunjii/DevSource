@@ -1,8 +1,7 @@
 import './App.css';
 import Header from "./Layout/Header/Header";
-import TemplateFactory from "bootstrap/js/src/util/template-factory";
-import TemplatePage from "./template/components/page/TemplatePage";
-import DataBaseShowCasePage from "./project/components/page/DataBaseShowCasePage";
+
+import TemplateCodeEditor from "./template/components/page/TemplateCodeEditor";
 
 
 function App() {
@@ -10,8 +9,9 @@ function App() {
       <div>
           <Header/>
           {/*<CreateProjectPage/>*/}
-          <DataBaseShowCasePage/>
+          {/*<DataBaseShowCasePage/>*/}
           {/*<TemplatePage/>*/}
+          <TemplateCodeEditor/>
       </div>
 
   );
