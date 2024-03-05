@@ -354,3 +354,232 @@
     padding: 20px;
     float: right;
 }
+/*프로젝트 조회 UI*/
+.ProjectViewCard{
+    width: 430px;
+    height: 500px;
+    margin: 90px 30px 10px  30px;
+    border: 1px solid lightgray;
+    box-shadow: 0px 3px 3px lightgray;
+    display: flex;
+    flex-direction: column;
+    position:relative;
+}
+/*프로젝트 조회 카드 타이틀*/
+.ViewCardTitle{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    font-size: 20px;
+    background-color: #00A3FF;
+    width: 430px;
+    height: 90px;
+    color: #FFF;
+    padding: 15px 10px 15px 20px;
+    display: inline-block;
+}
+/*프로젝트 조회 카드 아이콘*/
+.ViewCardIcon{
+    background-color: #FFFFFF;
+    margin: auto ;
+    width: 110px;
+    height: 110px;
+    border-radius: 400px;
+    border: 1px solid #00A3FF;
+    display: flex;
+
+}
+/*프로젝트 조회 카드 하단 버튼*/
+.ViewCardBtn{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    width: 90%; height: 50px;
+    background-color: #FFFFFF;
+    border: #00A3FF solid 2px;
+    border-radius: 12px 12px 12px 12px;
+    font-size: 18px;
+    position:absolute;
+    bottom:15px; margin-left: 22px;
+}
+/*프로젝트 조회 첫번째 카드 요소들*/
+.InformationInput{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    padding-left: 15px;
+    width: 400px;
+    height: 270px;
+    margin: 244px 0px 0px 45px;
+}
+.InputMaker{
+    margin: 5px 5px 5px 15px;
+    padding: 5px 55px 5px 10px;
+    border-radius: 7px 7px 7px 7px;
+    border: #a2a2a2 0.5px solid;
+    font-size: 15px;
+}
+.InputEx{
+    margin: 5px 5px 5px -25px;
+    padding: 5px 55px 40px 10px;
+    border-radius: 7px 7px 7px 7px;
+    border: #a2a2a2 0.5px solid;
+    font-size: 15px;
+}
+.InformationCardMaker{
+    font-size: 20px;
+}
+.InformationCardEx{
+    letter-spacing: 40px;
+    font-size: 20px;
+}
+.InformationCardDate{
+    font-size: 20px;
+}
+.InformationAction{
+    margin: 20px 0px 0px 4px;
+    display: flex;
+
+}
+.ActionNewPull{
+    border: #353535 1px solid;
+    border-radius: 6px;
+    background-color: #E9E9E9;
+    display: flex;
+    width: 120px; height: 80px;
+    text-align: center;
+}
+.ActionTxt{
+    margin: auto;
+}
+.ActionNewPush{
+    border: #353535 1px solid;
+    border-radius: 6px;
+    background-color: #E9E9E9;
+    display: flex;
+    width: 120px; height: 80px;
+    text-align: center;
+}
+.ActionCrash{
+    border: #353535 1px solid;
+    border-radius: 6px;
+    background-color: #E9E9E9;
+    display: flex;
+    width: 120px; height: 80px;
+    text-align: center;
+}
+.CrashIcon{
+    width: 30px; height: 30px;
+}
+.InformationIcon{
+    width: 80px; height: 70px;
+    margin: auto;
+    padding-left: 10px;
+}
+/*프로젝트 조회 두번째 카드 요소들*/
+.CollaborativeUsers{
+    width: 400px;
+    height: 270px;
+    margin: 244px 0px 0px 45px;
+
+}
+.CollaborativeUser{
+    width: 400px;
+    height: 65px;
+    display: flex;
+}
+.CollaborativeUserProfile{
+    width: 70px;
+    height: 70px;
+    margin: 5px 0px 0px 20px;
+    display: flex;
+}
+.CollaborativeUserName{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    font-size: 18px;
+    margin: 23px 0px 0px 5px;
+    font-size: 18px;
+}
+.CollaborativeUserTotal{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    margin: 0px 0px 20px 20px;
+    font-size: 18px;
+    position: absolute;
+    bottom: -20px;
+}
+.CollaborativeIcon{
+    width: 75px; height: 75px;
+    margin: auto;
+    padding-bottom: 5px;
+}
+/*프로젝트 조회 세번째 카드 요소들*/
+.Tables{
+    width: 400px;
+    height: 270px;
+    margin: 242px 0px 0px 45px;
+}
+.Table{
+    width: 400px;
+    height: 65px;
+    display: flex;
+}
+.TableIcon{
+    width: 40px;
+    height: 40px;
+    margin: 5px 0px 0px 30px;
+    display: flex;
+}
+.TableName{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    font-size: 18px;
+    margin: 13px 0px 0px 15px;
+    font-size: 18px;
+}
+.TablesTotal{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    margin: 0px 0px 20px 20px;
+    font-size: 18px;
+    position: absolute;
+    bottom: -20px;
+}
+.TablesIcon{
+    width: 75px; height: 75px;
+    margin: auto;
+}
+/*프로젝트 조회 페이지*/
+.projectShowCasePage{
+    display: flex;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    padding: 5% 1% 5% 1%;
+}
+.ProjectViewCardPageheader{
+    width: 400px;
+    margin-left: 44px;
+    margin-bottom: 10px;
+    display: flex;
+}
+.WebSiteIcon{
+    display: flex;
+    padding-bottom: 10px;
+}
+.ProjectTitle{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.ProjectViewCards{
+    padding-top: 18px;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position:absolute;
+    top: 125px;
+}
+.PageFooterBtn{
+    position: relative;
+    float: right;
+    margin: 520px 50px 20px 0;
+}
+.BottomStar{
+    width: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.BottomTrash{
+    width: 30px;
+    cursor: pointer;
+}
