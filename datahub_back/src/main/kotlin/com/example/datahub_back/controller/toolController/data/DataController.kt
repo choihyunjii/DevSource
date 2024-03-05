@@ -1,4 +1,4 @@
-package com.example.datahub_back.controller.toolController
+package com.example.datahub_back.controller.toolController.data
 
 import com.example.datahub_back.dto.toolDTO.Data
 import com.example.datahub_back.service.backDataService.DataService
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/data")
+@CrossOrigin(origins = ["http://localhost:3000"])
+
 class DataController(
     @Autowired
      val dataService: DataService
@@ -20,15 +22,19 @@ class DataController(
         return ResponseEntity(dataList, HttpStatus.OK)
     }
 
-    @GetMapping("/{id}")
-    fun getDataById(@PathVariable id: Long): ResponseEntity<Data> {
-        val data = dataService.getDataById(id)
-        return if (data != null) {
-            ResponseEntity(data, HttpStatus.OK)
-        } else {
-            ResponseEntity(HttpStatus.NOT_FOUND)
-        }
-    }
+    @GetMapping("/{columnID}")
+    fun getDataByColumn(@PathVariable columnID : String) =
+        dataService.getDataByColumn(columnID.toLong())
+
+//    @GetMapping("/{id}")
+//    fun getDataById(@PathVariable id: Long): ResponseEntity<Data> {
+//        val data = dataService.getDataById(id)
+//        return if (data != null) {
+//            ResponseEntity(data, HttpStatus.OK)
+//        } else {
+//            ResponseEntity(HttpStatus.NOT_FOUND)
+//        }
+//    }
 
     @PostMapping
     fun createData(@RequestBody data: Data): ResponseEntity<Data> {

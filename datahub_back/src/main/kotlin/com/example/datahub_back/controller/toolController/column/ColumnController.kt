@@ -1,7 +1,6 @@
-package com.example.datahub_back.controller.toolController
+package com.example.datahub_back.controller.toolController.column
 
 import com.example.datahub_back.dto.toolDTO.Column
-import com.example.datahub_back.dto.toolDTO.Table
 import com.example.datahub_back.service.backDataService.ColumnService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -10,24 +9,24 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/column")
+@CrossOrigin(origins = ["http://localhost:3000"])
 class ColumnController(
     @Autowired
     private val columnService: ColumnService
 ) {
+    @GetMapping("/{tableID}")
+    fun getColumnByTableID(@PathVariable tableID: Long)
+        = columnService.getColumnNameByTableId(tableID)
 
-    @GetMapping
-    fun getColumnByTable(@RequestBody table: Table)
-        = columnService.getColumnByTable(table)
-
-    @GetMapping("/{id}")
-    fun getColumnById(@PathVariable id: Long): ResponseEntity<Column> {
-        val column = columnService.getColumnById(id)
-        return if (column != null) {
-            ResponseEntity.ok(column)
-        } else {
-            ResponseEntity.notFound().build()
-        }
-    }
+//    @GetMapping("/{id}")
+//    fun getColumnById(@PathVariable id: Long): ResponseEntity<Column> {
+//        val column = columnService.getColumnById(id)
+//        return if (column != null) {
+//            ResponseEntity.ok(column)
+//        } else {
+//            ResponseEntity.notFound().build()
+//        }
+//    }
 
     @PostMapping
     fun createColumn(@RequestBody column: Column): ResponseEntity<Column> {

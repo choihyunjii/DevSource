@@ -19,7 +19,6 @@ class TableService {
 
 
     fun createTable(table: Table): Table {
-        table.id = (tables.maxByOrNull { it.id }?.id ?: 0) + 1
         tables.add(table)
         return table
     }
