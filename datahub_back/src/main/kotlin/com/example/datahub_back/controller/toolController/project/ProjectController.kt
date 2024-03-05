@@ -1,5 +1,6 @@
 package com.example.datahub_back.controller.toolController.project
 
+import com.example.datahub_back.dto.toolDTO.DataBase
 import com.example.datahub_back.dto.toolDTO.Profile
 import com.example.datahub_back.dto.toolDTO.Project
 import com.example.datahub_back.service.backDataService.DevProjectService
@@ -42,7 +43,7 @@ class ProjectController(
     @PostMapping
     fun createProject(@RequestBody projectRequest: ProjectRequest): ProjectResponse =
         projectService.createProject(projectRequest)
-            ?. toResponse() //Null이 아닐경우
+            ?. toResponse(dataBaseName = projectRequest.dataBaseName) //Null이 아닐경우
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST,"프로젝트 이름이 이미 존재합니다.") // Null일 경우
 
     // 프로젝트 수정
@@ -59,13 +60,13 @@ class ProjectController(
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 
-    private fun Project.toResponse() : ProjectResponse =
+    private fun Project.toResponse(dataBaseName : String) : ProjectResponse =
         ProjectResponse(
             projectName = this.name,
             comment = this.comment,
             createTime = this.createTime,
             profile = this.profile,
-            teamProfile = this.teamProfile
+            teamProfile = this.teamProfile,
+            dataBaseName = dataBaseName
         )
-
 }

@@ -6,5 +6,6 @@ data class ProjectRequest(
     val name : String,
     val comment : String,
     val profile: Profile,
+    val dataBaseName : String,
     val teamProfile : MutableList<Profile>
 )
