@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 
 export default function DataUI({ columnID }) {
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); //편집중인 데이터 설정
     const [editValue, setEditValue] = useState("");
 
-    const fetchData = async () => {
+    //불 필요한 함수 호출을 방지하기 위해 useCallBack 활용.
+    const fetchData = useCallback(async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/data/${columnID}`, {
+            const response = await fetch(`http://localhost:8080/api/data/${parseInt(columnID, 10)}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -20,11 +21,13 @@ export default function DataUI({ columnID }) {
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-    };
+    }, [columnID]);
+
 
     useEffect(() => {
         fetchData();
-    }, [columnID]);
+    }, [columnID, fetchData]);
+
 
     const handleItemClick = (index) => {
         setEditingIndex(index);

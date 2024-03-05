@@ -15,7 +15,6 @@ class DataController(
     @Autowired
      val dataService: DataService
 ) {
-
     @GetMapping
     fun getDataByColumn(): ResponseEntity<List<Data>> {
         val dataList = dataService.getAllData()
@@ -23,8 +22,8 @@ class DataController(
     }
 
     @GetMapping("/{columnID}")
-    fun getDataByColumn(@PathVariable columnID : String) =
-        dataService.getDataByColumn(columnID.toLong())
+    fun getDataByColumn(@PathVariable columnID : Long) =
+        dataService.getDataByColumn(columnID)
 
 //    @GetMapping("/{id}")
 //    fun getDataById(@PathVariable id: Long): ResponseEntity<Data> {

@@ -6,11 +6,12 @@
 
 .card{
     margin: 20px;
-    width: 360px;
     border: 1px solid #ddd;
+    font-size: 1.2rem;
     border-radius: 5px;
     overflow: hidden;
     background-color: #FFFFFF;
+    font-family: "koko", serif;
 }
 .cardImageContainer {
     margin: 20px 5px 10px 5px;

@@ -8,8 +8,8 @@ function App() {
   return (
       <div>
           <Header/>
-          {/*<TemporaryAppRouter/>*/}
-          <TablePage/>
+          <TemporaryAppRouter/>
+          {/*<TablePage/>*/}
       </div>
 
   );
