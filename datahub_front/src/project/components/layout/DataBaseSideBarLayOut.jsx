@@ -6,7 +6,7 @@ export default function DataBaseSideBarLayOut(){
     return(
         <div>
             <div className={styles.dataBaseSideBar}>
-                <SideBarHeaderUI headerTitle={"Templates"}/>
+                <SideBarHeaderUI headerTitle={"Tables"}/>
                 <SideBarContentUI/>
             </div>
         </div>

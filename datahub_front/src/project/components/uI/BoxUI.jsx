@@ -6,6 +6,11 @@ export default function BoxUI({header , date , imageSrc}){
             <div className={styles.dataBaseBox}>
                 <h3 className={styles.dataBaseBoxTitle}>{header}</h3>
                 <Image src={imageSrc} alt="Search Database" className={styles.dataBaseBoxImage}/>
+
+                <div className={styles.description}>
+                    <small>설명입니다.</small>
+                </div>
+
                 <div className={styles.dataBaseLogo}>
                     <div className={styles.cardIcon}>
                         <Image src={"image/star.png"}/><Image src={"image/trash.png"}/>
