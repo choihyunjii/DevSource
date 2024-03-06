@@ -1,7 +1,11 @@
     import {Image} from "react-bootstrap";
 import styles from "../styles.module.css";
 
-export default function CardUI({key , name , comment}){
+export default function CardUI({ name , comment , projectID }){
+    function clickHandler() {
+        alert(projectID)
+    }
+
     return(
         <div className={styles.cardBox}>
             <div className={styles.cardLogo}>
@@ -12,7 +16,7 @@ export default function CardUI({key , name , comment}){
             </div>
             <h3 className={styles.cardTitle}>{name}</h3>
             <p className={styles.cardComment}>{comment}</p>
-            <a href="#" className={styles.cardLink}>이동하기</a>
+            <a href="#" className={styles.cardLink} onClick={clickHandler}>이동하기</a>
         </div>
     )
 }

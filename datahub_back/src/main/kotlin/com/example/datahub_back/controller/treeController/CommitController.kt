@@ -1,6 +1,5 @@
 package com.example.datahub_back.controller.treeController
 
-import com.example.datahub_back.dto.treeDTO.*
 import com.example.datahub_back.service.treeService.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

@@ -1,7 +1,9 @@
 package com.example.datahub_back.service.backDataService
 
 import com.example.datahub_back.controller.toolController.project.ProjectRequest
+import com.example.datahub_back.data.toolData.exampleDataBaseList
 import com.example.datahub_back.data.toolData.exampleProjectList
+import com.example.datahub_back.dto.toolDTO.DataBase
 import com.example.datahub_back.dto.toolDTO.Project
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
@@ -38,9 +40,17 @@ class DevProjectService {
             teamProfile = projectRequest.teamProfile,
             profile = projectRequest.profile
         )
-
+        val newDataBase = DataBase(
+            id =  0,
+            name = projectRequest.name,
+            comment = projectRequest.dataBaseName,
+            isFavorite = 0, //0이면 즐겨찾기 X
+            isDelete = 0,  //0이면 삭제
+            project = newProject
+        )
         return if (found == null) {
-            exampleProjectList.add(newProject)
+            exampleProjectList.add(newProject) //프로젝트 저장
+            exampleDataBaseList.add(newDataBase) // 데이터베이스 저장
             newProject
         } else null
     }

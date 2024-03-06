@@ -12,11 +12,14 @@ import profile from "../../../Profile";
 export default function CreateProjectFormLayout() {
     const [name, setName] = useState("");
     const [comment, setComment] = useState("");
+    const [dataBaseName , setDataBaseName] = useState(" ");
+
     const [teamList, setTeamList] = useState(new Set([profile])); // Set으로 초기화
     const [showMemberGroupSearchBar, setShowMemberGroupSearchBar] = useState(true);
     const [data, setData] = useState();
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+
     const [error, setError] = useState("");
 
     const toggleMemberGroupSearchBar = () => {
@@ -26,7 +29,9 @@ export default function CreateProjectFormLayout() {
     const onNameChange = event => {
         setName(event.target.value);
     };
-
+    const onDataBaseNameChange = event =>{
+        setDataBaseName(event.target.value)
+    }
     const onCommentChange = event => {
         setComment(event.target.value);
     };
@@ -51,6 +56,7 @@ export default function CreateProjectFormLayout() {
             name: name,
             comment: comment,
             profile: Profile,
+            dataBaseName : dataBaseName,
             teamProfile: [...teamList] // Set을 배열로 변환하여 전달
         };
 
@@ -105,10 +111,20 @@ export default function CreateProjectFormLayout() {
 
             {showMemberGroupSearchBar && <MemberSearchLayOut searchTitle={"협업자 검색"} teamMemberAddHandler={addTeamMembers}/>}
 
-            <div className={`"form-group" ${styles.customFormGroup}`}>
-                <label htmlFor="projectNameForm"><h4 className={styles.formTitle}>프로젝트명</h4></label>
-                <input onChange={onNameChange} type="text" className={`form-control ${styles.inputForm}`} id={styles.projectNameForm} />
+            <div>
+                <div className={styles.titleGroup}>
+                    <div className={`"form-group" ${styles.customFormGroup}`}>
+                        <label htmlFor="projectNameForm"><h4 className={styles.formTitle}>프로젝트명</h4></label>
+                        <input onChange={onNameChange} type="text" className={`form-control ${styles.inputForm} ${styles.projectNameForm}`} />
+                    </div>
+
+                    <div className={`"form-group" ${styles.customFormGroup} ${styles.dataBaseFormGroup}`}>
+                        <label htmlFor="projectNameForm"><h4 className={styles.formTitle}>데이터베이스명</h4></label>
+                        <input onChange={onDataBaseNameChange} type="text" className={`form-control ${styles.inputForm} ${styles.projectNameForm}`}  />
+                    </div>
+                </div>
             </div>
+
 
             <div className={`"form-group" ${styles.customFormGroup}`}>
                 <label htmlFor="inputField2" ><h4 className={styles.formTitle} >설명<small>(선택 사항)</small></h4></label>

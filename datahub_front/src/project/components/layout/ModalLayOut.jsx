@@ -10,7 +10,7 @@ const Modal = ({ isOpen, onClose, header, data }) => {
     if (!isOpen) return null;
 
     return (
-        <div className={styles.modalOverlay} onClick={onClose}>
+        <div className={styles.modalOverlay}>
             <div className={styles.modal}>
                 <h2>{header}</h2>
                 {/* 프로젝트 정보 표시 */}
@@ -19,6 +19,7 @@ const Modal = ({ isOpen, onClose, header, data }) => {
                         <p>프로젝트 이름 : {data.projectName}</p>
                         <p>프로젝트 설명 : {data.comment}</p>
                         <p>프로젝트 생성자 : {data.profile && data.profile.username}</p>
+                        <p>프로젝트 데이터베이스 : {data.dataBaseName}</p>
                         <p>프로젝트 팀: {data.teamProfile && data.teamProfile.map(member => member.username).join(', ')}</p>
                     </div>
                 )}

@@ -1,11 +1,10 @@
 import styles from "../styles.module.css";
 import CenterTitleUI from "../uI/CenterTitleUI";
 import LinkUI from "../uI/LinkUI";
-import DataBaseBoxLayOut from "./DataBaseBoxLayOut";
 import ButtonUI from "../uI/ButtonUI";
 import TemplateBoxLayOut from "./TemplateBoxLayOut";
 
-export default function DataBaseListLayOut(){
+export default function TemplateListLayOut(){
     const handleClick = () => {
         alert('버튼이 클릭되었습니다!');
     };
@@ -13,10 +12,10 @@ export default function DataBaseListLayOut(){
     return(
         <div className={styles.dataBaseMenuBox}>
             <CenterTitleUI text={"[ 프로젝트 이름 ]"}/>
-            <LinkUI text={"데이터 추가하기"}/>
-            <DataBaseBoxLayOut/>
+            <LinkUI text={"템플릿 추가하기"}/>
+            <TemplateBoxLayOut/>
             <div className={styles.dataBaseBoxButton}>
-                <ButtonUI className={styles.blueButton} onClick={handleClick} children={"데이터 관리"}/>
+                <ButtonUI className={styles.blueButton} onClick={handleClick} children={"템플릿 관리"}/>
             </div>
         </div>
     )
