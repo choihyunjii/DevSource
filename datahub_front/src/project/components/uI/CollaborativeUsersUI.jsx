@@ -42,22 +42,23 @@ export default function CollborativeUsers(){
 
 
     return (
-        <div  style={{ overflowY: 'scroll' }}>
+        <div  style={{ overflowY: 'scroll',overflowX: 'hidden', height: '230px', width: '380px' }}>
             <ul>
                 {exampleProfileList.map(member => (
-                    <li key={member.id} style={{ listStyleType: "none" }}>
+                    <li key={member.id} style={{listStyleType: "none"}}>
                         <div className={styles.CollaborativeUser}>
                             <Image src={"../image/user.png"} className={styles.CollaborativeUserProfile}/>
                             <small className={styles.CollaborativeUserName}>{member.username}</small>
 
                         </div>
+                        <p className={styles.CollaborativeUserTotal}> 총 협업자 수 :  {exampleProfileList.length}</p>
+
 
                     </li>
                 ))}
             </ul>
         </div>
     );
-
 
 
 }
