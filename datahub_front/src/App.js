@@ -1,14 +1,16 @@
 import './App.css';
 
-import Header from "./Layout/Header/Header";
-import Normalization from "./normalization/page/Normalization";
 import TemporaryAppRouter from "./routes/TemporaryAppRouter";
+import Header from "./Layout/Header/Header";
+import TablePage from "./devSource/Components/page/TablePage";
+import Normalization from "./normalization/page/Normalization";
 
 function App() {
   return (
       <div>
           <Header/>
-          <TemporaryAppRouter/>
+          {/*<TemporaryAppRouter/>*/}
+          <Normalization/>
       </div>
 
   );
