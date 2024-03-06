@@ -7,9 +7,9 @@ export default function MainPage(){
     return(
         <div className={styles.mainPage}>
             <div>
-                <Header />
-                <MainTopLayout />
-                <MainBottomLayout />
+                <Header/>
+                <MainTopLayout/>
+                <MainBottomLayout/>
             </div>
         </div>
     )

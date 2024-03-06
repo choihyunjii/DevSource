@@ -1,12 +1,38 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import NormalizationColumnHeader from "../ui/NormalizationColumnHeader";
 import ButtonUI from "../../project/components/uI/ButtonUI";
 
 
 export default function Normalization(){
     const [normalizationColumnData , setNormalizationColumnData] = useState([])
+    const [columnData , setColumnData] = useState([]); // 초기 값은 빈 배열로 설정
 
-    const exampleColumnData = ["학생정보","성적","강좌이름","강의실"]
+
+    let exampleTableData = {
+        id : 1,
+        name : "회사",
+        comment : "회사관리",
+        isFavorite : 0, //0이면 즐겨찾기 X
+        isDelete : 0,  //0이면 삭제
+        updateTime: Date.now(),
+    };
+
+    let exampleData2 = {
+        "회사": "소속사",
+        "직원번호": "1004",
+        "이름": "아이유",
+        "SNS": "인스타그램 트위터 페이스북 유튜브 V-Live"
+    };
+
+    useEffect(() => {
+        // 컬럼 데이터 설정
+        if (columnData.length === 0) {
+            const keys = Object.keys(exampleData2);
+            setColumnData(keys);
+        }
+    }, []);
+
+
 
     const updateNormalizationColumnData = (column) => {
         console.log(`선택한 데이터 ${column}`);
@@ -18,8 +44,10 @@ export default function Normalization(){
 
         let normalData = {
             normalizationStep: 1,
-            normalizationColumns: normalizationColumnData
+            normalizationColumns: normalizationColumnData,
+            normalizationTableID : exampleTableData.id //ID값을 보냄
         }
+
         try {
             const response = await fetch('http://localhost:8080/api/normalization', {
                 method: 'POST',
@@ -48,7 +76,7 @@ export default function Normalization(){
             <table>
                 <thead id="example-table-header">
                     <NormalizationColumnHeader
-                        columns={exampleColumnData}
+                        columns={columnData}
                         selectColumnData={updateNormalizationColumnData}/>
                 </thead>
                 <tbody>

@@ -3,7 +3,6 @@ import CenterTitleUI from "../uI/CenterTitleUI";
 import LinkUI from "../uI/LinkUI";
 import DataBaseBoxLayOut from "./DataBaseBoxLayOut";
 import ButtonUI from "../uI/ButtonUI";
-import TemplateBoxLayOut from "./TemplateBoxLayOut";
 
 export default function DataBaseListLayOut(){
     const handleClick = () => {

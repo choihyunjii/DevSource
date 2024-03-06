@@ -12,8 +12,6 @@ val exampleProjectMembers1 = mutableListOf(exampleProfile1, exampleProfile2)
 val exampleProjectMembers2 = mutableListOf(exampleProfile3)
 val exampleProjectMembers3 = mutableListOf(exampleProfile4)
 
-val exampleProjectMembers = mutableListOf(exampleProfile)
-
 val exampleProject1 = Project(
     1,
     "학교 관리 웹 사이트",
@@ -36,6 +34,7 @@ val exampleProject2 = Project(
     exampleProjectMembers2,
     exampleProfile1
 )
+
 val exampleProject3 = Project(
     3,
     "사진 공유 플랫폼",
@@ -47,6 +46,7 @@ val exampleProject3 = Project(
     exampleProjectMembers3,
     exampleProfile1
 )
+
 val exampleProject4 = Project(
     4,
     "온라인 강의 플랫폼",

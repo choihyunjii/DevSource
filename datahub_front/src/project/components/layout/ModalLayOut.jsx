@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from '../styles.module.css'; // 스타일 파일 import
 
-const Modal = ({ isOpen, onClose, header, data }) => {
+const Modal = ({ isOpen, onClose, header, data ,onClick}) => {
     const handleCreate = () => {
         onClose(); // 모달을 닫음
+        onClick();
     };
 
     // isOpen이 false이면 모달을 렌더링하지 않음

@@ -12,6 +12,9 @@ class ColumnService {
         it.table.id == tableID
     }.map { it }.toList()
 
+    fun getColumnByTableAndColumnName(table:Table , columnName : String)
+        = exampleColumnList.filter { it.table == table && columnName == it.name }[0]
+
     fun getColumnById(id: Long): Column? = exampleColumnList.find { it.id == id }
 
     fun createColumn(column: Column): Column {
