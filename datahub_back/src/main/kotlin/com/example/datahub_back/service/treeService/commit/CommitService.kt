@@ -1,7 +1,8 @@
-package com.example.datahub_back.service.treeService
+package com.example.datahub_back.service.treeService.commit
 
 import com.example.datahub_back.controller.treeController.CommitRequest
 import com.example.datahub_back.dto.treeDTO.*
+import com.example.datahub_back.service.treeService.*
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -19,7 +20,7 @@ class CommitService(
     fun handleCommit(commitDataList: List<CommitRequest>): String {
         for (commitData in commitDataList) {
             try {
-                val sourceTableIds = commitData.tables.map { it.tableId }
+                val sourceTableIds = commitData.sourceTables.map { it.tableId }
                 val changeTableIds = commitData.changeTables.map { it.changeTableId }
                 val changePageIds = commitData.changePages.map { it.pageId }
 
@@ -44,15 +45,15 @@ class CommitService(
     }
 
     private fun processDataItems(data: CommitRequest) {
-        addTables(data.tables)
+        addTables(data.sourceTables)
         addColumns(data.columns)
         addDataItems(data.data)
         addChangePages(data.changePages)
         addChangeTables(data.changeTables)
     }
 
-    private fun addTables(tables: List<SourceTable>) {
-        tables.forEach { tableService.createTable(it) }
+    private fun addTables(sourceTables: List<SourceTable>) {
+        sourceTables.forEach { tableService.createTable(it) }
     }
 
     private fun addColumns(columns: List<SourceColumn>) {
@@ -67,7 +68,7 @@ class CommitService(
         changePages.forEach { changePageService.createChangePage(it) }
     }
 
-    private fun addChangeTables(changeTables: List<ChangeTable>) {
-        changeTables.forEach { changeTableService.createChangeTable(it) }
+    private fun addChangeTables(changeTableColumns: List<ChangeTable>) {
+        changeTableColumns.forEach { changeTableService.createChangeTable(it) }
     }
 }

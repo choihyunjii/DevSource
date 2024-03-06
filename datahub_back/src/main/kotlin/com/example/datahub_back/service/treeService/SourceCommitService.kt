@@ -7,13 +7,18 @@ import org.springframework.stereotype.Service
 @Service
 class SourceCommitService {
 
-    // 커밋 리스트 (히스토리) 뽑아오기 - 날짜별 정렬
+    // 커밋 리스트 뽑아오기 - 날짜별 정렬
     fun getCommitsByBranch(branchId: Long): List<Commit> {
         val filteredCommits = commitList.filter { commit ->
             commit.branchId == branchId
         }
         return filteredCommits.sortedByDescending { it.createTime }
     }
+
+    // 커밋 가져오기
+    fun getCommitByCommitId(commitId: Long) : Commit? =
+        commitList.find { it.commitId == commitId }
+
 
     // 가장 최신 커밋 가져오기
     fun getLatestCommitByBranch(commitList: List<Commit>): Commit? {
@@ -35,13 +40,13 @@ class SourceCommitService {
         return commit?.sourceTableIds
     }
 
-    // 프론트 변경 리스트 뽑기
+    // 프론트 변경 리스트 번호 뽑기
     fun getChangePagesByCommitId(commitId: Long): MutableList<Long>? {
         val commit = commitList.find { it.commitId == commitId }
         return commit?.changePageIds
     }
 
-    // 백엔드 변경 리스트 뽑기
+    // 백엔드 변경 리스트 번호 뽑기
     fun getChangeTablesByCommitId(commitId: Long): MutableList<Long>? {
         val commit = commitList.find { it.commitId == commitId }
         return commit?.changeTableIds

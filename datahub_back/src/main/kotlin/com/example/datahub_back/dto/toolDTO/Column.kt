@@ -1,7 +1,5 @@
 package com.example.datahub_back.dto.toolDTO
 
-import com.example.datahub_back.dto.treeDTO.SourceTable
-
 
 data class Column(
     val id : Long,
@@ -12,5 +10,5 @@ data class Column(
     val isForeignKey : Int,
     val isUniqueKey : Int,
     val table: Table,
-    val joinSourceTable: SourceTable?
+    val joinTable: Table?
 )

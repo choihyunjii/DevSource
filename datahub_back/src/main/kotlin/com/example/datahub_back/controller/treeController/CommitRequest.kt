@@ -10,7 +10,7 @@ data class CommitRequest(
     val comment: String,
     val createTime: LocalDateTime,
     val createUser: String,
-    val tables: MutableList<SourceTable>,
+    val sourceTables: MutableList<SourceTable>,
     val columns: MutableList<SourceColumn>,
     val data: MutableList<SourceData>,
     val changeTables: MutableList<ChangeTable>,
