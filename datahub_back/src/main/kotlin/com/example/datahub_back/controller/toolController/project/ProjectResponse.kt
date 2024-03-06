@@ -8,5 +8,6 @@ data class ProjectResponse(
     val comment: String,
     val createTime: LocalDateTime,
     val profile : Profile,
+    val dataBaseName : String,
     val teamProfile : List<Profile>
 )

@@ -12,7 +12,7 @@ class DataService {
 
     fun getAllData(): List<Data> = dataList
 
-    fun getDataByColumn(column: Column) = dataList.filter { it.column == column }
+    fun getDataByColumn(columnID: Long) = dataList.filter { it.column.id == columnID }
     fun getDataById(id: Long): Data? = dataList.find { it.id == id }
 
     fun createData(data: Data): Data {

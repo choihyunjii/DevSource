@@ -62,7 +62,6 @@ val exampleProject4 = Project(
 
 val exampleProjectList = mutableListOf(exampleProject1,exampleProject2,exampleProject3,exampleProject4)
 
-
 val exampleDataBase = DataBase(1,"학교","학교 정보 데이터베이스",1,0, exampleProject1)
 
 val exampleDataBaseList = mutableListOf(exampleDataBase)

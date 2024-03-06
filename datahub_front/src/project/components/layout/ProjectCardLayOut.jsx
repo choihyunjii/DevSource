@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import CardUI from "../uI/CardUI";
 import styles from "../styles.module.css";
 
@@ -27,9 +27,9 @@ export default function ProjectCardLayOut(){
             });
             const responseData = await response.json();
 
-            const dataArray = Array.isArray(responseData) ? responseData : [responseData]; // 받은 데이터가 배열이 아니면 배열로 변환
+            const dataArray = Array.isArray(responseData) ? responseData : [responseData];
             setData(dataArray);
-
+            console.log(dataArray)
         } catch (error) {
             console.error('Error fetching data:', error);
             setProfile()
@@ -38,10 +38,12 @@ export default function ProjectCardLayOut(){
 
     return(
         <div className={styles.cardLayOutBox}>
-            {data.map((item, index) => (
-                <CardUI key={index}
-                        name = {item.name}
-                        comment ={item.comment}
+            {data.map((item) => (
+                <CardUI
+                    key={item.id}
+                    name={item.name}
+                    comment={item.comment}
+                    projectID={item.id}
                 />
             ))}
         </div>

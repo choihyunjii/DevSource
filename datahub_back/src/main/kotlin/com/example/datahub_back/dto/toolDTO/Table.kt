@@ -3,7 +3,7 @@ package com.example.datahub_back.dto.toolDTO
 import java.time.LocalDateTime
 
 data class Table(
-    var id : Long,
+    val id : Long,
     val name : String,
     val comment : String,
     val isFavorite : Int, //0이면 즐겨찾기 X
