@@ -41,7 +41,7 @@ class NormalizationService(
                 isForeignKey = 0,
                 isUniqueKey = 0,
                 table = column.table,
-                joinSourceTable = null
+                joinTable = null
             )
 
             normalizeColumnList.add(newColumn)

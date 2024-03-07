@@ -1,6 +1,6 @@
 package com.example.datahub_back.data.treeData
 
-import com.example.datahub_back.dto.treeDTO.Commit
+import com.example.datahub_back.dto.treeDTO.*
 import java.time.LocalDateTime
 
 // 날짜 및 시간 임의로 지정
@@ -17,9 +17,32 @@ val commit1 = Commit(
     comment = "첫 커밋",
     createTime = createTime1,
     createUser = "user1",
-    branchId = 1,
-    sourceTableIds = mutableListOf(1),
-    changeTableIds = mutableListOf(1, 2),
+    branch = branch1,
+    sourceTables = mutableListOf(table1),
+    changeTables = mutableListOf(
+        ChangeTable(
+            changeTableId = 1,
+            changeTableName = "Table1",
+            action = ChangeAction.ADD,
+            primaryKey = "tableId",
+            columns = mutableListOf(
+                ChangeTableColumn(1, 1, "tableName", "NewTable"),
+                ChangeTableColumn(1, 2, "comment", "This is a new table."),
+                ChangeTableColumn(1, 3, "isFavorite", "1"),
+                ChangeTableColumn(1, 4, "isDelete", "0")
+            )
+        ),
+        ChangeTable(
+            changeTableId = 2,
+            changeTableName = "Table2",
+            action = ChangeAction.ADD,
+            primaryKey = "tableId",
+            columns = mutableListOf(
+                ChangeTableColumn(2, 1, "comment", "Updated comment."),
+                ChangeTableColumn(2, 2, "isFavorite", "0")
+            )
+        )
+    ),
     changePageIds = mutableListOf(1)
 )
 
@@ -28,9 +51,9 @@ val commit2 = Commit(
     comment = "Bug fix",
     createTime = createTime2,
     createUser = "user1",
-    branchId = 1,
-    sourceTableIds = mutableListOf(1),
-    changeTableIds = mutableListOf(),
+    branch = branch1,
+    sourceTables = mutableListOf(table1),
+    changeTables = mutableListOf(),
     changePageIds = mutableListOf()
 )
 
@@ -39,9 +62,9 @@ val commit3 = Commit(
     comment = "Initial commit",
     createTime = createTime3,
     createUser = "user1",
-    branchId = 2,
-    sourceTableIds = mutableListOf(1),
-    changeTableIds = mutableListOf(),
+    branch = branch2,
+    sourceTables = mutableListOf(table1),
+    changeTables = mutableListOf(),
     changePageIds = mutableListOf()
 )
 
@@ -50,9 +73,9 @@ val commit4 = Commit(
     comment = "Bug fix",
     createTime = createTime4,
     createUser = "user1",
-    branchId = 2,
-    sourceTableIds = mutableListOf(1),
-    changeTableIds = mutableListOf(),
+    branch = branch2,
+    sourceTables = mutableListOf(table1),
+    changeTables = mutableListOf(),
     changePageIds = mutableListOf()
 )
 
@@ -61,9 +84,9 @@ val commit5 = Commit(
     comment = "Initial commit",
     createTime = createTime5,
     createUser = "user1",
-    branchId = 3,
-    sourceTableIds = mutableListOf(1),
-    changeTableIds = mutableListOf(),
+    branch = branch3,
+    sourceTables = mutableListOf(table1),
+    changeTables = mutableListOf(),
     changePageIds = mutableListOf()
 )
 
@@ -72,9 +95,9 @@ val commit6 = Commit(
     comment = "Bug fix",
     createTime = createTime6,
     createUser = "user1",
-    branchId = 3,
-    sourceTableIds = mutableListOf(1),
-    changeTableIds = mutableListOf(),
+    branch = branch3,
+    sourceTables = mutableListOf(table1),
+    changeTables = mutableListOf(),
     changePageIds = mutableListOf()
 )
 

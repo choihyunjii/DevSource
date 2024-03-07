@@ -12,6 +12,7 @@ class SourceDataService {
     fun getAllData(): List<SourceData> = dataList
 
     fun getDataListByColumnId(columnId: Long) = dataList.filter { it.columnId == columnId }
+
     fun getDataById(id: Long): SourceData? = dataList.find { it.dataId == id }
 
     fun createData(data: SourceData): SourceData {

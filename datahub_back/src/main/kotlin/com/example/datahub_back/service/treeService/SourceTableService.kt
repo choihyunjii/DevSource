@@ -12,8 +12,8 @@ class SourceTableService {
     fun getTableById(id: Long): SourceTable? =
         tables.find { it.tableId == id }
 
-    fun getTableByTableIds(tableIds: List<Long>): List<SourceTable> =
-        tables.filter { it.tableId in tableIds }
+    fun getTablesByTableId(tableId: Long): List<SourceTable> =
+        tables.filter { it.tableId == tableId }
 
     fun createTable(sourceTable: SourceTable): SourceTable {
         sourceTable.tableId = (tables.maxByOrNull { it.tableId }?.tableId ?: 0) + 1

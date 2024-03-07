@@ -13,8 +13,8 @@ class DataTransformationService (
     private val dataService: DataService
 ) {
     // Tool 데이터들을 모두 Tree 형으로 변환 시키기
-    fun executeChangeOperations(projectId: Long): Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>>? {
-        val dataBase = getDataBase(projectId) ?: return null
+    fun executeChangeOperations(project: Project): Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>>? {
+        val dataBase = getDataBase(project) ?: return null
 
         val sourceTables = mutableListOf<SourceTable>()
         val sourceColumns = mutableListOf<SourceColumn>()
@@ -32,8 +32,8 @@ class DataTransformationService (
         return Triple(sourceTables, sourceColumns, sourceData)
     }
 
-    private fun getDataBase(projectId: Long) : DataBase? =
-        dataBaseService.getDataBaseById(projectId)
+    private fun getDataBase(project: Project) : DataBase? =
+        project.id?.let { dataBaseService.getDataBaseById(it) }
 
     private fun getToolTables(dataBase: DataBase) : List<Table> =
         tableService.getTablesByDatabase(dataBase)
