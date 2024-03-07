@@ -42,7 +42,7 @@ export default function CollborativeUsers(){
 
 
     return (
-        <div  style={{ overflowY: 'scroll',overflowX: 'hidden', height: '230px', width: '380px' }}>
+        <div  style={{ overflowY: 'scroll',overflowX: 'hidden', height: '230px'}}>
             <ul>
                 {exampleProfileList.map(member => (
                     <li key={member.id} style={{listStyleType: "none"}}>

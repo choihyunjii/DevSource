@@ -1,5 +1,7 @@
 package com.example.datahub_back.service.backDataService
 
+import com.example.datahub_back.controller.toolController.data.DataResponse
+import com.example.datahub_back.data.toolData.exampleDataBaseList
 import com.example.datahub_back.data.toolData.exampleDataList
 import com.example.datahub_back.dto.toolDTO.Column
 import com.example.datahub_back.dto.toolDTO.Data
@@ -12,13 +14,23 @@ class DataService {
 
     fun getAllData(): List<Data> = dataList
 
-    fun getDataByColumn(columnID: Long) = dataList.filter { it.column.id == columnID }
+    fun getDataByColumn(id: Long): List<DataResponse> {
+        val filteredData: MutableList<DataResponse> = mutableListOf()
 
-    fun getDataByColumns(columnIDs: List<Long>) = dataList.filter { it.column.id in columnIDs }
+        val columnData = exampleDataList.filter { it.column.id == id }
 
-    fun getDataByColumn(column: Column) = dataList.filter {
-        it.column == column
-    }[0]
+        columnData.forEach {
+            filteredData.add(
+                    DataResponse(
+                        id = it.id,
+                        data = it.data,
+                        columnLine = it.columLine
+                    )
+            )
+        }
+
+        return filteredData
+    }
 
     fun getDataById(id: Long): Data? = dataList.find { it.id == id }
 
@@ -45,4 +57,6 @@ class DataService {
             null
         }
     }
+
+    fun getDataByColumns(columnIDs: List<Long>) = dataList.filter { it.column.id in columnIDs }
 }

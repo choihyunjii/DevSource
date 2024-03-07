@@ -76,8 +76,11 @@ val exampleColumn1 = Column(1,"이름","학생 Table Primary Key","VarChar",1,0,
 val exampleColumn2= Column(2,"나이","학생 Table 나이","Int",0,0,0,exampleTable,null);
 val exampleColumn3= Column(3,"전화번호","학생 Table 전화번호","VarChar",0,0,0,exampleTable,null);
 val exampleColumn4= Column(4,"주소","학생 Table 주소","VarChar",0,0,0,exampleTable,null);
+val exampleColumn5= Column(5,"주소","학생 Table 주소","VarChar",0,0,0,exampleTable,null);
+val exampleColumn6= Column(6,"주소","학생 Table 주소","VarChar",0,0,0,exampleTable,null);
 
-val exampleColumnList = mutableListOf(exampleColumn1,exampleColumn2,exampleColumn3,exampleColumn4)
+
+val exampleColumnList = mutableListOf(exampleColumn1,exampleColumn2,exampleColumn3, exampleColumn4)
 
 // 데이터 예시
 val exampleData1 = Data(1, "홍길동", 1,exampleColumn1)

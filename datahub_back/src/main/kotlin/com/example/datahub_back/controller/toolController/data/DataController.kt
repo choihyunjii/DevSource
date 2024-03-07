@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.server.ResponseStatusException
 
 @RestController
 @RequestMapping("/api/data")
@@ -23,7 +24,7 @@ class DataController(
 
     @GetMapping("/{columnID}")
     fun getDataByColumn(@PathVariable columnID : Long) =
-        dataService.getDataById(columnID)
+        dataService.getDataByColumn(columnID)
 
 //    @GetMapping("/{id}")
 //    fun getDataById(@PathVariable id: Long): ResponseEntity<Data> {
@@ -60,4 +61,6 @@ class DataController(
             ResponseEntity(HttpStatus.NOT_FOUND)
         }
     }
+
+
 }

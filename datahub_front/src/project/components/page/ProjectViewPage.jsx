@@ -9,7 +9,7 @@ import {Image} from "react-bootstrap";
 export default function ProjectViewPage(){
     return(
         <div className={styles.ProjectViewCardPage}>
-            <div className={styles.ProjectViewCardPageheader}>
+            <div className={styles.ProjectViewCardPageHeader}>
                 <Image src={"../image/webSite.png"} className={styles.WebSiteIcon}/>
                 <div className={styles.ProjectTitle}><TitleUI title={"[프로젝트 이름]"}/></div>
             </div>
