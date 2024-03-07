@@ -9,7 +9,7 @@ data class Branch(
     val branchId: Long, // PK
     val profile: Profile?, // FK
     val project: Project, // FK
-    var push: Int,
+    var push: Int, // 기본 0
     var pull: Int,
     var crash: Int,
     val isMainBranch: Int

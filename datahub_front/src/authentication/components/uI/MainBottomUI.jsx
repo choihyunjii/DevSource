@@ -14,8 +14,3 @@ export default function MainBottomUI({stepNum, bigText, smallText, buttonText, c
         </div>
     )
 }
-
-// 프로젝트 생성
-// 백 데이터 설계 (백엔드)
-// 프론트 클라이언트 설계 (프론트엔드)
-// 디브소스로 데이터 및 코드 협업관리

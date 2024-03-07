@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service
 @Service
 class BranchService {
     // 브랜치 뽑아오기
+    fun getBranchByProject(project: Project): Branch? =
+        branchList.find { it.project == project }
+
     fun getBranchByUserAndProject(user: Profile, project: Project): Branch? =
         branchList.find { it.project == project && it.profile == user }
 

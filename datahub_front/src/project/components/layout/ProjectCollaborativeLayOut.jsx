@@ -4,7 +4,7 @@ import {Image} from "react-bootstrap";
 import CollaborativeUsers from "../uI/CollaborativeUsersUI"
 import CollborativeUsers from "../uI/CollaborativeUsersUI";
 
-export default function ProjectCollaborativeLayOut (){
+export default function ProjectCollaborativeLayOut ({project}){
     return(
         <div>
             <div className={styles.CollaborativeUsers} style={{
@@ -12,7 +12,7 @@ export default function ProjectCollaborativeLayOut (){
                     zIndex: 1
                 }
             }>
-                <CollborativeUsers/>
+                <CollborativeUsers teamProfile={project.teamProfile}/>
 
             </div>
             <ProjectViewCardUI cardtitle={"Collaborative"} iconImage={<Image src="../image/Collaborative.png"  className={styles.CollaborativeIcon}/>} buttontitle={"협업관리 하러가기"} />

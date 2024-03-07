@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class DevProjectService {
+class ProjectService {
 
     fun getProjectsByProfile(profileID: Long): List<Project> {
         return exampleProjectList.filter { it.profile.id == profileID }
