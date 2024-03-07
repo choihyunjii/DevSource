@@ -1,35 +1,40 @@
 import React, { useState } from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
 
-export default function NewDataUI({ onAddData }) {
-    const [newDataValue, setNewDataValue] = useState(""); // 새로운 데이터 입력값
+export default function NewDataUI({ onAddData, columnCount }) {
+    const [newDataValues, setNewDataValues] = useState(new Array(columnCount).fill("")); // 각 컬럼의 새로운 데이터 입력값
 
-    const handleNewDataInputChange = (event) => {
-        setNewDataValue(event.target.value);
+    const handleNewDataInputChange = (event, columnIndex) => {
+        const updatedValues = [...newDataValues];
+        updatedValues[columnIndex] = event.target.value;
+        setNewDataValues(updatedValues);
     };
 
     const handleNewDataInputBlur = () => {
-        if (newDataValue.trim() !== "") {
-            onAddData
-            (
-                newDataValue
-            ); // 새로운 데이터를 추가하는 부모 컴포넌트의 콜백 함수 호출
-            setNewDataValue(""); // 입력값 초기화
+        // 모든 컬럼의 데이터가 입력되었는지 확인
+        if (newDataValues.every(value => value.trim() !== "")) {
+            onAddData(newDataValues); // 새로운 데이터를 추가하는 부모 컴포넌트의 콜백 함수 호출
+            setNewDataValues(new Array(columnCount).fill("")); // 입력값 초기화
         }
+        //이부분 수정하기!
     };
 
     return (
         <tr>
-            <td className={`${styles.input} ${styles.newDataClass}`}>
-                <input
-                    className={styles.input}
-                    type="text"
-                    value={newDataValue}
-                    onChange={handleNewDataInputChange}
-                    onBlur={handleNewDataInputBlur}
-                    placeholder="add Data"
-                />
-            </td>
+            {/* 각 컬럼에 대한 입력란 생성 */}
+            {newDataValues.map((value, index) => (
+                <td key={index} className={styles.newDataClass}  >
+                    <input
+                        className={styles.input}
+                        type="text"
+                        value={value}
+                        onChange={(event) => handleNewDataInputChange(event, index)}
+                        // onBlur={handleNewDataInputBlur}
+                        placeholder="add Data"
+                    />
+                </td>
+            ))}
         </tr>
     );
 }
+

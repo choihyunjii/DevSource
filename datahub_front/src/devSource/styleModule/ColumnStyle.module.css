@@ -1,0 +1,103 @@
+@font-face {
+    font-family: "koko";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+.tableBox {
+    margin: 10% auto 0 20%;
+    overflow-y: auto; /* 수직 스크롤 적용 */
+    overflow-x: auto; /* 수평 스크롤 적용 */
+    max-height: 600px;
+    max-width: 80%;
+    padding: 20px;
+    float: left;
+    border: 1px solid #777777;
+}
+
+.table {
+    font-family: "koko", serif;
+    border: 1px solid #00A3FF;
+    background-color: #ffffff;
+    width: auto;
+    margin: 0 auto;
+}
+.table thead{
+    background-color: #00A3FF;
+    color: white;
+    text-align: center;
+}
+
+.table td
+{
+    text-align: center;
+    width: 200px;
+    height: 60px;
+    padding: 0;
+
+}
+.table tr:nth-child(even){
+    background-color: #F9FAFC;
+}
+.table tr{
+    width: 100%;
+}
+.imageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 10px;
+}
+.columnContainer {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    text-align: center;
+    justify-content: space-between; /* 가운데 정렬 */
+}
+
+.columnContainer div{
+    text-align: center;
+    margin: 0 auto;
+}
+
+.button ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding: 30px;
+}
+
+/*input창 크기 조절*/
+
+.input {
+    width: 140px;
+    height: 30px;
+    border: none;
+    text-align: center;
+}
+
+
+.menuIconBox {
+    width: auto; /* 부모 크기에 맞게 자동으로 조절 */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftIcon{
+    margin: 0;
+}
+.rightIcon{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: right;
+}
+
+.newDataClass {
+    background-color: rgba(0, 255, 0, 0.12); /* 새로운 데이터의 배경색 */
+}
+
+.existingDataClass {
+    background-color: lightblue; /* 기존 데이터의 배경색 */
+}
