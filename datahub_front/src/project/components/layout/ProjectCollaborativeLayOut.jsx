@@ -7,11 +7,15 @@ import CollborativeUsers from "../uI/CollaborativeUsersUI";
 export default function ProjectCollaborativeLayOut (){
     return(
         <div>
-            <div className={styles.CollaborativeUsers} style={{position: 'absolute'}}>
+            <div className={styles.CollaborativeUsers} style={{
+                    position: `absolute`,
+                    zIndex: 1
+                }
+            }>
                 <CollborativeUsers/>
 
             </div>
-            <ProjectViewCardUI cardtitle={"Collaborative"} iconImage={<Image src="../image/Collaborative.png"  className={styles.CollaborativeIcon}/>} buttontitle={"협업관리 하러가기"} style={{position: 'relative'}}/>
+            <ProjectViewCardUI cardtitle={"Collaborative"} iconImage={<Image src="../image/Collaborative.png"  className={styles.CollaborativeIcon}/>} buttontitle={"협업관리 하러가기"} />
 
         </div>
     )

@@ -358,7 +358,7 @@
     height: 500px;
     margin: 90px 30px 10px  30px;
     border: 1px solid lightgray;
-    box-shadow: 0px 3px 3px lightgray;
+    box-shadow: 0 3px 3px lightgray;
     display: flex;
     flex-direction: column;
     position:relative;
@@ -402,13 +402,13 @@
     padding-left: 15px;
     width: 400px;
     height: 270px;
-    margin: 244px 0px 0px 45px;
+    margin: 244px 0 0 45px;
 }
 .InputMaker{
     margin: 5px 5px 5px 15px;
     padding: 5px 55px 5px 10px;
     border-radius: 7px 7px 7px 7px;
-    border: #a2a2a2 0.5px solid;
+    border: #a2a2a2 1px solid;
     font-size: 15px;
 }
 .InputEx{
@@ -472,7 +472,7 @@
 .CollaborativeUsers{
     width: 400px;
     height: 270px;
-    margin: 244px 0px 0px 45px;
+    margin: 244px 0 0 45px;
 
 }
 .CollaborativeUser{
@@ -483,18 +483,17 @@
 .CollaborativeUserProfile{
     width: 70px;
     height: 70px;
-    margin: 5px 0px 0px 20px;
+    margin: 5px 0 0 20px;
     display: flex;
 }
 .CollaborativeUserName{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     font-size: 18px;
-    margin: 23px 0px 0px 5px;
-    font-size: 18px;
+    margin: 23px 0 0 5px;
 }
 .CollaborativeUserTotal{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    margin: 0px 0px 20px 20px;
+    margin: 0 0 20px 20px;
     font-size: 18px;
     position: absolute;
     bottom: -20px;
@@ -518,18 +517,17 @@
 .TableIcon{
     width: 40px;
     height: 40px;
-    margin: 5px 0px 0px 30px;
+    margin: 5px 0 0 30px;
     display: flex;
 }
 .TableName{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     font-size: 18px;
-    margin: 13px 0px 0px 15px;
-    font-size: 18px;
+    margin: 13px 0 0 15px;
 }
 .TablesTotal{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    margin: 0px 0px 20px 20px;
+    margin: 0 0 20px 20px;
     font-size: 18px;
     position: absolute;
     bottom: -20px;
@@ -538,28 +536,32 @@
     width: 75px; height: 75px;
     margin: auto;
 }
+.ProjectViewCardPage{
+    width: 100%;
+    margin: 2% auto;
+}
 /*프로젝트 조회 페이지*/
 .projectShowCasePage{
     display: flex;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     padding: 5% 1% 5% 1%;
 }
-.ProjectViewCardPageheader{
-    width: 400px;
-    margin-left: 44px;
-    margin-bottom: 10px;
+.ProjectViewCardPageHeader{
+    margin-left: 4%;
+    margin-bottom: 4%;
     display: flex;
 }
 .WebSiteIcon{
-    display: flex;
     padding-bottom: 10px;
+    width: 100px;
+    height: 100px;
 }
 .ProjectTitle{
     padding-top: 20px;
     padding-left: 10px;
 }
 .ProjectViewCards{
-    padding-top: 18px;
+    padding-top: 5%;
     margin: auto;
     width: 100%;
     display: flex;

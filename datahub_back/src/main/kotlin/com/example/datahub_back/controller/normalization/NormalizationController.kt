@@ -16,15 +16,15 @@ class NormalizationController(
     val normalizationService: NormalizationService
 ) {
 
-    @PostMapping
-    fun getNormalizationColumnData(@RequestBody requestNormalizationColumns: NormalizationRequest) : NormalizationResponse =
-        normalizationService.normalization(requestNormalizationColumns)
-            ?.toResponse()
-            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST,"해당 정규화 이루어 질 수 없습니다.") // Null일 경우
-
-    private fun List<Table>.toResponse() : NormalizationResponse =
-        NormalizationResponse(
-            this
-        )
+//    @PostMapping
+//    fun getNormalizationColumnData(@RequestBody requestNormalizationColumns: NormalizationRequest) : NormalizationResponse =
+//        normalizationService.normalization(requestNormalizationColumns)
+//            ?.toResponse()
+//            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST,"해당 정규화 이루어 질 수 없습니다.") // Null일 경우
+//
+//    private fun List<Table>.toResponse() : NormalizationResponse =
+//        NormalizationResponse(
+//            this
+//        )
 
 }

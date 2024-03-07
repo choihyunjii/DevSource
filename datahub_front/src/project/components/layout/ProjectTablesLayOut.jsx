@@ -6,7 +6,11 @@ import TablesUI from "../uI/TablesUI";
 export default function ProjectTablesLayOut(){
     return(
         <div>
-            <div className={styles.Tables} style={{position: 'absolute'}}>
+            <div className={styles.Tables} style={{
+                position: `absolute`,
+                zIndex: 1
+            }
+            } >
                 <TablesUI/>
 
             </div>
