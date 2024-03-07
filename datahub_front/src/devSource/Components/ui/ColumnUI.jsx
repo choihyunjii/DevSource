@@ -16,6 +16,7 @@ export default function ColumnUI({ columns , reloadData}) {
 
     // 선택된 행의 인덱스를 설정하는 함수
     const handleRowClick = (index) => {
+        console.log(index)
         setSelectedRowIndex(index);
     };
 

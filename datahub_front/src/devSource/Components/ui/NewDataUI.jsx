@@ -16,6 +16,7 @@ export default function NewDataUI({ onAddData, columnCount }) {
             onAddData(newDataValues); // 새로운 데이터를 추가하는 부모 컴포넌트의 콜백 함수 호출
             setNewDataValues(new Array(columnCount).fill("")); // 입력값 초기화
         }
+        //이부분 수정하기!
     };
 
     return (
@@ -28,7 +29,7 @@ export default function NewDataUI({ onAddData, columnCount }) {
                         type="text"
                         value={value}
                         onChange={(event) => handleNewDataInputChange(event, index)}
-                        onBlur={handleNewDataInputBlur}
+                        // onBlur={handleNewDataInputBlur}
                         placeholder="add Data"
                     />
                 </td>
