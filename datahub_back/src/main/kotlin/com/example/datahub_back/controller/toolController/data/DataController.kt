@@ -23,7 +23,7 @@ class DataController(
 
     @GetMapping("/{columnID}")
     fun getDataByColumn(@PathVariable columnID : Long) =
-        dataService.getDataByColumn(columnID)
+        dataService.getDataById(columnID)
 
 //    @GetMapping("/{id}")
 //    fun getDataById(@PathVariable id: Long): ResponseEntity<Data> {

@@ -9,8 +9,8 @@ function App() {
   return (
       <div>
           <Header/>
-          <TemporaryAppRouter/>
-          {/*<Normalization/>*/}
+          {/*<TemporaryAppRouter/>*/}
+          <Normalization/>
       </div>
 
   );

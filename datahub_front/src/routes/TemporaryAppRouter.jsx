@@ -28,7 +28,6 @@ export default function TemporaryAppRouter() {
                     <Route path='/templates' element={<TemplateShowCasePage />} />
                     <Route path='/template' element={<TemplatePage />} />\
                     <Route path='/template/codeEditor' element={<TemplateCodeEditor />} />
-
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />
                 </Routes>

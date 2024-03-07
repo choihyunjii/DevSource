@@ -1,7 +1,6 @@
 package com.example.datahub_back.controller.normalization
 
-import com.example.datahub_back.controller.toolController.project.ProjectResponse
-import com.example.datahub_back.dto.toolDTO.Project
+
 import com.example.datahub_back.dto.toolDTO.Table
 import com.example.datahub_back.service.normalizationService.NormalizationService
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,10 +17,14 @@ class NormalizationController(
 ) {
 
     @PostMapping
-    fun getNormalizationColumnData(@RequestBody requestNormalizationColumns: NormalizationRequest) : List<Table> =
+    fun getNormalizationColumnData(@RequestBody requestNormalizationColumns: NormalizationRequest) : NormalizationResponse =
         normalizationService.normalization(requestNormalizationColumns)
-            ?.toMutableList()//처리된 테이블을 가공해서 전송 일단 이렇게 넣어두기!
+            ?.toResponse()
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST,"해당 정규화 이루어 질 수 없습니다.") // Null일 경우
 
+    private fun List<Table>.toResponse() : NormalizationResponse =
+        NormalizationResponse(
+            this
+        )
 
 }

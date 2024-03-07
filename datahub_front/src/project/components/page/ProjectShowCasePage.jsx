@@ -3,6 +3,7 @@ import LinkUI from "../uI/LinkUI";
 import styles from "../styles.module.css";
 import ProjectCardLayOut from "../layout/ProjectCardLayOut";
 import ProjectSideBarLayOut from "../layout/ProjectSideBarLayOut";
+import {Link} from "react-router-dom";
 
 export default function ProjectShowCasePage(){
     return(
@@ -10,7 +11,7 @@ export default function ProjectShowCasePage(){
             <ProjectSideBarLayOut/>
             <div className={styles.showCase}>
                 <TitleUI title={"프로젝트 선택"}/>
-                <LinkUI text={"프로젝트 생성"}/>
+                <LinkUI text={"프로젝트 생성"} redirect={"/createProject"}/>
                 <ProjectCardLayOut/>
             </div>
         </div>
