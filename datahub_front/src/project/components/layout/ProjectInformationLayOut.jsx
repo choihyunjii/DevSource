@@ -22,8 +22,6 @@ export default function ProjectInformationLayOut({project}) {
             });
             const responseData = await response.json();
             setBranch(responseData);
-
-            console.log('responseData : ',responseData)
         } catch (error) {
             console.error('Error fetching data:', error);
         }

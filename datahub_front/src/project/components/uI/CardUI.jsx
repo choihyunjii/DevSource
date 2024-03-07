@@ -1,6 +1,6 @@
-    import {Image} from "react-bootstrap";
+import {Image} from "react-bootstrap";
 import styles from "../styles.module.css";
-    import {Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function CardUI({ name , comment , projectID }){
     return(

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/table")
+@CrossOrigin(origins = ["http://localhost:3000"])
 class TableController  (
     @Autowired
     val tableService: TableService
@@ -18,6 +19,12 @@ class TableController  (
     @GetMapping
     fun getTablesByDatabase(@RequestBody dataBase: DataBase): ResponseEntity<List<Table>> {
         val tableList = tableService.getTablesByDatabase(dataBase)
+        return ResponseEntity(tableList, HttpStatus.OK)
+    }
+
+    @GetMapping("/projectId/{projectId}")
+    fun getTablesByProjectId(@PathVariable projectId: Long): ResponseEntity<List<Table>> {
+        val tableList = tableService.getTablesByProjectId(projectId)
         return ResponseEntity(tableList, HttpStatus.OK)
     }
 

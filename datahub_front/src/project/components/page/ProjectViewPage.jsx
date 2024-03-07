@@ -7,7 +7,6 @@ import {Image} from "react-bootstrap";
 import { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 
-
 export default function ProjectViewPage(){
     const { projectId } = useParams();
     const [data, setData] = useState({});
@@ -40,7 +39,7 @@ export default function ProjectViewPage(){
             <div className={styles.ProjectViewCards}>
                 <ProjectInformationLayOut project={data} />
                 <ProjectCollaborativeLayOut project={data}/>
-                <ProjectTablesLayOut/>
+                <ProjectTablesLayOut />
             </div>
             <div className={styles.PageFooterBtn}>
                 <Image src="../image/star.png" className={styles.BottomStar}/>
