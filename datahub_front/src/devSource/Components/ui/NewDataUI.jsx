@@ -10,14 +10,14 @@ export default function NewDataUI({ onAddData, columnCount }) {
         setNewDataValues(updatedValues);
     };
 
-    const handleNewDataInputBlur = () => {
-        // 모든 컬럼의 데이터가 입력되었는지 확인
-        if (newDataValues.every(value => value.trim() !== "")) {
-            onAddData(newDataValues); // 새로운 데이터를 추가하는 부모 컴포넌트의 콜백 함수 호출
-            setNewDataValues(new Array(columnCount).fill("")); // 입력값 초기화
-        }
-        //이부분 수정하기!
-    };
+    // const handleNewDataInputBlur = () => {
+    //     // 모든 컬럼의 데이터가 입력되었는지 확인
+    //     if (newDataValues.every(value => value.trim() !== "")) {
+    //         onAddData(newDataValues); // 새로운 데이터를 추가하는 부모 컴포넌트의 콜백 함수 호출
+    //         setNewDataValues(new Array(columnCount).fill("")); // 입력값 초기화
+    //     }
+    //     //이부분 수정하기!
+    // };
 
     return (
         <tr>
@@ -25,12 +25,12 @@ export default function NewDataUI({ onAddData, columnCount }) {
             {newDataValues.map((value, index) => (
                 <td key={index} className={styles.newDataClass}  >
                     <input
-                        className={styles.input}
+                        className={styles.newDataInput}
                         type="text"
                         value={value}
                         onChange={(event) => handleNewDataInputChange(event, index)}
                         // onBlur={handleNewDataInputBlur}
-                        placeholder="add Data"
+                        placeholder="NULL"
                     />
                 </td>
             ))}

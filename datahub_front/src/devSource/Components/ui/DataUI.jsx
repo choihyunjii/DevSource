@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
 import NewDataUI from "./NewDataUI";
 
-export default function DataUI({ columnID, newDataCount, selectedRowIndex, onRowClick, isDataReady }) {
+export default function DataUI({ columnID, newDataCount, selectedRowIndex, onRowClick, deleteRow }) {
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
 
@@ -59,7 +59,10 @@ export default function DataUI({ columnID, newDataCount, selectedRowIndex, onRow
                         key={index}
                         onDoubleClick={() => handleClick(index)} // 행 더블 클릭 시 핸들러 호출
                         onClick={() => onRowClick(index)}
-                        style={{ backgroundColor: index === selectedRowIndex ? 'lightgray' : 'transparent' }} // 선택된 행에 따라 색상 변경
+                        style={{
+                            backgroundColor: index === selectedRowIndex ? 'rgba(227, 233, 246, 0.7)' :
+                            deleteRow.includes(index) ? ' rgba(255, 143, 143, 0.61)' : 'transparent'
+                        }} // 선택된 행 또는 삭제된 행에 따라 색상 변경
                     >
                         <td>
                             {editingIndex === index ? (
@@ -71,14 +74,15 @@ export default function DataUI({ columnID, newDataCount, selectedRowIndex, onRow
                                     onChange={(event) => handleInputChange(event, index)} // 입력값이 변경되면 핸들러 호출
                                 />
                             ) : (
-                                <span>{item.data || 'NULL'}</span>
+                                <span>{item.data || " NULL "}</span>
                             )}
                         </td>
                     </tr>
                 ))}
+
                 {/* 새로운 데이터 입력 부분 */}
                 {[...Array(newDataCount)].map((_, index) => (
-                    <NewDataUI key={index} onAddData={handleAddData} isDataReady={isDataReady} />
+                    <NewDataUI key={index} onAddData={handleAddData}  />
                 ))}                </tbody>
             </table>
         </div>

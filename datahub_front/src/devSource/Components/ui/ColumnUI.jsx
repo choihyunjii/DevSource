@@ -10,8 +10,23 @@ import { Image } from "react-bootstrap";
 export default function ColumnUI({ columns , reloadData}) {
     const [clickCount, setClickCount] = useState(0);
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 선택된 행 인덱스
+    const [deleteRowIndex , setDeleteRowIndex] = useState([])
+
+    //DeleteRowIndex 행을 선택해주는 메소드
     const handleDeleteData = () => {
-        //해당 클릭한 행을 지워주는 로직을 실행 회색 배경!
+        if (selectedRowIndex !== -1) {
+            setDeleteRowIndex([...deleteRowIndex, selectedRowIndex]);
+        }
+    };
+    //
+    const handleRollBackData = () => {
+        if (selectedRowIndex !== -1) {
+            if (deleteRowIndex.includes(selectedRowIndex)) {
+                const updatedDeleteRow
+                    = deleteRowIndex.filter(index => index !== selectedRowIndex);
+                setDeleteRowIndex(updatedDeleteRow);
+            }
+        }
     };
 
     // 선택된 행의 인덱스를 설정하는 함수
@@ -27,6 +42,7 @@ export default function ColumnUI({ columns , reloadData}) {
     const handlePushData = () =>{
         setClickCount(clickCount +1)
     }
+
     return (
         <div>
             <div className={styles.button}>
@@ -39,7 +55,7 @@ export default function ColumnUI({ columns , reloadData}) {
                         <Button_UI image={Button[2].image} onClick={handleDeleteData}/>
                         <Button_UI image={Button[3].image} />
                         <Button_UI image={Button[4].image} />
-                        <Button_UI image={Button[5].image} />
+                        <Button_UI image={Button[5].image} onClick={handleRollBackData}/>
                     </div>
                 </ul>
                 <table className={styles.table}>
@@ -69,6 +85,7 @@ export default function ColumnUI({ columns , reloadData}) {
                                     newDataCount={clickCount}
                                     selectedRowIndex={selectedRowIndex} // 선택된 행 인덱스 전달
                                     onRowClick={handleRowClick} // 행 클릭 핸들러 전달
+                                    deleteRow = {deleteRowIndex}
                                 />
                             </td>
                         ))}

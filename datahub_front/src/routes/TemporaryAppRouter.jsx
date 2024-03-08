@@ -8,6 +8,7 @@ import ErrorPage from "./ErrorPage";
 import TemplateCodeEditor from "../template/components/page/TemplateCodeEditor";
 import ProjectViewPage from "../project/components/page/ProjectViewPage";
 import TemplateShowCasePage from "../project/components/page/TemplateShowCasePage";
+import TablePage from "../devSource/Components/page/TablePage";
 // import TablePage from "../devSource/Components/page/TablePage";
 // 이 경로에 TablePage 없어서 오류 뜨니까 주석처리 해놓을게~
 
@@ -31,7 +32,7 @@ export default function TemporaryAppRouter() {
                     <Route path='/template' element={<TemplatePage />} />\
                     <Route path='/template/codeEditor' element={<TemplateCodeEditor />} />
                     <Route path='/project/:projectId' element={<ProjectViewPage />} />
-                    {/*<Route path='/table' element={<TablePage />} />*/}
+                    <Route path='/table' element={<TablePage />} />
 
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />

@@ -593,3 +593,11 @@
     font-size: 0.9em;
 }
 
+.tableTitleBox{
+    display: flex;
+}
+.subTitle{
+    padding: 15px;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    height: auto;
+}
