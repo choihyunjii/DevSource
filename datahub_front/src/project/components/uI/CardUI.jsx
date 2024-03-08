@@ -1,11 +1,8 @@
-    import {Image} from "react-bootstrap";
+import {Image} from "react-bootstrap";
 import styles from "../styles.module.css";
+import {Link} from "react-router-dom";
 
 export default function CardUI({ name , comment , projectID }){
-    function clickHandler() {
-        alert(projectID)
-    }
-
     return(
         <div className={styles.cardBox}>
             <div className={styles.cardLogo}>
@@ -16,7 +13,7 @@ export default function CardUI({ name , comment , projectID }){
             </div>
             <h3 className={styles.cardTitle}>{name}</h3>
             <p className={styles.cardComment}>{comment}</p>
-            <a href="#" className={styles.cardLink} onClick={clickHandler}>이동하기</a>
+            <Link to={`/project/${projectID}`} className={styles.cardLink}>이동하기</Link>
         </div>
     )
 }

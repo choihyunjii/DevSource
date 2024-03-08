@@ -1,5 +1,7 @@
 package com.example.datahub_back.controller.treeController
 
+import com.example.datahub_back.dto.toolDTO.Profile
+import com.example.datahub_back.dto.toolDTO.Project
 import com.example.datahub_back.service.treeService.PushService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,10 +15,10 @@ import org.springframework.web.bind.annotation.RestController
 class PushController(
     private val pushService: PushService
 ) {
-    @GetMapping("/{projectId}/{userId}")
-    fun handlePush(@PathVariable projectId: Long, @PathVariable userId: String): ResponseEntity<String> {
+    @GetMapping("/{project}/{user}")
+    fun handlePush(@PathVariable project: Project, @PathVariable user: Profile): ResponseEntity<String> {
         return try {
-            val result = pushService.handlePush(projectId, userId)
+            val result = pushService.handlePush(project, user)
             ResponseEntity.ok(result)
         } catch (e: Exception) {
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred: ${e.message}")

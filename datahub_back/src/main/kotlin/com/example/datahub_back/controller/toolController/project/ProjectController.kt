@@ -1,6 +1,6 @@
 package com.example.datahub_back.controller.toolController.project
 import com.example.datahub_back.dto.toolDTO.Project
-import com.example.datahub_back.service.backDataService.DevProjectService
+import com.example.datahub_back.service.backDataService.ProjectService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -20,7 +20,7 @@ import org.springframework.web.server.ResponseStatusException
 @CrossOrigin(origins = ["http://localhost:3000"])
 class ProjectController(
     @Autowired
-    val projectService: DevProjectService
+    val projectService: ProjectService
 ) {
     @GetMapping("/profile/{profileID}")
     fun getProjectsByProfile(@PathVariable profileID: Long): ResponseEntity<List<Project>> {

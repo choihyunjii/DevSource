@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class SourceColumnService {
 
-    fun getColumnByTableId(tableId: Long) = sourceColumnList.filter { it.tableId == tableId }
+    fun getColumnsByTableId(tableId: Long) = sourceColumnList.filter { it.tableId == tableId }
 
     fun getColumnByColumId(columId: Long): SourceColumn? = sourceColumnList.find { it.columnId == columId }
 

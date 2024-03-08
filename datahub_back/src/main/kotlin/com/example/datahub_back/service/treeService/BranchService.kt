@@ -1,18 +1,26 @@
 package com.example.datahub_back.service.treeService
 
 import com.example.datahub_back.data.treeData.branchList
+import com.example.datahub_back.dto.toolDTO.Profile
+import com.example.datahub_back.dto.toolDTO.Project
 import com.example.datahub_back.dto.treeDTO.Branch
 import org.springframework.stereotype.Service
 
 @Service
 class BranchService {
     // 브랜치 뽑아오기
-    fun getBranchByUserIdAndProjectId(userId: String, projectId: Long): Branch? =
-        branchList.find { it.projectId == projectId && it.userId == userId }
+    fun getBranchByProject(project: Project): Branch? =
+        branchList.find { it.project == project }
+
+    fun getBranchByUserAndProject(user: Profile, project: Project): Branch? =
+        branchList.find { it.project == project && it.profile == user }
+
+    fun getBranchByUserIdAndProjectId(userId: Long, projectId: Long): Branch? =
+        branchList.find { it.project.id == projectId && it.profile?.id == userId }
 
     // 메인 브랜치 찾기
-    fun getMainBranchByProjectId(projectId: Long): Branch? {
-        return branchList.find { it.projectId == projectId && it.isMainBranch == 1 }
+    fun getMainBranchByProjectId(project: Project): Branch? {
+        return branchList.find { it.project == project && it.isMainBranch == 1 }
     }
 
     // 브랜치 push ++ 업데이트
@@ -76,8 +84,8 @@ class BranchService {
     }
 
     // 메인과 해당 유저 브랜치를 제외한 나머지 브랜치 리스트 찾기
-    fun filterBranchList(targetBranch: Branch, projectId: Long): List<Branch> {
-        val branchesWithProjectId = branchList.filter { it.projectId == projectId }
+    fun filterBranchList(targetBranch: Branch, project: Project): List<Branch> {
+        val branchesWithProjectId = branchList.filter { it.project == project }
         return branchesWithProjectId.filterNot { it == targetBranch || it.isMainBranch == 1 }
     }
 }

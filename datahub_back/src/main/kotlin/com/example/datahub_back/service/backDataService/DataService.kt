@@ -57,4 +57,6 @@ class DataService {
             null
         }
     }
+
+    fun getDataByColumns(columnIDs: List<Long>) = dataList.filter { it.column.id in columnIDs }
 }

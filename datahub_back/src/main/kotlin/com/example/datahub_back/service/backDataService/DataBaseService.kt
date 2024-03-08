@@ -16,6 +16,10 @@ class DataBaseService {
         return exampleDataBaseList.find { it.id == id }
     }
 
+    fun getDataBaseByProject(project: Project): DataBase? {
+        return exampleDataBaseList.find { it.project == project }
+    }
+
     fun createDataBase(dataBase: DataBase): DataBase {
         dataBase.id = (exampleDataBaseList.maxByOrNull { it.id }?.id ?: 0) + 1
         exampleDataBaseList.add(dataBase)

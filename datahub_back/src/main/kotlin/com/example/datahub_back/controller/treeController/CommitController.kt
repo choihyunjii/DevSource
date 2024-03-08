@@ -1,6 +1,7 @@
 package com.example.datahub_back.controller.treeController
 
 import com.example.datahub_back.service.treeService.*
+import com.example.datahub_back.service.treeService.commit.TestCommitService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -11,12 +12,13 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/commit")
 class CommitController(
-    private val commitService: CommitService
+//    private val commitService: CommitService,
+    private val testCommitService: TestCommitService
 ) {
     @PostMapping("/")
-    fun handleCommit(@RequestBody commitDataList: List<CommitRequest>): ResponseEntity<String> {
+    fun handleCommit(@RequestBody commitDataList: CommitRequest): ResponseEntity<String> {
         return try {
-            commitService.handleCommit(commitDataList)
+            testCommitService.handleCommit(commitDataList)
             ResponseEntity.ok("Commit processed successfully")
         } catch (e: Exception) {
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred: ${e.message}")

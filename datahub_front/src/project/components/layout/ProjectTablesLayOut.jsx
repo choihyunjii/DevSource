@@ -11,7 +11,7 @@ export default function ProjectTablesLayOut(){
                 zIndex: 1
             }
             } >
-                <TablesUI/>
+                <TablesUI />
 
             </div>
             <ProjectViewCardUI cardtitle={"Tables"} iconImage={<Image src="../image/Tables.png"  className={styles.TablesIcon}/>} buttontitle={"DevTool 접속하기"} style={{position: 'relative'}}/>

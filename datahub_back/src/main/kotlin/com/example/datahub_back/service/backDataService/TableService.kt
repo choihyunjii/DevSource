@@ -5,12 +5,21 @@ import com.example.datahub_back.dto.toolDTO.Table
 import org.springframework.stereotype.Service
 
 @Service
-class TableService {
+class TableService (
+    private val projectService: ProjectService,
+    private val dataBaseService: DataBaseService
+){
 
     private val tables = exampleTableList
 
     // 모든 테이블 가져오기
     fun getTablesByDatabase(dataBase: DataBase): List<Table> {
+        return tables.filter { it.dataBase == dataBase }
+    }
+
+    fun getTablesByProjectId(projectId: Long): List<Table> {
+        val project = projectService.getProjectById(projectId)
+        val dataBase = project?.let { dataBaseService.getDataBaseByProject(it) }
         return tables.filter { it.dataBase == dataBase }
     }
 
