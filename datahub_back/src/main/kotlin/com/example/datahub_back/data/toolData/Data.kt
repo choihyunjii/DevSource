@@ -87,26 +87,31 @@ val exampleData1 = Data(1, "홍길동", 1,exampleColumn1)
 val exampleData5 = Data(5, "김철수", 2,exampleColumn1)
 val exampleData9 = Data(9, "이영희", 3,exampleColumn1)
 val exampleData13 = Data(13, "박민수", 4,exampleColumn1)
+val exampleData17 = Data(17, "윤석건", 5,exampleColumn1)
 
 
 val exampleData2 = Data(2, "20", 1,exampleColumn2)
 val exampleData6 = Data(6, "22", 2,exampleColumn2)
 val exampleData10 = Data(10, "21", 3,exampleColumn2)
 val exampleData14 = Data(14, "23", 4,exampleColumn2)
+val exampleData18 = Data(18, "24", 5,exampleColumn2)
 
 val exampleData3 = Data(3, "010-1234-5678", 1,exampleColumn3)
 val exampleData7 = Data(7, "010-9876-5432", 2,exampleColumn3)
 val exampleData11 = Data(11, "010-5555-4444", 3,exampleColumn3)
 val exampleData15 = Data(15, "010-7777-8888", 4,exampleColumn3)
+val exampleData19 = Data(18, "010-8502-3296", 5,exampleColumn3)
 
 val exampleData4 = Data(4, "서울시 강남구", 1,exampleColumn4)
 val exampleData8 = Data(8, "서울시 서초구", 2,exampleColumn4)
 val exampleData12 = Data(12, "경기도 고양시", 3,exampleColumn4)
 val exampleData16 = Data(16, "인천시 남구", 4,exampleColumn4)
+val exampleData20 = Data(16, "인천시 남동구", 4,exampleColumn4)
 
 val exampleDataList = mutableListOf(
     exampleData1, exampleData2, exampleData3, exampleData4,
     exampleData5, exampleData6, exampleData7, exampleData8,
     exampleData9, exampleData10, exampleData11, exampleData12,
-    exampleData13, exampleData14, exampleData15, exampleData16
+    exampleData13, exampleData14, exampleData15, exampleData16,
+    exampleData17, exampleData18, exampleData19, exampleData20
 )

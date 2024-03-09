@@ -1,11 +1,11 @@
 import TableLayout from "../layout/TableLayout";
-import DataBaseSideBarLayOut from "../../../project/components/layout/DataBaseSideBarLayOut";
 import TableTitleUI from "../ui/TableTitleUI";
+import SideBarComponent from "../../../Layout/SideBar/SideBarComponent";
 
 export default function TablePage() {
     return(
         <div>
-            <DataBaseSideBarLayOut/>
+            <SideBarComponent/>
             <div style={
                 {
                     width : '60%' ,

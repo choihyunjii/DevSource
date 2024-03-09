@@ -1,9 +1,7 @@
 package com.example.datahub_back.service.backDataService
 
 import com.example.datahub_back.controller.toolController.data.DataResponse
-import com.example.datahub_back.data.toolData.exampleDataBaseList
 import com.example.datahub_back.data.toolData.exampleDataList
-import com.example.datahub_back.dto.toolDTO.Column
 import com.example.datahub_back.dto.toolDTO.Data
 import org.springframework.stereotype.Service
 
@@ -58,5 +56,7 @@ class DataService {
         }
     }
 
-    fun getDataByColumns(columnIDs: List<Long>) = dataList.filter { it.column.id in columnIDs }
+    fun getDataByColumns(columnIDs: List<Long>) = dataList.filter {
+        it.column.id in columnIDs
+    }
 }

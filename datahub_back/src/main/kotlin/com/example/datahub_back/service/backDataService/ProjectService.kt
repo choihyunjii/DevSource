@@ -8,6 +8,14 @@ import com.example.datahub_back.dto.toolDTO.Project
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
+
+/*
+    개인적으로 생각하는 백엔드 설계 원칙
+    1.DTO 설정 DTO 구성 하고 서로의 관계를 서술 한다.
+    2.InterFace로 해당 서비스에는 어떠한 기능등을 써야하는지 모아서 관리한다
+    3.SOLID 원칙을 지키면서 Service를 구현한다.
+*/
+
 @Service
 class ProjectService {
 

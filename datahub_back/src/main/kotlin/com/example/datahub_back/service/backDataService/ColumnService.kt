@@ -2,7 +2,6 @@ package com.example.datahub_back.service.backDataService
 
 import com.example.datahub_back.data.toolData.exampleColumnList
 import com.example.datahub_back.dto.toolDTO.Column
-import com.example.datahub_back.dto.toolDTO.Data
 import com.example.datahub_back.dto.toolDTO.Table
 import org.springframework.stereotype.Service
 
