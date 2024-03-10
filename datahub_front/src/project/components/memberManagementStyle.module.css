@@ -1,0 +1,138 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+.memberBox{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    border:2px solid #BBBBBB;
+    border-radius: 30px;
+    height: 574px;
+    width: 75%;
+    margin: 0 auto;/* // 모든 디스플레이 정가운데*/
+}
+.titleBox{
+
+}
+.memberTitle{
+
+    width: 50%;
+    margin: 5% auto 0;
+
+}
+.title{
+    text-align: center;
+
+
+}
+.memberSmallBox{
+
+    height: 300px;
+    width: 40%;
+}
+.memberContainer{
+    display: flex;
+    width: 90%;
+    gap: 50px;
+    justify-content: center;
+    margin: 3% auto 0;
+}
+
+.buttonBox{
+
+    width: 90%;
+    height: 10%;
+    margin: 3% auto;
+    padding-right: 70px;
+
+}
+
+.button{
+    float:right;
+    background-color: white;
+    border: 2px solid #00A3FF;
+    border-radius: 12px;
+    height: 80%;
+    width: 12%;
+    font-size: 18px;
+}
+
+.smallTitle{
+    text-align: center;
+    padding: 10px;
+    height: 20px;
+
+
+}
+.hrStyle{
+    border: 1px solid #9b9b9b;
+}
+
+
+.profileBigBox{
+    height: 60%;
+    margin-bottom: 10px;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+}
+
+.profileImage{
+
+}
+.profileBox{
+    margin-bottom: 12px;
+    height: 40%;
+}
+.text{
+    padding-left: 10px;
+}
+
+.search{
+    margin-top: 5px;
+    margin-left: 30px;
+    padding:5px;
+    border: none;
+    background-color: #00A3FF;
+    width: 80%;
+    outline: none;
+
+}
+
+.search::placeholder{
+    color:#fff;
+}
+
+
+.searchBigBox {
+
+    height: 20%;
+}
+
+.searchBox{
+    padding-top: 7px;
+    width: 100%;
+
+}
+
+.box{
+    position: relative;
+    border:1px solid #00A3FF;
+    height:43px;
+
+    border-radius: 44px;
+    background-color:#00A3FF ;
+}
+
+.glass{
+    position: absolute;
+    top: 6px;
+    right:15px;
+
+}
+
