@@ -23,20 +23,32 @@ nav .logo {
 }
 .logo .logo-name {
     font-size: 32px;
-    font-weight: 500;
     font-family: "koko", serif;
+    width: 100%;
+
+    padding-right: 10px;
+
+}
+
+.logo-name h4{
+    display: inline;
+    padding-left: 65px;
+
 
 }
 nav .sidebar {
+
     position: fixed;
     top: 13%;
     height: 85%;
     width: 300px;
     padding: 20px 0;
     transition: all 0.4s ease;
-    border-radius: 3px;
+    border-radius: 5px;
     font-family: "koko", serif;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.42); /* 그림자 효과 */
+   /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.42); !* 그림자 효과 *!*/
+    border: 3px solid #E6E7E9;
+
     margin-left: 3px;
 }
 
@@ -57,30 +69,34 @@ nav .sidebar {
     padding: 15px 15px;
 }
 
-.list .nav-link {
+.list .nav-link { /*테이블 목록, 즐겨찾기 목록, 삭제 목록 바탕*/
     display: flex;
     align-items: center;
-    margin: 8px 0;
-    padding: 4px 4px;
-    text-decoration: none;
-    width: 100%;
+
+    margin: 10px 0;
+    padding: 10px 4px 0 5px;
+    background-color: #39bbff;
+    border-radius: 5px;
+
 }
 
 .lists .nav-link:hover {
     color: #000000;
 }
-.nav-link .link {
+.nav-link .link { /*테이블 목록, 즐겨찾기 목록, 삭제 목록*/
     font-family: "KoPubWorld Dotum Bold", serif;
     font-size: 24px;
-    color: #00A3FF;
-    font-weight: 400;
+    color: #ffffff;
+    padding-left: 5px;
+
 }
-.list .nav-link{
-    color: #00A3FF;
+.list .nav-link{ /*버튼*/
+    color: #ffffff;
     display: flex;
     justify-content: space-between;
 
 }
+
 .lists .nav-link:hover .icon,
 .lists .nav-link:hover .link {
     color: #000000;
@@ -89,7 +105,22 @@ nav .sidebar {
     width: 100%;
     margin: 0 auto;
 }
-.sideBarLogo{
+.logo sideBarLogo{
     display: flex;
     justify-content: space-between;
+
+}
+
+.nav .link { /*로그아웃*/
+    margin-left: 200px;
+    padding: 4px;
+    font-family: "KoPubWorld Dotum Bold", serif;
+    font-size: 24px;
+    color: #ffffff;
+    background-color: #00A3FF;
+    border-radius: 5px;
+
+}
+.list .nav{ /*로그아웃*/
+    text-decoration: none;
 }
