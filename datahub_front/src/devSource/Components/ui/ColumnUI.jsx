@@ -7,12 +7,13 @@ import { Button } from "./ButtonUI";
 import Button_UI from "./Button_UI";
 import { Image } from "react-bootstrap";
 
-export default function ColumnUI({ columns , reloadData}) {
+export default function ColumnUI({ columns , reloadData , updateData , setUpdateData ,createData , setCreateData }) {
     const [clickCount, setClickCount] = useState(0);
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 선택된 행 인덱스
     const [deleteRowIndex , setDeleteRowIndex] = useState([])
 
-    //DeleteRowIndex 행을 선택해주는 메소드
+
+
     const handleDeleteData = () => {
         if (selectedRowIndex !== -1) {
             setDeleteRowIndex([...deleteRowIndex, selectedRowIndex]);
@@ -42,7 +43,9 @@ export default function ColumnUI({ columns , reloadData}) {
     const handlePushData = () =>{
         setClickCount(clickCount +1)
     }
+    const sendData = () => {
 
+    }
     return (
         <div>
             <div className={styles.button}>
@@ -53,7 +56,7 @@ export default function ColumnUI({ columns , reloadData}) {
                     <div className={styles.rightIcon}>
                         <Button_UI image={Button[1].image} onClick={handlePushData}/>
                         <Button_UI image={Button[2].image} onClick={handleDeleteData}/>
-                        <Button_UI image={Button[3].image} />
+                        <Button_UI image={Button[3].image} onClick={sendData}/>
                         <Button_UI image={Button[4].image} />
                         <Button_UI image={Button[5].image} onClick={handleRollBackData}/>
                     </div>
@@ -61,11 +64,11 @@ export default function ColumnUI({ columns , reloadData}) {
                 <table className={styles.table}>
                     <thead>
                     <tr>
-                        {columns.map((column, index) => (
-                            <th key={index}>
+                        {[...columns.keys()].map((columnName) => (
+                            <th key={columnName}>
                                 <div className={styles.columnContainer}>
                                     <div style={{ display: 'flex', paddingLeft: '10px' }}>
-                                        {column.name}
+                                        {columnName} {/* 열의 이름 */}
                                         <div className={styles.imageContainer}>
                                             <Image src={up} />
                                             <Image src={down} />
@@ -77,19 +80,24 @@ export default function ColumnUI({ columns , reloadData}) {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        {columns.map((column, index) => (
-                            <td key={index}>
-                                <DataUI
-                                    columnID={column.id}
-                                    newDataCount={clickCount}
-                                    selectedRowIndex={selectedRowIndex} // 선택된 행 인덱스 전달
-                                    onRowClick={handleRowClick} // 행 클릭 핸들러 전달
-                                    deleteRow = {deleteRowIndex}
-                                />
-                            </td>
-                        ))}
-                    </tr>
+                        <tr>
+                            {[...columns.keys()].map((columnName, index) => (
+                                <td key={index}>
+                                    <DataUI
+                                        column={columnName}
+                                        newDataCount={clickCount}
+                                        selectedRowIndex={selectedRowIndex} // 선택된 행 인덱스 전달
+                                        onRowClick={handleRowClick} // 행 클릭 핸들러 전달
+                                        deleteRow={deleteRowIndex}
+                                        tableMap={columns}
+                                        updateData = {updateData}
+                                        setUpdateData = {setUpdateData}
+                                        createData = {createData}
+                                        setCreateData = {setCreateData}
+                                    />
+                                </td>
+                            ))}
+                        </tr>
                     </tbody>
                 </table>
             </div>

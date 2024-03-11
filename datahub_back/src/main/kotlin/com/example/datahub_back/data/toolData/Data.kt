@@ -98,8 +98,8 @@ val exampleData18 = Data(18, "24", 5,exampleColumn2)
 
 val exampleData3 = Data(3, "010-1234-5678", 1,exampleColumn3)
 val exampleData7 = Data(7, "010-9876-5432", 2,exampleColumn3)
-val exampleData11 = Data(11, "010-5555-4444", 3,exampleColumn3)
-val exampleData15 = Data(15, "010-7777-8888", 4,exampleColumn3)
+val exampleData11 = Data(11, "010-5555-4444", 4,exampleColumn3)
+val exampleData15 = Data(15, "010-7777-8888", 3,exampleColumn3)
 val exampleData19 = Data(18, "010-8502-3296", 5,exampleColumn3)
 
 val exampleData4 = Data(4, "서울시 강남구", 1,exampleColumn4)

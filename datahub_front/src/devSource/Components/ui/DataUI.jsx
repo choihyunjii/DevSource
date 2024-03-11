@@ -2,30 +2,22 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
 import NewDataUI from "./NewDataUI";
 
-export default function DataUI({ columnID, newDataCount, selectedRowIndex, onRowClick, deleteRow }) {
+export default function DataUI({
+                                   column, newDataCount, selectedRowIndex, onRowClick, deleteRow ,
+                                   tableMap , updateData , setUpdateData ,createData , setCreateData
+                                })
+{
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
 
-    // 서버에서 데이터를 가져오는 함수
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`http://localhost:8080/api/data/${columnID}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            const responseData = await response.json();
-            setData(responseData);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
+    function columnDataSet(){
+        setData(tableMap.get(column))
+        // console.log(data)
+    }
 
-    // 컴포넌트가 마운트될 때와 열의 ID가 변경될 때마다 데이터를 가져옴
     useEffect(() => {
-        fetchData();
-    }, [columnID]);
+        columnDataSet();
+    }, []);
 
 
     // 행을 클릭할 때 실행되는 함수
@@ -33,12 +25,28 @@ export default function DataUI({ columnID, newDataCount, selectedRowIndex, onRow
         setEditingIndex(index); // 행을 더블 클릭하여 입력창으로 변경
     };
 
-    // 입력값을 저장하는 핸들러 함수
-    const handleInputBlur = () => {
-        setEditingIndex(-1); // 입력창이 포커스를 잃으면 편집 상태를 종료
+    const handleInputBlur = (event, index, item) => {
+        setEditingIndex(-1);
+        const updatedChangeData = [...updateData]; // 기존의 updateData
+
+        const dataIndex = updateData.findIndex(data => data.id === item.id);
+
+        // 만약 해당 아이템이 updateData 배열에 존재하지 않는다면
+        if (dataIndex === -1) {
+            updatedChangeData.push(item); // 새로운 아이템을 추가
+        }
+
+        setUpdateData(updatedChangeData); // 업데이트된 데이터를 설정
     };
 
-    const handleInputChange = (event, index) => {
+    const consoleAllData = () => {
+        createData.forEach((item, index) => {
+            console.log(item);
+        });
+    };
+
+
+    const handleInputChange = (event, index,item) => {
         const newData = [...data];
         newData[index].data = event.target.value;
         setData(newData); // 변경된 데이터 업데이트
@@ -70,8 +78,8 @@ export default function DataUI({ columnID, newDataCount, selectedRowIndex, onRow
                                     className={styles.input}
                                     type="text"
                                     defaultValue={item.data || ''}
-                                    onBlur={handleInputBlur} // 입력창이 포커스를 잃으면 편집 상태를 종료
-                                    onChange={(event) => handleInputChange(event, index)} // 입력값이 변경되면 핸들러 호출
+                                    onBlur={(event) => handleInputBlur(event, index, item)} // 입력창을 떠날 때 호출
+                                    onChange={(event) => handleInputChange(event, index,item)} // 입력값이 변경되면 핸들러 호출
                                 />
                             ) : (
                                 <span>{item.data || " NULL "}</span>
@@ -82,9 +90,14 @@ export default function DataUI({ columnID, newDataCount, selectedRowIndex, onRow
 
                 {/* 새로운 데이터 입력 부분 */}
                 {[...Array(newDataCount)].map((_, index) => (
-                    <NewDataUI key={index} onAddData={handleAddData}  />
-                ))}                </tbody>
+                    <NewDataUI key={index} onAddData={handleAddData}
+                               createData = {createData} setCreateData = {setCreateData}
+                               column = {column} dataLine={tableMap.get(column).length}
+                    />
+                ))}
+                </tbody>
             </table>
+            <button onClick={consoleAllData}>123</button>
         </div>
     );
 }
