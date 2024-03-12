@@ -10,9 +10,7 @@ export default function SideBarContentLayOut(){
                 <SideBarListLayOut title={"즐겨찾기 목록"}/>
                 <SideBarListLayOut title={"삭제 목록"}/>
             </ul>
-            <div className="bottom-cotent">
-                <BottomContentUI/>
-            </div>
+
         </div>
     )
 }

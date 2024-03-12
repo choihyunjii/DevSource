@@ -111,16 +111,3 @@ nav .sidebar {
 
 }
 
-.nav .link { /*로그아웃*/
-    margin-left: 200px;
-    padding: 4px;
-    font-family: "KoPubWorld Dotum Bold", serif;
-    font-size: 24px;
-    color: #ffffff;
-    background-color: #00A3FF;
-    border-radius: 5px;
-
-}
-.list .nav{ /*로그아웃*/
-    text-decoration: none;
-}
