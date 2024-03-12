@@ -1,0 +1,88 @@
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+.All{
+    margin: 0 auto  ;
+    font-family: "GmarketSansTTFBold", serif;
+    border:1px solid red;
+    width: 99%;
+    height: 15%;
+
+}
+
+.container{
+    display: flex;
+
+}
+
+.logo {
+    margin: 0 auto 0 30px;
+    font-size: 64px;
+    color: #00A3FF;
+    text-shadow: 1px 1px 0 ,
+    -1px -1px 0 ,
+    1px -1px 0 ,
+    -1px 1px 0 ;
+}
+.bar{
+    font-size: 18px;
+    border:1px solid brown;
+    width: 70%;
+    margin: 25px auto 0 50px;
+    height: 50%;
+    display: flex;
+
+}
+
+.info{
+    margin: 0 auto 0 320px;
+    border:1px solid blue;
+    width: 20%;
+    display: flex;
+    gap: 40px;
+}
+
+.navLink {
+    margin: 0 auto;
+    border:1px solid #d9d971;
+    width: 35%;
+
+}
+.navBar{
+    width: 20%;
+    border:1px solid #1eff00;
+    margin: 0 auto;
+    display: flex;
+}
+
+.navLink li{
+    list-style-type: none;
+}
+.navLink a{
+    text-decoration: none;
+    color: #000;
+    /*background-color: #a15050; !* 배경색 지정 *!
+    border-radius: 5px; !* 둥근 모서리를 위한 테두리 반경 설정 *!*/
+}
+
+.nav-link:nth-child(3) { /*현재 페이지 표시 (숫자만 바꿔주면 됨)*/
+    color:white;
+    background-color: #00A3FF;
+    border-radius: 23px;
+    width: 88px;
+    height: 26px;
+}
+
+
+/*
+@media screen and (max-width: 2000px) {
+    html{font-size:25px;}
+    body{font-size: 1rem;}
+}
+*/

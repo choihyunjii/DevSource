@@ -54,7 +54,7 @@ export default function MemberBoxLayout() {
                             <SearchUserNameUI/>
                         </div>
                         <div className={styles.profileBigBox}>
-                            {MembersData.map((item , index) => (
+                            {MembersData.map((item) => (
                                 <div className={styles.profileBox}>
                                     <ProfileUI key={item.id}
                                                img={plus}
