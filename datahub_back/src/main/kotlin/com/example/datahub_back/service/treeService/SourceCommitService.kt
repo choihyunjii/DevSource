@@ -35,23 +35,23 @@ class SourceCommitService {
         return latestCommit
     }
 
-    // 백엔드 리스트 번호 뽑아오기
-    fun getTableIdsByCommitId(commitId: Int): List<SourceTable>? {
-        val commit = commitList.find { it.commitId == commitId }
-        return commit?.sourceTables
-    }
-
-    // 백엔드 변경 리스트 번호 뽑기
-    fun getChangeTablesByCommitId(commitId: Int): List<ChangeTable>? {
-        val commit = commitList.find { it.commitId == commitId }
-        return commit?.changeTables
-    }
-
-    // 프론트 변경 리스트 번호 뽑기
-    fun getChangePagesByCommitId(commitId: Int): List<Long>? {
-        val commit = commitList.find { it.commitId == commitId }
-        return commit?.changePageIds
-    }
+//    // 백엔드 리스트 번호 뽑아오기
+//    fun getTableIdsByCommitId(commitId: Int): List<SourceTable>? {
+//        val commit = commitList.find { it.commitId == commitId }
+//        return commit?.sourceTables
+//    }
+//
+//    // 백엔드 변경 리스트 번호 뽑기
+//    fun getChangeTablesByCommitId(commitId: Int): List<ChangeTable>? {
+//        val commit = commitList.find { it.commitId == commitId }
+//        return commit?.changeTables
+//    }
+//
+//    // 프론트 변경 리스트 번호 뽑기
+//    fun getChangePagesByCommitId(commitId: Int): List<Long>? {
+//        val commit = commitList.find { it.commitId == commitId }
+//        return commit?.changePageIds
+//    }
 
     // 커밋 추가
     fun createCommit(commit: Commit): Commit {

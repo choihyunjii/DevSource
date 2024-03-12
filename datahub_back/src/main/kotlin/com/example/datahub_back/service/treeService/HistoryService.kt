@@ -22,11 +22,11 @@ class HistoryService (
         return emptyList()
     }
 
-    fun retrieveChangeTables(commitId: Int): List<ChangeTable>? =
-        sourceCommitService.getChangeTablesByCommitId(commitId)
-
-    fun retrieveChangePages(commitId: Int): List<Long>? =
-        sourceCommitService.getChangePagesByCommitId(commitId)
+//    fun retrieveChangeTables(commitId: Int): List<ChangeTable>? =
+//        sourceCommitService.getChangeTablesByCommitId(commitId)
+//
+//    fun retrieveChangePages(commitId: Int): List<Long>? =
+//        sourceCommitService.getChangePagesByCommitId(commitId)
 
 
 }

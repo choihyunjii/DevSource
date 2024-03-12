@@ -6,7 +6,6 @@ import com.example.datahub_back.dto.toolDTO.Project
 
 data class CommitRequest(
     val project: Project,
-    val profile: Profile,
     val comment: String,
 )
 

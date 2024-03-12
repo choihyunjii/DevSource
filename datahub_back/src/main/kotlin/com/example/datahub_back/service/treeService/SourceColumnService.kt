@@ -2,12 +2,13 @@ package com.example.datahub_back.service.treeService
 
 import com.example.datahub_back.data.treeData.sourceColumnList
 import com.example.datahub_back.dto.treeDTO.SourceColumn
+import com.example.datahub_back.dto.treeDTO.SourceTable
 import org.springframework.stereotype.Service
 
 @Service
 class SourceColumnService {
 
-    fun getColumnsByTableId(tableId: Long) = sourceColumnList.filter { it.tableId == tableId }
+    fun getColumnsByTableId(table: SourceTable) = sourceColumnList.filter { it.table == table }
 
     fun getColumnByColumId(columId: Long): SourceColumn? = sourceColumnList.find { it.columnId == columId }
 
