@@ -1,13 +1,10 @@
 package com.example.datahub_back.service.tableService
 
-import com.example.datahub_back.dto.toolDTO.Column
-import com.example.datahub_back.dto.toolDTO.Data
-import com.example.datahub_back.dto.toolDTO.Table
+import com.example.datahub_back.controller.toolController.table.TableResponse
+import com.example.datahub_back.controller.toolController.table.TableStatusResponse
 
 interface TableRepository {
-    //Table을 형성하기 가장 좋은 방법은 뭘까?
+    fun getTable(tableID: Long) : TableResponse
+    fun findTableStatusByDatabaseID(dataBaseID: Long) : TableStatusResponse
 
-    fun createTable(columns : List<Column>) : MutableMap<String, List<Data>>
-
-    fun findColumnsByTableID(table : Table) : List<Column>
 }

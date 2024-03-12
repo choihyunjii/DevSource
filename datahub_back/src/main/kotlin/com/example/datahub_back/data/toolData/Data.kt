@@ -68,17 +68,17 @@ val exampleDataBaseList = mutableListOf(exampleDataBase)
 
 //테이블 예시
 val exampleTable = Table(1,"학생 테이블","학생들의 정보를 모아둔 테이블", 1,0,exampleDataBase, LocalDateTime.now())
+val exampleTable1 = Table(2,"교강사 테이블","교강사 정보를 모아둔 테이블", 1,0,exampleDataBase, LocalDateTime.now())
+val exampleTable2 = Table(3,"삭제 테이블","삭제 정보를 모아둔 테이블", 0,1,exampleDataBase, LocalDateTime.now())
+val exampleTable3 = Table(4,"과목 테이블","과목 정보를 모아둔 테이블", 0,0,exampleDataBase, LocalDateTime.now())
 
-val exampleTableList = mutableListOf(exampleTable)
+val exampleTableList = mutableListOf(exampleTable, exampleTable1, exampleTable2, exampleTable3)
 
 //컬럼 예시
 val exampleColumn1 = Column(1,"이름","학생 Table Primary Key","VarChar",1,0,0, exampleTable,null);
 val exampleColumn2= Column(2,"나이","학생 Table 나이","Int",0,0,0,exampleTable,null);
 val exampleColumn3= Column(3,"전화번호","학생 Table 전화번호","VarChar",0,0,0,exampleTable,null);
 val exampleColumn4= Column(4,"주소","학생 Table 주소","VarChar",0,0,0,exampleTable,null);
-val exampleColumn5= Column(5,"주소","학생 Table 주소","VarChar",0,0,0,exampleTable,null);
-val exampleColumn6= Column(6,"주소","학생 Table 주소","VarChar",0,0,0,exampleTable,null);
-
 
 val exampleColumnList = mutableListOf(exampleColumn1,exampleColumn2,exampleColumn3, exampleColumn4)
 

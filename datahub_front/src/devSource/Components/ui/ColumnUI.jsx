@@ -32,12 +32,10 @@ export default function ColumnUI({ columns , reloadData , updateData , setUpdate
 
     // 선택된 행의 인덱스를 설정하는 함수
     const handleRowClick = (index) => {
-        console.log(index)
         setSelectedRowIndex(index);
     };
 
     const handleReload = () => {
-        console.log("실행")
         reloadData()
     };
     const handlePushData = () =>{

@@ -1,10 +1,10 @@
-import DataBaseSideBarLayOut from "../layout/DataBaseSideBarLayOut";
 import DataBaseListLayOut from "../layout/DataBaseListLayOut";
+import SideBarComponent from "../../../Layout/SideBar/SideBarComponent";
 
 export default function DataBaseShowCasePage(){
     return(
         <div>
-            <DataBaseSideBarLayOut/>
+            <SideBarComponent/>
             <DataBaseListLayOut/>
         </div>
     )

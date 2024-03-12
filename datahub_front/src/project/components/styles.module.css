@@ -261,7 +261,7 @@
 }
 .dataBaseMenuHeader{
     padding: 2px 12px;
-    color: #FFFFFF ;
+    color: #FFFFFF;
     height: 33px;
     font-weight: bold;
 }
@@ -275,7 +275,7 @@
     color: #FFFFFF;
 }
 .dataBaseMenuBox{
-    width: 83%;
+    width: 80%;
     margin: 2% 5% 0 auto;
 }
 .dataBaseTitleImage{
@@ -429,7 +429,7 @@
     font-size: 20px;
 }
 .InformationAction{
-    margin: 20px 0px 0px 4px;
+    margin: 20px 0 0 4px;
     display: flex;
 
 }

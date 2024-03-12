@@ -4,7 +4,7 @@ import NewDataUI from "./NewDataUI";
 
 export default function DataUI({
                                    column, newDataCount, selectedRowIndex, onRowClick, deleteRow ,
-                                   tableMap , updateData , setUpdateData ,createData , setCreateData
+                                   tableMap , updateData , setUpdateData ,createData , setCreateData,
                                 })
 {
     const [data, setData] = useState([]);
@@ -92,7 +92,7 @@ export default function DataUI({
                 {[...Array(newDataCount)].map((_, index) => (
                     <NewDataUI key={index} onAddData={handleAddData}
                                createData = {createData} setCreateData = {setCreateData}
-                               column = {column} dataLine={tableMap.get(column).length}
+                               column = {column}
                     />
                 ))}
                 </tbody>

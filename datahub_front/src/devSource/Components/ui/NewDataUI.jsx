@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
-import data from "bootstrap/js/src/dom/data";
 
 export default function NewDataUI({ column, columnCount  , createData ,setCreateData , dataLine }) {
     const [newDataValues, setNewDataValues] = useState(new Array(columnCount).fill("")); // 각 컬럼의 새로운 데이터 입력값
@@ -19,7 +18,7 @@ export default function NewDataUI({ column, columnCount  , createData ,setCreate
             column : column,
             dataLine : line
         }
-
+        setLine(dataLine + 1)
         newCreateData.push(obj); // 새로운 아이템을 추가
         setCreateData(newCreateData); // 업데이트된 데이터를 설정
     };
