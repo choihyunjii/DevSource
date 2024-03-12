@@ -42,7 +42,7 @@ data class SourceColumn(
     val isPrimaryKey: Int,
     val isForeignKey: Int,
     val isUniqueKey: Int,
-    val joinSourceTable: SourceTable?
+    val joinSourceTableId: Long?
 )
 
 data class SourceData(

@@ -1,6 +1,7 @@
 package com.example.datahub_back.service.treeService
 
 import com.example.datahub_back.data.treeData.sourceTableList
+import com.example.datahub_back.dto.treeDTO.Commit
 import com.example.datahub_back.dto.treeDTO.SourceTable
 import org.springframework.stereotype.Service
 
@@ -9,26 +10,21 @@ class SourceTableService {
 
     private val tables = sourceTableList
 
-    fun getTableById(id: Long): SourceTable? =
-        tables.find { it.tableId == id }
+    fun getTableById(tableId: Long): SourceTable? =
+        tables.find { it.tableId == tableId }
 
-    fun getTablesByTableId(tableId: Long): List<SourceTable> =
-        tables.filter { it.tableId == tableId }
+    fun getTablesByCommit(commit: Commit): List<SourceTable> =
+        tables.filter { it.commit == commit }
+
+    // 삭제 여부로 테이블 리스트 가져오기
+    fun getTablesByIsDelete(tables: List<SourceTable>, isDelete: Int): List<SourceTable> {
+        return tables.filter { it.isDelete == isDelete }
+    }
 
     fun createTable(sourceTable: SourceTable): SourceTable {
         sourceTable.tableId = (tables.maxByOrNull { it.tableId }?.tableId ?: 0) + 1
         tables.add(sourceTable)
         return sourceTable
-    }
-
-    // 테이블 수정
-    fun updateTable(id: Long, newSourceTable: SourceTable): SourceTable? {
-        val index = tables.indexOfFirst { it.tableId == id }
-        if (index != -1) {
-            tables[index] = newSourceTable.copy(tableId = id)
-            return tables[index]
-        }
-        return null
     }
 
     // 테이블 삭제
