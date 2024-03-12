@@ -1,13 +1,16 @@
 package com.example.datahub_back.service.tableService
 
-import com.example.datahub_back.dto.toolDTO.Column
-import com.example.datahub_back.dto.toolDTO.Data
-import com.example.datahub_back.dto.toolDTO.Table
+import com.example.datahub_back.controller.toolController.table.TableModifiedRequest
+import com.example.datahub_back.controller.toolController.table.TableResponse
+import com.example.datahub_back.controller.toolController.table.TableStatusResponse
 
 interface TableRepository {
-    //Table을 형성하기 가장 좋은 방법은 뭘까?
+    fun getTable(tableID: Long) : TableResponse
+    //테이블 가지고 오는 함수
+    fun findTableStatusByDatabaseID(dataBaseID: Long) : TableStatusResponse
+    //테이블 상태 별로 가지고 오는 함수
+    fun modifiedTableAndDataFormatTest(tableModifiedRequest: TableModifiedRequest) : TableResponse
+    //테이블 수정 삭제 목록 관리하는 함수
 
-    fun createTable(columns : List<Column>) : MutableMap<String, List<Data>>
 
-    fun findColumnsByTableID(table : Table) : List<Column>
 }

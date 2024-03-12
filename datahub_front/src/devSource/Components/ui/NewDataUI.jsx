@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
-import data from "bootstrap/js/src/dom/data";
 
-export default function NewDataUI({ column, columnCount  , createData ,setCreateData , dataLine }) {
-    const [newDataValues, setNewDataValues] = useState(new Array(columnCount).fill("")); // 각 컬럼의 새로운 데이터 입력값
-    const [line , setLine]  = useState(dataLine)
+export default function NewDataUI({ key, column  , createData ,setCreateData , newDataCount , dataLine}) {
+
+    const [newDataValues, setNewDataValues] = useState(new Array(newDataCount).fill("")); //새로운 배열
+    // 각 컬럼의 새로운 데이터 입력값
+
     const handleNewDataInputChange = (event, columnIndex) => {
         const updatedValues = [...newDataValues];
         updatedValues[columnIndex] = event.target.value;
@@ -13,13 +14,11 @@ export default function NewDataUI({ column, columnCount  , createData ,setCreate
 
     const handleInputBlur = (event, index, value) => {
         const newCreateData = [...createData]; // 기존의 updateData
-
         let obj = {
             data : value,
             column : column,
-            dataLine : line
+            columnLine :dataLine
         }
-
         newCreateData.push(obj); // 새로운 아이템을 추가
         setCreateData(newCreateData); // 업데이트된 데이터를 설정
     };

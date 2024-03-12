@@ -101,7 +101,6 @@ export default function CreateProjectFormLayout() {
                 data={data}
                 header={"아래와 같은 정보로 프로젝트를 생성합니다."}
                 isOpen={isSuccessModalOpen}
-                footer={"생성하시겠습니까?"}
                 onClose={() => setIsSuccessModalOpen(false)}
                 onCreate={handleCreate}
                 onReset={modalBtnOnClickHandler}
