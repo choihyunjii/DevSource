@@ -72,8 +72,10 @@
 
 
 .profileBigBox{
-    height: 60%;
+    height: 80%;
     margin-bottom: 10px;
+    overflow-y: auto; /* 세로 스크롤바 자동 활성화 */
+
 }
 
 .profile{
@@ -86,8 +88,12 @@
 }
 .profileBox{
     margin-bottom: 12px;
-    height: 40%;
+    height: 30%;
 }
+.profileBox:hover {
+    cursor: pointer;
+}
+
 .text{
     padding-left: 10px;
 }

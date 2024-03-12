@@ -1,4 +1,4 @@
-import React from 'react'; // React를 임포트해야 합니다.
+import React, {useState} from 'react'; // React를 임포트해야 합니다.
 import styles from '../memberManagementStyle.module.css';
 import MemberTitleUi from "../uI/MemberTitleUi";
 import ButtonUI from "../uI/ButtonUI";
@@ -8,11 +8,23 @@ import minus from '../../image/redMinus.png';
 import plus from '../../image/bluePlus.png';
 
 import SearchUserNameUI from "../uI/SearchUserNameUI";
+import MembersData from "../data/MembersData";
 
 export default function MemberBoxLayout() {
-    function handleClick() {
-       console.log("뀨");
+
+    const [teamProfile , setTeamProfile] = useState([])
+
+    const handleClick = (item) => {
+        const newMembers = new Set([...teamProfile]);
+        newMembers.add(item);
+        setTeamProfile([...newMembers]);
     }
+    const handleDelete = (item) => {
+        const newMembers = new Set([...teamProfile]);
+        newMembers.delete(item);
+        setTeamProfile([...newMembers]);
+    }
+
 
     return (
         <div>
@@ -22,15 +34,19 @@ export default function MemberBoxLayout() {
                 </div>
                 <div className={styles.memberContainer}>
                     <div className={styles.memberSmallBox}>
-                        <SmallTitleUI title="현재 참여자" className={styles.smallTitle}/>
+                        <SmallTitleUI title="현재 참여자" className={styles.smallTitle} teamMemberCount={teamProfile.length}/>
                         <hr className={styles.hrStyle}/>
                         <div className={styles.profileBigBox}>
-                            <div className={styles.profileBox}>
-                                <ProfileUI img={minus} name="김예지" email="123@gmail.com"/>
-                            </div>
-                            <div className={styles.profileBox}>
-                                <ProfileUI img={minus} name="김보영" email="12345@gmail.com"/>
-                            </div>
+                            {teamProfile.map((item , index) => (
+                                <div className={styles.profileBox}>
+                                    <ProfileUI key={item.id}
+                                               img={minus}
+                                               name={item.username}
+                                               email={item.email}
+                                               onClick={() =>handleDelete(item)}                                    />
+                                </div>
+                            ))}
+
                         </div>
                     </div>
                     <div className={styles.memberSmallBox}>
@@ -38,17 +54,15 @@ export default function MemberBoxLayout() {
                             <SearchUserNameUI/>
                         </div>
                         <div className={styles.profileBigBox}>
-                            <div className={styles.profileBox}>
-                                <div onClick={handleClick}> {/* +,- 기호 이미지 클릭시 프로필 삭제 or 나타남 +,- 이미지에만 버튼 줬어야했는데 귀찮쓰해서 걍 프로필 전체에 줌..~~ */}
-                                    <ProfileUI img={plus} name="주동호" email="123@gmail.com"/>
+                            {MembersData.map((item , index) => (
+                                <div className={styles.profileBox}>
+                                    <ProfileUI key={item.id}
+                                               img={plus}
+                                               name={item.username}
+                                               email={item.email}
+                                               onClick={() => handleClick(item)}                                    />
                                 </div>
-                            </div>
-                            <div className={styles.profileBox}>
-                                <ProfileUI img={plus} name="최현지" email="12345@gmail.com"/>
-                            </div>
-                            <div className={styles.profileBox}>
-                                <ProfileUI img={plus} name="박정우" email="12345@gmail.com"/>
-                            </div>
+                            ))}
                         </div>
 
                     </div>

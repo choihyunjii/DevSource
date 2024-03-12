@@ -41,7 +41,7 @@
     padding-left:24px ;
 }
 
-.nav-link:nth-child(3) { /*현재 페이지 표시 (숫자만 바꿔주면 됨)*/
+.nav-link:nth-child(2) { /*현재 페이지 표시 (숫자만 바꿔주면 됨)*/
     color:white;
     background-color: #00A3FF;
     border-radius: 23px;
