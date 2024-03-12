@@ -9,10 +9,8 @@ import TemplateCodeEditor from "../template/components/page/TemplateCodeEditor";
 import ProjectViewPage from "../project/components/page/ProjectViewPage";
 import TemplateShowCasePage from "../project/components/page/TemplateShowCasePage";
 import TablePage from "../devSource/Components/page/TablePage";
-import MemberBoxLayout from "../project/components/layout/MemberBoxLayout";
 import TeamProfilePage from "../project/components/page/TeamProfilePage";
-// import TablePage from "../devSource/Components/page/TablePage";
-// 이 경로에 TablePage 없어서 오류 뜨니까 주석처리 해놓을게~
+
 
 export default function TemporaryAppRouter() {
     return (

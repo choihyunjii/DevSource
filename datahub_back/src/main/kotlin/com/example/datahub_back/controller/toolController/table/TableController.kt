@@ -1,5 +1,6 @@
 package com.example.datahub_back.controller.toolController.table
 
+import com.example.datahub_back.dto.toolDTO.Column
 import com.example.datahub_back.service.tableService.TableService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -22,6 +23,10 @@ class TableController  (
     @GetMapping("/status/{dataBaseID}")
     fun getTableStatusByDataBase(@PathVariable dataBaseID : Long) : ResponseEntity<TableStatusResponse> =
         ResponseEntity(tableService.findTableStatusByDatabaseID(dataBaseID),HttpStatus.OK)
+
+    @PostMapping("/modifiedTable")
+    fun getModifiedTable(@RequestBody modifiedTable: TableModifiedRequest) =
+        tableService.modifiedTableAndDataFormatTest(modifiedTable)
 
 
 }

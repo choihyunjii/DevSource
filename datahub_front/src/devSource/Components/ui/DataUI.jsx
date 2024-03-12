@@ -10,6 +10,7 @@ export default function DataUI({
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
 
+
     function columnDataSet(){
         setData(tableMap.get(column))
         // console.log(data)
@@ -35,7 +36,6 @@ export default function DataUI({
         if (dataIndex === -1) {
             updatedChangeData.push(item); // 새로운 아이템을 추가
         }
-
         setUpdateData(updatedChangeData); // 업데이트된 데이터를 설정
     };
 
@@ -90,11 +90,16 @@ export default function DataUI({
 
                 {/* 새로운 데이터 입력 부분 */}
                 {[...Array(newDataCount)].map((_, index) => (
-                    <NewDataUI key={index} onAddData={handleAddData}
-                               createData = {createData} setCreateData = {setCreateData}
-                               column = {column}
+                    <NewDataUI
+                        key={index}
+                        onAddData={handleAddData}
+                        createData={createData}
+                        setCreateData={setCreateData}
+                        column={column}
+                        dataLine={index} // 줄의 인덱스를 전달
                     />
                 ))}
+
                 </tbody>
             </table>
             <button onClick={consoleAllData}>123</button>

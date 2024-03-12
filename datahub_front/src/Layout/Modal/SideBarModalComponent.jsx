@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from '../styles.module.css'; // 스타일 파일 import
+import styles from '../../project/components/styles.module.css'; // 스타일 파일 import
 
-const Modal = ({ isOpen, onClose, header, data ,onClick}) => {
+
+const SideBarModal = ({ isOpen, onClose, header, data ,onClick}) => {
     const handleCreate = () => {
         onClose(); // 모달을 닫음
         onClick();
@@ -17,11 +18,8 @@ const Modal = ({ isOpen, onClose, header, data ,onClick}) => {
                 {/* 프로젝트 정보 표시 */}
                 {data && (
                     <div className={styles.commentBox}>
-                        <p>프로젝트 이름 : {data.projectName}</p>
-                        <p>프로젝트 설명 : {data.comment}</p>
-                        <p>프로젝트 생성자 : {data.profile && data.profile.username}</p>
-                        <p>프로젝트 데이터베이스 : {data.dataBaseName}</p>
-                        <p>프로젝트 팀: {data.teamProfile && data.teamProfile.map(member => member.username).join(', ')}</p>
+                        <p>테이블 이름 : {data.name}</p>
+                        <p>테이블 설명 : {data.comment}</p>
                     </div>
                 )}
 
@@ -33,4 +31,4 @@ const Modal = ({ isOpen, onClose, header, data ,onClick}) => {
     );
 };
 
-export default Modal;
+export default SideBarModal;

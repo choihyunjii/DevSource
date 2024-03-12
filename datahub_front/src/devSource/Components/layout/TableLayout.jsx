@@ -5,8 +5,6 @@ import styles from '../../styleModule/ColumnStyle.module.css';
 export default function TableLayout(){
     const [tableData, setTable] = useState(new Map());
     const [tableID, setTableID] = useState(1);
-
-    const [deleteData , setDeleteData] = useState([]) //삭제 부분 리스트
     const [createData , setCreateData] = useState([]) //추가 부분 리스트
     const [updateData , setUpDateData] = useState([]) //수정 부분 리스트
     const fetchColumData = async () => {
