@@ -14,14 +14,23 @@ export default function NewDataUI({ key, column  , createData ,setCreateData , n
 
     const handleInputBlur = (event, index, value) => {
         const newCreateData = [...createData]; // 기존의 updateData
-        let obj = {
-            data : value,
-            column : column,
-            columnLine :dataLine
+
+        // 기존 값이 있다면 제거
+        const existingIndex = newCreateData.findIndex(item => item.columnLine === dataLine && item.column === column);
+        if (existingIndex !== -1) {
+            newCreateData.splice(existingIndex, 1);
         }
+
+        let obj = {
+            data: value,
+            column: column,
+            columnLine: dataLine
+        };
+
         newCreateData.push(obj); // 새로운 아이템을 추가
         setCreateData(newCreateData); // 업데이트된 데이터를 설정
     };
+
 
     return (
         <tr>
