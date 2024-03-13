@@ -11,7 +11,6 @@ function Header({  currentUser, isLoggedIn }) {
             setActiveItem(itemId);
         };
 
-
     return (
         <div className={styles.All}>
                 <div className={styles.container}>
@@ -41,8 +40,8 @@ function Header({  currentUser, isLoggedIn }) {
                                 </li>
                             </div>
                             <div className={styles.info}>
-                                <div>{currentUser} 최현지님</div>
-                                <div>{isLoggedIn ? '로그인 중' : '로그아웃'}</div>
+                                <div>{currentUser}최현지님</div>
+                                <div >{isLoggedIn ? '로그인 중' : '로그아웃'}</div>
                             </div>
                         </div>
                 </div>
