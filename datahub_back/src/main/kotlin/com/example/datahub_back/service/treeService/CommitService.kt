@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class CommitService {
 
-    // 커밋 리스트 뽑아오기 - 날짜별 정렬
+    // 커밋 리스트 뽑아오기 - 날짜별 정렬 (내림차순)
     fun getCommitsByBranch(branch: Branch): List<Commit> {
         val filteredCommits = commitList.filter { commit ->
             commit.branch == branch
@@ -19,20 +19,10 @@ class CommitService {
     fun getCommitByCommitId(commitId: Int) : Commit? =
         commitList.find { it.commitId == commitId }
 
-
-    // 가장 최신 커밋 가져오기
-    fun getLatestCommitByBranch(branch: Branch): Commit? {
+    // 두 번째로 최근에 만들어진 커밋 반환
+    fun getSecondLatestCommitByBranch(branch: Branch): Commit? {
         val commits = getCommitsByBranch(branch)
-        if (commits.isEmpty()) {
-            return null // 커밋 리스트가 비어있으면 null 반환
-        }
-        var latestCommit = commits[0] // 초기값
-        for (commit in commits) { // 최신 커밋 찾기
-            if (commit.createTime.isAfter(latestCommit.createTime)) {
-                latestCommit = commit
-            }
-        }
-        return latestCommit
+        return commits[1]
     }
 
     // 커밋 추가

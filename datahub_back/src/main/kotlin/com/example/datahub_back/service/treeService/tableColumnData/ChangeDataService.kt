@@ -1,11 +1,8 @@
-package com.example.datahub_back.service.treeService.sourceTable
+package com.example.datahub_back.service.treeService.tableColumnData
 
 import com.example.datahub_back.data.treeData.changeDataList
-import com.example.datahub_back.data.treeData.sourceDataList
 import com.example.datahub_back.dto.treeDTO.ChangeColumn
 import com.example.datahub_back.dto.treeDTO.ChangeData
-import com.example.datahub_back.dto.treeDTO.SourceColumn
-import com.example.datahub_back.dto.treeDTO.SourceData
 import org.springframework.stereotype.Service
 
 @Service

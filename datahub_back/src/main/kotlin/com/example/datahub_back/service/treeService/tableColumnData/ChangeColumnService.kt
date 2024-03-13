@@ -1,19 +1,17 @@
-package com.example.datahub_back.service.treeService.sourceTable
+package com.example.datahub_back.service.treeService.tableColumnData
 
 import com.example.datahub_back.data.treeData.changeColumnList
-import com.example.datahub_back.data.treeData.sourceColumnList
 import com.example.datahub_back.dto.treeDTO.ChangeColumn
 import com.example.datahub_back.dto.treeDTO.ChangeTable
-import com.example.datahub_back.dto.treeDTO.SourceColumn
-import com.example.datahub_back.dto.treeDTO.SourceTable
 import org.springframework.stereotype.Service
 
 @Service
 class ChangeColumnService {
 
-    fun getColumnsByTableId(table: ChangeTable) = changeColumnList.filter { it.table == table }
+    fun getColumnsByTable(table: ChangeTable) = changeColumnList.filter { it.table == table }
 
     fun getColumnByColumId(columId: Long): ChangeColumn? = changeColumnList.find { it.columnId == columId }
+
 
     fun createColumn(column: ChangeColumn): ChangeColumn {
         changeColumnList.add(column)

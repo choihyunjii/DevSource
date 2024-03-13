@@ -5,12 +5,12 @@ import java.time.LocalDateTime
 
 val table1 = SourceTable(
     tableId = 1,
-    tableName = "Table 1",
-    comment = "This is table 1",
+    tableName = "학생 테이블",
+    comment = "학생들의 정보를 모아둔 테이블",
     isFavorite = 1,
     isDelete = 0,
     updateTime = LocalDateTime.now(),
-    commit = commit1
+    commit = commit2
 )
 
 val sourceTableList = mutableListOf(table1)

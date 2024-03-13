@@ -1,16 +1,11 @@
 package com.example.datahub_back.service.treeService.commit
 
 import com.example.datahub_back.dto.treeDTO.Commit
-import com.example.datahub_back.dto.treeDTO.SourceColumn
-import com.example.datahub_back.dto.treeDTO.SourceData
 import com.example.datahub_back.dto.treeDTO.SourceTable
 import com.example.datahub_back.service.treeService.commit.DataTransformer.Companion.toChangeColumn
 import com.example.datahub_back.service.treeService.commit.DataTransformer.Companion.toChangeData
 import com.example.datahub_back.service.treeService.commit.DataTransformer.Companion.toChangeTable
-import com.example.datahub_back.service.treeService.commit.DataTransformer.Companion.toSourceColumn
-import com.example.datahub_back.service.treeService.commit.DataTransformer.Companion.toSourceData
-import com.example.datahub_back.service.treeService.commit.DataTransformer.Companion.toSourceTable
-import com.example.datahub_back.service.treeService.sourceTable.*
+import com.example.datahub_back.service.treeService.tableColumnData.*
 import org.springframework.stereotype.Service
 
 @Service
@@ -32,16 +27,20 @@ class AddChangesAsTableService (
 
             // 이름으로 비교해서 새로 생성된 테이블들 찾기
             val oldTablesNameSet = oldTablesNotDelete.map { it.tableName }.toSet()
-            val newAddTables = newTablesNotDelete.filterNot  {
-                it.tableName in oldTablesNameSet}
+            val newAddTables = newTablesNotDelete.filter {
+                it.tableName !in oldTablesNameSet
+            }
+            println("새로 생성된 테이블 : $newAddTables")
 
-            // 새로 생성된 테이블 데이터들 Change형으로 생성
+            // 새로 생성된 테이블 데이터들 Change형으로 바꿔서 생성
             newAddTables.forEach { table ->
                 changeTableService.createTable(table.toChangeTable(newCommit))
-                val newAddColumns = sourceColumnService.getColumnsByTableId(table)
+                val newAddColumns = sourceColumnService.getColumnsByTable(table)
+                println(newAddColumns)
                 newAddColumns.forEach { column ->
                     changeColumnService.createColumn(column.toChangeColumn(newCommit))
                     val newAddData = sourceDataService.getDataListByColumn(column)
+                    println(newAddData)
                     newAddData.forEach { data ->
                         changeDataService.createData(data.toChangeData(newCommit, 1))
                     } // forEach
