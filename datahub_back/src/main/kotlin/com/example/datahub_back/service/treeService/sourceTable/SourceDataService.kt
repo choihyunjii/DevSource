@@ -1,4 +1,4 @@
-package com.example.datahub_back.service.treeService
+package com.example.datahub_back.service.treeService.sourceTable
 
 import com.example.datahub_back.data.treeData.sourceDataList
 import com.example.datahub_back.dto.treeDTO.SourceColumn

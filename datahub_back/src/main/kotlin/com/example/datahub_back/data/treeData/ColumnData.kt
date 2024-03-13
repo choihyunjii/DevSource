@@ -11,7 +11,7 @@ val sourceColumn1 = SourceColumn(
     isPrimaryKey = 1,
     isForeignKey = 0,
     isUniqueKey = 0,
-    joinSourceTable = null
+    joinSourceTableId = 1
 )
 
 val sourceColumn2 = SourceColumn(
@@ -23,7 +23,7 @@ val sourceColumn2 = SourceColumn(
     isPrimaryKey = 0,
     isForeignKey = 0,
     isUniqueKey = 0,
-    joinSourceTable = null
+    joinSourceTableId = null
 )
 
 val sourceColumn3 = SourceColumn(
@@ -35,7 +35,7 @@ val sourceColumn3 = SourceColumn(
     isPrimaryKey = 0,
     isForeignKey = 0,
     isUniqueKey = 1,
-    joinSourceTable = null
+    joinSourceTableId = null
 )
 
 

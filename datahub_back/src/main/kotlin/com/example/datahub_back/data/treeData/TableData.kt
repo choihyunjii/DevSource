@@ -1,4 +1,5 @@
 package com.example.datahub_back.data.treeData
+
 import com.example.datahub_back.dto.treeDTO.SourceTable
 import java.time.LocalDateTime
 
@@ -8,7 +9,8 @@ val table1 = SourceTable(
     comment = "This is table 1",
     isFavorite = 1,
     isDelete = 0,
-    updateTime = LocalDateTime.now()
+    updateTime = LocalDateTime.now(),
+    commit = commit1
 )
 
 val sourceTableList = mutableListOf(table1)

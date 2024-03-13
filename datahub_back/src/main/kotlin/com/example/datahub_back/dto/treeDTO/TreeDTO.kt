@@ -61,7 +61,6 @@ data class ChangeTable(
     val isDelete: Int,
     val updateTime: LocalDateTime,
     val commit: Commit,
-    val action: ChangeAction, // 변경 액션 (추가, 삭제)
 )
 
 data class ChangeColumn(
@@ -80,13 +79,9 @@ data class ChangeData(
     val dataId: Long, // PK
     val column: ChangeColumn, // PK, FK
     val columnLine : Int,
-    val data: String
+    val data: String,
+    val action: Int // 1: 추가, 0: 삭제
 )
-
-enum class ChangeAction {
-    ADD, // 추가
-    DELETE // 삭제
-}
 
 // 페이지 변경사항
 data class ChangePage(

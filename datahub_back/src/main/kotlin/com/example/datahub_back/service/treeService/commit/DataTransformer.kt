@@ -3,10 +3,7 @@ package com.example.datahub_back.service.treeService.commit
 import com.example.datahub_back.dto.toolDTO.Column
 import com.example.datahub_back.dto.toolDTO.Data
 import com.example.datahub_back.dto.toolDTO.Table
-import com.example.datahub_back.dto.treeDTO.Commit
-import com.example.datahub_back.dto.treeDTO.SourceColumn
-import com.example.datahub_back.dto.treeDTO.SourceData
-import com.example.datahub_back.dto.treeDTO.SourceTable
+import com.example.datahub_back.dto.treeDTO.*
 
 class DataTransformer {
     companion object {
@@ -44,5 +41,42 @@ class DataTransformer {
                 data = this.data
             )
         }
+
+        fun SourceTable.toChangeTable(commit: Commit): ChangeTable {
+            return ChangeTable(
+                tableId = this.tableId,
+                tableName = this.tableName,
+                comment = this.comment,
+                isFavorite = this.isFavorite,
+                isDelete = this.isDelete,
+                updateTime = this.updateTime,
+                commit = commit,
+            )
+        }
+
+        fun SourceColumn.toChangeColumn(commit: Commit): ChangeColumn {
+            return ChangeColumn(
+                columnId = this.columnId,
+                table = this.table.toChangeTable(commit),
+                columnName = this.columnName,
+                comment = this.comment,
+                dataType = this.dataType,
+                isPrimaryKey = this.isPrimaryKey,
+                isForeignKey = this.isForeignKey,
+                isUniqueKey = this.isUniqueKey,
+                joinSourceTable = this.joinSourceTableId?.let { this.table }
+            )
+        }
+
+        fun SourceData.toChangeData(commit: Commit, action: Int): ChangeData {
+            return ChangeData(
+                dataId = this.dataId,
+                column = this.column.toChangeColumn(commit),
+                columnLine = this.columnLine,
+                data = this.data,
+                action = action
+            )
+        }
+
     }
 }

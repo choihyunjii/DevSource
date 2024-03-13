@@ -25,13 +25,13 @@ class HistoryController(
     fun retrieveCommits(@PathVariable userId: Long, @PathVariable projectId: Long): List<Commit> =
         historyService.retrieveCommits(userId, projectId)
 
-    // 프론트 변경 리스트 뽑기
-    @GetMapping("/frontChanges/{commitId}")
-    fun retrieveChangePageIds(@PathVariable commitId: Int): List<Long>? =
-        historyService.retrieveChangePages(commitId)
-
-    // 백엔드 변경 리스트 뽑기
-    @GetMapping("/backendChanges/{commitId}")
-    fun retrieveChangeTableIds(@PathVariable commitId: Int): List<ChangeTable>? =
-        historyService.retrieveChangeTables(commitId)
+//    // 프론트 변경 리스트 뽑기
+//    @GetMapping("/frontChanges/{commitId}")
+//    fun retrieveChangePageIds(@PathVariable commitId: Int): List<Long>? =
+//        historyService.retrieveChangePages(commitId)
+//
+//    // 백엔드 변경 리스트 뽑기
+//    @GetMapping("/backendChanges/{commitId}")
+//    fun retrieveChangeTableIds(@PathVariable commitId: Int): List<ChangeTable>? =
+//        historyService.retrieveChangeTables(commitId)
 }

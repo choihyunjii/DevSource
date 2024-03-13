@@ -1,4 +1,4 @@
-package com.example.datahub_back.service.treeService
+package com.example.datahub_back.service.treeService.sourceTable
 
 import com.example.datahub_back.data.treeData.sourceTableList
 import com.example.datahub_back.dto.treeDTO.Commit
@@ -22,7 +22,6 @@ class SourceTableService {
     }
 
     fun createTable(sourceTable: SourceTable): SourceTable {
-        sourceTable.tableId = (tables.maxByOrNull { it.tableId }?.tableId ?: 0) + 1
         tables.add(sourceTable)
         return sourceTable
     }

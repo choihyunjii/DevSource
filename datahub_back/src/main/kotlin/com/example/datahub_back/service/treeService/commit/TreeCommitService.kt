@@ -1,9 +1,7 @@
 package com.example.datahub_back.service.treeService.commit
 
 import com.example.datahub_back.controller.treeController.CommitRequest
-import com.example.datahub_back.dto.toolDTO.Project
-import com.example.datahub_back.dto.treeDTO.*
-import com.example.datahub_back.dto.treeDTO.SourceTable
+import com.example.datahub_back.dto.treeDTO.Commit
 import com.example.datahub_back.service.treeService.*
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -12,11 +10,8 @@ import java.time.LocalDateTime
 @Service
 class TreeCommitService(
     private val commitService: CommitService,
-    private val sourceTableService: SourceTableService,
-    private val sourceColumnService: SourceColumnService,
-    private val sourceDataService: SourceDataService,
     private val branchService: BranchService,
-    private val dataTransformationService: DataTransformationService,
+    private val addChangeService: AddChangeService,
 ) {
 //    [비교 로직 (변경 사항 찾기) 시작 전]
 //    1. 해당 Project 객체를 가지고 있는 Branch를 찾음
@@ -40,6 +35,7 @@ class TreeCommitService(
                 )
                 // 커밋 추가
                 commitService.createCommit(commit)
+                addChangeService.addChanges(branch, commit, project)
                 // 해당 브랜치의 push 업데이트
                 branchService.updatePushCountByBranchId(branch.branchId)
             }
