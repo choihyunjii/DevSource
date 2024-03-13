@@ -9,8 +9,6 @@ interface TableRepository {
     //테이블 가지고 오는 함수
     fun findTableStatusByDatabaseID(dataBaseID: Long) : TableStatusResponse
     //테이블 상태 별로 가지고 오는 함수
-    fun modifiedTableAndDataFormatTest(tableModifiedRequest: TableModifiedRequest) : TableResponse
+    fun modifiedTableAndDataFormatTest(tableModifiedRequest: TableModifiedRequest) : String?
     //테이블 수정 삭제 목록 관리하는 함수
-
-
 }

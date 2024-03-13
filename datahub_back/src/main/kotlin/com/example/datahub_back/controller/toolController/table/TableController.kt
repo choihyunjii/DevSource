@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.server.ResponseStatusException
 
 @RestController
 @RequestMapping("/api/table")
@@ -25,8 +26,10 @@ class TableController  (
         ResponseEntity(tableService.findTableStatusByDatabaseID(dataBaseID),HttpStatus.OK)
 
     @PostMapping("/modifiedTable")
-    fun getModifiedTable(@RequestBody modifiedTable: TableModifiedRequest) =
+    fun getModifiedTable(@RequestBody modifiedTable: TableModifiedRequest): ResponseEntity<String> =
         tableService.modifiedTableAndDataFormatTest(modifiedTable)
+            ?.let { ResponseEntity.ok("데이터값이 저장되었습니다.") }
+            ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "데이터값 일치하지 않습니다.")
 
 
 }
