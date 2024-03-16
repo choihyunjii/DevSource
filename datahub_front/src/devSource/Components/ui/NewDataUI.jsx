@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
 
-export default function NewDataUI({ key, column  , createData ,setCreateData , newDataCount , dataLine}) {
+export default function NewDataUI({ key, column  , createData , setCreateData , newDataCount  , dataLine}) {
 
     const [newDataValues, setNewDataValues] = useState(new Array(newDataCount).fill("")); //새로운 배열
     // 각 컬럼의 새로운 데이터 입력값
@@ -15,8 +15,9 @@ export default function NewDataUI({ key, column  , createData ,setCreateData , n
     const handleInputBlur = (event, index, value) => {
         const newCreateData = [...createData]; // 기존의 updateData
 
-        // 기존 값이 있다면 제거
         const existingIndex = newCreateData.findIndex(item => item.columnLine === dataLine && item.column === column);
+
+        // 기존 값이 있다면 제거
         if (existingIndex !== -1) {
             newCreateData.splice(existingIndex, 1);
         }

@@ -75,23 +75,56 @@ class TableService : TableRepository{
 
     override fun modifiedTableAndDataFormatTest(tableModifiedRequest: TableModifiedRequest): String? {
         val groupedData = tableModifiedRequest.createData?.groupBy { it.columnLine } // 여기서 컬럼 라인으로 그룹화
+
         val tableID = tableModifiedRequest.tableID
         val table = findByTableID(tableID)
 
+        val findAllByTables = exampleColumnList.filter { it.table == table }
+
         groupedData?.forEach { (columnLine, dataList) ->
-            val dataFormatTestResult = createDataFormTest(table, dataList)
+            val nullCheckGroupData = insertionNull(dataList,findAllByTables)
+            // 널값 삽입 이후
+            println(nullCheckGroupData)
+
+            val dataFormatTestResult = createDataFormTest(table, nullCheckGroupData)
+            // 데이터 포멧 체크 후
             if (dataFormatTestResult == 1) {
                 return null // 테스트 실패 시 즉시 종료하고 null 반환
             }
+
+            // 모든 테스트를 통과한 경우에만 데이터 저장
+            saveNewData(tableID, nullCheckGroupData)
         }
 
-        tableModifiedRequest.createData?.let { saveNewData(tableID, it) } // 모든 테스트를 통과한 경우에만 데이터 저장
         return "데이터 저장에 성공하였습니다"
+    }
+
+
+    private fun insertionNull(groupList: List<CreateDataDTO>, columnList: List<Column>): List<CreateDataDTO> {
+        val newGroupList: MutableList<CreateDataDTO> = mutableListOf()
+
+        if (groupList.size == columnList.size) {
+            return groupList
+        } else {
+            columnList.forEach { column ->
+                var found = false
+                groupList.forEach { groupColumn ->
+                    if (column.name == groupColumn.column) {
+                        found = true
+                        newGroupList.add(groupColumn)
+                    }
+                }
+                if (!found) {
+                    newGroupList.add(CreateDataDTO(data = "NULL", column = column.name, columnLine = 0)) // 적절한 columnLine을 설정해야 합니다.
+                }
+            }
+        }
+
+        return newGroupList
     }
 
     //데이터 포멧
     private fun createDataFormTest(table : Table , createDataList : List<CreateDataDTO>) :Int {
-
         createDataList.forEach {createColumn ->
             val column = exampleColumnList.first {column ->
                 column.name == createColumn.column && column.table == table
@@ -110,6 +143,7 @@ class TableService : TableRepository{
         }
         return 0
     }
+
     //데이터 양식 검사
     private fun dataFormTest(createColumn: CreateDataDTO) =
             createColumn.data.toIntOrNull()

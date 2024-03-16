@@ -33,7 +33,7 @@ export default function ColumnUI({ columns , reloadData , updateData , setUpdate
             if (response.ok) {
                 const responseData = await response.json();
                 console.log('Data sent successfully:', responseData);
-
+                setCreateData([])
             } else {
                 const errorData = await response.json();
                 console.log(errorData)
