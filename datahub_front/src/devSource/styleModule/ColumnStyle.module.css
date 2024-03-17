@@ -129,3 +129,7 @@
 .existingDataClass {
     background-color: lightblue; /* 기존 데이터의 배경색 */
 }
+.tablePage{
+    width: 85%;
+    margin: 0 auto;
+}
