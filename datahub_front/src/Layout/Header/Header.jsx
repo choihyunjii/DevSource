@@ -39,6 +39,7 @@ function Header({  currentUser, isLoggedIn }) {
                                     DevTree
                                 </li>
                             </div>
+
                             <div className={styles.info}>
                                 <div>{currentUser}최현지님</div>
                                 <div >{isLoggedIn ? '로그인 중' : '로그아웃'}</div>

@@ -7,56 +7,59 @@
     src: url("../../default/font/GmarketSansTTFBold.ttf");
 }
 
+html{font-size: 20px;}
+body{font-size: 1rem;}
+
 .All{
     font-family: "GmarketSansTTFBold", serif;
-    border:1px solid red;
     width: 99%;
-    height: 65px;
+    height: 3.25rem;
 }
 
 .container{
     display: flex;
-
 }
 
 .logo {
-    margin: 0 auto 0 30px;
-    font-size: 64px;
+    margin: 0 auto 0 1.5rem;
+    font-size: 3.2rem;
     color: #00A3FF;
-    text-shadow: 1px 1px 0 ,
-    -1px -1px 0 ,
-    1px -1px 0 ,
-    -1px 1px 0 ;
+    text-shadow: 0.05rem 0.05rem 0 ,
+    -0.05rem -0.05rem 0 ,
+    0.05rem -0.05rem 0 ,
+    -0.05rem 0.05rem 0 ;
 }
 
 .bar{
-    border:1px solid #000000;
+
     display: flex;
     width: 70%;
-    height: 50px;
-    margin-top: 8px;
-    font-size: 18px;
+    height: 2.5rem;
+    margin-top: 0.04rem;
+    font-size: 1.125rem;
 }
 
-.info{
 
+.info{ /**/
+    margin-top: 0.7rem;
     align-items: center;
     height: 100%;
-    border:1px solid blue;
     width: 20%;
     display: flex;
-    gap: 40px;
+    gap: 2rem;
+    margin-left: 20rem;
 
 }
 
-.navLink {
+.navLink { /**/
+    margin-top: 0.7rem;
     display: flex;
     height: 100%;
     width: 37%;
     align-items: center;
-    border:1px solid #d9d971;
-    gap:60px;
-    margin: 0 auto;
+    gap:3rem;
+    margin-left: 10rem;
+
 
 }
 
@@ -64,7 +67,7 @@
         list-style-type: none;
         flex: 1;
         text-align: center;
-        padding: 6px;
+        padding: 0.3rem;
         cursor: pointer;
 }
 
@@ -78,16 +81,34 @@
     align-items: center;
     text-align: center;
     color:white;
-    padding: 5px;
-    width: 90px;
-    height: 20px;
+    padding: 0.2rem;
+    width: 4.5rem;
+    height: 1rem;
     border-radius: 15px;
 }
 
 
 
 
-@media screen and (max-width: 2000px) {
-    html{font-size: 20px;}
+/*반응형*/
+@media screen and (max-width:1640px) {
+    html{font-size: 18px;}
     body{font-size: 1rem;}
 }
+
+@media screen and (max-width:1540px) {
+    html{font-size: 16px;}
+    body{font-size: 1rem;}
+}
+
+@media screen and (max-width:1440px) {
+    html{font-size: 15px;}
+    body{font-size: 1rem;}
+}
+
+@media screen and (max-width:1340px) {
+    html{font-size: 14px;}
+    body{font-size: 1rem;}
+}
+
+
