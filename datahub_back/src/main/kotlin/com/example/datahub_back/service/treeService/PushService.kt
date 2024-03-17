@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class PushService(
     private val branchService: BranchService,
-    private val sourceCommitService: SourceCommitService
+    private val commitService: CommitService
 ) {
     @Transactional(rollbackFor = [RuntimeException::class])
     fun handlePush(project: Project, user: Profile): String {
@@ -33,7 +33,7 @@ class PushService(
     }
 
     private fun saveCommits(commits: List<Commit>) {
-        commits.forEach { sourceCommitService.createCommit(it) }
+        commits.forEach { commitService.createCommit(it) }
     }
 
     // push, pull crash 업데이트
@@ -47,8 +47,8 @@ class PushService(
 
     // 메인과 유저 브랜치의 Commit 차집합
     private fun findDifferentCommits(branch1: Branch, branch2: Branch): List<Commit> {
-        val commits1 = sourceCommitService.getCommitsByBranch(branch1)
-        val commits2 = sourceCommitService.getCommitsByBranch(branch2)
+        val commits1 = commitService.getCommitsByBranch(branch1)
+        val commits2 = commitService.getCommitsByBranch(branch2)
 
         return (commits1.subtract(commits2.toSet())
                 + commits2.subtract(commits1.toSet())).toList()
