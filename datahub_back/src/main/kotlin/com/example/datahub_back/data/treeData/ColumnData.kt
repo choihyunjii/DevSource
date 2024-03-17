@@ -4,35 +4,38 @@ import com.example.datahub_back.dto.treeDTO.SourceColumn
 
 val sourceColumn1 = SourceColumn(
     columnId = 1,
-    tableId = 1,
+    table = table1,
     columnName = "Column 1",
+    comment = "comment1",
     dataType = "String",
     isPrimaryKey = 1,
     isForeignKey = 0,
     isUniqueKey = 0,
-    joinSourceTable = null
+    joinSourceTableId = 1
 )
 
 val sourceColumn2 = SourceColumn(
     columnId = 2,
-    tableId = 1,
+    table = table1,
     columnName = "Column 2",
+    comment = "comment1",
     dataType = "Int",
     isPrimaryKey = 0,
     isForeignKey = 0,
     isUniqueKey = 0,
-    joinSourceTable = null
+    joinSourceTableId = null
 )
 
 val sourceColumn3 = SourceColumn(
     columnId = 3,
-    tableId = 1,
+    table = table1,
     columnName = "Column 3",
+    comment = "comment1",
     dataType = "Boolean",
     isPrimaryKey = 0,
     isForeignKey = 0,
     isUniqueKey = 1,
-    joinSourceTable = null
+    joinSourceTableId = null
 )
 
 

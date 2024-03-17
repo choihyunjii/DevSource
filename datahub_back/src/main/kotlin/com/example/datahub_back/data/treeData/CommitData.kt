@@ -18,32 +18,6 @@ val commit1 = Commit(
     createTime = createTime1,
     createUser = "user1",
     branch = branch1,
-    sourceTables = mutableListOf(table1),
-    changeTables = mutableListOf(
-        ChangeTable(
-            changeTableId = 1,
-            changeTableName = "Table1",
-            action = ChangeAction.ADD,
-            primaryKey = "tableId",
-            columns = mutableListOf(
-                ChangeTableColumn(1, 1, "tableName", "NewTable"),
-                ChangeTableColumn(1, 2, "comment", "This is a new table."),
-                ChangeTableColumn(1, 3, "isFavorite", "1"),
-                ChangeTableColumn(1, 4, "isDelete", "0")
-            )
-        ),
-        ChangeTable(
-            changeTableId = 2,
-            changeTableName = "Table2",
-            action = ChangeAction.ADD,
-            primaryKey = "tableId",
-            columns = mutableListOf(
-                ChangeTableColumn(2, 1, "comment", "Updated comment."),
-                ChangeTableColumn(2, 2, "isFavorite", "0")
-            )
-        )
-    ),
-    changePageIds = mutableListOf(1)
 )
 
 val commit2 = Commit(
@@ -52,9 +26,6 @@ val commit2 = Commit(
     createTime = createTime2,
     createUser = "user1",
     branch = branch1,
-    sourceTables = mutableListOf(table1),
-    changeTables = mutableListOf(),
-    changePageIds = mutableListOf()
 )
 
 val commit3 = Commit(
@@ -63,9 +34,6 @@ val commit3 = Commit(
     createTime = createTime3,
     createUser = "user1",
     branch = branch2,
-    sourceTables = mutableListOf(table1),
-    changeTables = mutableListOf(),
-    changePageIds = mutableListOf()
 )
 
 val commit4 = Commit(
@@ -74,9 +42,6 @@ val commit4 = Commit(
     createTime = createTime4,
     createUser = "user1",
     branch = branch2,
-    sourceTables = mutableListOf(table1),
-    changeTables = mutableListOf(),
-    changePageIds = mutableListOf()
 )
 
 val commit5 = Commit(
@@ -85,9 +50,6 @@ val commit5 = Commit(
     createTime = createTime5,
     createUser = "user1",
     branch = branch3,
-    sourceTables = mutableListOf(table1),
-    changeTables = mutableListOf(),
-    changePageIds = mutableListOf()
 )
 
 val commit6 = Commit(
@@ -96,9 +58,6 @@ val commit6 = Commit(
     createTime = createTime6,
     createUser = "user1",
     branch = branch3,
-    sourceTables = mutableListOf(table1),
-    changeTables = mutableListOf(),
-    changePageIds = mutableListOf()
 )
 
 // 커밋 리스트 생성

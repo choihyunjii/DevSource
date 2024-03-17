@@ -139,12 +139,12 @@ body{font-size: 1rem;}
 }
 
 @media screen and (max-width:1440px) {
-    html{font-size: 15px;}
+    html{font-size: 14px;}
     body{font-size: 1rem;}
 }
 
 @media screen and (max-width:1340px) {
-    html{font-size: 14px;}
+    html{font-size: 12px;}
     body{font-size: 1rem;}
 }
 

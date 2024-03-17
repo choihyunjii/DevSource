@@ -1,6 +1,7 @@
-package com.example.datahub_back.service.treeService
+package com.example.datahub_back.service.treeService.tableColumnData
 
 import com.example.datahub_back.data.treeData.sourceDataList
+import com.example.datahub_back.dto.treeDTO.SourceColumn
 import com.example.datahub_back.dto.treeDTO.SourceData
 import org.springframework.stereotype.Service
 
@@ -11,7 +12,7 @@ class SourceDataService {
 
     fun getAllData(): List<SourceData> = dataList
 
-    fun getDataListByColumnId(columnId: Long) = dataList.filter { it.columnId == columnId }
+    fun getDataListByColumn(column: SourceColumn) = dataList.filter { it.column == column }
 
     fun getDataById(id: Long): SourceData? = dataList.find { it.dataId == id }
 

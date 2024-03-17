@@ -4,14 +4,14 @@ import com.example.datahub_back.dto.treeDTO.SourceData
 
 val sourceData1 = SourceData(
     dataId = 1,
-    columnId = sourceColumnList[0].columnId,
+    column = sourceColumn1,
     columnLine = 1,
     data = "Sample data 1"
 )
 
 val sourceData2 = SourceData(
     dataId = 2,
-    columnId = sourceColumnList[1].columnId,
+    column = sourceColumn2,
     columnLine = 2,
     data = "100"
 )
