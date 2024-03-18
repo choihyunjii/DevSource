@@ -17,7 +17,7 @@ class TreeCommitService(
     private val profileService: ProfileService,
     private val commitService: CommitService,
     private val branchService: BranchService,
-    private val addChangeService: AddChangeService,
+    private val changeService: ChangeService,
 ) {
     @Transactional(rollbackFor = [RuntimeException::class])
     fun handleCommit(commitData: CommitRequest): String {
@@ -28,7 +28,7 @@ class TreeCommitService(
             // 새로운 commit 객체 만들기
             val newCommit = createNewCommit(commitData.comment, project, profile)
             commitService.createCommit(newCommit) // 커밋 추가
-            addChangeService.addChanges(newCommit) // 변경 사항 저장 로직 시작
+            changeService.findChanges(newCommit) // 변경 사항 가져오고 저장
             // 해당 브랜치의 push 업데이트
             branchService.updatePushCountByBranchId(newCommit.branch.branchId)
         } catch (e: Exception) {

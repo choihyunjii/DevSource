@@ -10,7 +10,12 @@ class SourceColumnService {
 
     fun getColumnsByTable(table: SourceTable) = sourceColumnList.filter { it.table == table }
 
-    fun getColumnByColumId(columId: Long): SourceColumn? = sourceColumnList.find { it.columnId == columId }
+    fun getColumnIsPrimaryKeyByTable(table: SourceTable) = sourceColumnList.find { it.table == table && it.isPrimaryKey == 1}
+
+    private fun findPKColumn(columnList: List<SourceColumn>, table: SourceTable)  =
+        columnList.find {it.table == table && it.isPrimaryKey == 1}
+
+    fun getColumnByColumId(columId: Long) = sourceColumnList.find { it.columnId == columId }
 
     fun createColumn(column: SourceColumn): SourceColumn {
         sourceColumnList.add(column)
