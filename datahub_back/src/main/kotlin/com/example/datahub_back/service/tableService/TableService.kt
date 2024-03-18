@@ -85,20 +85,19 @@ class TableService : TableRepository{
             val nullCheckGroupData = insertionNull(dataList,findAllByTables)
             // 널값 삽입 이후
             println(nullCheckGroupData)
-
             val dataFormatTestResult = createDataFormTest(table, nullCheckGroupData)
             // 데이터 포멧 체크 후
             if (dataFormatTestResult == 1) {
                 return null // 테스트 실패 시 즉시 종료하고 null 반환
             }
-
             // 모든 테스트를 통과한 경우에만 데이터 저장
             saveNewData(tableID, nullCheckGroupData)
         }
+        updateData(tableModifiedRequest)
+
 
         return "데이터 저장에 성공하였습니다"
     }
-
 
     private fun insertionNull(groupList: List<CreateDataDTO>, columnList: List<Column>): List<CreateDataDTO> {
         val newGroupList: MutableList<CreateDataDTO> = mutableListOf()
@@ -119,7 +118,6 @@ class TableService : TableRepository{
                 }
             }
         }
-
         return newGroupList
     }
 
@@ -153,6 +151,18 @@ class TableService : TableRepository{
         exampleColumnList.first {
             it.name == columnName && it.table.id == tableID
         }
+    private fun maxColumnLine(tableID: Long , columnName: String) : Int{
+        val column = findByColumnByName(tableID , columnName)
+        val columns = findDataByColumn(column)
+        val max = columns.maxOf {
+            it.columLine
+        }
+
+        println(max)
+
+        return max + 1
+    }
+
     //만족시 데이터 저장
     private fun saveNewData(tableID : Long , createDataList : List<CreateDataDTO>) : String{
         createDataList.forEach {
@@ -160,7 +170,7 @@ class TableService : TableRepository{
                 Data(
                     id = exampleDataList.size + 1L,
                     data = it.data,
-                    columLine = it.columnLine.toInt(),
+                    columLine = maxColumnLine(tableID,it.column),
                     column = findByColumnByName(tableID , it.column)
                 )
             )
@@ -168,5 +178,19 @@ class TableService : TableRepository{
 
         return "데이터 저장에 성공하였습니다."
     }
+    private fun updateData(modifiedRequest: TableModifiedRequest) {
+        val data = modifiedRequest.updateData
+        data?.forEach { updatedData ->
+            val id = updatedData.id.toInt() // id 값을 정수로 변환하거나 null을 반환
+            if (id >= 0 && id < exampleDataList.size) { // 유효한 id 범위인지 확인
+                exampleDataList[id - 1].data = updatedData.data //리스트는 0번 부터 시작..
+                println("데이터 ID $id 업데이트 성공.")
+            } else {
+                println("아이디 X")
+            }
+        }
+    }
+
+
 
 }

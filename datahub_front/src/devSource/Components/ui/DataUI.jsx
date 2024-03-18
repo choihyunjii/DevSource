@@ -102,7 +102,6 @@ export default function DataUI({
 
                 </tbody>
             </table>
-            <button onClick={consoleAllData}>123</button>
         </div>
     );
 }

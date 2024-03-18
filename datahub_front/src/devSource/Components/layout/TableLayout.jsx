@@ -34,7 +34,7 @@ export default function TableLayout(){
 
     return (
         <div className={styles.tableBox}>
-            <ColumnUI
+            <ColumnUI   
                 columns={tableData}
                 reloadData={fetchColumData}
                 updateData={updateData}

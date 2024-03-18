@@ -131,3 +131,6 @@
     width: 85%;
     margin: 0 auto;
 }
+.selectedRow{
+    background-color: #00A3FF;
+}
