@@ -1,33 +1,53 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './style.css'
-function Header({ activeNavItem, handleNavItemClick, currentUser, isLoggedIn }) {
-    const restoreColor = () => {
-        // 원래 색상으로 복원하는 코드 작성
-        document.querySelector('.logo').style.color = '#00A3FF';
-    };
+import styles from './headerStyle.module.css';
+import {useState} from "react";
 
-    const preventColorChange = (event) => {
-        // 색상 변화를 막는 코드 작성
-        event.preventDefault();
-    };
+
+function Header({  currentUser, isLoggedIn }) {
+
+        const [activeItem, setActiveItem] = useState(null);
+
+        const handleClick = (itemId) => {
+            setActiveItem(itemId);
+        };
+
     return (
-        <div className="All">
-            <Navbar>
-                <Container>
-                    <Navbar.Brand href="#home" className="logo" onMouseOver={restoreColor} onClick={preventColorChange}>DevSource</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home" className="nav-link" >Home</Nav.Link>
-                        <Nav.Link href="#DevTool" className="nav-link">DevTool</Nav.Link>
-                        <Nav.Link href="#DevTree" className="nav-link" >DevTree</Nav.Link>
-                    </Nav>
-                    <Navbar.Text className="navbar-user-info">{currentUser} 님</Navbar.Text>
-                    <Navbar.Brand className="navbar-user-info">{isLoggedIn ? '로그인 중' : '로그아웃'}</Navbar.Brand>
-                </Container>
-            </Navbar>
+        <div className={styles.All}>
+                <div className={styles.container}>
+                    <div className={styles.logo} >DevSource</div>
+                        <div className={styles.bar}>
+                            <div className={styles.navLink}>
+                                <li
+                                    id="home"
+                                    className={activeItem === 'home' ? styles.active : ''}
+                                    onClick={() => handleClick('home')}
+                                >
+                                    Home
+                                </li>
+                                <li
+                                    id="devTool"
+                                    className={activeItem === 'devTool' ? styles.active : ''}
+                                    onClick={() => handleClick('devTool')}
+                                >
+                                    DevTool
+                                </li>
+                                <li
+                                    id="devTree"
+                                    className={activeItem === 'devTree' ? styles.active : ''}
+                                    onClick={() => handleClick('devTree')}
+                                >
+                                    DevTree
+                                </li>
+                            </div>
+
+                            <div className={styles.info}>
+                                <div>{currentUser}ㅇㅇㅇ님</div>
+                                <div >{isLoggedIn ? '로그인 중' : '로그아웃'}</div>
+                            </div>
+                        </div>
+                </div>
         </div>
+
     );
 }
 

@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+.changeCommitBox{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    width: 50%;
+    margin: 3% auto 0;
+}
+.selectBox{
+    width: 25%;
+}
+.selectTitleBox{
+    background-color: #EDEDED;
+    padding: 10px;
+    border: 1px solid #6B6B6B;
+    margin: 0;
+}
+.selectData{
+    margin: 0;
+    border: 1px solid #6B6B6B;
+    max-height: 120px;
+
+    overflow: auto;
+}
+.changeTableBox{
+    width: 75%;
+    border: 1px solid #6B6B6B;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.changeColumnName{
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    margin: 0 auto 0;
+    border: 1px solid #777777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.dataBox{
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+.td {
+    margin: 0;
+    padding: 0;
+}
+.columnNames{
+    width: 200px;
+}
+.redBox{
+    background-color: #FFE4E4;
+}
+.greenBox{
+    background-color: #E0FFD2;
+}
+
+

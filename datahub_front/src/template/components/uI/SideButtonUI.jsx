@@ -9,7 +9,7 @@ export default function SideButtonUI({ category, onClick }) {
     return (
         <div className={styles.buttonContainer}>
             <button style={{ display: "flex", justifyContent: "space-between" }} onClick={handleClick}>
-                {category} <span>▼</span> {/* 이 부분을 적절한 아이콘으로 바꿔주세요 */}
+                {category} <span>▼</span>
             </button>
         </div>
     );

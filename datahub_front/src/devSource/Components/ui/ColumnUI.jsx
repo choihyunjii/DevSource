@@ -47,6 +47,10 @@ export default function ColumnUI({ columns , reloadData , updateData , setUpdate
     const handleDeleteData = () => {
         if (selectedRowIndex !== -1) {
             setDeleteRowIndex([...deleteRowIndex, selectedRowIndex]);
+        }else {
+            if (clickCount !== -1){
+                setClickCount(clickCount - 1)
+            }
         }
     };
     const handleRollBackData = () => {
@@ -65,7 +69,7 @@ export default function ColumnUI({ columns , reloadData , updateData , setUpdate
     };
 
     const handleReload = () => {
-        reloadData()
+        window.location.reload()
     };
     const handlePushData = () =>{
         setClickCount(clickCount +1)

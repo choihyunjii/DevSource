@@ -39,6 +39,7 @@ class HistoryService (
 
     fun retrieveChangeColumnAndData(tableId: Long): MutableMap<String, List<ChangeData>> {
         val columns = getChangeColumnsByTableId(tableId)
+
         val tableMap: MutableMap<String, List<ChangeData>> = mutableMapOf()
 
         columns?.forEach { column ->
