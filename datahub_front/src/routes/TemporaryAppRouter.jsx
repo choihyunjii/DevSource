@@ -35,7 +35,6 @@ export default function TemporaryAppRouter() {
                     <Route path='/project/:projectId' element={<ProjectViewPage />} />
                     <Route path='/table' element={<TablePage />} />
                     <Route path='/project/teamProfile' element={<MemberBoxLayout />} />
-
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />
                 </Routes>

@@ -11,9 +11,9 @@ function App() {
   return (
       <div>
 
-         {/* <TemporaryAppRouter/>*/}
+          <TemporaryAppRouter/>
         {/*  <MemberBoxLayout/>*/}
-          <Header/>
+        {/*  <Header/>*/}
       {/*    <SideBarComponent/>*/}
 
 
