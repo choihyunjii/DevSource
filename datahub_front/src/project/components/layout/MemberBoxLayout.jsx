@@ -25,7 +25,6 @@ export default function MemberBoxLayout() {
         setTeamProfile([...newMembers]);
     }
 
-
     return (
         <div>
             <div className={styles.memberBox}>

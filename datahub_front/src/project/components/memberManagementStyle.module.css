@@ -14,22 +14,21 @@
     width: 75%;
     margin: 0 auto;/* // 모든 디스플레이 정가운데*/
 }
+
 .titleBox{
 
 }
-.memberTitle{
 
+.memberTitle{
     width: 50%;
     margin: 5% auto 0;
-
 }
+
 .title{
     text-align: center;
-
-
 }
-.memberSmallBox{
 
+.memberSmallBox{
     height: 300px;
     width: 40%;
 }
@@ -42,7 +41,6 @@
 }
 
 .buttonBox{
-
     width: 90%;
     height: 10%;
     margin: 3% auto;

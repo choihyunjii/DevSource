@@ -4,19 +4,19 @@ import TemporaryAppRouter from "./routes/TemporaryAppRouter";
 import Header from "./Layout/Header/Header";
 import SideBarComponent from "./Layout/SideBar/SideBarComponent";
 import MemberBoxLayout from "./project/components/layout/MemberBoxLayout";
+import TableBoxLayout from "./project/components/layout/TableBoxLayout";
 // import TablePage from "./devSource/Components/page/TablePage";
 
 
 function App() {
   return (
       <div>
-
-          <TemporaryAppRouter/>
+            <Header/>
+          {/*<TemporaryAppRouter/>*/}
+          <TableBoxLayout/>
         {/*  <MemberBoxLayout/>*/}
         {/*  <Header/>*/}
       {/*    <SideBarComponent/>*/}
-
-
       </div>
 
   );

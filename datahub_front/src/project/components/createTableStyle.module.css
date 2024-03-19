@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+.tableBox{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    border: 1px solid red;
+    margin-left: 350px;
+    margin-top: 55px;
+    width: 65%;
+    height: 574px;
+}
+
+.tableTitle{
+    border:1px solid #00ff9d;
+}
+
+.title{
+    border : 1px solid salmon;
+    font-size: 34px;
+    width: 500px;
+    margin-left: 60px;
+    padding: 5px;
+}
+
+.titleBox{
+    border:1px solid blue;
+    height: 12%;
+}
+
+.namesContainer{
+    border:1px solid #000000;
+    height: 12%;
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nameTable{
+    border: 1px solid black;
+    height: 100%;
+    width: 40%;
+}
+
+.tableName{
+    border: 1px solid gray;
+    height: 43%;
+    font-size: 22px;
+    width: 30%;
+    margin-left: 10px;
+}
