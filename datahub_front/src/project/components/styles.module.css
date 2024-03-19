@@ -7,10 +7,6 @@
     src: url("../../default/font/GmarketSansTTFBold.ttf");
 }
 
-html{font-size: 20px;}
-body{font-size: 1rem;}
-
-
 .middleBox{
     width: 60%;
     margin: 0 auto;
@@ -35,15 +31,15 @@ body{font-size: 1rem;}
 .customFormGroup{
     margin-top: 3%;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     width: 100%;
 }
 .inputForm{
     border: 1px solid rgba(119, 119, 119, 0.44);
-    font-size: 0.75rem;
+    font-size: 12px;
 }
 .memberGroupBox{
-    height: 15rem;
+    height: 300px;
     border: 1px solid rgba(119, 119, 119, 0.44);
     border-radius: 10px;
     overflow-y: auto; /* 세로 스크롤바 */
@@ -55,28 +51,26 @@ body{font-size: 1rem;}
     background-color: #00A3FF;
     border: none;
     color: white;
-    padding: 0.5rem 1.5rem;
+    padding: 10px 30px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1rem;
+    font-size: 16px;
     cursor: pointer;
     border-radius: 8px;
     float: right;
 }
-
-
 .addButton {
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     margin-top: 3%;
     background-color: #00A3FF;
     border: none;
     color: white;
-    padding: 0.25rem 1rem;
+    padding: 5px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 12px;
     cursor: pointer;
     border-radius: 8px;
     float: right;
@@ -87,31 +81,31 @@ body{font-size: 1rem;}
 .member {
     display: flex;
     align-items: center;
-    margin: 1.5rem 2rem;
+    margin: 30px 40px;
 }
 
 .customButton {
     background-color: #FF7777; /* 배경색 */
     border: none; /* 테두리 없음 */
     color: white; /* 텍스트 색상 */
-    padding: 0.2rem 0.75rem; /* 안쪽 여백 */
+    padding: 4px 15px; /* 안쪽 여백 */
     font-weight: bold; /* 폰트 굵기 */
     outline: none; /* 포커스 효과 제거 */
     cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 
 }
 .member img {
-    margin-left: 1rem; /* 이미지 오른쪽에 10px의 마진 적용 */
+    margin-left: 20px; /* 이미지 오른쪽에 10px의 마진 적용 */
 }
 .member div{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
 }
 .searchComponent {
-    width: 15rem;
+    width: 300px;
     border-radius: 10px;
     border: 1px solid #D0D0D0;
-    padding: 1rem;
+    padding: 20px;
     position: absolute; /* 상대적 위치 설정 */
     z-index: 1;
     left: 70%;
@@ -128,12 +122,12 @@ body{font-size: 1rem;}
 
 }
 .searchMembers{
-    max-height: 15rem;
-    height: 10rem;
+    max-height: 300px;
+    height: 200px;
     overflow-y: auto; /* 세로 스크롤바 */
 }
 .linkUI{
-    padding: 0.5rem;
+    padding: 10px;
     float: right;
 }
 .link{
@@ -142,59 +136,53 @@ body{font-size: 1rem;}
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
 }
 .cardBox{
-    margin: 0.75rem 0.5rem;
+    margin: 15px 10px;
     border: 2px solid #505050;
     width: 93%;
-    padding: 0.15rem 0;
+    padding: 3px 0;
 }
-.cardLogo {
+.cardLogo{
     display: flex;
     justify-content: space-between;
-    margin: 0.5rem; /* 10px / 20 = 0.5rem */
+    margin: 10px;
 }
 
-.cardTitle {
+.cardTitle{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    margin: 1.5rem 2.5rem 0 1.5rem; /* 30px / 20 = 1.5rem, 50px / 20 = 2.5rem */
+    margin: 30px 50px 0 30px;
 }
-
-.cardComment {
+.cardComment{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    margin: 0.5rem 2.5rem 0.5rem 1.5rem; /* 10px / 20 = 0.5rem */
+    margin: 10px 50px 10px 30px;
 }
-
 .cardIcon {
-    margin: 1rem; /* 20px / 20 = 1rem */
+    margin: 20px;
 }
-
-.cardLink {
+.cardLink{
     color: #000000;
     text-decoration: none; /* 밑줄 제거 */
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     position: relative;
     float: right; /* 오른쪽으로 이동 */
-    margin: 0 1.5rem; /* 30px / 20 = 1.5rem */
+    margin: 0 30px;
 }
-
-.cardLayOutBox {
+.cardLayOutBox{
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 두 개의 칼럼으로 설정 */
     width: 100%;
-    gap: 0.5rem; /* 그리드 아이템 사이의 간격 */
+    gap: 10px; /* 그리드 아이템 사이의 간격 */
 }
-
-.projectSideBar {
-    width: 0.75rem; /* 15px / 20 = 0.75rem */
-    float: left;
+.projectSideBar{
+    width : 15%;
+    float : left;
     text-align: left;
-    padding: 1rem 0; /* 20px / 20 = 1rem */
-    border-right: 0.1rem solid #777777; /* 2px / 20 = 0.1rem */
+    padding: 20px 0;
+    border-right: #777777 2px solid;
 }
-
-.projectShowCasePage {
+.projectShowCasePage{
     display: flex;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    padding: 0.25rem 0.05rem 0.25rem 0.05rem; /* 5% / 20 = 0.25rem, 1% / 20 = 0.05rem */
+    padding: 5% 1% 5% 1%;
 }
 
 .modal-overlay {
@@ -212,150 +200,146 @@ body{font-size: 1rem;}
 .modal {
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     background-color: white;
-    border-radius: 0.4rem; /* 8px / 20 = 0.4rem */
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3); /* 10px / 20 = 0.5rem */
-    padding: 1rem; /* 20px / 20 = 1rem */
-    max-width: 2.5rem; /* 50px / 20 = 2.5rem */
-    max-height: 4rem; /* 80px / 20 = 4rem */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+    padding: 20px;
+    max-width: 50%;
+    max-height: 80%;
     overflow: auto;
     position: fixed; /* fixed로 변경 */
     top: 50%; /* 화면 세로 중앙에 위치 */
     left: 50%; /* 화면 가로 중앙에 위치 */
     transform: translate(-50%, -50%); /* 가운데 정렬을 위한 transform 속성 */
 }
-
-.modalConfirmBtn, .modalCloseBtn {
+.modalConfirmBtn {
     background-color: #00A3FF; /* 배경색 */
     border: none; /* 테두리 없음 */
     color: white; /* 텍스트 색상 */
-    padding: 0.2rem 0.75rem; /* 4px / 20 = 0.2rem, 15px / 20 = 0.75rem */
+    padding: 4px 15px; /* 안쪽 여백 */
     font-weight: bold; /* 폰트 굵기 */
     outline: none; /* 포커스 효과 제거 */
     cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
-    margin-bottom: 1rem; /* 20px / 20 = 1rem */
-    border-radius: 0.25rem; /* 5px / 20 = 0.25rem */
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
-
-.modalBtnBox {
+.modalCloseBtn{
+    background-color: #ff0000; /* 배경색 */
+    border: none; /* 테두리 없음 */
+    color: white; /* 텍스트 색상 */
+    padding: 4px 15px; /* 안쪽 여백 */
+    font-weight: bold; /* 폰트 굵기 */
+    outline: none; /* 포커스 효과 제거 */
+    cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.modalBtnBox{
     float: right;
 }
-
-.commentBox {
-    padding: 0.75rem; /* 15px / 20 = 0.75rem */
+.commentBox{
+    padding: 15px;
 }
 
-.dataBaseSideBar {
+.dataBaseSideBar{
     position: absolute;
-    width: 0.7rem; /* 14px / 20 = 0.7rem */
+    width: 14%;
     height: auto;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    overflow-y: scroll;
-    border-top: 0.05rem solid #C1C1C1; /* 1px / 20 = 0.05rem */
-}
+    overflow-y : scroll;
+    border-top: 1px solid #C1C1C1;
 
-/* 나머지 부분도 모두 해 드렸습니다. */
-.titleBarSide {
-    color: #00A3FF;
-    display: flex;
+}
+.titleBarSide{
+    color: #00A3FF ;
+    display : flex;
     justify-content: space-between;
-    padding: 0.4rem 0.2rem; /* 8px / 20 = 0.4rem, 4px / 20 = 0.2rem */
+    padding: 8px 4px;
 }
-
-.dataBaseMenu {
+.dataBaseMenu{
     background-color: #4EBFFF;
-    border-top: 0.6rem solid #4EBFFF; /* 12px / 20 = 0.6rem */
+    border-top: 12px solid #4EBFFF; /*위부분 짤림으로 인한 보더설정*/
 }
-
-.dataBaseMenuHeader {
-    padding: 0.1rem 0.6rem; /* 2px / 20 = 0.1rem, 12px / 20 = 0.6rem */
-    color: #FFFFFF;
-    height: 1.65rem; /* 33px / 20 = 1.65rem */
+.dataBaseMenuHeader{
+    padding: 2px 12px;
+    color: #FFFFFF ;
+    height: 33px;
     font-weight: bold;
 }
-
-.dataBaseMenuList {
+.dataBaseMenuList{
     background-color: #249ADD;
-    padding-left: 1.5rem; /* 30px / 20 = 1.5rem */
+    padding-left: 30px;
 }
-
-.dataBaseMenuList li {
-    height: 1.5rem; /* 30px / 20 = 1.5rem */
-    padding: 0.25rem; /* 5px / 20 = 0.25rem */
+.dataBaseMenuList li{
+    height: 30px;
+    padding: 5px;
     color: #FFFFFF;
 }
-
-.dataBaseMenuBox {
-    width: 4.15rem; /* 83% / 20 = 4.15rem */
-    margin: 0.1rem 0.25rem 0 auto; /* 2% / 20 = 0.1rem, 5% / 20 = 0.25rem */
+.dataBaseMenuBox{
+    width: 83%;
+    margin: 2% 5% 0 auto;
 }
-
-.dataBaseTitleImage {
-    width: 2rem; /* 40px / 20 = 2rem */
-    padding-bottom: 0.25rem; /* 5px / 20 = 0.25rem */
+.dataBaseTitleImage{
+    width: 40px;
+    padding-bottom: 5px;
 }
-
-.dataBaseTitle {
+.dataBaseTitle{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    width: 1.5rem; /* 30% / 20 = 1.5rem */
+    width: 30%;
     text-align: center;
-    padding: 0.5rem; /* 10px / 20 = 0.5rem */
-    margin: 0.1rem auto 0; /* 2% / 20 = 0.1rem */
-}
+    padding: 10px;
+    margin: 2% auto 0;
 
+}
 .dataBaseContentBox {
-    margin-top: 0.25rem; /* 5px / 20 = 0.25rem */
+    margin-top: 5%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(1.615rem, 1fr)); /* 32.33% / 20 = 1.615rem */
-    grid-gap: 1rem; /* 20px / 20 = 1rem */
-    justify-content: center;
-    align-items: center;
-    overflow-y: scroll;
-    max-height: 22.5rem; /* 450px / 20 = 22.5rem */
+    grid-template-columns: repeat(auto-fill, minmax(32.33%, 1fr)); /* 자동으로 그리드 생성하고 각 요소의 너비를 조정 */
+    grid-gap: 20px; /* 그리드 간격 설정 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    overflow-y : scroll;
+    max-height: 450px;
+
 }
 
 .dataBaseContentBox > * {
-    justify-self: center;
+    justify-self: center; /* 수평 가운데 정렬 */
 }
 
-.dataBaseBox {
-    width: 16.5rem; /* 330px / 20 = 16.5rem */
-    border: 0.3rem solid #00A3FF; /* border 속성은 px 단위로 유지 */
+.dataBaseBox{
+    width: 330px;
+    border: 6px solid #00A3FF;
     background-color: white;
-    border-radius: 0.6rem; /* border-radius 속성은 px 단위로 유지 */
-    text-align: center;
+    border-radius: 12px;
+    text-align: center; /* 이미지를 가운데 정렬 */
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
 }
-
-.dataBaseBoxTitle {
-    width: 5rem; /* 100px / 20 = 5rem */
+.dataBaseBoxTitle{
+    width: 100%;
     margin: 0 auto;
     text-align: center;
-    padding: 0.5rem; /* 10px / 20 = 0.5rem */
+    padding: 10px;
 }
-
 .dataBaseBoxImage {
-    padding: 0.5rem; /* 10px / 20 = 0.5rem */
-    width: 2.75rem; /* 55px / 20 = 2.75rem */
+    padding: 10px;
+    width: 55%;
 }
-
-.dataBaseBoxTime {
-    padding: 0.25rem; /* 5px / 20 = 0.25rem */
+.dataBaseBoxTime{
+    padding: 5px;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     text-align: right;
 }
-
-.dataBaseLogo {
+.dataBaseLogo{
     text-align: right;
 }
-
 .blueButton {
     background-color: #00A3FF;
     color: #ffffff;
-    padding: 0.5rem 1rem; /* 10px / 20 = 0.5rem, 20px / 20 = 1rem */
-    width: 8.5rem; /* 170px / 20 = 8.5rem */
-    height: 2.75rem; /* 55px / 20 = 2.75rem */
+    padding: 10px 20px;
+    width: 170px;
+    height: 55px;
     border: none;
-    border-radius: 0.5rem; /* 10px / 20 = 0.5rem */
+    border-radius: 10px;
     cursor: pointer;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
 }
@@ -363,187 +347,257 @@ body{font-size: 1rem;}
 .blueButton:hover {
     background-color: #0056b3;
 }
-
-.dataBaseBoxButton {
-    margin: 1rem; /* 20px / 20 = 1rem */
-    padding: 1rem; /* 20px / 20 = 1rem */
+.dataBaseBoxButton{
+    margin: 20px;
+    padding: 20px;
     float: right;
 }
-
-.ProjectViewCard {
-    width: 21.5rem; /* 430px / 20 = 21.5rem */
-    height: 25rem; /* 500px / 20 = 25rem */
-    margin: 4.5rem 1.5rem 0.5rem 1.5rem; /* 90px / 20 = 4.5rem, 30px / 20 = 1.5rem, 10px / 20 = 0.5rem */
-    border: 0.05rem solid lightgray; /* 1px / 20 = 0.05rem */
-    box-shadow: 0 0.15rem 0.15rem lightgray; /* 3px / 20 = 0.15rem */
+/*프로젝트 조회 UI*/
+.ProjectViewCard{
+    width: 430px;
+    height: 500px;
+    margin: 90px 30px 10px  30px;
+    border: 1px solid lightgray;
+    box-shadow: 0 3px 3px lightgray;
     display: flex;
     flex-direction: column;
-    position: relative;
+    position:relative;
 }
-
-.ViewCardTitle {
+/*프로젝트 조회 카드 타이틀*/
+.ViewCardTitle{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    font-size: 1rem; /* 20px / 20 = 1rem */
+    font-size: 20px;
     background-color: #00A3FF;
-    width: 21.5rem; /* 430px / 20 = 21.5rem */
-    height: 4.5rem; /* 90px / 20 = 4.5rem */
+    width: 430px;
+    height: 90px;
     color: #FFF;
-    padding: 0.75rem 0.5rem 0.75rem 1rem; /* 15px / 20 = 0.75rem, 10px / 20 = 0.5rem, 20px / 20 = 1rem */
+    padding: 15px 10px 15px 20px;
     display: inline-block;
 }
-
-.ViewCardIcon {
+/*프로젝트 조회 카드 아이콘*/
+.ViewCardIcon{
     background-color: #FFFFFF;
+    margin: auto ;
+    width: 110px;
+    height: 110px;
+    border-radius: 400px;
+    border: 1px solid #00A3FF;
+    display: flex;
+
+}
+/*프로젝트 조회 카드 하단 버튼*/
+.ViewCardBtn{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    width: 90%; height: 50px;
+    background-color: #FFFFFF;
+    border: #00A3FF solid 2px;
+    border-radius: 12px 12px 12px 12px;
+    font-size: 18px;
+    position:absolute;
+    bottom:15px; margin-left: 22px;
+}
+/*프로젝트 조회 첫번째 카드 요소들*/
+.InformationInput{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    padding-left: 15px;
+    width: 400px;
+    height: 270px;
+    margin: 244px 0 0 45px;
+}
+.InputMaker{
+    margin: 5px 5px 5px 15px;
+    padding: 5px 55px 5px 10px;
+    border-radius: 7px 7px 7px 7px;
+    border: #a2a2a2 1px solid;
+    font-size: 15px;
+}
+.InputEx{
+    margin: 5px 5px 5px -25px;
+    padding: 5px 55px 40px 10px;
+    border-radius: 7px 7px 7px 7px;
+    border: #a2a2a2 0.5px solid;
+    font-size: 15px;
+}
+.InformationCardMaker{
+    font-size: 20px;
+}
+.InformationCardEx{
+    letter-spacing: 40px;
+    font-size: 20px;
+}
+.InformationCardDate{
+    font-size: 20px;
+}
+.InformationAction{
+    margin: 20px 0px 0px 4px;
+    display: flex;
+
+}
+.ActionNewPull{
+    border: #353535 1px solid;
+    border-radius: 6px;
+    background-color: #E9E9E9;
+    display: flex;
+    width: 120px; height: 80px;
+    text-align: center;
+}
+.ActionTxt{
     margin: auto;
-    width: 5.5rem; /* 110px / 20 = 5.5rem */
-    height: 5.5rem; /* 110px / 20 = 5.5rem */
-    border-radius: 2rem; /* 40px / 20 = 2rem */
-    border: 0.05rem solid #00A3FF; /* 1px / 20 = 0.05rem */
+}
+.ActionNewPush{
+    border: #353535 1px solid;
+    border-radius: 6px;
+    background-color: #E9E9E9;
+    display: flex;
+    width: 120px; height: 80px;
+    text-align: center;
+}
+.ActionCrash{
+    border: #353535 1px solid;
+    border-radius: 6px;
+    background-color: #E9E9E9;
+    display: flex;
+    width: 120px; height: 80px;
+    text-align: center;
+}
+.CrashIcon{
+    width: 30px; height: 30px;
+}
+.InformationIcon{
+    width: 80px; height: 70px;
+    margin: auto;
+    padding-left: 10px;
+}
+/*프로젝트 조회 두번째 카드 요소들*/
+.CollaborativeUsers{
+    width: 400px;
+    height: 270px;
+    margin: 244px 0 0 45px;
+
+}
+.CollaborativeUser{
+    width: 400px;
+    height: 65px;
     display: flex;
 }
-
-.ViewCardBtn {
+.CollaborativeUserProfile{
+    width: 70px;
+    height: 70px;
+    margin: 5px 0 0 20px;
+    display: flex;
+}
+.CollaborativeUserName{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    width: 90%;
-    height: 2.5rem; /* 50px / 20 = 2.5rem */
-    background-color: #FFFFFF;
-    border: 0.1rem solid #00A3FF; /* 2px / 20 = 0.1rem */
-    border-radius: 0.6rem; /* 12px / 20 = 0.6rem */
-    font-size: 0.9rem; /* 18px / 20 = 0.9rem */
+    font-size: 18px;
+    margin: 23px 0 0 5px;
+}
+.CollaborativeUserTotal{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    margin: 0 0 20px 20px;
+    font-size: 18px;
     position: absolute;
-    bottom: 0.75rem; /* 15px / 20 = 0.75rem */
-    margin-left: 1.1rem; /* 22px / 20 = 1.1rem */
+    bottom: -20px;
 }
-
-.InformationInput {
+.CollaborativeIcon{
+    width: 75px; height: 75px;
+    margin: auto;
+    padding-bottom: 5px;
+}
+/*프로젝트 조회 세번째 카드 요소들*/
+.Tables{
+    width: 400px;
+    height: 270px;
+    margin: 242px 0px 0px 45px;
+}
+.Table{
+    width: 400px;
+    height: 65px;
+    display: flex;
+}
+.TableIcon{
+    width: 40px;
+    height: 40px;
+    margin: 5px 0 0 30px;
+    display: flex;
+}
+.TableName{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    padding-left: 0.75rem; /* 15px / 20 = 0.75rem */
-    width: 20rem; /* 400px / 20 = 20rem */
-    height: 13.5rem; /* 270px / 20 = 13.5rem */
-    margin: 12.2rem 0 0 2.25rem; /* 244px / 20 = 12.2rem, 0px / 20 = 0, 0px / 20 = 0, 45px / 20 = 2.25rem */
+    font-size: 18px;
+    margin: 13px 0 0 15px;
 }
-
-.InputMaker {
-    margin: 0.25rem 0.25rem 0.25rem 0.75rem; /* 5px / 20 = 0.25rem, 5px / 20 = 0.25rem, 5px / 20 = 0.25rem, 15px / 20 = 0.75rem */
-    padding: 0.25rem 2.75rem 0.25rem 0.5rem; /* 5px / 20 = 0.25rem, 55px / 20 = 2.75rem, 5px / 20 = 0.25rem, 10px / 20 = 0.5rem */
-    border-radius: 0.35rem; /* 7px / 20 = 0.35rem */
-    border: 0.05rem solid #a2a2a2; /* 1px / 20 = 0.05rem */
-    font-size: 0.75rem; /* 15px / 20 = 0.75rem */
+.TablesTotal{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    margin: 0 0 20px 20px;
+    font-size: 18px;
+    position: absolute;
+    bottom: -20px;
 }
-
-.InputEx {
-    margin: 0.25rem 0.25rem 0.25rem -1.25rem; /* 5px / 20 = 0.25rem, 5px / 20 = 0.25rem, 5px / 20 = 0.25rem, -25px / 20 = -1.25rem */
-    padding: 0.25rem 2.75rem 2rem 0.5rem; /* 5px / 20 = 0.25rem, 55px / 20 = 2.75rem, 40px / 20 = 2rem, 10px / 20 = 0.5rem */
-    border-radius: 0.35rem; /* 7px / 20 = 0.35rem */
-    border: 0.025rem solid #a2a2a2; /* 0.5px / 20 = 0.025rem */
-    font-size: 0.75rem; /* 15px / 20 = 0.75rem */
-}
-
-.InformationCardMaker {
-    font-size: 1rem; /* 20px / 20 = 1rem */
-}
-
-.InformationCardEx {
-    letter-spacing: 2rem; /* 40px / 20 = 2rem */
-    font-size: 1rem; /* 20px / 20 = 1rem */
-}
-
-.InformationCardDate {
-    font-size: 1rem; /* 20px / 20 = 1rem */
-}
-
-.InformationAction {
-    margin: 1rem 0 0 0.2rem; /* 20px / 20 = 1rem, 0px / 20 = 0, 0px / 20 = 0, 4px / 20 = 0.2rem */
-    display: flex;
-}
-
-.ActionNewPull {
-    border: 0.05rem solid #353535; /* 1px / 20 = 0.05rem */
-    border-radius: 0.3rem; /* 6px / 20 = 0.3rem */
-    background-color: #E9E9E9;
-    display: flex;
-    width: 6rem; /* 120px / 20 = 6rem */
-    height: 4rem; /* 80px / 20 = 4rem */
-    text-align: center;
-}
-
-.ActionTxt {
+.TablesIcon{
+    width: 75px; height: 75px;
     margin: auto;
 }
-
-.ActionNewPush {
-    border: 0.05rem solid #353535; /* 1px / 20 = 0.05rem */
-    border-radius: 0.3rem; /* 6px / 20 = 0.3rem */
-    background-color: #E9E9E9;
+.ProjectViewCardPage{
+    width: 100%;
+    margin: 2% auto;
+}
+/*프로젝트 조회 페이지*/
+.projectShowCasePage{
     display: flex;
-    width: 6rem; /* 120px / 20 = 6rem */
-    height: 4rem; /* 80px / 20 = 4rem */
-    text-align: center;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    padding: 5% 1% 5% 1%;
 }
-
-.ActionCrash {
-    border: 0.05rem solid #353535; /* 1px / 20 = 0.05rem */
-    border-radius: 0.3rem; /* 6px / 20 = 0.3rem */
-    background-color: #E9E9E9;
+.ProjectViewCardPageHeader{
+    margin-left: 4%;
+    margin-bottom: 4%;
     display: flex;
-    width: 6rem; /* 120px / 20 = 6rem */
-    height: 4rem; /* 80px / 20 = 4rem */
-    text-align: center;
 }
-
-.CrashIcon {
-    width: 1.5rem; /* 30px / 20 = 1.5rem */
-    height: 1.5rem; /* 30px / 20 = 1.5rem */
+.WebSiteIcon{
+    padding-bottom: 10px;
+    width: 100px;
+    height: 100px;
 }
-
-.InformationIcon {
-    width: 4rem; /* 80px / 20 = 4rem */
-    height: 3.5rem; /* 70px / 20 = 3.5rem */
+.ProjectTitle{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.ProjectViewCards{
+    padding-top: 5%;
     margin: auto;
-    padding-left: 0.5rem; /* 10px / 20 = 0.5rem */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position:absolute;
+    top: 125px;
 }
-
-.titleGroup {
+.PageFooterBtn{
+    position: relative;
+    float: right;
+    margin: 520px 50px 20px 0;
+}
+.BottomStar{
+    width: 30px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.BottomTrash {
+    width: 30px;
+    cursor: pointer;
+}
+.titleGroup{;
     display: flex;
 }
-
-.dataBaseFormGroup {
-    margin-left: 0.05rem; /* 1px / 20 = 0.05rem */
+.dataBaseFormGroup{
+    margin-left: 1%;
 }
-
 .description {
-    font-size: 0.9rem; /* 0.9em 유지 */
+    font-size: 0.9em;
 }
 
-.tableTitleBox {
+.tableTitleBox{
     display: flex;
 }
-
-.subTitle {
-    padding: 0.75rem; /* 15px / 20 = 0.75rem */
+.subTitle{
+    padding: 15px;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     height: auto;
 }
-
-
-/*반응형*/
-@media screen and (max-width:1640px) {
-    html{font-size: 18px;}
-    body{font-size: 1rem;}
-}
-
-@media screen and (max-width:1540px) {
-    html{font-size: 16px;}
-    body{font-size: 1rem;}
-}
-
-@media screen and (max-width:1440px) {
-    html{font-size: 15px;}
-    body{font-size: 1rem;}
-}
-
-@media screen and (max-width:1340px) {
-    html{font-size: 14px;}
-    body{font-size: 1rem;}
-}
-
