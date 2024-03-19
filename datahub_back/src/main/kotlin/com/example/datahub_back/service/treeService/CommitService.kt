@@ -30,4 +30,9 @@ class CommitService {
         commitList.add(commit)
         return commit
     }
+
+    // 해당 브랜치의 모든 체크아웃 false
+    fun uncheckCommitsForBranch(branch: Branch) {
+        commitList.filter { it.branch == branch }.forEach { it.checkout = false }
+    }
 }

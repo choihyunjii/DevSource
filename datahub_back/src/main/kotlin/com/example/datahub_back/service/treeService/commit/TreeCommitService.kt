@@ -3,6 +3,7 @@ package com.example.datahub_back.service.treeService.commit
 import com.example.datahub_back.controller.treeController.commit.CommitRequest
 import com.example.datahub_back.dto.toolDTO.Profile
 import com.example.datahub_back.dto.toolDTO.Project
+import com.example.datahub_back.dto.treeDTO.Branch
 import com.example.datahub_back.dto.treeDTO.Commit
 import com.example.datahub_back.service.backDataService.ProjectService
 import com.example.datahub_back.service.profileService.ProfileService
@@ -24,21 +25,30 @@ class TreeCommitService(
         try {
             val project = projectService.getProjectById(commitData.projectId) ?: error("Project not found")
             val profile = profileService.getProfileById(commitData.profileId) ?: error("Profile not found")
+            val branch = branchService.getBranchByProject(project) ?: error("Branch not found")
 
+            commitService.uncheckCommitsForBranch(branch) // 체크아웃 초기화
             // 새로운 commit 객체 만들기
-            val newCommit = createNewCommit(commitData.comment, project, profile)
+            val newCommit = createNewCommit(commitData.comment, project, profile, branch)
             commitService.createCommit(newCommit) // 커밋 추가
             changeService.findChanges(newCommit) // 변경 사항 가져오고 저장
-            // 해당 브랜치의 push 업데이트
-            branchService.updatePushCountByBranchId(newCommit.branch.branchId)
+
+            // **************** 여기 메인 브랜치인지 서브 브랜치인지 확인해서 브랜치 액션 업데이트 로직 짜야 함
+            if (branch.isMainBranch == 1) {
+
+            } else {
+                // 해당 브랜치의 pullRequest 업데이트
+                branchService.updatePushCountByBranchId(newCommit.branch.branchId)
+            }
+
         } catch (e: Exception) {
             throw RuntimeException("Error occurred during commit processing: ${e.message}")
         }
         return "All commits processed successfully"
     }
 
-    private fun createNewCommit(comment: String, project: Project, profile: Profile): Commit {
-        val branch = branchService.getBranchByProject(project) ?: error("Branch not found")
+    private fun createNewCommit(comment: String, project: Project, profile: Profile, branch: Branch): Commit {
+
         val commitHashCode = "${project}${LocalDateTime.now()}".hashCode() // 해시코드 만들기
         return Commit(
             commitId = commitHashCode,
@@ -46,6 +56,7 @@ class TreeCommitService(
             comment = comment,
             createTime = LocalDateTime.now(),
             createUser = profile.username,
+            checkout = true,
         )
     }
 }

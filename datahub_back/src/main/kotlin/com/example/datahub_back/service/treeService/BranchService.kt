@@ -27,37 +27,37 @@ class BranchService {
     fun updatePushCountByBranchId(branchId: Long): Branch? {
         val branch = branchList.find { it.branchId == branchId }
         if (branch != null) {
-            branch.push++
+            branch.pullRequest++
             return branch
         }
         return null
     }
 
     // 브랜치 push 리셋
-    fun updatePushResetByBranchId(branchId: Long): Branch? {
+    fun pullRequestResetByBranchId(branchId: Long): Branch? {
         val branch = branchList.find { it.branchId == branchId }
         if (branch != null) {
-            branch.push = 0
+            branch.pullRequest = 0
             return branch
         }
         return null
     }
 
-    // 브랜치 pull 업데이트
-    fun updatePullByBranchId(branchId: Long, pullIncrement: Int): Branch? {
+    // 브랜치 updateBranch 업데이트
+    fun updateBranchByBranchId(branchId: Long, pullIncrement: Int): Branch? {
         val branch = branchList.find { it.branchId == branchId }
         if (branch != null) {
-            branch.pull += pullIncrement
+            branch.updateBranch += pullIncrement
             return branch
         }
         return null
     }
 
-    // 브랜치 pull 리셋
-    fun updatePullResetByBranchId(branchId: Long): Branch? {
+    // 브랜치 updateBranch 리셋
+    fun updateBranchResetByBranchId(branchId: Long): Branch? {
         val branch = branchList.find { it.branchId == branchId }
         if (branch != null) {
-            branch.pull = 0
+            branch.updateBranch = 0
             return branch
         }
         return null

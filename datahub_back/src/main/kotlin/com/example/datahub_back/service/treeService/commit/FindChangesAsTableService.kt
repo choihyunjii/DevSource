@@ -17,8 +17,16 @@ class FindChangesAsTableService (
         const val DELETED_CHANGE_TYPE = 0
     }
 
-    // 테이블 기준으로 변경 사항 뽑기
-    fun findChangesAsTable(
+    private val changeTables = mutableListOf<ChangeTable>() // 변경된 테이블 목록
+    private val changeColumns = mutableListOf<ChangeColumn>() // 변경된 열 목록
+    private val changeData = mutableListOf<ChangeData>() // 변경된 데이터 목록
+
+    private val oldTableList = mutableListOf<SourceTable>()
+    private val newTableList = mutableListOf<SourceTable>()
+    private val newColumnList = mutableListOf<SourceColumn>()
+    private val newDataList = mutableListOf<SourceData>()
+
+    fun findChanges (
         oldTables: List<SourceTable>, // 이전 테이블 목록
         newTables: List<SourceTable>, // 새로운 테이블 목록
         newColumns: List<SourceColumn>, // 새로운 열 목록
@@ -26,73 +34,181 @@ class FindChangesAsTableService (
         newCommit: Commit, // 새로운 커밋
         isAddOperation: Boolean // 추가 작업 여부
     ): Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>? {
-        val changeTables = mutableListOf<ChangeTable>() // 변경된 테이블 목록
-        val changeColumns = mutableListOf<ChangeColumn>() // 변경된 열 목록
-        val changeData = mutableListOf<ChangeData>() // 변경된 데이터 목록
 
-        val oldTablesNameSet = oldTables.map { it.tableName }.toSet() // 이전 테이블 이름 집합
-        val newTablesList = if (isAddOperation) newTables.filter { it.tableName !in oldTablesNameSet } // 추가 작업인 경우 새로운 테이블만 선택
-        else oldTables.filter { it.tableName !in newTables.map { it.tableName }.toSet() } // 삭제 작업인 경우 이전 테이블만 선택
+        // 리스트 초기화
+        oldTableList.clear()
+        newTableList.clear()
+        newColumnList.clear()
+        newDataList.clear()
+
+        // 새로운 데이터 추가
+        oldTableList.addAll(oldTables)
+        newTableList.addAll(newTables)
+        newColumnList.addAll(newColumns)
+        newDataList.addAll(newData)
+
+        findChangesAsTable(newCommit, isAddOperation)
+        if (isAddOperation) {
+            findChangesAsData(newCommit)
+        }
+        return Triple(changeTables, changeColumns, changeData)
+    }
+
+    fun clearChangeList() {
+        changeTables.clear()
+        changeColumns.clear()
+        changeData.clear()
+    }
+
+    // 테이블 기준으로 변경 사항 뽑기
+    private fun findChangesAsTable(
+        newCommit: Commit, // 새로운 커밋
+        isAddOperation: Boolean // 추가 작업 여부
+    ) {
+        val oldTablesNameSet = oldTableList.map { it.tableName }.toSet() // 이전 테이블 이름 집합
+        val newTablesNameSet = newTableList.map { it.tableName }.toSet()
+        val newTablesList = if (isAddOperation) newTableList.filter { it.tableName !in oldTablesNameSet } // 추가 작업인 경우 새로운 테이블만 선택
+        else oldTableList.filter { it.tableName !in newTablesNameSet } // 삭제 작업인 경우 이전 테이블만 선택
 
         newTablesList.forEach { table ->
-            changeTables.add(table.toChangeTable(newCommit)) // 변경된 테이블 추가
-            val newColumnsList = getColumnsByTable(newColumns, table) // 해당 테이블에 대한 새로운 열 목록 가져오기
+            changeTables.add(table.toChangeTable(newCommit)) // 추가된 테이블 추가
+            val newColumnsList = getColumnsByTable(newColumnList, table) // 해당 테이블에 대한 새로운 열 목록 가져오기
             newColumnsList.forEach { column ->
-                changeColumns.add(column.toChangeColumn(newCommit)) // 변경된 열 추가
-                val newDataList = getDataListByColumn(newData, column) // 해당 열에 대한 새로운 데이터 목록 가져오기
+                changeColumns.add(column.toChangeColumn(newCommit)) // 추가된 열 추가
+                val newDataList = getDataListByColumn(newDataList, column) // 해당 열에 대한 새로운 데이터 목록 가져오기
                 newDataList.forEach { data ->
                     val changeType = if (isAddOperation) ADDED_CHANGE_TYPE else DELETED_CHANGE_TYPE // 변경 유형 지정
-                    changeData.add(data.toChangeData(newCommit, changeType)) // 변경된 데이터 추가
+                    changeData.add(data.toChangeData(newCommit, changeType)) // 추가된 데이터 추가
                 }
             }
         }
-        return Triple(changeTables, changeColumns, changeData) // 변경된 테이블, 열, 데이터 목록을 Triple로 반환
     }
 
     // 데이터 기준으로 변경 사항 뽑기
-    fun findChangesAsData(
-        oldTableList: List<SourceTable>, // 이전 테이블 목록
-        newTableList: List<SourceTable>, // 새로운 테이블 목록
-        newColumnList: List<SourceColumn>, // 새로운 열 목록
-        newDataList: List<SourceData>, // 새로운 데이터 목록
+    private fun findChangesAsData(
         newCommit: Commit, // 새로운 커밋
-        isAddOperation: Boolean // 추가 작업 여부
-    ): Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>? {
-        val changeTables = mutableListOf<ChangeTable>() // 변경된 테이블 목록
-        val changeColumns = mutableListOf<ChangeColumn>() // 변경된 열 목록
-        val changeData = mutableListOf<ChangeData>() // 변경된 데이터 목록
+    ) {
+        // 테이블 이름이 같은 것을 찾아서 매핑
+        val commonTables = mutableListOf<Pair<SourceTable, SourceTable>>()
+        for (newTable in newTableList) {
+            val oldTable = oldTableList.find { it.tableName == newTable.tableName }
+            oldTable?.let { commonTables.add(Pair(newTable, oldTable)) }
+        }
 
-        oldTableList.forEach { oldTable ->
-            val oldColumns = sourceColumnService.getColumnsByTable(oldTable) // 이전 테이블의 열 목록 가져오기
-            val oldData = sourceDataService.getDataListByColumns(oldColumns) // 이전 테이블의 데이터 목록 가져오기
+        // 같은 이름을 가진 테이블 끼리 비교 시작
+        commonTables.forEach { (newTable, oldTable) ->
+            // 열 목록 가져오기
+            val newColumns = newColumnList.filter { it.table == newTable }
+            val oldColumns = sourceColumnService.getColumnsByTable(oldTable)
+            val sortedNewColumns = newColumns.sortedBy { it.columnId }
+            val sortedOldColumns = oldColumns.sortedBy { it.columnId }
 
-            val relevantNewTable = getTableByTableName(newTableList, oldTable.tableName) // 이전 테이블과 이름이 같은 테이블 가져오기
-            val relevantNewColumns = relevantNewTable?.let { getColumnsByTable(newColumnList, it) } // 이전 테이블에 해당하는 새로운 열 목록 가져오기
-            val relevantNewData = relevantNewColumns?.let { getDataListByColumns(newDataList, it) } // 이전 테이블에 해당하는 새로운 데이터 목록 가져오기
+            var addTableColumnAction = false
 
-            val oldDataValue = oldData.map { it.data } // 이전 데이터 값 목록
-            val newAddData = relevantNewData?.filterNot { new -> new.data in oldDataValue } // 이전 데이터와 중복되지 않는 새로운 데이터 목록 가져오기
-            newAddData?.forEach { new ->
-                val changeType = if (isAddOperation) ADDED_CHANGE_TYPE else DELETED_CHANGE_TYPE // 변경 유형 지정
-                val newDataToChangeData = new.toChangeData(newCommit, changeType) // 새로운 데이터를 변경된 데이터로 변환
-                if (!changeData.contains(newDataToChangeData)) { // 변경된 데이터 목록에 없는 경우에만 추가
-                    val lineNewDataList = findDataListByColumnAndLine(newDataList, relevantNewColumns, new.columnLine) // 해당 라인의 데이터 목록 가져오기
-                    lineNewDataList?.forEach { data ->
-                        changeData.add(data.toChangeData(newCommit, changeType)) // 변경된 데이터 추가
+            // 행이 추가 or 삭제 됐다면 모든 데이터 change 저장
+            if (sortedNewColumns.size != sortedOldColumns.size) {
+                addTableColumnAction = true
+                val allNewData = getDataListByColumns(newDataList, newColumns)
+                allNewData.forEach { new ->
+                    if (!changeData.contains(new.toChangeData(newCommit, 1))) { // 변경된 데이터 목록에 없는 경우에만 추가
+                        val lineNewDataList = findDataListByColumnAndLine(newDataList, newColumns, new.columnLine) // 해당 라인의 데이터 목록 가져오기
+                        print("행 추가, 삭제로 인한 데이터 추가 : ")
+                        lineNewDataList?.forEach { data ->
+                            changeData.add(data.toChangeData(newCommit, 1)) // 변경된 데이터 추가
+                            print("${data.data}, ")
+                        }
                     }
                 }
-                relevantNewColumns?.forEach { newColumn ->
+                val allOldData = sourceDataService.getDataListByColumns(oldColumns)
+                allOldData.forEach { old ->
+                    if (!changeData.contains(old.toChangeData(newCommit, 0))) {
+                        val lineNewDataList = sourceDataService.findDataListByColumnAndLine(newColumns, old.columnLine)
+                        lineNewDataList?.forEach { data ->
+                            changeData.add(data.toChangeData(newCommit, 0)) // 변경된 데이터 추가
+                        }
+                    }
+                }
+            } else { // 아니면 비교 시작
+                val columnMapping = mutableMapOf<SourceColumn?, SourceColumn?>()
+                val columnSize = sortedNewColumns.size
+                for (i in 0 until columnSize) {
+                    columnMapping[sortedNewColumns[i]] = sortedOldColumns[i]
+                }
+
+                // 같은 위치의 행끼리 비교 시작
+                columnMapping.forEach { (newColumn, oldColumn) ->
+                    if (newColumn != null && oldColumn != null) {
+                        val newData = newDataList.filter { it.column == newColumn }
+                        val oldData = sourceDataService.getDataListByColumn(oldColumn)
+                        val sortedNewData = newData.sortedBy { it.columnLine }
+                        val sortedOldData = oldData.sortedBy { it.columnLine }
+
+                        val dataMapping = mutableMapOf<SourceData?, SourceData?>()
+                        val minSize = minOf(sortedNewData.size, sortedOldData.size)
+                        for (i in 0 until minSize) {
+                            dataMapping[sortedNewData[i]] = sortedOldData[i]
+                        }
+                        // 더 긴 리스트의 나머지 요소들은 null로 매핑
+                        for (i in minSize until sortedNewData.size) {
+                            dataMapping[sortedNewData[i]] = null
+                        }
+                        for (i in minSize until sortedOldData.size) {
+                            dataMapping[null] = sortedOldData[i]
+                        }
+
+                        // 같은 위치의 데이터끼리 비교 시작
+                        dataMapping.forEach { (new, old) ->
+                            if (new == null && old != null) { // 삭제된 데이터라면
+                                println("삭제된 데이터 : ${old.data}")
+                                addTableColumnAction = true
+                                if (!changeData.contains(old.toChangeData(newCommit, 0))) { // 변경된 데이터 목록에 없는 경우에만 추가
+                                    val lineDataList = sourceDataService.findDataListByColumnAndLine(oldColumns, old.columnLine) // 해당 라인의 데이터 목록 가져오기
+                                    lineDataList?.forEach { data ->
+                                        changeData.add(data.toChangeData(newCommit, 0)) // 변경된 데이터 추가
+                                    }
+                                }
+                            } else if (old == null && new != null) { // 추가된 데이터라면
+                                println("추가된 데이터 : ${new.data}")
+                                addTableColumnAction = true
+                                if (!changeData.contains(new.toChangeData(newCommit, 1))) { // 변경된 데이터 목록에 없는 경우에만 추가
+                                    val lineDataList = findDataListByColumnAndLine(newDataList, newColumns, new.columnLine) // 해당 라인의 데이터 목록 가져오기
+                                    lineDataList?.forEach { data ->
+                                        changeData.add(data.toChangeData(newCommit, 1)) // 변경된 데이터 추가
+                                    }
+                                }
+
+                            } else if (new?.data != old?.data && new != null && old != null) { // 데이터 값이 같지 않다면 (수정)
+                                println("수정된 데이터 : ${old.data} -> ${new.data}")
+                                addTableColumnAction = true
+                                if (!changeData.contains(new.toChangeData(newCommit, 1))) { // 변경된 데이터 목록에 없는 경우에만 추가
+                                    val lineDataList = findDataListByColumnAndLine(newDataList, newColumns, new.columnLine) // 해당 라인의 데이터 목록 가져오기
+                                    lineDataList?.forEach { data ->
+                                        changeData.add(data.toChangeData(newCommit, 1)) // 변경된 데이터 추가
+                                    }
+                                }
+                                if (!changeData.contains(old.toChangeData(newCommit, 0))) { // 변경된 데이터 목록에 없는 경우에만 추가
+                                    val lineDataList = sourceDataService.findDataListByColumnAndLine(oldColumns, old.columnLine) // 해당 라인의 데이터 목록 가져오기
+                                    lineDataList?.forEach { data ->
+                                        changeData.add(data.toChangeData(newCommit, 0)) // 변경된 데이터 추가
+                                    }
+                                }
+                            } // else if
+                        } // forEach
+                    } // forEach
+                } // forEach
+            } // else
+            if (addTableColumnAction) {
+                if (!changeTables.contains(newTable.toChangeTable(newCommit))) { // 변경된 테이블 목록에 없는 경우에만 추가
+                    changeTables.add(newTable.toChangeTable(newCommit)) // 변경된 테이블 추가
+                }
+                newColumns.forEach { newColumn ->
                     if (!changeColumns.contains(newColumn.toChangeColumn(newCommit))) { // 변경된 열 목록에 없는 경우에만 추가
                         changeColumns.add(newColumn.toChangeColumn(newCommit)) // 변경된 열 추가
                     }
                 }
-                if (!changeTables.contains(relevantNewTable.toChangeTable(newCommit))) { // 변경된 테이블 목록에 없는 경우에만 추가
-                    changeTables.add(relevantNewTable.toChangeTable(newCommit)) // 변경된 테이블 추가
-                }
             }
-        }
-        return Triple(changeTables, changeColumns, changeData) // 변경된 테이블, 열, 데이터 목록을 Triple로 반환
-    }
+        } // forEach
+    } // fun
 
     private fun getTableByTableName(tableList: List<SourceTable>, tableName: String) =
         tableList.find { it.tableName == tableName }
@@ -100,15 +216,13 @@ class FindChangesAsTableService (
     private fun getColumnsByTable(columnList: List<SourceColumn>, table: SourceTable) =
         columnList.filter { it.table == table }
 
-    private fun getDataListByColumns(columnList: List<SourceData>, columns: List<SourceColumn>) =
-        columnList.filter { data ->
-            columns.any { column -> data.column == column }
-        }
+    private fun getDataListByColumns(dataList: List<SourceData>, columns: List<SourceColumn>) =
+        dataList.filter { data -> columns.any { column -> data.column == column } }
 
     private fun getDataListByColumn(dataList: List<SourceData>, column: SourceColumn) =
         dataList.filter { it.column == column }
 
-    fun findDataListByColumnAndLine(dataList: List<SourceData>, column: List<SourceColumn>, columnLine: Int): List<SourceData>? {
+    private fun findDataListByColumnAndLine(dataList: List<SourceData>, column: List<SourceColumn>, columnLine: Int): List<SourceData>? {
         return dataList.filter { it.column in column && it.columnLine == columnLine }
     }
 }
@@ -130,28 +244,3 @@ class FindChangesAsTableService (
 //    해당 column 객체를 가지고 있는 데이터를 모두 찾아 ChangeData에 데이터 저장
 //    10. 그리고 역 추적으로  ChangeTable, ChangeColumn에 데이터 저장하되,
 //    11. ChangeTable, ChangeColumn가 중복으로 저장 되어 있는지 확인 후 저장
-
-//fun addChangesAsTable(oldTablesNotDelete: List<SourceTable>,
-//                      newTablesNotDelete: List<SourceTable>,
-//                      newCommit: Commit
-//) {
-//    // 이름으로 비교해서 새로 생성된 테이블들 찾기
-//    val oldTablesNameSet = oldTablesNotDelete.map { it.tableName }.toSet()
-//    val newAddTables = newTablesNotDelete.filter {
-//        it.tableName !in oldTablesNameSet
-//    }
-//    println("새로 생성된 테이블 : $newAddTables")
-//
-//    // 새로 생성된 테이블 데이터들 Change형으로 바꿔서 생성
-//    newAddTables.forEach { table ->
-//        changeTableService.createTable(table.toChangeTable(newCommit))
-//        val newAddColumns = sourceColumnService.getColumnsByTable(table)
-//        newAddColumns.forEach { column ->
-//            changeColumnService.createColumn(column.toChangeColumn(newCommit))
-//            val newAddData = sourceDataService.getDataListByColumn(column)
-//            newAddData.forEach { data ->
-//                changeDataService.createData(data.toChangeData(newCommit, 1))
-//            } // forEach
-//        } // forEach
-//    } // forEach
-//} // fun

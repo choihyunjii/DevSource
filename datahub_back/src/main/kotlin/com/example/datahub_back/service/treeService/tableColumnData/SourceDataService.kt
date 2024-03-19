@@ -18,6 +18,10 @@ class SourceDataService {
         columns.any { column -> data.column == column }
     }
 
+    fun findDataListByColumnAndLine(columns: List<SourceColumn>, columnLine: Int): List<SourceData>? {
+        return dataList.filter { it.column in columns && it.columnLine == columnLine }
+    }
+
     fun getDataById(id: Long): SourceData? = dataList.find { it.dataId == id }
 
     fun createData(data: SourceData): SourceData {

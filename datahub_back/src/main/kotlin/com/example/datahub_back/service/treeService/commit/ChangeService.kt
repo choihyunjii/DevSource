@@ -29,32 +29,47 @@ class ChangeService (
             if (oldTables != null && newTables != null) {
                 // 삭제되지 않은 테이블
                 val oldTablesNotDelete = sourceTableService.getTablesByIsDelete(oldTables, 0)
-                val newTablesNotDelete = sourceTableService.getTablesByIsDelete(newTables, 0)
+                val newTablesNotDelete = newTables.filter { it.isDelete == 0 }
                 // 삭제된 테이블
                 val oldTablesDelete = sourceTableService.getTablesByIsDelete(oldTables, 1)
-                val newTablesDelete = sourceTableService.getTablesByIsDelete(newTables, 1)
-                // 테이블 기준 : 새로 생성된 테이블 찾아서 change 형으로 넣기
-                val resultADD1 = findChangesAsTableService.findChangesAsTable(
+                val newTablesDelete = newTables.filter { it.isDelete == 1 }
+
+                findChangesAsTableService.findChanges(
                     oldTablesNotDelete, newTablesNotDelete, newColumns, newData, newCommit, true)
-                val resultDelete1 = findChangesAsTableService.findChangesAsTable(
+                val result = findChangesAsTableService.findChanges(
                     oldTablesDelete, newTablesDelete, newColumns, newData, newCommit, false)
 
-                // 데이터 기준 : 새로 생성된 데이터 찾아서 change 형으로 넣기
-                val  resultADD2 = findChangesAsTableService.findChangesAsData(
-                    oldTablesNotDelete, newTablesNotDelete, newColumns, newData, newCommit, true)
+                if (result != null) {
+                    saveChangesData(result)
+
+                    val (changeTables, changeColumns, changeData) = result
+                    changeTables.forEach { data ->
+                        print("${data.tableName}, ")
+                    }
+                    println()
+                    changeColumns.forEach { data ->
+                        print("${data.columnName}, ")
+                    }
+                    println()
+                    changeData.forEach { data ->
+                        print("${data.data}, ")
+                    }
+                }
+                saveSourceData(toolAllData)
+                findChangesAsTableService.clearChangeList()
             }
         }
         return null
     }
 
-    fun saveChangesData(result: Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>) {
+    private fun saveChangesData(result: Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>) {
         val (changeTable, changeColumn, changeData) = result
         changeTable.forEach { changeTableService.createTable(it) }
         changeColumn.forEach { changeColumnService.createColumn(it) }
         changeData.forEach { changeDataService.createData(it) }
     }
 
-    fun saveSourceData(result: Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>>) {
+    private fun saveSourceData(result: Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>>) {
         val (sourceTables, sourceColumns, sourceData) = result
         sourceTables.forEach { sourceTableService.createTable(it) }
         sourceColumns.forEach { sourceColumnService.createColumn(it) }
@@ -68,24 +83,3 @@ class ChangeService (
 //    5. Tool -> tree 변환 후 데이터(테이블, 행, 값) 모두 뽑아옴
 //    6. source 형으로 데이터 모두 추가
 //    7. 새로 생성된 테이블 찾기에 각각의 테이블 리스트 전달
-
-//fun addChangesSave(newCommit: Commit) {
-//    val latestCommit = commitService.getSecondLatestCommitByBranch(newCommit.branch) // newCommit 이전 커밋
-//    val oldTables = latestCommit?.let { sourceTableService.getTablesByCommit(it) }
-//    // tool -> tree 형으로 바꾸기
-//    val toolAllData = dataTransformationService.executeChangeOperations(newCommit.branch.project, newCommit)
-//    toolAllData?.let { (newTables, newColumns, newData) ->
-//        // source 형으로 데이터 넣기
-//        addSourceTables(newTables)
-//        addSourceColumns(newColumns)
-//        addSourceDataItems(newData)
-//
-//        if (oldTables != null && newTables != null) {
-//            val oldTablesNotDelete = sourceTableService.getTablesByIsDelete(oldTables, 0)
-//            val newTablesNotDelete = sourceTableService.getTablesByIsDelete(newTables, 0)
-//            // 테이블 기준 : 새로 생성된 테이블 찾아서 change 형으로 넣기
-//            findChangesAsTableService.addChangesAsTable(oldTablesNotDelete, newTablesNotDelete, newCommit)
-//            // 데이터 기준 : 새로 생성된 데이터 찾아서 change 형으로 넣기
-//        }
-//    } ?: throw IllegalStateException("Failed to execute change operations")
-//}

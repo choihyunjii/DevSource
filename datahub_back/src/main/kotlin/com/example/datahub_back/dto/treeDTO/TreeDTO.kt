@@ -9,8 +9,8 @@ data class Branch(
     val branchId: Long, // PK
     val profile: Profile?, // FK
     val project: Project, // FK
-    var push: Int, // 기본 0
-    var pull: Int,
+    var pullRequest: Int, // 기본 0
+    var updateBranch: Int,
     var crash: Int,
     val isMainBranch: Int
 )
@@ -21,6 +21,7 @@ data class Commit(
     val comment: String,
     val createTime: LocalDateTime,
     val createUser: String,
+    var checkout: Boolean
 )
 
 data class SourceTable(
@@ -80,7 +81,7 @@ data class ChangeData(
     val column: ChangeColumn, // PK, FK
     val columnLine : Int,
     val data: String,
-    val action: Int // 1: 추가, 0: 삭제
+    val action: Int // 0: 삭제, 1: 추가
 )
 
 // 페이지 변경사항

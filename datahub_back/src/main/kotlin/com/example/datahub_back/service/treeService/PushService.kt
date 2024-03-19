@@ -19,7 +19,7 @@ class PushService(
             val userBranch = branchService.getBranchByUserAndProject(user, project)
 
             if (mainBranch != null && userBranch != null) {
-                val pushCount = userBranch.push
+                val pushCount = userBranch.pullRequest
                 val differentCommits = findDifferentCommits(mainBranch, userBranch)
                     .filter { it.branch == mainBranch }
 
@@ -40,9 +40,9 @@ class PushService(
     private fun updateBranchAction(userBranch: Branch, project: Project, pushCount: Int) {
         // 다른 브랜치 pull ++
         val filterBranchList = branchService.filterBranchList(userBranch, project)
-        filterBranchList.forEach { branchService.updatePullByBranchId(it.branchId, pushCount) }
+        filterBranchList.forEach { branchService.updateBranchByBranchId(it.branchId, pushCount) }
         // 해당 유저 push 리셋
-        branchService.updatePushResetByBranchId(userBranch.branchId)
+        branchService.pullRequestResetByBranchId(userBranch.branchId)
     }
 
     // 메인과 유저 브랜치의 Commit 차집합
