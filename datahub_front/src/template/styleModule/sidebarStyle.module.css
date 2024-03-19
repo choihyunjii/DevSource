@@ -21,3 +21,57 @@
 .buttonContainer span {
     transform: rotate(270deg);
 }
+.CardControlBox{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    width: 350px;
+    height: 300px;
+    position:fixed;
+    background-color: #FFFFFF;
+    top: 20%;
+    left: 70%;
+}
+.columnSelect{
+    font-family: "KoPubWorld Dotum Bold", serif;
+
+    display: flex;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+}
+.option{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    border-radius: 5px;
+    width: 80%;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.selectionTitle {
+     font-family: "KoPubWorld Dotum Bold", serif;
+     margin-top: 10px;
+     font-weight: bold; /* 글씨를 두껍게 만듭니다 */
+ }
+
+.button{
+    background-color: #00A3FF; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10% 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    float: right;
+}
+.closeBox{
+    font-family: "KoPubWorld Dotum Bold";
+    width: 15%;
+    margin-top: 3%;
+    float: right;
+}
