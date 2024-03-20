@@ -1,6 +1,8 @@
 import styles from '../createTableStyle.module.css';
 import TableTitleUI from "../uI/TableTitleUI";
 import TableNameUI from "../uI/TableNameUI";
+import InsertTableNameUI from "../uI/InsertTableNameUI";
+import InsertDBNameUI from "../uI/InsertDBNameUI";
 
 export default function TableBoxLayout() {
     return(
@@ -12,12 +14,11 @@ export default function TableBoxLayout() {
                 <div className={styles.namesContainer}>
                     <div className={styles.nameTable}>
                         <TableNameUI name="테이블명"/>
-
-
+                        <InsertTableNameUI/>
                     </div>
-
                     <div className={styles.nameTable}>
-
+                        <TableNameUI name="데이터베이스명"/>
+                        <InsertDBNameUI/>
                     </div>
 
 
