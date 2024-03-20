@@ -31,10 +31,10 @@
     background-color: #FFFFFF;
     top: 20%;
     left: 70%;
+    overflow-y: auto;
 }
 .columnSelect{
     font-family: "KoPubWorld Dotum Bold", serif;
-
     display: flex;
     text-align: center;
     width: 90%;
@@ -70,8 +70,25 @@
     float: right;
 }
 .closeBox{
-    font-family: "KoPubWorld Dotum Bold";
+    font-family: "KoPubWorld Dotum Bold", serif;
     width: 15%;
     margin-top: 3%;
     float: right;
+}
+.checkBox {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr)); /* 한 라인에 3개씩의 열을 가진 그리드를 생성 */
+    padding: 5px;
+    text-align: center;
+}
+
+.checkBox input[type="checkbox"] {
+    text-align: center;
+
+}
+.checkBoxTitle{
+    padding: 0;
+    margin: 0;
 }

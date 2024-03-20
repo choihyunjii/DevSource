@@ -1,9 +1,8 @@
 import styles from "../../styleModule/sidebarStyle.module.css";
 import ButtonUI from "../../../project/components/uI/ButtonUI";
-import data from "bootstrap/js/src/dom/data";
 import {useState} from "react";
 
-export default function DataContainerUI({selectionTitleList , columnData  , setSelectedValues}){
+export default function CardDataContainerUI({selectionTitleList , columnData  , setSelectedValues}){
     const [selectData , setSelectData] = useState({})
 
     const handleChange = async (title, value) => {
@@ -27,7 +26,6 @@ export default function DataContainerUI({selectionTitleList , columnData  , setS
     const buttonClickAction = () =>{
         setSelectedValues(selectData)
     }
-
 
     return(
         <div>

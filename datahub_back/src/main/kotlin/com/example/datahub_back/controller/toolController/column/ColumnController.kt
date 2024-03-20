@@ -22,11 +22,6 @@ class ColumnController(
     fun getColumnById(@PathVariable columnName: String, @PathVariable tableID: Long) =
             columnService.getDataByColumnNameAndTableID(tableID,columnName)
 
-    @GetMapping("/list/{tableID}")
-    fun getColumnsAndData(@PathVariable tableID: Long) =
-        columnService.getColumnsAndData(tableID)
-
-
     @PostMapping
     fun createColumn(@RequestBody column: Column): ResponseEntity<Column> {
         val createdColumn = columnService.createColumn(column)

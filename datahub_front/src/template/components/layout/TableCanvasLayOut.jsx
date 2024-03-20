@@ -4,8 +4,8 @@ import {tableExampleDataInner} from "../data/tableExampleDataInner";
 import {useEffect, useState} from "react";
 import styles from '../../styleModule/canvas.module.css';
 export default function TableCanvasLayOut(){
-
     const [selection, setSelection] = useState([]);
+
     useEffect(() => {
         console.log(selection);
     }, [selection]);
