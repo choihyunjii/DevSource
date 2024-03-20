@@ -64,8 +64,13 @@ export default function SideBarLayOut() {
                 <ListMenuCanvas
                     columnData={columnData}
                 />}
+
             {selectedComponent === 'Table' && <TableCanvasLayOut/> }
-            {selectedComponent === 'Tree' && <TreeCanvasLayOut/>}
+
+            {selectedComponent === 'Tree' && <TreeCanvasLayOut
+                columnData = {columnData}
+            />}
+
         </div>
     );
 }

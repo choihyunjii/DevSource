@@ -1,6 +1,6 @@
 import CardDesign from "../uI/CardDesignUI";
 import styles from '../../styleModule/canvas.module.css';
-import DataContainerUI from "../uI/DataContainerUI";
+import DataContainerUI from "../uI/CardDataContainerUI";
 import {useState} from "react";
 export default function CardCanvasLayOut({ cardObjectData ,columnData }){
     const [data , setData] = useState({
@@ -19,8 +19,6 @@ export default function CardCanvasLayOut({ cardObjectData ,columnData }){
                     description={data.description[index].data}
                 />
             ))}
-
-
 
             <DataContainerUI
                 setSelectedValues={setData}
