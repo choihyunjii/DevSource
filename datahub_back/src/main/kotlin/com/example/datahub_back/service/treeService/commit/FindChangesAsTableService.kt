@@ -130,8 +130,7 @@ class FindChangesAsTableService (
                 }
             } else { // 아니면 비교 시작
                 val columnMapping = mutableMapOf<SourceColumn?, SourceColumn?>()
-                val columnSize = sortedNewColumns.size
-                for (i in 0 until columnSize) {
+                for (i in sortedNewColumns.indices) {
                     columnMapping[sortedNewColumns[i]] = sortedOldColumns[i]
                 }
 
@@ -176,7 +175,6 @@ class FindChangesAsTableService (
                                         changeData.add(data.toChangeData(newCommit, 1)) // 변경된 데이터 추가
                                     }
                                 }
-
                             } else if (new?.data != old?.data && new != null && old != null) { // 데이터 값이 같지 않다면 (수정)
                                 println("수정된 데이터 : ${old.data} -> ${new.data}")
                                 addTableColumnAction = true
@@ -209,9 +207,6 @@ class FindChangesAsTableService (
             }
         } // forEach
     } // fun
-
-    private fun getTableByTableName(tableList: List<SourceTable>, tableName: String) =
-        tableList.find { it.tableName == tableName }
 
     private fun getColumnsByTable(columnList: List<SourceColumn>, table: SourceTable) =
         columnList.filter { it.table == table }

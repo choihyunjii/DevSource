@@ -3,6 +3,8 @@ package com.example.datahub_back.service.treeService.tableColumnData
 import com.example.datahub_back.data.treeData.changeDataList
 import com.example.datahub_back.dto.treeDTO.ChangeColumn
 import com.example.datahub_back.dto.treeDTO.ChangeData
+import com.example.datahub_back.dto.treeDTO.SourceColumn
+import com.example.datahub_back.dto.treeDTO.SourceData
 import org.springframework.stereotype.Service
 
 @Service
@@ -21,22 +23,7 @@ class ChangeDataService {
         return data
     }
 
-    fun updateData(id: Long, newData: ChangeData): ChangeData? {
-        val index = dataList.indexOfFirst { it.dataId == id }
-        return if (index != -1) {
-            dataList[index] = newData
-            newData
-        } else {
-            null
-        }
-    }
-
-    fun deleteData(id: Long): ChangeData? {
-        val index = dataList.indexOfFirst { it.dataId == id }
-        return if (index != -1) {
-            dataList.removeAt(index)
-        } else {
-            null
-        }
+    fun findDataListByColumnAndLine(columns: List<ChangeColumn>, columnLine: Int): List<ChangeData>? {
+        return dataList.filter { it.column in columns && it.columnLine == columnLine }
     }
 }

@@ -20,6 +20,7 @@ class TreeCommitService(
     private val branchService: BranchService,
     private val changeService: ChangeService,
 ) {
+    // 일반 커밋
     @Transactional(rollbackFor = [RuntimeException::class])
     fun handleCommit(commitData: CommitRequest): String {
         try {
@@ -33,12 +34,11 @@ class TreeCommitService(
             commitService.createCommit(newCommit) // 커밋 추가
             changeService.findChanges(newCommit) // 변경 사항 가져오고 저장
 
-            // **************** 여기 메인 브랜치인지 서브 브랜치인지 확인해서 브랜치 액션 업데이트 로직 짜야 함
-            if (branch.isMainBranch == 1) {
-
-            } else {
-                // 해당 브랜치의 pullRequest 업데이트
-                branchService.updatePushCountByBranchId(newCommit.branch.branchId)
+            if (branch.isMainBranch == 1) { // 메인 브랜치라면 다른 브랜치들 update branch 활성화
+                val userBranches = branchService.getBranchesNotMainByProject(project)
+                userBranches.forEach{ branch -> branch.updateBranch++ }
+            } else { // 해당 브랜치의 pullRequest ++
+                branch.pullRequest++
             }
 
         } catch (e: Exception) {
@@ -47,8 +47,13 @@ class TreeCommitService(
         return "All commits processed successfully"
     }
 
-    private fun createNewCommit(comment: String, project: Project, profile: Profile, branch: Branch): Commit {
+    // 병합 후 커밋
+    fun mergingCommit(project: Project, profile: Profile, comment: String): Commit {
+        val branch = branchService.getBranchByProject(project) ?: error("Branch not found")
+        return createNewCommit(comment, project, profile, branch)
+    }
 
+    private fun createNewCommit(comment: String, project: Project, profile: Profile, branch: Branch): Commit {
         val commitHashCode = "${project}${LocalDateTime.now()}".hashCode() // 해시코드 만들기
         return Commit(
             commitId = commitHashCode,

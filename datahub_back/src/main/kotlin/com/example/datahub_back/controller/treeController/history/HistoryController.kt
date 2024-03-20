@@ -1,4 +1,4 @@
-package com.example.datahub_back.controller.treeController.History
+package com.example.datahub_back.controller.treeController.history
 
 import com.example.datahub_back.dto.toolDTO.Project
 import com.example.datahub_back.dto.treeDTO.ChangeData
@@ -33,7 +33,7 @@ class HistoryController(
         historyService.retrieveChangeTables(commitId)
 
     // 백엔드 변경 사항 행, 데이터 리스트 뽑기
-    @GetMapping("/table/{tableId}")
+    @GetMapping("/tableId/{tableId}")
     fun retrieveChangeColumnAndData(@PathVariable tableId: Long): MutableMap<String, List<ChangeData>> =
         historyService.retrieveChangeColumnAndData(tableId)
 

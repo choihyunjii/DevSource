@@ -18,21 +18,6 @@ class ChangeColumnService {
         return column
     }
 
-    fun updateColumn(id: Long, updatedColumn: ChangeColumn): ChangeColumn? {
-        val index = changeColumnList.indexOfFirst { it.columnId == id }
-        return if (index != -1) {
-            changeColumnList[index] = updatedColumn
-            updatedColumn
-        } else {
-            null
-        }
-    }
+    fun getPrimaryKeyInColumns(columns: List<ChangeColumn>) = columns.find { it.isPrimaryKey == 1 }
 
-    fun deleteColumn(id: Long): ChangeColumn? {
-        val column = changeColumnList.find { it.columnId == id }
-        if (column != null) {
-            changeColumnList.remove(column)
-        }
-        return column
-    }
 }
