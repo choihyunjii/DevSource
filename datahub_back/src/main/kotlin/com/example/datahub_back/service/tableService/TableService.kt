@@ -11,6 +11,7 @@ import com.example.datahub_back.dto.toolDTO.Data
 import com.example.datahub_back.dto.toolDTO.DataBase
 import com.example.datahub_back.dto.toolDTO.Table
 import com.example.datahub_back.dto.toolDTO.dataDTO.CreateDataDTO
+import com.fasterxml.jackson.databind.JsonNode
 import org.springframework.stereotype.Service
 
 @Service
@@ -39,7 +40,7 @@ class TableService : TableRepository{
         return tableMap
     }
 
-    private fun findByTableID(tableID: Long) : Table =
+    fun findByTableID(tableID: Long) : Table =
         exampleTableList.first() { it.id == tableID }
 
     private fun findColumnsByTableID(table: Table): List<Column> =
@@ -175,7 +176,6 @@ class TableService : TableRepository{
                 )
             )
         }
-
         return "데이터 저장에 성공하였습니다."
     }
     private fun updateData(modifiedRequest: TableModifiedRequest) {
@@ -191,6 +191,35 @@ class TableService : TableRepository{
         }
     }
 
+    fun findByTableHash(tableHash : String) =
+        exampleTableList.filter { it.tableHash == tableHash }[0]
 
+    fun excelConvertTable(tableID : Long) : List<List<String>> {
+        val excelData : MutableList<List<String>> = mutableListOf()
+        val table = getTable(tableID)
+        val keys = table.table.keys
+        val columnList : MutableList<String> = mutableListOf() //컬럼 리스트를 저장할 리스트 생성
 
+        keys.forEach {
+            columnList.add(it)
+        }//키 를 컬럼 리스트에 추가함
+
+        excelData.add(columnList)
+        //컬럼 값을 먼저 저장
+
+        val values = table.table.values
+
+        var columnIndex = 0;
+
+        for (i in 0..values.size){
+            val dataList : MutableList<String> = mutableListOf()
+            values.forEachIndexed { index, value ->
+                dataList.add(value[columnIndex].data)
+            }
+            columnIndex++
+            excelData.add(dataList)
+        }
+        return excelData
+    }
 }
+

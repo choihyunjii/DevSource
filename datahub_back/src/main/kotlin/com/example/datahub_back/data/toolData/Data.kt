@@ -67,10 +67,10 @@ val exampleDataBase = DataBase(1,"학교","학교 정보 데이터베이스",1,0
 val exampleDataBaseList = mutableListOf(exampleDataBase)
 
 //테이블 예시
-val exampleTable = Table(1,"학생 테이블","학생들의 정보를 모아둔 테이블", 1,0,exampleDataBase, LocalDateTime.now())
-val exampleTable1 = Table(2,"교강사 테이블","교강사 정보를 모아둔 테이블", 1,0,exampleDataBase, LocalDateTime.now())
-val exampleTable2 = Table(3,"삭제 테이블","삭제 정보를 모아둔 테이블", 0,1,exampleDataBase, LocalDateTime.now())
-val exampleTable3 = Table(4,"과목 테이블","과목 정보를 모아둔 테이블", 0,0,exampleDataBase, LocalDateTime.now())
+val exampleTable = Table(1,"학생 테이블","학생들의 정보를 모아둔 테이블", 1,0,exampleDataBase, LocalDateTime.now(),"a87e3cdf755500d7c6abf69813c444d72c2b2b664521e659f78ba17222ef44a0")
+val exampleTable1 = Table(2,"교강사 테이블","교강사 정보를 모아둔 테이블", 1,0,exampleDataBase, LocalDateTime.now(),"a87e3cdf755500d7c6abf69813c444d72c2b2b664521e659f78ba17222ef44a1")
+val exampleTable2 = Table(3,"삭제 테이블","삭제 정보를 모아둔 테이블", 0,1,exampleDataBase, LocalDateTime.now(),"a87e3cdf755500d7c6abf69813c444d72c2b2b664521e659f78ba17222ef44a2")
+val exampleTable3 = Table(4,"과목 테이블","과목 정보를 모아둔 테이블", 0,0,exampleDataBase, LocalDateTime.now(),"a87e3cdf755500d7c6abf69813c444d72c2b2b664521e659f78ba17222ef44a3")
 
 val exampleTableList = mutableListOf(exampleTable, exampleTable1, exampleTable2, exampleTable3)
 
