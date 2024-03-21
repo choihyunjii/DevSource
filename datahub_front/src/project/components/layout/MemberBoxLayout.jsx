@@ -45,7 +45,6 @@ export default function MemberBoxLayout() {
                                                onClick={() =>handleDelete(item)}                                    />
                                 </div>
                             ))}
-
                         </div>
                     </div>
                     <div className={styles.memberSmallBox}>

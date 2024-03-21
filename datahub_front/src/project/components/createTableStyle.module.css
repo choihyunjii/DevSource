@@ -24,7 +24,7 @@
     border : 1px solid salmon;
     font-size: 34px;
     width: 500px;
-    margin-left: 60px;
+    margin-left: 78px;
     padding: 5px;
 }
 
@@ -53,7 +53,7 @@
     height: 43%;
     font-size: 22px;
     width: 50%;
-    margin-left: 10px;
+    margin-left: 2px;
 }
 
 .insertTableName{
@@ -67,17 +67,10 @@
 .insertBox{
     width: 350px;
     height: 41px;
-    margin-left: 10px;
+    margin-left: 2px;
     margin-top: 2px;
 }
 
-.insertBox:focus{
-    border-color: blue;
-}
-
-.box{
-
-}
 
 .insertTable{
     border:2px solid #777777;
@@ -96,4 +89,97 @@
 
 .insertTable:focus{
     border: none;
+}
+
+.explanationContainer{
+    border:1px solid black;
+    height: 15%;
+    width: 84%;
+    margin-top: 10px;
+    margin-left: 80px;
+}
+
+.insertExplanation{
+    border:2px solid #777777;
+    height: 41px;
+    width: 790px;
+    border-radius: 10px;
+}
+
+.explanationBox{
+    border:1px solid red;
+    font-size: 22px;
+    display: flex;
+    width: 200px;
+    margin-left: 2px;
+}
+
+.add{
+    border:1px solid black;
+    font-size: 14px;
+    color:#707070;
+    height: 20px;
+    margin: 5px 0 0 4px;
+
+}
+.metaContainer{
+    border:1px solid black;
+    margin-top: 10px;
+    height: 50%;
+}
+
+.button{
+    border:1px solid purple;
+    display: flex;
+    gap:10px;
+    width: 32px;
+    float: right;
+    margin-right: 90px;
+}
+
+.buttonImg{
+
+}
+
+.dictionary{
+    border:1px solid blueviolet;
+    margin-top: 25px;
+    height: 90%;
+}
+.selectHeader{
+    border:1px solid #9bcaff;
+    height: 17%;
+}
+.selectHeaderTable{
+    width: 84%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+.selectHeaderTable th{
+    background-color: #E8E8E8;
+    border: 1px solid #777777;
+    padding: 8px;
+    text-align: center;
+}
+
+.selectHeaderTable th:nth-child(1),
+.selectHeaderTable th:nth-child(2){
+    width: 22%;
+}
+.selectHeaderTable th:nth-child(3),
+.selectHeaderTable th:nth-child(4),
+.selectHeaderTable th:nth-child(5){
+    width: 5%;
+}
+
+.selectInput{
+    border:1px solid brown;
+    height: 20%;
+}
+.selectHeaderTable tbody{
+    border: 1px solid #777777 ;
+}
+
+.inputColumnName{
+    border:1px solid #777777;
 }
