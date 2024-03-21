@@ -9,5 +9,6 @@ data class Table(
     val isFavorite : Int, //0이면 즐겨찾기 X
     val isDelete : Int,  //0이면 삭제
     val dataBase: DataBase,
-    val updateTime: LocalDateTime
+    val updateTime: LocalDateTime,
+    val tableHash : String
 )

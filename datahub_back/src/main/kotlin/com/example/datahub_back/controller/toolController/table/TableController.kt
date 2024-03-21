@@ -1,6 +1,5 @@
 package com.example.datahub_back.controller.toolController.table
 
-import com.example.datahub_back.dto.toolDTO.Column
 import com.example.datahub_back.service.tableService.TableService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -30,6 +29,7 @@ class TableController  (
         tableService.modifiedTableAndDataFormatTest(modifiedTable)
             ?.let { ResponseEntity.ok("데이터값이 저장되었습니다.") }
             ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST, "데이터값 일치하지 않습니다.")
+
 
 
 }

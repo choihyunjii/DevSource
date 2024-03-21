@@ -39,7 +39,7 @@ class TableService : TableRepository{
         return tableMap
     }
 
-    private fun findByTableID(tableID: Long) : Table =
+    fun findByTableID(tableID: Long) : Table =
         exampleTableList.first() { it.id == tableID }
 
     private fun findColumnsByTableID(table: Table): List<Column> =
@@ -191,6 +191,9 @@ class TableService : TableRepository{
         }
     }
 
+    fun findByTableHash(tableHash : String) =
+        exampleTableList.filter { it.tableHash == tableHash }[0]
 
 
 }
+
