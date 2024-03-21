@@ -23,7 +23,6 @@ class ChangeTableService {
         return sourceTable
     }
 
-    // 테이블 삭제
-    fun deleteTable(id: Long) = changeTableList.removeIf { it.tableId == id }
+    fun getTableMaxId() = changeTableList.maxByOrNull { it.tableId }?.tableId ?: 1
 
 }

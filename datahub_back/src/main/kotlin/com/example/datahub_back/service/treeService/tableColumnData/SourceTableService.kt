@@ -1,5 +1,6 @@
 package com.example.datahub_back.service.treeService.tableColumnData
 
+import com.example.datahub_back.data.treeData.changeTableList
 import com.example.datahub_back.data.treeData.sourceTableList
 import com.example.datahub_back.dto.treeDTO.Commit
 import com.example.datahub_back.dto.treeDTO.SourceTable
@@ -26,7 +27,5 @@ class SourceTableService {
         return sourceTable
     }
 
-    // 테이블 삭제
-    fun deleteTable(id: Long) = tables.removeIf { it.tableId == id }
-
+    fun getTableMaxId() = tables.maxByOrNull { it.tableId }?.tableId ?: 1
 }

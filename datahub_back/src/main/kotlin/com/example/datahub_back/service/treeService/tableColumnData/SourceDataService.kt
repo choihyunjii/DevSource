@@ -29,22 +29,6 @@ class SourceDataService {
         return data
     }
 
-    fun updateData(id: Long, newData: SourceData): SourceData? {
-        val index = dataList.indexOfFirst { it.dataId == id }
-        return if (index != -1) {
-            dataList[index] = newData
-            newData
-        } else {
-            null
-        }
-    }
+    fun getDataMaxId() = dataList.maxByOrNull { it.dataId }?.dataId ?: 1
 
-    fun deleteData(id: Long): SourceData? {
-        val index = dataList.indexOfFirst { it.dataId == id }
-        return if (index != -1) {
-            dataList.removeAt(index)
-        } else {
-            null
-        }
-    }
 }

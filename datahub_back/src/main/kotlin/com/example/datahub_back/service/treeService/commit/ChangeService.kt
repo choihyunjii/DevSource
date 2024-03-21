@@ -2,6 +2,7 @@ package com.example.datahub_back.service.treeService.commit
 
 import com.example.datahub_back.dto.treeDTO.*
 import com.example.datahub_back.service.treeService.CommitService
+import com.example.datahub_back.service.treeService.SaveDataService
 import com.example.datahub_back.service.treeService.tableColumnData.*
 import org.springframework.stereotype.Service
 
@@ -9,13 +10,9 @@ import org.springframework.stereotype.Service
 class ChangeService (
     private val commitService: CommitService,
     private val sourceTableService: SourceTableService,
-    private val sourceColumnService: SourceColumnService,
-    private val sourceDataService: SourceDataService,
     private val dataTransformationService: DataTransformationService,
     private val findChangesAsTableService: FindChangesAsTableService,
-    private val changeTableService: ChangeTableService,
-    private val changeColumnService: ChangeColumnService,
-    private val changeDataService: ChangeDataService
+    private val saveDataService: SaveDataService,
 )
 {
     // 변경 사항 찾아서 리스트로 반환
@@ -40,7 +37,7 @@ class ChangeService (
                     oldTablesDelete, newTablesDelete, newColumns, newData, newCommit, false)
 
                 if (result != null) {
-                    saveChangesData(result)
+                    saveDataService.saveChangesData(result)
 
                     val (changeTables, changeColumns, changeData) = result
                     changeTables.forEach { data ->
@@ -55,25 +52,11 @@ class ChangeService (
                         print("${data.data}, ")
                     }
                 }
-                saveSourceData(toolAllData)
+                saveDataService.saveSourceData(toolAllData)
                 findChangesAsTableService.clearChangeList()
             }
         }
         return null
-    }
-
-    private fun saveChangesData(result: Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>) {
-        val (changeTable, changeColumn, changeData) = result
-        changeTable.forEach { changeTableService.createTable(it) }
-        changeColumn.forEach { changeColumnService.createColumn(it) }
-        changeData.forEach { changeDataService.createData(it) }
-    }
-
-    private fun saveSourceData(result: Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>>) {
-        val (sourceTables, sourceColumns, sourceData) = result
-        sourceTables.forEach { sourceTableService.createTable(it) }
-        sourceColumns.forEach { sourceColumnService.createColumn(it) }
-        sourceData.forEach { sourceDataService.createData(it) }
     }
 }
 

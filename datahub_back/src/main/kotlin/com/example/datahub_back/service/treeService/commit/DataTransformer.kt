@@ -78,5 +78,40 @@ class DataTransformer {
             )
         }
 
+        fun ChangeTable.toSourceTable(commit: Commit): SourceTable {
+            return SourceTable(
+                tableId = this.tableId,
+                tableName = this.tableName,
+                comment = this.comment,
+                isFavorite = this.isFavorite,
+                isDelete = this.isDelete,
+                updateTime = this.updateTime,
+                commit = commit
+            )
+        }
+
+        fun ChangeColumn.toSourceColumn(commit: Commit): SourceColumn {
+            return SourceColumn(
+                columnId = this.columnId,
+                table = this.table.toSourceTable(commit),
+                columnName = this.columnName,
+                comment = this.comment,
+                dataType = this.dataType,
+                isPrimaryKey = this.isPrimaryKey,
+                isForeignKey = this.isForeignKey,
+                isUniqueKey = this.isUniqueKey,
+                joinSourceTableId = this.joinSourceTable?.tableId
+            )
+        }
+
+        fun ChangeData.toSourceData(commit: Commit): SourceData {
+            return SourceData(
+                dataId = this.dataId,
+                column = this.column.toSourceColumn(commit),
+                columnLine = this.columnLine,
+                data = this.data
+            )
+        }
+
     }
 }

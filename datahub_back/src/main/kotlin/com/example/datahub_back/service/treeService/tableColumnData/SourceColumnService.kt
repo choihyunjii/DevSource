@@ -22,21 +22,5 @@ class SourceColumnService {
         return column
     }
 
-    fun updateColumn(id: Long, updatedColumn: SourceColumn): SourceColumn? {
-        val index = sourceColumnList.indexOfFirst { it.columnId == id }
-        return if (index != -1) {
-            sourceColumnList[index] = updatedColumn
-            updatedColumn
-        } else {
-            null
-        }
-    }
-
-    fun deleteColumn(id: Long): SourceColumn? {
-        val column = sourceColumnList.find { it.columnId == id }
-        if (column != null) {
-            sourceColumnList.remove(column)
-        }
-        return column
-    }
+    fun getColumnMaxId() = sourceColumnList.maxByOrNull { it.columnId }?.columnId ?: 1
 }

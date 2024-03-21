@@ -31,7 +31,7 @@ data class SourceTable(
     val isFavorite: Int,
     val isDelete: Int,
     val updateTime: LocalDateTime,
-    val commit: Commit,
+    val commit: Commit, // PK, FK
 )
 
 data class SourceColumn(
@@ -61,7 +61,7 @@ data class ChangeTable(
     val isFavorite: Int,
     val isDelete: Int,
     val updateTime: LocalDateTime,
-    val commit: Commit,
+    val commit: Commit, // PK, FK
 )
 
 data class ChangeColumn(
@@ -82,12 +82,4 @@ data class ChangeData(
     val columnLine : Int,
     val data: String,
     val action: Int // 0: 삭제, 1: 추가
-)
-
-// 페이지 변경사항
-data class ChangePage(
-    val pageId: Long, // PK, Page의 pageId와 일치해야 함
-    val pageName: String,
-    val path: String,
-    val commit: Commit,
 )
