@@ -1,45 +1,51 @@
 import styles from '../../styleModule/DownloadStyle.module.css'
-import {useState} from "react";
-export default function DownloadUI(){
-    const [tableID , setTableID] = useState(1)
-    const [table , setTable] = useState()
+import { useState } from "react";
+
+export default function DownloadUI() {
+    const [tableID, setTableID] = useState(1);
+    const [table, setTable] = useState([]);
 
     const fetchColumData = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/table/${tableID}`, {
+            const response = await fetch(`http://localhost:8080/api/table/excel/${tableID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
             const responseData = await response.json();
-            console.log(responseData)
+            console.log(responseData);
+            setTable(responseData);
+            downloadExcel()
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
-    const dataFormat = (data) => {
-        const numRows = data.table.keys.size // 행의 개수
-        const numCols = 5; // 열의 개수
 
-        const array = new Array(numRows); // 행의 개수만큼 배열 생성
+    const downloadExcel = () => {
+        // CSV 파일 내용 생성
+        const csvContent = table.map(row => row.join(",")).join("\n");
 
-        for (let i = 0; i < numRows; i++) {
-            array[i] = new Array(numCols).fill(""); // 각 행마다 빈 문자열("")로 열의 개수만큼 초기화
-        }
+        // CSV 파일을 UTF-8로 인코딩하여 Blob 생성
+        const csvData = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvContent], { type: 'text/csv;charset=utf-8;' });
 
-        console.log(array);
+        // Blob URL 생성 및 다운로드 링크 설정
+        const url = window.URL.createObjectURL(csvData);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'table_data.csv');
 
-    }
-    const downloadBtnOnClickEvent= () =>{
-        fetchColumData()
-    }
+        document.body.appendChild(link);
+        link.click();
 
-    return(
+        document.body.removeChild(link);
+    };
+
+    return (
         <div>
             <div className={styles.downloadBox}>
-                <p className={styles.downloadText} onClick={downloadBtnOnClickEvent}>엑셀 다운로드</p>
+                <p className={styles.downloadText} onClick={fetchColumData}>엑셀 다운로드</p>
             </div>
         </div>
-    )
+    );
 }

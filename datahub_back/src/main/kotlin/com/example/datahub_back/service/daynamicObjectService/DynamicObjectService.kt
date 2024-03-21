@@ -65,9 +65,8 @@ class DynamicObjectService(
     fun parseJSON(getTable: Map<String, List<Data>>) : List<JsonNode>{
         val parseJsonList : MutableList<JsonNode> = mutableListOf()
         val objectMapper = ObjectMapper()
-
         val values = getTable.values
-
+        println(values)
         var columnIndex = 0;
 
         for (i in 0..values.size){

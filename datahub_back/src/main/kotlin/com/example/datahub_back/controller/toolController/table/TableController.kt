@@ -24,6 +24,12 @@ class TableController  (
     fun getTableStatusByDataBase(@PathVariable dataBaseID : Long) : ResponseEntity<TableStatusResponse> =
         ResponseEntity(tableService.findTableStatusByDatabaseID(dataBaseID),HttpStatus.OK)
 
+    @GetMapping("/excel/{tableID}")
+    fun excelConvertTable(@PathVariable tableID: Long) =
+        tableService.excelConvertTable(tableID)
+
+
+
     @PostMapping("/modifiedTable")
     fun getModifiedTable(@RequestBody modifiedTable: TableModifiedRequest): ResponseEntity<String> =
         tableService.modifiedTableAndDataFormatTest(modifiedTable)
