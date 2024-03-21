@@ -66,12 +66,17 @@ class DynamicObjectService(
         val parseJsonList : MutableList<JsonNode> = mutableListOf()
         val objectMapper = ObjectMapper()
         val values = getTable.values
-        println(values)
         var columnIndex = 0;
 
-        for (i in 0..values.size){
-            val sb : StringBuilder = StringBuilder()
+        var childListSize = 0
 
+        for (valueList in values) {
+            childListSize = valueList.size
+            break
+        }
+
+        for (i in 0..<childListSize){
+            val sb : StringBuilder = StringBuilder()
             sb.append(" {\n")
             values.forEachIndexed { index, value ->
                 sb.append(" \"${value[columnIndex].column.name}\" : \"${value[columnIndex].data}\"")
