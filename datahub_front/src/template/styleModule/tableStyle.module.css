@@ -26,6 +26,6 @@
 .th input[type="checkbox"] {
     margin: 0;
 }
-tr:nth-child(3n) {
+.tr:nth-child(3n) {
     background-color:#B7E5FF; /* 3의 배수 행의 배경색을 지정합니다. */
 }

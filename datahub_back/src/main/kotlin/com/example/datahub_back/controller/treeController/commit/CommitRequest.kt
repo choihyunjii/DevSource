@@ -6,3 +6,8 @@ data class CommitRequest(
     val comment: String,
 )
 
+//{
+//    "projectId": "1",
+//    "profileId": "1",
+//    "comment": "커밋 테스트"
+//}

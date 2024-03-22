@@ -8,8 +8,8 @@ var branch1 = Branch(
     branchId = 1,
     profile = exampleProfile1,
     project = exampleProject1,
-    push = 1,
-    pull = 0,
+    pullRequest = 1,
+    updateBranch = 0,
     crash = 0,
     isMainBranch = 0
 )
@@ -18,8 +18,8 @@ var branch2 = Branch(
     branchId = 2,
     profile = exampleProfile2,
     project = exampleProject2,
-    push = 0,
-    pull = 0,
+    pullRequest = 0,
+    updateBranch = 0,
     crash = 1,
     isMainBranch = 0
 )
@@ -28,8 +28,8 @@ var branch3 = Branch(
     branchId = 3,
     profile = null,
     project = exampleProject3,
-    push = 0,
-    pull = 0,
+    pullRequest = 0,
+    updateBranch = 0,
     crash = 0,
     isMainBranch = 1
 )

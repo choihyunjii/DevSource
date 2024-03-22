@@ -1,5 +1,5 @@
 import SmallSizeTitleUI from "../ui/SmallSizeTitleUI";
-import styles from "../../styles/commit.module.css"
+import styles from "../../styles/styles.module.css"
 import SelectionUI from "../ui/SelectionUI";
 import membersData from "../../../project/components/data/MembersData";
 import ChangeTableLayout from "./ChangeTableLayout";

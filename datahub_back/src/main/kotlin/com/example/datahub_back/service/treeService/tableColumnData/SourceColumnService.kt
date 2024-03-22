@@ -10,28 +10,17 @@ class SourceColumnService {
 
     fun getColumnsByTable(table: SourceTable) = sourceColumnList.filter { it.table == table }
 
-    fun getColumnByColumId(columId: Long): SourceColumn? = sourceColumnList.find { it.columnId == columId }
+    fun getColumnIsPrimaryKeyByTable(table: SourceTable) = sourceColumnList.find { it.table == table && it.isPrimaryKey == 1}
+
+    private fun findPKColumn(columnList: List<SourceColumn>, table: SourceTable)  =
+        columnList.find {it.table == table && it.isPrimaryKey == 1}
+
+    fun getColumnByColumId(columId: Long) = sourceColumnList.find { it.columnId == columId }
 
     fun createColumn(column: SourceColumn): SourceColumn {
         sourceColumnList.add(column)
         return column
     }
 
-    fun updateColumn(id: Long, updatedColumn: SourceColumn): SourceColumn? {
-        val index = sourceColumnList.indexOfFirst { it.columnId == id }
-        return if (index != -1) {
-            sourceColumnList[index] = updatedColumn
-            updatedColumn
-        } else {
-            null
-        }
-    }
-
-    fun deleteColumn(id: Long): SourceColumn? {
-        val column = sourceColumnList.find { it.columnId == id }
-        if (column != null) {
-            sourceColumnList.remove(column)
-        }
-        return column
-    }
+    fun getColumnMaxId() = sourceColumnList.maxByOrNull { it.columnId }?.columnId ?: 1
 }

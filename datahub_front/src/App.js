@@ -1,13 +1,13 @@
 import './App.css';
 
-import TemporaryAppRouter from "./routes/TemporaryAppRouter";
+import AppRouter from "./routes/AppRouter";
 import Header from "./Layout/Header/Header";
 
 function App() {
   return (
       <div>
           <Header/>
-          <TemporaryAppRouter/>
+          <AppRouter/>
           {/*<Normalization/>*/}
       </div>
 

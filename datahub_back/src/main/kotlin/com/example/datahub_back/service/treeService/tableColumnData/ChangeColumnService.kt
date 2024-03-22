@@ -1,6 +1,7 @@
 package com.example.datahub_back.service.treeService.tableColumnData
 
 import com.example.datahub_back.data.treeData.changeColumnList
+import com.example.datahub_back.data.treeData.changeTableList
 import com.example.datahub_back.dto.treeDTO.ChangeColumn
 import com.example.datahub_back.dto.treeDTO.ChangeTable
 import org.springframework.stereotype.Service
@@ -18,21 +19,8 @@ class ChangeColumnService {
         return column
     }
 
-    fun updateColumn(id: Long, updatedColumn: ChangeColumn): ChangeColumn? {
-        val index = changeColumnList.indexOfFirst { it.columnId == id }
-        return if (index != -1) {
-            changeColumnList[index] = updatedColumn
-            updatedColumn
-        } else {
-            null
-        }
-    }
+    fun getPrimaryKeyInColumns(columns: List<ChangeColumn>) = columns.find { it.isPrimaryKey == 1 }
 
-    fun deleteColumn(id: Long): ChangeColumn? {
-        val column = changeColumnList.find { it.columnId == id }
-        if (column != null) {
-            changeColumnList.remove(column)
-        }
-        return column
-    }
+    fun getColumnMaxId() = changeColumnList.maxByOrNull { it.columnId }?.columnId ?: 1
+
 }

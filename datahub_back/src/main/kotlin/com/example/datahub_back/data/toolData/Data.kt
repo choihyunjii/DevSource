@@ -83,7 +83,7 @@ val exampleColumn4= Column(4,"주소","학생 Table 주소","VarChar",0,0,0,exam
 val exampleColumnList = mutableListOf(exampleColumn1,exampleColumn2,exampleColumn3, exampleColumn4)
 
 // 데이터 예시
-val exampleData1 = Data(1, "홍길동", 1,exampleColumn1)
+val exampleData1 = Data(1, "어쩌구", 1,exampleColumn1)
 val exampleData5 = Data(5, "김철수", 2,exampleColumn1)
 val exampleData9 = Data(9, "이영희", 3,exampleColumn1)
 val exampleData13 = Data(13, "박민수", 4,exampleColumn1)
@@ -106,7 +106,7 @@ val exampleData4 = Data(4, "서울시 강남구", 1,exampleColumn4)
 val exampleData8 = Data(8, "서울시 서초구", 2,exampleColumn4)
 val exampleData12 = Data(12, "경기도 고양시", 3,exampleColumn4)
 val exampleData16 = Data(16, "인천시 남구", 4,exampleColumn4)
-val exampleData20 = Data(16, "인천시 남동구", 4,exampleColumn4)
+val exampleData20 = Data(16, "인천시 남동구", 5,exampleColumn4)
 
 val exampleDataList = mutableListOf(
     exampleData1, exampleData2, exampleData3, exampleData4,

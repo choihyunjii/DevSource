@@ -1,5 +1,6 @@
 package com.example.datahub_back.service.treeService.tableColumnData
 
+import com.example.datahub_back.data.treeData.changeColumnList
 import com.example.datahub_back.data.treeData.changeDataList
 import com.example.datahub_back.dto.treeDTO.ChangeColumn
 import com.example.datahub_back.dto.treeDTO.ChangeData
@@ -10,8 +11,6 @@ class ChangeDataService {
 
     private val dataList = changeDataList
 
-    fun getAllData(): List<ChangeData> = dataList
-
     fun getDataListByColumn(column: ChangeColumn) = dataList.filter { it.column == column }
 
     fun getDataById(id: Long): ChangeData? = dataList.find { it.dataId == id }
@@ -21,22 +20,14 @@ class ChangeDataService {
         return data
     }
 
-    fun updateData(id: Long, newData: ChangeData): ChangeData? {
-        val index = dataList.indexOfFirst { it.dataId == id }
-        return if (index != -1) {
-            dataList[index] = newData
-            newData
-        } else {
-            null
-        }
+    fun getDataByColumnsAndLine(columns: List<ChangeColumn>, columnLine: Int): List<ChangeData>? {
+        return dataList.filter { it.column in columns && it.columnLine == columnLine }
     }
 
-    fun deleteData(id: Long): ChangeData? {
-        val index = dataList.indexOfFirst { it.dataId == id }
-        return if (index != -1) {
-            dataList.removeAt(index)
-        } else {
-            null
-        }
+    fun getDataByColumnAndLine(columns: ChangeColumn, columnLine: Int): ChangeData? {
+        return dataList.find { it.column == columns && it.columnLine == columnLine }
     }
+
+    fun getDataMaxId() = dataList.maxByOrNull { it.dataId }?.dataId ?: 1
+
 }
