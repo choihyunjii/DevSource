@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from '../../styles/commit.module.css'
+import styles from '../../styles/styles.module.css'
 export default function ChangeTableLayout() {
     const [tableID, setTableID] = useState(1);
     const [tableData, setTable] = useState({}); // 초기값을 일반 객체로 설정
