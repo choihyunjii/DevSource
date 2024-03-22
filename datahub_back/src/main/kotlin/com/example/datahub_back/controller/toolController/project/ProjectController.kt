@@ -61,7 +61,7 @@ class ProjectController(
             projectName = this.name,
             comment = this.comment,
             createTime = this.createTime,
-            profile = this.profile,
+            profile = this.createProfile,
             teamProfile = this.teamProfile,
             dataBaseName = dataBaseName
         )

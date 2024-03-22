@@ -23,6 +23,6 @@ class ChangeTableService {
         return sourceTable
     }
 
-    fun getTableMaxId() = changeTableList.maxByOrNull { it.tableId }?.tableId ?: 1
+    fun getTableMaxId(): Long = changeTableList.maxByOrNull { it.tableId }?.tableId ?: 1
 
 }

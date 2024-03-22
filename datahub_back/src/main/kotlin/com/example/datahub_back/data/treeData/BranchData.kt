@@ -26,7 +26,7 @@ var branch2 = Branch(
 
 var branch3 = Branch(
     branchId = 3,
-    profile = null,
+    profile = exampleProfile3,
     project = exampleProject3,
     pullRequest = 0,
     updateBranch = 0,

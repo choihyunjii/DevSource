@@ -20,7 +20,7 @@ import java.time.LocalDateTime
 class ProjectService {
 
     fun getProjectsByProfile(profileID: Long): List<Project> {
-        return exampleProjectList.filter { it.profile.id == profileID }
+        return exampleProjectList.filter { it.createProfile.id == profileID }
     }
 
     fun getProjectsByTeamProfile(profileID: Long): List<Project> {
@@ -46,7 +46,7 @@ class ProjectService {
             isFavorite = 0,
             isDelete = 0,
             teamProfile = projectRequest.teamProfile,
-            profile = projectRequest.profile
+            createProfile = projectRequest.profile
         )
         val newDataBase = DataBase(
             id =  0,

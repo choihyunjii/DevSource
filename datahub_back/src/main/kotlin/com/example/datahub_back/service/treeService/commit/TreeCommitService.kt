@@ -48,7 +48,7 @@ class TreeCommitService(
     }
 
     // 병합 후 커밋
-    fun mergingCommit(project: Project, profile: Profile, comment: String): Commit {
+    fun makeNewCommit(project: Project, profile: Profile, comment: String): Commit {
         val branch = branchService.getBranchByProject(project) ?: error("Branch not found")
         return createNewCommit(comment, project, profile, branch)
     }
