@@ -146,40 +146,45 @@
     margin-top: 25px;
     height: 90%;
 }
+
 .selectHeader{
     border:1px solid #9bcaff;
-    height: 17%;
+    height: 50%;
 }
+
 .selectHeaderTable{
-    width: 84%;
     border-collapse: collapse;
     margin: 0 auto;
+    border: 1px solid #777777;
 }
+
 .selectHeaderTable th{
     background-color: #E8E8E8;
     border: 1px solid #777777;
-    padding: 8px;
+    padding: 5px;
     text-align: center;
 }
 
-.selectHeaderTable th:nth-child(1),
-.selectHeaderTable th:nth-child(2){
-    width: 22%;
-}
-.selectHeaderTable th:nth-child(3),
-.selectHeaderTable th:nth-child(4),
-.selectHeaderTable th:nth-child(5){
-    width: 5%;
-}
-
-.selectInput{
-    border:1px solid brown;
-    height: 20%;
-}
-.selectHeaderTable tbody{
-    border: 1px solid #777777 ;
+.selectHeaderTable td{
+    border: 1px solid #777777;
+    padding: 2px;
+    text-align: center;
 }
 
 .inputColumnName{
-    border:1px solid #777777;
+    border:none;
+
+}
+
+.inputDataType{
+    border:1px solid #A4A4A4;
+    height: 25px;
+    width: 160px;
+    margin: 0 auto;
+}
+
+.imgNo{
+
+    margin:2px 5px 0 0;
+    float: right;
 }

@@ -44,9 +44,7 @@ export default function TableBoxLayout() {
                         <div className={styles.selectHeader}>
                             <SelectHeaderUI/>
                         </div>
-                        <div className={styles.selectInput}>
-                            <SelectInputUI/>
-                        </div>
+
 
                     </div>
                 </div>
