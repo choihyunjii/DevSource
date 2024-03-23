@@ -173,7 +173,6 @@
 
 .inputColumnName{
     border:none;
-
 }
 
 .inputDataType{
@@ -183,8 +182,23 @@
     margin: 0 auto;
 }
 
-.imgNo{
-
-    margin:2px 5px 0 0;
+.typeNo{
+    margin:2px 5px 2px 0;
     float: right;
+    text-align: center;
+}
+
+.types{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    border:1px solid #777777;
+    height: auto;
+    width: 160px;
+}
+
+.types td{
+    background-color: white;
+    border: 1px solid #777777;
+    padding: 2px;
+    text-align: center;
+    width: 160px;
 }

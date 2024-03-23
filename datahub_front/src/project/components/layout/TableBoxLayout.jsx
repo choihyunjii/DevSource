@@ -45,7 +45,6 @@ export default function TableBoxLayout() {
                             <SelectHeaderUI/>
                         </div>
 
-
                     </div>
                 </div>
 
