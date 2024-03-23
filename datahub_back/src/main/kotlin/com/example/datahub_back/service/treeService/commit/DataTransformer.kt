@@ -64,7 +64,7 @@ class DataTransformer {
                 isPrimaryKey = this.isPrimaryKey,
                 isForeignKey = this.isForeignKey,
                 isUniqueKey = this.isUniqueKey,
-                joinSourceTable = this.joinSourceTableId?.let { this.table }
+                joinSourceTableId = this.joinSourceTableId
             )
         }
 
@@ -100,7 +100,7 @@ class DataTransformer {
                 isPrimaryKey = this.isPrimaryKey,
                 isForeignKey = this.isForeignKey,
                 isUniqueKey = this.isUniqueKey,
-                joinSourceTableId = this.joinSourceTable?.tableId
+                joinSourceTableId = this.joinSourceTableId
             )
         }
 
