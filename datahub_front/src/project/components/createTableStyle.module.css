@@ -145,14 +145,20 @@
     border:1px solid blueviolet;
     margin-top: 25px;
     height: 80%;
+
 }
 
 .selectHeader{
     border:1px solid #9bcaff;
-    height: 50%;
+    width: 100%;
+    margin: 0 auto;
+    height: 100px;
+
+
 }
 
 .selectHeaderTable{
+    font-family: "KoPubWorld Dotum Bold", serif;
     border-collapse: collapse;
     margin: 0 auto;
     border: 1px solid #777777;
@@ -175,11 +181,12 @@
     border:none;
 }
 
-.inputDataType{
-    border:1px solid #A4A4A4;
-    height: 25px;
-    width: 160px;
-    margin: 0 auto;
+.inputDataType {
+    width: 150px;
+    border-color: #A4A4A4;
+}
+.inputDataType option{
+    color: #939393;
 }
 
 .typeNo{
@@ -205,26 +212,27 @@
 .checkBox{
     height: 15px;
     width: 15px;
+    margin: 0 auto;
+
 }
 
 .searchContainer{
     font-family: "KoPubWorld Dotum Bold", serif;
     margin: 0 auto;
-    border:1px solid #E1E1E1;
-    width: 300px;
-    height: 500px;
+    border:1px solid #b0b0b0;
+    width: 250px;
+    height: 320px;
     border-radius: 15px;
+    background-color: white;
 }
 .searchTitle{
-    border: 1px solid red;
     width: 280px;
-    margin: 5px auto 0;
-
-    font-size: 24px;
+    margin: 5px auto 0 20px;
+    font-size: 18px;
 }
 
 .searchName{
-    border:1px solid black;
+
     height: 50px;
     margin: 0 auto;
 
@@ -236,21 +244,22 @@
 
 .searchName img{
     position: absolute;
-    left: 10px;
-    top: 50%;
+    left: 20px;
+    top: 40%;
     transform: translateY(-50%);
 }
 .sn{
-   border:3px solid #00A3FF;
-    border-radius: 20px;
-    height: 100%;
-    width: 100%;
-    font-size: 14px;
+   border:2px solid #00A3FF;
+    border-radius: 10px;
+    height: 80%;
+    width: 90%;
+    font-size: 12px;
+    margin-left: 12px;
 }
 .buttonContainer{
     border:1px solid red;
     height: 50px;
-    width: 100px;
+    width: 120px;
     display: flex;
     float: right;
     margin: 20px 0 0;
@@ -259,7 +268,7 @@
 .buttonBox{
     border:1px solid #00A3FF;
     padding: 5px;
-    width: 90px;
+    width: 120px;
     border-radius: 10px;
     background-color: #00A3FF;
     color:white;
@@ -268,16 +277,37 @@
 
 .attribute{
     border:1px solid black;
-    height: 300px;
-    width: 80%;
+    height: 210px;
+    width: 90%;
     margin: 10px auto 0;
+    overflow-y:auto ;
+}
+
+.listBox{
+    color: #525252;
+    font-size: 14px;
+
 }
 
 .list{
-    text-decoration: underline;
-    color:#D0D0D0;
+
+    width: 90%;
+    margin: 0 auto;
 }
 
-.boxx{
+.searchBox{
+    border:1px solid red;
+    width: 260px;
+    height: auto;
+    margin-left: auto;
 
+}
+
+.searchButton{
+    border-radius: 5px;
+    background-color: #F3F3F3;
+    border-color: #B5B5B5;
+    color: #707070;
+    float: right;
+    margin-right: 10px;
 }

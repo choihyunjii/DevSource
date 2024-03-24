@@ -8,12 +8,10 @@ import ExplanationTitleUI from "../uI/ExplanationTitleUI";
 import Button2UI from "../uI/Button2UI";
 import plus from '../../image/plus.png';
 import minus from '../../image/minus.png';
-import SelectHeaderUI from "../uI/SelectHeaderUI";
-import SelectInputUI from "../uI/SelectInputUI";
+import SelectColumnLayout from "../../../Layout/SelectColumnLayout";
+
 import CreateTableButtonUI from "../uI/CreateTableButtonUI";
-import TableSearchLayout from "./TableSearchLayout";
-import TableData from "../data/TableData";
-import ButtonUI from "../uI/ButtonUI";
+
 
 export default function TableBoxLayout() {
     const handleClick = () => {
@@ -46,17 +44,14 @@ export default function TableBoxLayout() {
                     </div>
                     <div className={styles.dictionary}>
                         <div className={styles.selectHeader}>
-                            <SelectHeaderUI/>
+                            <SelectColumnLayout/>
                         </div>
 
                     </div>
-                    <div className={styles.buttonContainer}>
+               {/*     <div className={styles.buttonContainer}>
                             <CreateTableButtonUI/>
                     </div>
-                    <div className={styles.boxx}>
-                        <TableSearchLayout/>
-
-                    </div>
+                  */}
 
 
                 </div>

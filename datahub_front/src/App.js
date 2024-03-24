@@ -18,7 +18,7 @@ function App() {
          {/* <TemporaryAppRouter/>*/}
           <TableBoxLayout/>
 
-        {/*  <DataTypeUI/>*/}
+
         {/*  <MemberBoxLayout/>*/}
         {/*  <Header/>*/}
       {/*    <SideBarComponent/>*/}

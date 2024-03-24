@@ -35,6 +35,12 @@ const  TableData = [
         tableName: '테이블6',
         pkName: 'PK6',
         type: 'varchar'
+    },
+    {
+        id: 7,
+        tableName: '테이블7',
+        pkName: 'PK7',
+        type: 'varchar'
     }
 
 ];

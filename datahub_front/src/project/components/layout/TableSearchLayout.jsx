@@ -1,9 +1,13 @@
 import styles from '../createTableStyle.module.css';
 import searchIcon from '../../image/glass.png';
 import TableData from "../data/TableData";
-import tableData from "../data/TableData";
+
 
 export default function TableSearchLayout(){
+    const handleRowClick = (item) => {
+        console.log(item); // 클릭된 값이 콘솔에 표시됩니다.
+    };
+
     return(
         <div>
             <div className={styles.searchContainer}>
@@ -16,13 +20,15 @@ export default function TableSearchLayout(){
                 </div>
                 <div className={styles.attribute}>
 
-                    <div className={styles.list}>
+                    <div className={styles.listBox}>
                         {TableData.map((item, index) => (
-                            <div key={item.id}>
-                                <div>{item.tableName}</div>
-                                <div>{item.pkName}</div>
-                                <div>{item.type}</div>
-                                {/* 추가적인 속성이 있다면 여기에 더 추가할 수 있습니다. */}
+                            <div key={item.id} onClick={() => handleRowClick(item)}>
+                                <div className={styles.list}>
+                                    {item.tableName}/
+                                    {item.pkName}/
+                                    {item.type}
+                                </div>
+                                {index !== TableData.length - 1 && <hr/>}
                             </div>
                         ))}
                     </div>
