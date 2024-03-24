@@ -1,13 +1,17 @@
 import styles from '../createTableStyle.module.css';
 import dataTypeNo from '../../image/dataTypeNo.png';
 import dataTypeYes from '../../image/dataTypeYes.png';
-import {useState} from "react";
+import React, {useState} from "react";
+import MemberSearchLayOut from "../layout/MemberSearchLayOut";
+import DataTypeUI from "./DataTypeUI";
 
 
 export default function SelectHeaderUI(){
     const [imgSrc, setImg] = useState(dataTypeNo);
     const [isInitial, setIsInitial] = useState(true); // 초기 이미지 상태 여부
     const [showDataTypes, setShowDataTypes]= useState(true);
+
+
     const toggleShowDataTypes = () => {
         setShowDataTypes(prevState => !prevState);
     };
@@ -15,15 +19,18 @@ export default function SelectHeaderUI(){
     const handleClick = () => {
         if (isInitial) {
             setImg(dataTypeYes);
+            toggleShowDataTypes();
 
         } else {
             setImg(dataTypeNo);
         }
         setIsInitial(!isInitial);
         toggleShowDataTypes();
+
     };
 
     return(
+
         <div>
             <table className={styles.selectHeaderTable}>
                 <thead>
@@ -38,14 +45,23 @@ export default function SelectHeaderUI(){
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input style={{width:'170px'}} type="text" className={styles.inputColumnName}/></td>
-                    <td style={{width:'170px'}}>
-                        <div className={styles.inputDataType}><img src={imgSrc} style={{width:'16px'}} className={styles.typeNo} onClick={handleClick}/></div>
+                    <td><input style={{width: '170px'}} type="text" className={styles.inputColumnName}/></td>
+                    <td style={{width: '170px'}}>
+                        <div className={styles.inputDataType}><img src={imgSrc} style={{width: '16px'}}
+                                                                   className={styles.typeNo} onClick={handleClick}/>
+                            {(!isInitial && showDataTypes) && <DataTypeUI/>}</div>
                     </td>
-                    <td style={{width:'43px'}}></td>
-                    <td style={{width:'43px'}}> </td>
-                    <td style={{width:'43px'}}> </td>
-                    <td><input style={{width:'250px'}} type="text"/></td>
+                    <td style={{width: '43px'}}>
+                        <input type="checkbox" className={styles.checkBox}/>
+                    </td>
+                    <td style={{width: '43px'}}>
+                        <input type="checkbox" className={styles.checkBox}/>
+                    </td>
+                    <td style={{width: '43px'}}>
+                        <input type="checkbox" className={styles.checkBox}/>
+                    </td>
+
+                    <td><input style={{width: '250px'}} type="text"/></td>
                 </tr>
                 </tbody>
             </table>

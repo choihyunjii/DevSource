@@ -7,6 +7,7 @@ import MemberBoxLayout from "./project/components/layout/MemberBoxLayout";
 import TableBoxLayout from "./project/components/layout/TableBoxLayout";
 import TablePage from "./devSource/Components/page/TablePage";
 import DataTypeUI from "./project/components/uI/DataTypeUI";
+import TableSearchLayout from "./project/components/layout/TableSearchLayout";
 // import TablePage from "./devSource/Components/page/TablePage";
 
 
@@ -14,8 +15,9 @@ function App() {
   return (
       <div>
             <Header/>
-          <TemporaryAppRouter/>
-         {/* <TableBoxLayout/>*/}
+         {/* <TemporaryAppRouter/>*/}
+          <TableBoxLayout/>
+
         {/*  <DataTypeUI/>*/}
         {/*  <MemberBoxLayout/>*/}
         {/*  <Header/>*/}

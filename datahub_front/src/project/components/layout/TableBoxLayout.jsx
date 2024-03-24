@@ -10,6 +10,10 @@ import plus from '../../image/plus.png';
 import minus from '../../image/minus.png';
 import SelectHeaderUI from "../uI/SelectHeaderUI";
 import SelectInputUI from "../uI/SelectInputUI";
+import CreateTableButtonUI from "../uI/CreateTableButtonUI";
+import TableSearchLayout from "./TableSearchLayout";
+import TableData from "../data/TableData";
+import ButtonUI from "../uI/ButtonUI";
 
 export default function TableBoxLayout() {
     const handleClick = () => {
@@ -46,6 +50,15 @@ export default function TableBoxLayout() {
                         </div>
 
                     </div>
+                    <div className={styles.buttonContainer}>
+                            <CreateTableButtonUI/>
+                    </div>
+                    <div className={styles.boxx}>
+                        <TableSearchLayout/>
+
+                    </div>
+
+
                 </div>
 
 

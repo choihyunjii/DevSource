@@ -13,7 +13,7 @@
     margin-left: 350px;
     margin-top: 55px;
     width: 65%;
-    height: 574px;
+    height: 600px;
 }
 
 .tableTitle{
@@ -144,7 +144,7 @@
 .dictionary{
     border:1px solid blueviolet;
     margin-top: 25px;
-    height: 90%;
+    height: 80%;
 }
 
 .selectHeader{
@@ -201,4 +201,83 @@
     padding: 2px;
     text-align: center;
     width: 160px;
+}
+.checkBox{
+    height: 15px;
+    width: 15px;
+}
+
+.searchContainer{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    margin: 0 auto;
+    border:1px solid #E1E1E1;
+    width: 300px;
+    height: 500px;
+    border-radius: 15px;
+}
+.searchTitle{
+    border: 1px solid red;
+    width: 280px;
+    margin: 5px auto 0;
+
+    font-size: 24px;
+}
+
+.searchName{
+    border:1px solid black;
+    height: 50px;
+    margin: 0 auto;
+
+    position: relative;
+}
+.searchName input[type="text"] {
+    padding-left: 35px;
+}
+
+.searchName img{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.sn{
+   border:3px solid #00A3FF;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+}
+.buttonContainer{
+    border:1px solid red;
+    height: 50px;
+    width: 100px;
+    display: flex;
+    float: right;
+    margin: 20px 0 0;
+}
+
+.buttonBox{
+    border:1px solid #00A3FF;
+    padding: 5px;
+    width: 90px;
+    border-radius: 10px;
+    background-color: #00A3FF;
+    color:white;
+
+}
+
+.attribute{
+    border:1px solid black;
+    height: 300px;
+    width: 80%;
+    margin: 10px auto 0;
+}
+
+.list{
+    text-decoration: underline;
+    color:#D0D0D0;
+}
+
+.boxx{
+
 }
