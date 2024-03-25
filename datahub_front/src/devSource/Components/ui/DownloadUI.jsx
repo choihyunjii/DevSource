@@ -29,7 +29,6 @@ export default function DownloadUI() {
         // CSV 파일을 UTF-8로 인코딩하여 Blob 생성
         const csvData = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csvContent], { type: 'text/csv;charset=utf-8;' });
 
-        // Blob URL 생성 및 다운로드 링크 설정
         const url = window.URL.createObjectURL(csvData);
         const link = document.createElement('a');
         link.href = url;
