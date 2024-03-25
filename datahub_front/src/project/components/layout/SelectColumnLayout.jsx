@@ -14,7 +14,7 @@ const initialRowState = {
 export default function SelectColumnLayout() {
     const [showSearch, setShowSearch] = useState(true);
     const [rows, setRows] = useState([initialRowState]);
-    const [lastAddedRowId, setLastAddedRowId] = useState(null);
+    const [lastAddedRowIds, setLastAddedRowIds] = useState([]);
 
     const renderSearch = () => {
         setShowSearch(prevState => !prevState);
@@ -35,15 +35,17 @@ export default function SelectColumnLayout() {
             uk: false
         };
         setRows([...rows, newRow]);
-        setLastAddedRowId(newRow.id);
+        setLastAddedRowIds([...lastAddedRowIds, newRow.id]); // 새로 추가된 행의 ID를 기억함
     };
+
     const handleDeleteRow = () => {
-        if (lastAddedRowId !== null) {
-            const updatedRows = rows.filter(row => row.id !== lastAddedRowId);
+        if (lastAddedRowIds.length > 0) {
+            const updatedRows = rows.filter(row => !lastAddedRowIds.includes(row.id));
             setRows(updatedRows);
-            setLastAddedRowId(null); // 삭제된 경우 최근에 추가된 행의 ID 초기화
+            setLastAddedRowIds([]); // 모든 추가된 행의 ID 초기화
         }
     };
+
 
     return (
         <div>
