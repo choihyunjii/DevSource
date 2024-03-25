@@ -10,7 +10,6 @@ export default function DataUI({
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
 
-
     function columnDataSet(){
         setData(tableMap.get(column))
         // console.log(data)

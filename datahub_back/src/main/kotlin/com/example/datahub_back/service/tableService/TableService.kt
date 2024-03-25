@@ -26,7 +26,7 @@ class TableService : TableRepository{
         )
     }
     fun getTablesByDatabase(dataBase: DataBase) : List<Table> =
-        exampleTableList.filter { it.dataBase == dataBase }
+        exampleTableList.filter { it.dataBase.id == dataBase.id }
 
     fun createTable(columns: List<Column>) : MutableMap<String, List<Data>> {
         val tableMap: MutableMap<String, List<Data>> = mutableMapOf()
@@ -45,12 +45,12 @@ class TableService : TableRepository{
 
     private fun findColumnsByTableID(table: Table): List<Column> =
         exampleColumnList.filter {
-            it.table == table
+            it.table.id == table.id
         }
 
     private fun findDataByColumn(column: Column) : List<Data> =
         exampleDataList.filter {
-            it.column == column
+            it.column.id == column.id
         }
 
     private fun sortColumnLine(data: List<Data>): List<Data> =
@@ -80,7 +80,7 @@ class TableService : TableRepository{
         val tableID = tableModifiedRequest.tableID
         val table = findByTableID(tableID)
 
-        val findAllByTables = exampleColumnList.filter { it.table == table }
+        val findAllByTables = exampleColumnList.filter { it.table.id == table.id }
 
         groupedData?.forEach { (columnLine, dataList) ->
             val nullCheckGroupData = insertionNull(dataList,findAllByTables)
@@ -126,7 +126,7 @@ class TableService : TableRepository{
     private fun createDataFormTest(table : Table , createDataList : List<CreateDataDTO>) :Int {
         createDataList.forEach {createColumn ->
             val column = exampleColumnList.first {column ->
-                column.name == createColumn.column && column.table == table
+                column.name == createColumn.column && column.table.id == table.id
                 //컬럼 리스트의 Name이 일치하고 테이블 이름이랑 일치하하는걸 찾고
             }
             checkDataType(column , createColumn)
@@ -211,7 +211,14 @@ class TableService : TableRepository{
 
         var columnIndex = 0;
 
-        for (i in 0..values.size){
+        var childListSize = 0
+
+        for (valueList in values) {
+            childListSize = valueList.size
+            break
+        }
+
+        for (i in 0..<childListSize){
             val dataList : MutableList<String> = mutableListOf()
             values.forEachIndexed { index, value ->
                 dataList.add(value[columnIndex].data)

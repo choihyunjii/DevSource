@@ -10,5 +10,5 @@ data class Column(
     val isForeignKey : Int,
     val isUniqueKey : Int,
     val table: Table,
-    val joinTable: Table?
+    val joinTable: Table?,
 )
