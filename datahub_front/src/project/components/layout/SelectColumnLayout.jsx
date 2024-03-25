@@ -12,11 +12,11 @@ const initialRowState = {
 };
 
 export default function SelectColumnLayout() {
-    const [showSearch, setShowSearch] = useState(true);
-    const [rows, setRows] = useState([initialRowState]);
-    const [lastAddedRowIds, setLastAddedRowIds] = useState([]);
+    const [showSearch, setShowSearch] = useState(false); // searchBox 렌더링
+    const [rows, setRows] = useState([initialRowState]); // rows행 [initialRowState]로 초기화
+    const [creationTimes, setCreationTimes] = useState([Date.now()]); // 각 행의 생성 시간을 기록
 
-    const renderSearch = () => {
+    const renderSearch = () => { //
         setShowSearch(prevState => !prevState);
     };
 
@@ -35,16 +35,21 @@ export default function SelectColumnLayout() {
             uk: false
         };
         setRows([...rows, newRow]);
-        setLastAddedRowIds([...lastAddedRowIds, newRow.id]); // 새로 추가된 행의 ID를 기억함
+        setCreationTimes([...creationTimes, Date.now()]); // 새로운 행의 생성 시간을 기록
     };
 
     const handleDeleteRow = () => {
-        if (lastAddedRowIds.length > 0) {
-            const updatedRows = rows.filter(row => !lastAddedRowIds.includes(row.id));
+        if (rows.length > 1) {
+            const updatedRows = [...rows.slice(1)]; // 가장 오래된 행을 삭제
             setRows(updatedRows);
-            setLastAddedRowIds([]); // 모든 추가된 행의 ID 초기화
+            const updatedCreationTimes = [...creationTimes.slice(1)]; // 가장 오래된 행의 생성 시간을 삭제
+            setCreationTimes(updatedCreationTimes);
         }
     };
+
+
+
+
 
 
     return (
