@@ -5,18 +5,14 @@ import InsertTableNameUI from "../uI/InsertTableNameUI";
 import InsertDBNameUI from "../uI/InsertDBNameUI";
 import InsertExplanationUI from "../uI/InsertExplanationUI";
 import ExplanationTitleUI from "../uI/ExplanationTitleUI";
-import Button2UI from "../uI/Button2UI";
-import plus from '../../image/plus.png';
-import minus from '../../image/minus.png';
-import SelectColumnLayout from "../../../Layout/SelectColumnLayout";
 
-import CreateTableButtonUI from "../uI/CreateTableButtonUI";
+import SelectColumnLayout from "./SelectColumnLayout";
+
+
 
 
 export default function TableBoxLayout() {
-    const handleClick = () => {
-        console.log("플러스~~~");
-    }
+
     return(
         <div>
             <div className={styles.tableBox}>
@@ -38,25 +34,15 @@ export default function TableBoxLayout() {
                     <InsertExplanationUI/>
                 </div>
                 <div className={styles.metaContainer}>
-                    <div className={styles.button}>
-                        <Button2UI img={plus} onClick={handleClick}/>
-                        <Button2UI img={minus}/>
-                    </div>
+
                     <div className={styles.dictionary}>
                         <div className={styles.selectHeader}>
                             <SelectColumnLayout/>
                         </div>
-
                     </div>
-               {/*     <div className={styles.buttonContainer}>
-                            <CreateTableButtonUI/>
-                    </div>
-                  */}
 
 
                 </div>
-
-
             </div>
         </div>
     )

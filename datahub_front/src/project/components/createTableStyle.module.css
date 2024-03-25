@@ -150,7 +150,7 @@
 
 .selectHeader{
     border:1px solid #9bcaff;
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
     height: 100px;
 
@@ -256,14 +256,7 @@
     font-size: 12px;
     margin-left: 12px;
 }
-.buttonContainer{
-    border:1px solid red;
-    height: 50px;
-    width: 120px;
-    display: flex;
-    float: right;
-    margin: 20px 0 0;
-}
+
 
 .buttonBox{
     border:1px solid #00A3FF;
@@ -310,4 +303,11 @@
     color: #707070;
     float: right;
     margin-right: 10px;
+}
+.buttonBig{
+    border:1px solid red;
+    width: 100px;
+
+
+
 }
