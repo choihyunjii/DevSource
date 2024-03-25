@@ -1,6 +1,8 @@
 import styles from '../createTableStyle.module.css';
 import React, { useState } from "react";
 import TableSearchLayout from "./TableSearchLayout";
+import ButtonUI from "../uI/ButtonUI";
+import JoinColumnUI from "../uI/JoinColumnUI";
 
 const initialRowState = {
     id: 1,
@@ -11,14 +13,10 @@ const initialRowState = {
     uk: false
 };
 
-export default function SelectColumnLayout() {
-    const [showSearch, setShowSearch] = useState(false); // searchBox 렌더링
+export default function SelectColumnLayout({sendColumnData}) {
     const [rows, setRows] = useState([initialRowState]); // rows행 [initialRowState]로 초기화
     const [creationTimes, setCreationTimes] = useState([Date.now()]); // 각 행의 생성 시간을 기록
 
-    const renderSearch = () => { //
-        setShowSearch(prevState => !prevState);
-    };
 
     function handleSelectChange(event) {
         const selectedValue = event.target.value;
@@ -32,9 +30,11 @@ export default function SelectColumnLayout() {
             dataType: 'int',
             pk: false,
             fk: false,
-            uk: false
+            uk: false,
+            joinTable : ''
         };
         setRows([...rows, newRow]);
+        console.log(rows)
         setCreationTimes([...creationTimes, Date.now()]); // 새로운 행의 생성 시간을 기록
     };
 
@@ -68,45 +68,32 @@ export default function SelectColumnLayout() {
                 <tbody id="tableBody">
                 {rows.map((row, index) => (
                     <tr key={index}>
-                        <td><input style={{width: '210px'}} type="text" className={styles.inputColumnName}/></td>
-                        <td style={{width: '210px'}}>
+                        <td><input type="text" className={styles.inputColumnName}/></td>
+                        <td style={{width: '300px'}}>
                             <select className={styles.inputDataType} onChange={handleSelectChange}>
-                                <optgroup label="Integer">
-                                    <option value="int">INT</option>
-                                    <option value="bigInt">BIGINT</option>
-                                    <option value="smallInt">SMALLINT</option>
-                                </optgroup>
-                                <optgroup label="String">
-                                    <option value="char">CHAR</option>
-                                    <option value="varchar">VARCHAR</option>
-                                </optgroup>
+                                <option value="VARCHAR">VARCHAR</option>
+                                <option value="INTEGER">INTEGER</option>
+                                <option value="DATE">DATE</option>
+                                <option value="BOOLEAN">BOOLEAN</option>
                             </select>
                         </td>
-                        <td style={{width: '45px'}}>
+                        <td style={{width: '50px'}}>
                             <input type="checkbox" value="pk" className={styles.checkBox}/>
                         </td>
-                        <td style={{width: '45px'}}>
+                        <td style={{width: '50px'}}>
                             <input type="checkbox" value="fk" className={styles.checkBox}/>
                         </td>
-                        <td style={{width: '45px'}}>
+                        <td style={{width: '50px'}}>
                             <input type="checkbox" value="uk" className={styles.checkBox}/>
                         </td>
-                        <td style={{width: '300px'}}>
-                            <button onClick={renderSearch} className={styles.searchButton}>검색 ▼</button>
+                        <td style={{width: '400px'}}>
+                            <JoinColumnUI/>
                         </td>
-
                     </tr>
                 ))}
                 </tbody>
             </table>
-            <div className={styles.searchBox}>
-                {showSearch && <TableSearchLayout/>}
-            </div>
-          {/*  <div className={styles.buttonContainer}>
-                <button type="button">테이블 생성</button>
-                //버튼이 밀려서 이거 어케 할지 고민중이에욤..
-            </div>*/}
-
+            <ButtonUI children={"테이블 생성하기"} className={styles.buttonBox} onClick={sendColumnData}/>
         </div>
     );
 }

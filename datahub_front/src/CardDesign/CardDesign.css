@@ -9,13 +9,12 @@
 
 .cardContainer{
     font-family: "KoPubWorld Dotum Bold", serif;
-    border:1px solid #9b9b9b;
+    border:1px solid #D9D9D9;
     height: 420px;
     width: 350px;
+    border-radius: 6px;
 }
 .cardDesign{
-    border:1px solid red;
-    height: 380px;
     width: 300px;
     margin: 20px auto 0;
 }
@@ -25,34 +24,35 @@
 }
 
 .text{
-    border:1px solid brown;
+
     height: 120px;
     margin-top: 20px;
 }
 .cardTitle{
-    border:1px solid salmon;
     height: 50px;
-    width: 200px;
+    text-align: center;
     font-size: 30px;
     margin: 0 auto;
 }
 
 .cardDescription{
-    border:1px solid skyblue;
-    height: 60px;
-    width: 200px;
+    height: 100px;
+    text-align: center;
     margin: 5px auto 0;
     font-size: 20px;
 }
 .buttonBox{
-    border:1px solid blue;
     width: 80px;
     height: 40px;
-    float: right;
-    margin-top: 5px;
+    margin-left: 230px;
+    margin-top: 0px;
 }
 
 .button{
     width: 100%;
     height: 100%;
+    border:none;
+    background-color: #00A3FF;
+    color: white;
+    border-radius: 10px;
 }

@@ -1,25 +1,16 @@
 import styles from '../createTableStyle.module.css';
 import searchIcon from '../../image/glass.png';
 import TableData from "../data/TableData";
-import React, {useState} from "react";
 
 
-export default function TableSearchLayout(){
-    const [clickedItem, setClickedItem] = useState(null);
+export default function TableSearchLayout({handleJoinTableSelect , setShowSearch}){
     const handleRowClick = (item) => {
-        setClickedItem(item);
+        handleJoinTableSelect(item)
+        setShowSearch(false)
     };
 
     return(
         <div>
-            {clickedItem && (
-                <div >
-                    <p>{clickedItem.tableName}/
-                   {clickedItem.pkName}/
-                   {clickedItem.type}</p>
-                </div>
-            )}
-
             <div className={styles.searchContainer}>
                 <div className={styles.searchTitle}>
                     조인할 테이블 PK 검색
@@ -33,10 +24,8 @@ export default function TableSearchLayout(){
                     <div className={styles.listBox}>
                         {TableData.map((item, index) => (
                             <div key={item.id} onClick={() => handleRowClick(item)}>
-                                <div className={styles.list}>
-                                    {item.tableName}/
-                                    {item.pkName}/
-                                    {item.type}
+                                <div>
+                                    <p className={styles.joinData}>{item.tableName}/{item.pkName}/{item.type}</p>
                                 </div>
                                 {index !== TableData.length - 1 && <hr/>}
                             </div>

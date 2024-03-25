@@ -9,49 +9,31 @@
 
 .tableBox{
     font-family: "KoPubWorld Dotum Bold", serif;
-    border: 1px solid red;
-    margin-left: 350px;
-    margin-top: 55px;
-    width: 68%;
-    height: 600px;
-    background-color: white;
+    margin: 5% auto;
+    width: 60%;
+    padding: 10px;
 }
-
-.tableTitle{
-    border:1px solid #00ff9d;
-}
-
 .title{
-    border : 1px solid salmon;
     font-size: 34px;
-    width: 500px;
-    margin-left: 78px;
+    width: 90%;
+    margin: 0 auto;
     padding: 5px;
 }
 
-.titleBox{
-    border:1px solid blue;
-    height: 12%;
-}
-
 .namesContainer{
-    border:1px solid #11ff00;
-
     height: 15%;
     margin-top: 12px;
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .nameTable{
-    border: 1px solid #e13636;
     height: 100%;
-    width: 40%;
+    width: 49%;
 }
 
 .tableName{
-    border: 1px solid gray;
     height: 43%;
     font-size: 22px;
     width: 50%;
@@ -59,7 +41,6 @@
 }
 
 .insertTableName{
-    border:1px solid navy;
     margin-top: 5px;
     width: 90%;
     height: 52%;
@@ -67,26 +48,29 @@
 }
 
 .insertBox{
-    width: 350px;
     height: 41px;
     margin-left: 2px;
     margin-top: 2px;
+    width: 100%;
 }
-
+.insertBox input{
+    width: 100%;
+}
 
 .insertTable{
     border:2px solid #777777;
     height: 41px;
     width: 350px;
     border-radius: 10px;
+    margin-top: 2%;
+
 }
 
 .insertDB{
-    border:2px solid #777777;
     height: 41px;
-    width: 350px;
     border-radius: 10px;
     background-color: #E8E8E8;
+    margin-top: 2%;
 }
 
 .insertTable:focus{
@@ -94,22 +78,22 @@
 }
 
 .explanationContainer{
-    border:1px solid black;
     height: 15%;
-    width: 84%;
-    margin-top: 10px;
-    margin-left: 80px;
+    width: 100%;
+    margin-top: 3%;
 }
+.explanationContainer{
+    width: 100%;
 
+}
 .insertExplanation{
     border:2px solid #777777;
     height: 41px;
-    width: 790px;
     border-radius: 10px;
+    margin: 0 auto;
 }
 
 .explanationBox{
-    border:1px solid red;
     font-size: 22px;
     display: flex;
     width: 200px;
@@ -117,37 +101,16 @@
 }
 
 .add{
-    border:1px solid black;
     font-size: 14px;
     color:#707070;
     height: 20px;
-    margin: 5px 0 0 4px;
-}
-
-
-/*
-.button{
-    border:1px solid purple;
-    display: flex;
-    gap:10px;
-    width: 32px;
     float: right;
-    margin-right: 90px;
-}
-
-*/
-
-
-.dictionary{
-    /*border:1px solid blueviolet;*/
-
+    margin-top: 3%;
 }
 
 .selectHeader{
-    /*border:1px solid #9bcaff;*/
-    width: 90%;
-    margin: 0 auto;
-
+    width: 100%;
+    margin: 3% auto;
 }
 
 .selectHeaderTable{
@@ -155,6 +118,7 @@
     border-collapse: collapse;
     margin: 0 auto;
     border: 1px solid #777777;
+
 }
 
 .selectHeaderTable th{
@@ -175,8 +139,8 @@
 }
 
 .inputDataType {
-    width: 175px;
     border-color: #A4A4A4;
+    width: 100%;
 }
 .inputDataType option{
     color: #939393;
@@ -208,57 +172,54 @@
     margin: 0 auto;
 
 }
+.dictionary{
+    width: 100%;
+}
 
 .searchContainer{
     font-family: "KoPubWorld Dotum Bold", serif;
     margin: 0 auto;
     border:1px solid #b0b0b0;
-    width: 250px;
-    height: 340px;
     border-radius: 15px;
     background-color: white;
 }
 .searchTitle{
-    width: 280px;
-    margin: 5px auto 0 20px;
     font-size: 18px;
+    margin-top: 10px;
 }
 
 .searchName{
-
     height: 50px;
-    margin: 0 auto;
-
+    margin: 10px auto;
     position: relative;
 }
-.searchName input[type="text"] {
-    padding-left: 35px;
-}
-
 .searchName img{
     position: absolute;
     left: 20px;
     top: 40%;
     transform: translateY(-50%);
+    z-index: 1;
 }
 .sn{
    border:2px solid #00A3FF;
     border-radius: 10px;
     height: 80%;
-    width: 90%;
     font-size: 12px;
-    margin-left: 12px;
+    width: 90%;
+    text-align: center;
 }
 
 
 .buttonBox{
+    width: 180px;
+    height: 60px;
     border:1px solid #00A3FF;
-    padding: 5px;
-    width: 120px;
+    padding: 10px;
     border-radius: 10px;
     background-color: #00A3FF;
     color:white;
-
+    margin-top: 5%;
+    float: right;
 }
 
 .attribute{
@@ -274,19 +235,12 @@
     font-size: 14px;
 
 }
-
-.list{
-
-    width: 90%;
-    margin: 0 auto;
-}
-
 .searchBox{
    /* border:1px solid red;*/
     width: 260px;
     height: auto;
     margin-left: auto;
-
+    position: fixed;
 }
 
 .searchButton{
@@ -298,20 +252,14 @@
     margin-right: 10px;
 }
 .buttonBig{
-    border:1px solid red;
-    width: 80px;
-    margin-left: 850px;
+    text-align: right;
+    padding: 10px;
 }
 
 .buttonBig button{
     border:none;
     background-color: #ffffff;
 }
-
-.buttonContainer{
-    border:1px solid red;
-    width: 100px;
-    float: right;
-
-
+.joinData{
+    text-align: left;
 }
