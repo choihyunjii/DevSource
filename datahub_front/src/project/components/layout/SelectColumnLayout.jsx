@@ -39,24 +39,19 @@ export default function SelectColumnLayout() {
     };
 
     const handleDeleteRow = () => {
-        if (rows.length > 1) {
+        if (rows.length >1) {
             const updatedRows = [...rows.slice(1)]; // 가장 오래된 행을 삭제
             setRows(updatedRows);
             const updatedCreationTimes = [...creationTimes.slice(1)]; // 가장 오래된 행의 생성 시간을 삭제
             setCreationTimes(updatedCreationTimes);
         }
     };
-
-
-
-
-
-
     return (
         <div>
             <div className={styles.buttonBig}>
-                <button onClick={handleAddRow}>+</button>
+                <button onClick={handleAddRow} style={{marginRight: '2px'}}>+</button>
                 <button onClick={handleDeleteRow}>-</button>
+
             </div>
 
             <table className={styles.selectHeaderTable}>
@@ -71,10 +66,10 @@ export default function SelectColumnLayout() {
                 </tr>
                 </thead>
                 <tbody id="tableBody">
-                {rows.map(row => (
-                    <tr key={row.id}>
-                        <td><input style={{width: '170px'}} type="text" className={styles.inputColumnName}/></td>
-                        <td style={{width: '170px'}}>
+                {rows.map((row, index) => (
+                    <tr key={index}>
+                        <td><input style={{width: '210px'}} type="text" className={styles.inputColumnName}/></td>
+                        <td style={{width: '210px'}}>
                             <select className={styles.inputDataType} onChange={handleSelectChange}>
                                 <optgroup label="Integer">
                                     <option value="int">INT</option>
@@ -90,15 +85,16 @@ export default function SelectColumnLayout() {
                         <td style={{width: '45px'}}>
                             <input type="checkbox" value="pk" className={styles.checkBox}/>
                         </td>
-                        <td style={{width: '43px'}}>
+                        <td style={{width: '45px'}}>
                             <input type="checkbox" value="fk" className={styles.checkBox}/>
                         </td>
-                        <td style={{width: '43px'}}>
+                        <td style={{width: '45px'}}>
                             <input type="checkbox" value="uk" className={styles.checkBox}/>
                         </td>
-                        <td style={{width: '250px'}}>
+                        <td style={{width: '300px'}}>
                             <button onClick={renderSearch} className={styles.searchButton}>검색 ▼</button>
                         </td>
+
                     </tr>
                 ))}
                 </tbody>
@@ -106,6 +102,10 @@ export default function SelectColumnLayout() {
             <div className={styles.searchBox}>
                 {showSearch && <TableSearchLayout/>}
             </div>
+          {/*  <div className={styles.buttonContainer}>
+                <button type="button">테이블 생성</button>
+                //버튼이 밀려서 이거 어케 할지 고민중이에욤..
+            </div>*/}
 
         </div>
     );

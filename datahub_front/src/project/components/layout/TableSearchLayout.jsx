@@ -1,15 +1,25 @@
 import styles from '../createTableStyle.module.css';
 import searchIcon from '../../image/glass.png';
 import TableData from "../data/TableData";
+import React, {useState} from "react";
 
 
 export default function TableSearchLayout(){
+    const [clickedItem, setClickedItem] = useState(null);
     const handleRowClick = (item) => {
-        console.log(item); // 클릭된 값이 콘솔에 표시됩니다.
+        setClickedItem(item);
     };
 
     return(
         <div>
+            {clickedItem && (
+                <div >
+                    <p>{clickedItem.tableName}/
+                   {clickedItem.pkName}/
+                   {clickedItem.type}</p>
+                </div>
+            )}
+
             <div className={styles.searchContainer}>
                 <div className={styles.searchTitle}>
                     조인할 테이블 PK 검색

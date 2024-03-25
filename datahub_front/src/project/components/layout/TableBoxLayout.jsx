@@ -7,6 +7,7 @@ import InsertExplanationUI from "../uI/InsertExplanationUI";
 import ExplanationTitleUI from "../uI/ExplanationTitleUI";
 
 import SelectColumnLayout from "./SelectColumnLayout";
+import React from "react";
 
 
 
@@ -33,17 +34,16 @@ export default function TableBoxLayout() {
                     <ExplanationTitleUI title="설명"/>
                     <InsertExplanationUI/>
                 </div>
-                <div className={styles.metaContainer}>
 
-                    <div className={styles.dictionary}>
-                        <div className={styles.selectHeader}>
-                            <SelectColumnLayout/>
-                        </div>
+                <div className={styles.dictionary}>
+                    <div className={styles.selectHeader}>
+                        <SelectColumnLayout/>
                     </div>
-
-
                 </div>
+
+
             </div>
+
         </div>
     )
 }

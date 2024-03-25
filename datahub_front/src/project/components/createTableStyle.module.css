@@ -12,7 +12,7 @@
     border: 1px solid red;
     margin-left: 350px;
     margin-top: 55px;
-    width: 65%;
+    width: 68%;
     height: 600px;
     background-color: white;
 }
@@ -36,6 +36,7 @@
 
 .namesContainer{
     border:1px solid #11ff00;
+
     height: 15%;
     margin-top: 12px;
     display: flex;
@@ -121,14 +122,10 @@
     color:#707070;
     height: 20px;
     margin: 5px 0 0 4px;
-
-}
-.metaContainer{
-    border:1px solid black;
-    margin-top: 10px;
-    height: 50%;
 }
 
+
+/*
 .button{
     border:1px solid purple;
     display: flex;
@@ -138,23 +135,18 @@
     margin-right: 90px;
 }
 
-.buttonImg{
+*/
 
-}
 
 .dictionary{
-    border:1px solid blueviolet;
-    margin-top: 25px;
-    height: 80%;
+    /*border:1px solid blueviolet;*/
 
 }
 
 .selectHeader{
-    border:1px solid #9bcaff;
+    /*border:1px solid #9bcaff;*/
     width: 90%;
     margin: 0 auto;
-    height: 100px;
-
 
 }
 
@@ -183,7 +175,7 @@
 }
 
 .inputDataType {
-    width: 150px;
+    width: 175px;
     border-color: #A4A4A4;
 }
 .inputDataType option{
@@ -222,7 +214,7 @@
     margin: 0 auto;
     border:1px solid #b0b0b0;
     width: 250px;
-    height: 320px;
+    height: 340px;
     border-radius: 15px;
     background-color: white;
 }
@@ -270,9 +262,9 @@
 }
 
 .attribute{
-    border:1px solid black;
-    height: 210px;
-    width: 90%;
+    /*border:1px solid black;*/
+    height: 230px;
+    width: 80%;
     margin: 10px auto 0;
     overflow-y:auto ;
 }
@@ -290,7 +282,7 @@
 }
 
 .searchBox{
-    border:1px solid red;
+   /* border:1px solid red;*/
     width: 260px;
     height: auto;
     margin-left: auto;
@@ -307,8 +299,19 @@
 }
 .buttonBig{
     border:1px solid red;
-    width: 100px;
+    width: 80px;
+    margin-left: 850px;
+}
 
+.buttonBig button{
+    border:none;
+    background-color: #ffffff;
+}
+
+.buttonContainer{
+    border:1px solid red;
+    width: 100px;
+    float: right;
 
 
 }
