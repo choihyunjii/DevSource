@@ -50,7 +50,7 @@ val changeColumn4 = ChangeColumn(
 )
 
 val changeColumn5 = ChangeColumn(
-    columnId = 2,
+    columnId = 5,
     table = changeTable2,
     columnName = "SampleColumn5",
     comment = "This is a sample column 2",

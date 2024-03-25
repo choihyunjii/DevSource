@@ -12,6 +12,9 @@ class BranchService {
     fun getBranchByProject(project: Project): Branch? =
         branchList.find { it.project == project }
 
+    fun getBranchByProjectId(project: Long): Branch? =
+        branchList.find { it.project.id == project }
+
     fun getBranchByBranchId(branchId: Long): Branch? =
         branchList.find { it.branchId == branchId}
 

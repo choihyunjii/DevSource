@@ -47,7 +47,7 @@ class TreeCommitService(
         return "All commits processed successfully"
     }
 
-    // 병합 후 커밋
+    // 커밋 생성용
     fun makeNewCommit(project: Project, profile: Profile, comment: String): Commit {
         val branch = branchService.getBranchByProject(project) ?: error("Branch not found")
         return createNewCommit(comment, project, profile, branch)

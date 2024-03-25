@@ -9,7 +9,6 @@ import ProjectViewPage from "../project/components/page/ProjectViewPage";
 import TemplateShowCasePage from "../project/components/page/TemplateShowCasePage";
 import TablePage from "../devSource/Components/page/TablePage";
 import TeamProfilePage from "../project/components/page/TeamProfilePage";
-import CommitSearchPage from "../devTree/Components/page/CommitSearchPage";
 import HistoryViewPage from "../devTree/Components/page/HistoryViewPage";
 import RestAPIBuilderPage from "../project/components/page/RestAPIBuilderPage";
 
@@ -34,7 +33,6 @@ export default function AppRouter() {
                     <Route path='/project/:projectId' element={<ProjectViewPage />} />
                     <Route path='/table' element={<TablePage />} />
                     <Route path='/project/teamProfile' element={<TeamProfilePage />} />
-                    <Route path='/commit' element={<CommitSearchPage />} />
                     <Route path='/history' element={<HistoryViewPage />} />
                     <Route path='/restApi' element={<RestAPIBuilderPage/>}/>
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}

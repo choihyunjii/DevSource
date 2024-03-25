@@ -51,17 +51,20 @@ class MergeService (
                 // 병합한(충돌 해결한) Change 데이터를 새로운 commit을 참조하는 객체로 만들어 반환
                 val mergeChanges = getMergeChanges(commonTables, listOf<ChangeData>(), newCommit)
 
-                val copySources = copySourceData(newCommit) // Source 데이터 새로운 커밋 참조로 바꾼 후, 복사 해오기
+                val copySources = copySourceData(newCommit) // Source 데이터 새로운 커밋 참조로 형변환 후, 복사 해오기
                 println(copySources)
-                if (copySources != null) { // 저장하기
-                    saveDataService.saveSourceData(copySources)
-                }
 
                 // copySources에 대해 겹치는 ChangeData는 그대로 두고, 겹치지 않는 ChangeData는 속성 바꿔서 반환
                 val overlapChanges = findNotOverlapChangeData(copySources, mergeChanges)
-
+// *********** 여기서부터 로직 수정하기
+                // Source 데이터들 저장하기
+                if (copySources != null) {
+                    val sourcesWithoutChanges = null // 변경 사항을 뺀 Sources
+                    saveDataService.saveSourceData(copySources) // 저장하기
+                }
                 // Change 데이터들 저장하기
                 saveChangesData(mergeChanges, overlapChanges)
+                // Change -> Source 바꾼 후 저장
 
                 return "병합 완료"
             } else { // 있으면 충돌 객체 반환
@@ -85,8 +88,8 @@ class MergeService (
             overlapChanges?.let { (overlap, notOverlap, notOverlapToSource) ->
                 changeData = overlap + notOverlap
 
-                // 새로운 병합 데이터를 Source DB에 저장
-                notOverlapToSource.forEach { sourceDataService.createData(it) }
+//                // 새로운 병합 데이터를 Source DB에 저장
+//                notOverlapToSource.forEach { sourceDataService.createData(it) }
             }
         }
 
@@ -183,9 +186,9 @@ class MergeService (
             // 테이블 이름이 같은 sourceTable 찾기
             val findSourceTables = findChangeToSourceTablesName(sourceTables, changeTables)
             findSourceTables.forEach { (sTable, cTable) ->
-                val sColumns = sourceColumnService.getColumnsByTable(sTable)
+                val sColumns = sourceColumns.filter { it.table == sTable }
                 val cColumns = changeColumns.filter { it.table == cTable }
-                val sData = sourceDataService.getDataListByColumns(sColumns) // 테이블의 모든 데이터 뽑기
+                val sData = sourceData.filter { data -> sColumns.any { column -> data.column == column }} // 테이블의 모든 데이터 뽑기
                 val sDataNames = sData.map { it.data }
                 val sDataLines = sData.map { it.columnLine }
 
