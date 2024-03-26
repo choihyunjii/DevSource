@@ -8,7 +8,7 @@ val commit1 = Commit(
     createTime = LocalDateTime.of(2023, 5, 10, 9, 30),
     createUser = "user1",
     branch = branch1,
-    checkout = true
+    checkout = false
 )
 
 val commit2 = Commit(
@@ -17,7 +17,7 @@ val commit2 = Commit(
     createTime = LocalDateTime.of(2023, 5, 15, 13, 45),
     createUser = "user1",
     branch = branch1,
-    checkout = false
+    checkout = true
 )
 
 val commit3 = Commit(
