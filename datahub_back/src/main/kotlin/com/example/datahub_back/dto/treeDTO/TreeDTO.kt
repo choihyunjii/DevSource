@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 
 data class Branch(
     val branchId: Long, // PK
-    val profile: Profile?, // FK
+    val profile: Profile, // FK
     val project: Project, // FK
     var pullRequest: Int, // 기본 0
     var updateBranch: Int,
@@ -73,7 +73,7 @@ data class ChangeColumn(
     val isPrimaryKey: Int,
     val isForeignKey: Int,
     val isUniqueKey: Int,
-    val joinSourceTable: SourceTable?
+    val joinSourceTableId: Long?
 )
 
 data class ChangeData(

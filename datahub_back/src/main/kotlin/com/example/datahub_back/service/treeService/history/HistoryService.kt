@@ -25,8 +25,8 @@ class HistoryService (
     fun retrieveProjects(userId: Long): List<Project> =
         projectService.getProjectsByTeamProfile(userId)
 
-    fun retrieveCommits(userId: Long, projectId: Long): List<Commit> {
-        val branch = branchService.getBranchByUserIdAndProjectId(userId, projectId)
+    fun retrieveCommits(projectId: Long): List<Commit> {
+        val branch = branchService.getBranchByProjectId(projectId)
         if (branch != null)
             return commitService.getCommitsByBranch(branch)
         return emptyList()

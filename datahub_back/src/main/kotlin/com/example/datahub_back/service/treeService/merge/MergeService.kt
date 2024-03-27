@@ -6,7 +6,9 @@ import com.example.datahub_back.controller.treeController.merge.MergeCrashRespon
 import com.example.datahub_back.dto.treeDTO.*
 import com.example.datahub_back.service.treeService.BranchService
 import com.example.datahub_back.service.treeService.CommitService
-import com.example.datahub_back.service.treeService.commit.DataTransformer.Companion.toSourceTable
+import com.example.datahub_back.service.treeService.SaveDataService
+import com.example.datahub_back.service.treeService.commit.DataTransformer.Companion.toSourceData
+import com.example.datahub_back.service.treeService.commit.TreeCommitService
 import com.example.datahub_back.service.treeService.tableColumnData.*
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -16,6 +18,7 @@ import java.time.LocalDateTime
 @Service
 class MergeService (
     private val commitService: CommitService,
+    private val treeCommitService: TreeCommitService,
     private val branchService: BranchService,
     private val changeTableService: ChangeTableService,
     private val changeColumnService: ChangeColumnService,
@@ -23,6 +26,7 @@ class MergeService (
     private val sourceTableService: SourceTableService,
     private val sourceColumnService: SourceColumnService,
     private val sourceDataService: SourceDataService,
+    private val saveDataService: SaveDataService,
 ) {
     @Transactional(rollbackFor = [RuntimeException::class])
     fun handelMerge(targetCommitId: Int, branchId: Long): Any {
@@ -40,14 +44,33 @@ class MergeService (
             val crash = crashPKCheck(commonTables)
 
             if (crash == null || crash.isEmpty()) { // 충돌이 없으면 병합 진행
-                val mergeChanges = getMergeChanges(commonTables, listOf<ChangeData>()) // 충돌 해결한 Change 데이터
-                // Source와 중복 없는 Change 가져오기
-                // 그 Change의 line, id 수정
-                // 새로운 커밋 객체 만들어서
-                // Source로도 저장하고, Change로도 저장하기
-                // 나머지 Source 복사 해온거 새로운 커밋에 저장
+                // 새로운 병합 커밋 만들기
+                val newCommit = treeCommitService.makeNewCommit(branch.project, branch.profile,
+                    "Merge : checkoutCommit[${checkCommit.commitId}] + targetCommit[${targetCommit.commitId}]")
 
-                return "충돌 없음"
+                // 병합한(충돌 해결한) Change 데이터를 새로운 commit을 참조하는 객체로 만들어 반환
+                val mergeChanges = getMergeChanges(commonTables, listOf<ChangeData>(), newCommit)
+
+                val copySources = copySourceData(newCommit) // Source 데이터 새로운 커밋 참조로 형변환 후, 복사 해오기
+
+                // copySources에 대해 겹치는 ChangeData는 그대로 두고, 겹치지 않는 ChangeData는 속성 바꿔서 반환
+                val changeDataTypeConversion = changeDataTypeConversion(copySources, mergeChanges)
+
+                // Source 데이터들 저장하기
+                if (copySources != null) {
+                    val sourcesWithoutChanges = sourcesWithoutChanges(checkCommit) // 변경 사항을 뺀 Sources
+                    saveDataService.saveSourceData(sourcesWithoutChanges) // 저장하기
+                    println("Source 데이터 : ${sourcesWithoutChanges}")
+                }
+                // Change 데이터들 저장하기
+                val changes = changesDataCombination(mergeChanges, changeDataTypeConversion)
+                saveDataService.saveChangesData(changes)
+                // Change -> Source Data 바꾼 후 저장
+                saveChangeToSourceData(changes, newCommit)
+                println("Change 데이터 : ${changes}")
+
+                return "병합 완료 (충돌 없음)"
+
             } else { // 있으면 충돌 객체 반환
                 return crash
             }
@@ -55,113 +78,174 @@ class MergeService (
         return "오류"
     }
 
-    // 병합 : 일단 충돌 해결한 Change 객체만 생성해서 가져오기
-    private fun getMergeChanges(commonTables: List<Pair<ChangeTable, ChangeTable>>, crashData: List<ChangeData>):
+    private fun saveChangeToSourceData(changes: Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>, newCommit: Commit) {
+        val (table, column, data) = changes
+        data.forEach { data ->
+            sourceDataService.createData(data.toSourceData(newCommit))
+        }
+    }
+
+    // source에서 change 데이터를 뺀 데이터들
+    private fun sourcesWithoutChanges(checkoutCommit: Commit)
+    : Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>> {
+        val withoutSourceTables = mutableListOf<SourceTable>()
+        val withoutSourceColumns = mutableListOf<SourceColumn>()
+        val withoutSourceData = mutableListOf<SourceData>()
+
+        val sourceTables = sourceTableService.getTablesByCommit(checkoutCommit)
+        val changeTables = changeTableService.getTablesByCommit(checkoutCommit)
+
+        sourceTables.zip(changeTables).forEach { (sTable, cTable) ->
+            val sColumns = sourceColumnService.getColumnsByTable(sTable)
+            val sData = sourceDataService.getDataListByColumns(sColumns)
+
+            val cColumns = changeColumnService.getColumnsByTable(cTable)
+            val cData = changeDataService.getDataListByColumns(cColumns)
+
+            // 테이블 데이터의 차이 빼내기
+            val dataWithoutChanges = subtractSourceData(sData, cData)
+
+            // 결과에 추가
+            withoutSourceTables.add(sTable)
+            withoutSourceColumns.addAll(sColumns)
+            withoutSourceData.addAll(dataWithoutChanges)
+        }
+
+        return Triple(withoutSourceTables, withoutSourceColumns, withoutSourceData)
+    }
+
+    // SourceData 리스트와 ChangeData 리스트의 차이 찾기
+    private fun subtractSourceData(sourceData: List<SourceData>, changeData: List<ChangeData>): List<SourceData> {
+        val result = mutableListOf<SourceData>()
+        for (data in sourceData) {
+            if (!changeData.any { it.dataId == data.dataId }) {
+                result.add(data)
+            }
+        }
+        return result
+    }
+
+    private fun changesDataCombination(mergeChanges: Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>?,
+                                       transformationData: List<ChangeData>)
+    : Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>{
+
+        var changeTables = listOf<ChangeTable>()
+        var changeColumns = listOf<ChangeColumn>()
+
+        mergeChanges?.let { (mergeTables, mergeColumns, mergeData) ->
+            changeTables = mergeTables
+            changeColumns = mergeColumns
+        }
+
+        return Triple(changeTables, changeColumns, transformationData)
+    }
+
+
+    // 병합 : 다시 데이터 꺼내서 선택하지 않은 충돌 객체만 빼서 반환
+    private fun getMergeChanges(commonTables: List<Pair<ChangeTable, ChangeTable>>, crashData: List<ChangeData>, newCommit: Commit):
         Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>?  {
 
         val changeTables = mutableListOf<ChangeTable>()
         val changeColumns = mutableListOf<ChangeColumn>()
         val changeData = mutableListOf<ChangeData>()
 
-        commonTables.forEach { (checkTable, targetTable) ->
-            val checkColumns = changeColumnService.getColumnsByTable(checkTable).sortedBy { it.columnId }
-            val targetColumns = changeColumnService.getColumnsByTable(targetTable).sortedBy { it.columnId }
-            val sameColumn = areColumnsWithSameNames(checkColumns, targetColumns) // 행 길이, 이름이 같은지 확인
+        commonTables.forEach { (cTable, tTable) ->
+            val cColumns = changeColumnService.getColumnsByTable(cTable).sortedBy { it.columnId }
+            val tColumns = changeColumnService.getColumnsByTable(tTable).sortedBy { it.columnId }
 
-            if (sameColumn) { // 내용이 같은 행이라면 병합 객체 만들기
-                changeTables.add(checkTable)
-                checkColumns.forEach { column ->
-                    changeColumns.add(column)
-                    val checkData = changeDataService.getDataListByColumn(column)
-                    val targetData = changeDataService.getDataListByColumn(column)
+            val cChangeTable = transformChangeTableWithCommit(cTable, newCommit)
+            changeTables.add(cChangeTable)
+            cColumns.forEach { column ->
+                val cChangeColumn = transformChangeColumnWithTable(column, cTable)
+                changeColumns.add(cChangeColumn)
 
-                    checkData.forEach { data ->
-                        if (data !in crashData) {
-                            changeData.add(data)
-                        }
-                    } // forEach
-                    targetData.forEach { data ->
-                        if (data !in crashData) {
-                            changeData.add(data)
-                        }
-                    } // forEach
+                val cData = changeDataService.getDataListByColumn(column).filter { it.action == 1 }
+                cData.forEach { data ->
+                    if (data !in crashData) {
+                        changeData.add(
+                            transformChangeDataWithColumn(data, column)
+                        )
+                    }
                 } // forEach
-            } // if
+            } // forEach
+
+            val tChangeTable = transformChangeTableWithCommit(tTable, newCommit)
+            changeTables.add(tChangeTable)
+            tColumns.forEach { column ->
+                val tChangeColumn = transformChangeColumnWithTable(column, tTable)
+                changeColumns.add(tChangeColumn)
+
+                val tData = changeDataService.getDataListByColumn(column).filter { it.action == 1 }
+
+                tData.forEach { data ->
+                    if (data !in crashData) {
+                        changeData.add(
+                            transformChangeDataWithColumn(data, column)
+                        )
+                    }
+                } // forEach
+            } // forEach
         } // forEach
         return Triple(changeTables, changeColumns, changeData)
     }
 
-    // [이거 아닌 것 같음]
-    // Change객체를 Source객체에 넣을 때 Data Id와 Line을 변경 시키는 함수 만들어야 함
-    // 일치하는 테이블 이름으로 찾고, 그 테이블의 Data 중에 가장 높은 Id와 columnLine을 찾아서 저장한 다음
-    // ChangeData객체의 Id, columnLine, column을 따로 수정해줌
-    // 그걸 Source로 형변환해서 저장하되, 중복이면 저장하지 않음
-
-    // change 데이터들을 수정하는 함수 (임시 id 재설정, line 지정)
-    private fun changeTransformation(mergeChanges: Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>?,
-                                     copySources: Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>>?) {
-        if (mergeChanges != null && copySources != null) {
-            val (changeTables, changeColumns, changeData) = mergeChanges
-            val (sourceTables, sourceColumns, sourceData) = copySources
-
-            // 테이블 이름이 같은 sourceTable 찾기
-            val findSourceTables = findChangeToSourceTablesName(changeTables, sourceTables)
-            findSourceTables.forEach { sTable ->
-                val sColumns = sourceColumnService.getColumnsByTable(sTable)
-                val sData = sourceDataService.getDataListByColumns(sColumns) // 테이블의 모든 데이터 뽑기
-                val sPkData = sData.filter { it.column.isPrimaryKey == 1 } // PK만 뽑기
-
-            }
-        }
-    }
-
-    // 1. source 데이터로부터 change 데이터가 중복이 아닌 데이터 반환
-    private fun notOverlapChangeDataProcess(mergeChanges: Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>?,
-                                            copySources: Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>>?,
-    ): Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>? {
-        var notOverlapTable = mutableListOf<ChangeTable>()
-        var notOverlapColumn = mutableListOf<ChangeColumn>()
-        var notOverlapData = mutableListOf<ChangeData>()
+    // sourceData로부터 changeData가 중복인 데이터와 중복이 아닌 데이터 속성 바꿔서 저장
+    private fun changeDataTypeConversion(copySources: Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>>?,
+                                         mergeChanges: Triple<List<ChangeTable>, List<ChangeColumn>, List<ChangeData>>?,
+    ): List<ChangeData> {
+        val newChangeData = mutableListOf<ChangeData>() // 중복은 그대로, 아닌 건 속성 바꿔 저장
 
         if (mergeChanges != null && copySources != null) {
             val (changeTables, changeColumns, changeData) = mergeChanges
             val (sourceTables, sourceColumns, sourceData) = copySources
 
             // 테이블 이름이 같은 sourceTable 찾기
-            val findSourceTables = findChangeToSourceTablesName(changeTables, sourceTables)
-            findSourceTables.forEach { sTable ->
-                val sColumns = sourceColumnService.getColumnsByTable(sTable)
-                val sData = sourceDataService.getDataListByColumns(sColumns) // 테이블의 모든 데이터 뽑기
+            val findSourceTables = findChangeToSourceTablesName(sourceTables, changeTables)
+            findSourceTables.forEach { (sTable, cTable) ->
+                val sColumns = sourceColumns.filter { it.table == sTable }
+                val cColumns = changeColumns.filter { it.table == cTable }
+                val sData = sourceData.filter { data -> sColumns.any { column -> data.column == column }} // 테이블의 모든 데이터 뽑기
                 val sDataNames = sData.map { it.data }
                 val sDataLines = sData.map { it.columnLine }
 
                 // source 데이터 안에 포함되지 않은 데이터 뽑기
                 val notOverlap = changeData.filter { it.columnLine !in sDataLines && it.data !in sDataNames}
-                notOverlap.forEach { notOverlapData.add(it) }
+
+                // - 중복 데이터 저장
+                val overlap = changeData.subtract(notOverlap.toSet())
+                overlap.forEach{ data ->
+                    newChangeData.add(data)
+                }
+
+                // - 중복이 아닌 데이터 속성 수정 후 저장
+                val sourceDataLastLine = getLastColumnLine(sData) // 마지막 라인 번호 뽑기
+                // line, id 재설정
+                cColumns.zip(sColumns).forEach { (cColumn, sColumn) ->
+                    var lastLine = sourceDataLastLine
+                    val cData = notOverlap.filter { it.column == cColumn }
+                    cData.forEach {
+                        newChangeData.add(
+                            ChangeData(
+                                dataId = changeDataService.getDataMaxId() + 1, // DB 연결하면 수정하기
+                                column = it.column,
+                                columnLine = lastLine + 1,
+                                data = it.data,
+                                action = it.action
+                            )
+                        )
+                        lastLine++
+                    }
+                }
             }
-            notOverlapTable = changeTables as MutableList<ChangeTable>
-            notOverlapColumn = changeColumns as MutableList<ChangeColumn>
+
         }
-        return Triple(notOverlapTable, notOverlapColumn, notOverlapData)
+        return newChangeData
     }
 
-    //    private fun findFirstMissingColumnLine(sPkData: List<SourceData>): Int {
-//        var i = 0
-//        while (true) {
-//            var found = false
-//            for (data in sPkData) {
-//                if (data.columnLine == i) {
-//                    found = true
-//                    break
-//                }
-//            }
-//            if (!found) {
-//                return i
-//            }
-//            i++
-//        }
-//    }
-// 꼭 라인이 1, 2, 3 이런식으로 연속적으로 있어야 하나?
+    // 마지막 라인 반환
+    private fun getLastColumnLine(sPkData: List<SourceData>): Int {
+        return sPkData.maxByOrNull { it.columnLine }?.columnLine?: 0
+    }
 
     private fun copySourceData(checkCommit: Commit) :
             Triple<List<SourceTable>, List<SourceColumn>, List<SourceData>>? {
@@ -173,40 +257,17 @@ class MergeService (
         sourceTables.forEach { table ->
             // 참조 commit 교체 후 복사
             copySourceTables.add(
-                SourceTable(
-                    tableId = table.tableId,
-                    tableName = table.tableName,
-                    comment = table.comment,
-                    isFavorite = table.isFavorite,
-                    isDelete = table.isDelete,
-                    updateTime = LocalDateTime.now(),
-                    commit = checkCommit
-                )
+                transformSourceTableWithCommit(table, checkCommit)
             )
             val sourceColumns = sourceColumnService.getColumnsByTable(table)
             sourceColumns.forEach { column ->
                 copySourceColumns.add(
-                    SourceColumn(
-                        columnId = column.columnId,
-                        table = table,
-                        columnName = column.columnName,
-                        comment = column.comment,
-                        dataType = column.dataType,
-                        isPrimaryKey = column.isPrimaryKey,
-                        isForeignKey = column.isForeignKey,
-                        isUniqueKey = column.isUniqueKey,
-                        joinSourceTableId = column.joinSourceTableId
-                    )
+                    transformSourceColumnWithTable(column, table)
                 )
                 val sourceData = sourceDataService.getDataListByColumn(column)
                 sourceData.forEach { data ->
                     copySourceData.add(
-                        SourceData(
-                            dataId = data.dataId,
-                            column = column,
-                            columnLine = data.columnLine,
-                            data = data.data
-                        )
+                        transformSourceDataWithColumn(data, column)
                     )
                 } // forEach
             } // forEach
@@ -309,14 +370,14 @@ class MergeService (
         return commonTables
     }
 
-    private fun findChangeToSourceTablesName(changeTables: List<ChangeTable>, sourceTables: List<SourceTable>)
-            : List<SourceTable> {
-        val findSourceTables = mutableListOf<SourceTable>()
-        for (changeTable in changeTables) {
-            val sourceTable = sourceTables.find { it.tableName == changeTable.tableName }
-            sourceTable?.let { findSourceTables.add(sourceTable) }
+    private fun findChangeToSourceTablesName(sourceTables: List<SourceTable>, changeTables: List<ChangeTable>)
+            : List<Pair<SourceTable, ChangeTable>> {
+        val commonTables = mutableListOf<Pair<SourceTable, ChangeTable>>()
+        for (sourceTable in sourceTables) {
+            val changeTable = changeTables.find { it.tableName == sourceTable.tableName }
+            changeTable?.let { commonTables.add(Pair(sourceTable, changeTable)) }
         }
-        return findSourceTables
+        return commonTables
     }
 
 
@@ -330,6 +391,77 @@ class MergeService (
                 return false
         }
         return true
+    }
+
+    fun transformChangeTableWithCommit(table: ChangeTable, newCommit: Commit): ChangeTable {
+        return ChangeTable (
+            tableId = table.tableId,
+            tableName = table.tableName,
+            comment = table.comment,
+            isFavorite = table.isFavorite,
+            isDelete = table.isDelete,
+            updateTime = LocalDateTime.now(),
+            commit = newCommit
+        )
+    }
+
+    fun transformChangeColumnWithTable(column: ChangeColumn, table: ChangeTable): ChangeColumn {
+        return ChangeColumn(
+            columnId = column.columnId,
+            table = table,
+            columnName = column.columnName,
+            comment = column.comment,
+            dataType = column.dataType,
+            isPrimaryKey = column.isPrimaryKey,
+            isForeignKey = column.isForeignKey,
+            isUniqueKey = column.isUniqueKey,
+            joinSourceTableId = column.joinSourceTableId
+        )
+    }
+
+    fun transformChangeDataWithColumn(data: ChangeData, column: ChangeColumn): ChangeData {
+        return ChangeData(
+            dataId = data.dataId,
+            column = column,
+            columnLine = data.columnLine,
+            data = data.data,
+            action = data.action
+        )
+    }
+
+    fun transformSourceTableWithCommit(table: SourceTable, newCommit: Commit): SourceTable {
+        return SourceTable (
+            tableId = table.tableId,
+            tableName = table.tableName,
+            comment = table.comment,
+            isFavorite = table.isFavorite,
+            isDelete = table.isDelete,
+            updateTime = LocalDateTime.now(),
+            commit = newCommit
+        )
+    }
+
+    fun transformSourceColumnWithTable(column: SourceColumn, table: SourceTable): SourceColumn {
+        return SourceColumn(
+            columnId = column.columnId,
+            table = table,
+            columnName = column.columnName,
+            comment = column.comment,
+            dataType = column.dataType,
+            isPrimaryKey = column.isPrimaryKey,
+            isForeignKey = column.isForeignKey,
+            isUniqueKey = column.isUniqueKey,
+            joinSourceTableId = column.joinSourceTableId
+        )
+    }
+
+    fun transformSourceDataWithColumn(data: SourceData, column: SourceColumn): SourceData {
+        return SourceData(
+            dataId = data.dataId,
+            column = column,
+            columnLine = data.columnLine,
+            data = data.data
+        )
     }
 }
 

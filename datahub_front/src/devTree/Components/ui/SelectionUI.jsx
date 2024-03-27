@@ -1,13 +1,24 @@
 import styles from "../../styles/styles.module.css"
+import {useState, useEffect} from "react";
 
-export default function SelectionUI({title , data}){
+export default function SelectionUI({title , data, onSelect}){
+
+    const handleSelectTable = (tableId) => {
+        onSelect(tableId)
+    };
+
     return(
         <div>
             <div className={styles.smailSelectBox}>
                 <h5 className={styles.selectTitleBox}>{title}</h5>
                 <ul className={styles.selectData}>
-                    {data.map((data , index) => (
-                        <li key={index}>데이터 항목</li>
+                    {data && data.length > 0 && data.map((data, index) => (
+                        <li key={index}
+                            className={styles.DataList}
+                            onClick={() => handleSelectTable(data.tableId)}
+                        >
+                            {data.tableName}
+                        </li>
                     ))}
                 </ul>
             </div>

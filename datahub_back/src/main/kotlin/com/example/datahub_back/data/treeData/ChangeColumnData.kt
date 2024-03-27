@@ -11,7 +11,7 @@ val changeColumn1 = ChangeColumn(
     isPrimaryKey = 1,
     isForeignKey = 0,
     isUniqueKey = 0,
-    joinSourceTable = null // 예시로 null 처리
+    joinSourceTableId = 1 // 예시로 null 처리
 )
 val changeColumn2 = ChangeColumn(
     columnId = 2,
@@ -22,7 +22,7 @@ val changeColumn2 = ChangeColumn(
     isPrimaryKey = 1,
     isForeignKey = 0,
     isUniqueKey = 0,
-    joinSourceTable = null // 예시로 null 처리
+    joinSourceTableId = null // 예시로 null 처리
 )
 
 val changeColumn3 = ChangeColumn(
@@ -34,7 +34,7 @@ val changeColumn3 = ChangeColumn(
     isPrimaryKey = 1,
     isForeignKey = 0,
     isUniqueKey = 0,
-    joinSourceTable = null // 예시로 null 처리
+    joinSourceTableId = null // 예시로 null 처리
 )
 
 val changeColumn4 = ChangeColumn(
@@ -46,11 +46,11 @@ val changeColumn4 = ChangeColumn(
     isPrimaryKey = 1,
     isForeignKey = 0,
     isUniqueKey = 0,
-    joinSourceTable = null // 예시로 null 처리
+    joinSourceTableId = null // 예시로 null 처리
 )
 
 val changeColumn5 = ChangeColumn(
-    columnId = 2,
+    columnId = 5,
     table = changeTable2,
     columnName = "SampleColumn5",
     comment = "This is a sample column 2",
@@ -58,7 +58,7 @@ val changeColumn5 = ChangeColumn(
     isPrimaryKey = 0,
     isForeignKey = 1,
     isUniqueKey = 0,
-    joinSourceTable = null // 예시로 null 처리
+    joinSourceTableId = null // 예시로 null 처리
 )
 
 val changeColumnList = mutableListOf(
