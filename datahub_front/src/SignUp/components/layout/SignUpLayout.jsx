@@ -1,6 +1,6 @@
-import styles from '../../signUpStyle.module.css';
+import styles from '../signUpStyle.module.css';
 import LogoUI from "../uI/LogoUI";
-import InputBoxUI from "../uI/inputBoxUI";
+import InputBoxUI from "../uI/InputBoxUI";
 import InputIdBoxUI from "../uI/InputIdBoxUI";
 import {useState} from "react";
 
@@ -29,7 +29,6 @@ export default function SignUpLayout() {
                     <div className={styles.logoBox}>
                         <LogoUI/>
                     </div>
-
                 </div>
                 <div className={styles.inputContainer}>
                     <div className={styles.box}>

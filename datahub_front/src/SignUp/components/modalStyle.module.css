@@ -1,0 +1,31 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+.modalBox{
+    font-family: "KoPubWorld Dotum Bold";
+    border:1px solid #F2F2F3;
+    width: 35%;
+    height: 260px;
+    margin: 50px auto 0;
+    background-color: #F2F2F3;
+
+
+}
+.modalTextBox{
+    border:1px solid red;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+.modalText{
+    font-size: 40px;
+}
