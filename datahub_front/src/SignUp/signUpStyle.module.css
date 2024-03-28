@@ -1,0 +1,113 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../default/font/GmarketSansTTFBold.ttf");
+}
+
+.signUpContainer{
+    width: 60%;
+    height: 695px;
+    margin: 0 auto;
+}
+
+.logoContainer{
+    font-family: GmarketSansTTFBold;
+    width: 80%;
+    height: 16%;
+    margin: 0 auto;
+}
+
+.logo{
+    text-decoration: none;
+    font-size: 100px;
+    color:#00A3FF;
+    text-shadow: 0.05rem 0.05rem 0 ,
+    -0.05rem -0.05rem 0 ,
+    0.05rem -0.05rem 0 ,
+    -0.05rem 0.05rem 0 ;
+}
+
+.logoBox{
+    margin: 0 auto;
+
+    height: 90%;
+    width: 90%;
+    text-align: center;
+}
+.ButtonBox{
+    width: 300px;
+    margin: 7px auto 0;
+}
+
+.button{
+    font-family: "KoPubWorld Dotum Bold";
+    border-color: #00A3FF;
+    background-color: #00A3FF;
+    color: #FFFFFF;
+    height: 50px;
+    width: 100%;
+    font-size: 24px;
+    border-radius: 12px;
+    border-style: none;
+}
+.inputContainer{
+    font-family: "KoPubWorld Dotum Bold";
+    width: 70%;
+    height: 65%;
+    margin: 18px auto 0;
+}
+
+.input{
+    border: none;
+    border-bottom: 2px solid black;
+    height: 100%;
+    width:100%;
+}
+
+input:focus {outline:none;}
+
+.input::placeholder{
+    padding-left: 12px;
+    color: #9F9F9F;
+    font-size: 20px;
+}
+
+.inputBox{
+   /* border:1px solid orange;*/
+    height: 60px;
+    width: 75%;
+    margin: 10px auto 0;
+    position: relative;
+
+
+}
+.box{
+    margin-top: 50px;
+}
+.inputId{
+    border: none;
+    border-bottom: 2px solid black;
+    height: 100%;
+    width:100%;
+}
+.inputId::placeholder{
+    padding-left: 12px;
+    color: #9F9F9F;
+    font-size: 20px;
+}
+
+.confirmId{
+    position: absolute;
+    width: 100px;
+    right: 2px;
+    top:7px;
+    background-color: #00A3FF;
+    border-color: #00A3FF;
+    border-style: none;
+    padding: 3px;
+    border-radius: 13px;
+    color: white;
+}
