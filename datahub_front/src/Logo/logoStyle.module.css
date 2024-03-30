@@ -1,0 +1,9 @@
+.logo{
+    text-decoration: none;
+    font-size: 100px;
+    color:#00A3FF;
+    text-shadow: 0.05rem 0.05rem 0 ,
+    -0.05rem -0.05rem 0 ,
+    0.05rem -0.05rem 0 ,
+    -0.05rem 0.05rem 0 ;
+}

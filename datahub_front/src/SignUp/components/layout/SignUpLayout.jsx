@@ -1,8 +1,9 @@
 import styles from '../signUpStyle.module.css';
-import LogoUI from "../uI/LogoUI";
-import InputBoxUI from "../uI/InputBoxUI";
+import LogoUI from "../../../Logo/LogoUI";
+import InputBoxUI from "../../../Input/InputBoxUI";
 import InputIdBoxUI from "../uI/InputIdBoxUI";
 import {useState} from "react";
+import BigButton from "../../../Button/BigButton";
 
 export default function SignUpLayout() {
 
@@ -40,9 +41,7 @@ export default function SignUpLayout() {
                         <InputBoxUI name="비밀번호 확인"/>
                     </div>
                 </div>
-                <div className={styles.ButtonBox}>
-                    <button type="button" className={styles.button}>회원가입</button>
-                </div>
+                <BigButton text="회원가입"/>
             </div>
         </div>
     )

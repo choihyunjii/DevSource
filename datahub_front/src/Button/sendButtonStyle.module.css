@@ -1,0 +1,15 @@
+.modalButtonBox{
+    width: 120px;
+    float: right;
+    margin-top: 70px;
+    margin-right:50px;
+}
+
+.modalButtonBox button{
+    width: 120px;
+    height: 40px;
+    background-color: #00A3FF;
+    color: white;
+    border-style: none;
+    border-radius: 10px;
+}

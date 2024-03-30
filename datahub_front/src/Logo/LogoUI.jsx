@@ -1,4 +1,4 @@
-import styles from '../signUpStyle.module.css';
+import styles from '../Logo/logoStyle.module.css';
 
 export default function LogoUI(){
     return(

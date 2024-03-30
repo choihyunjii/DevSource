@@ -1,4 +1,4 @@
-import styles from '../signUpStyle.module.css';
+import styles from './InputStyle.module.css';
 
 
 export default function InputBoxUI({name}){
