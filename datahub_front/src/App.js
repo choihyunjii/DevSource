@@ -28,9 +28,9 @@ function App() {
         {/*  <DuplicateIDLayout/>*/}
           {/*<AvailableIDLayout/>*/}
          {/* <ModalLayout/>*/}
-         {/* <LoginLayout/>*/}
+          <LoginLayout/>
         {/*  <SendButton/>*/}
-            <TextButton text="아이디 찾기"/>
+         {/*   <TextButton text="아이디 찾기"/>*/}
         {/*  <MemberBoxLayout/>*/}
         {/*  <Header/>*/}
       {/*    <SideBarComponent/>*/}

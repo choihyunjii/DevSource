@@ -1,7 +1,20 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../default/font/GmarketSansTTFBold.ttf");
+}
+
 .buttonBox{
-    border:1px solid red;
+    font-family: "KoPubWorld Dotum Bold";
+    width: 140px;
 
 }
 .button{
+    border:none;
+    background-color: transparent;
+    font-size: 20px;
 
 }

@@ -8,14 +8,14 @@
 }
 
 .loginContainer{
-    border:1px solid red;
+
     width: 60%;
     height: 695px;
     margin: 0 auto;
 }
 
 .logoContainer{
-    border:1px solid black;
+
     font-family: GmarketSansTTFBold;
     width: 68%;
     height: 16%;
@@ -24,7 +24,7 @@
 
 }
 .inputContainer{
-    border:1px solid black;
+
     font-family: "KoPubWorld Dotum Bold";
     width: 65%;
     height: 200px;
@@ -61,7 +61,41 @@ input:focus {outline:none;}
     gap: 20px; /* 원하는 간격 설정 */
 }
 .buttonContainer{
-    border:1px solid black;
-    width: 40%;
+
+    width: 80%;
     margin: 30px auto 0;
+}
+
+.textContainer{
+
+    margin: 30px auto 0;
+    width: 43%;
+    display: flex;
+}
+
+.right{
+    margin-left: 35px;
+}
+.divide{
+    width: 515px;
+    margin: 15px auto 0;
+    font-family: "KoPubWorld Dotum Bold";
+    color:#D9D9D9;
+}
+.snsText{
+    color: #656565;
+}
+
+.snsBox{
+    width: 210px;
+    gap: 45px;
+    display: flex;
+    margin: 15px auto 0;
+}
+
+.snsContainer{
+
+    width: 70%;
+    height: 120px;
+    margin: 50px auto 0;
 }
