@@ -124,8 +124,13 @@
     border: none;
     border-bottom: 1px solid black;
 }
-
-
 .existingDataClass {
     background-color: lightblue; /* 기존 데이터의 배경색 */
+}
+.tablePage{
+    width: 85%;
+    margin: 0 auto;
+}
+.selectedRow{
+    background-color: #00A3FF;
 }

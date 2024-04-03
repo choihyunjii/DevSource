@@ -18,15 +18,9 @@ class ColumnController(
     fun getColumnByTableID(@PathVariable tableID: Long)
         = columnService.getColumnNameByTableId(tableID)
 
-//    @GetMapping("/{id}")
-//    fun getColumnById(@PathVariable id: Long): ResponseEntity<Column> {
-//        val column = columnService.getColumnById(id)
-//        return if (column != null) {
-//            ResponseEntity.ok(column)
-//        } else {
-//            ResponseEntity.notFound().build()
-//        }
-//    }
+    @GetMapping("/{columnName}/{tableID}")
+    fun getColumnById(@PathVariable columnName: String, @PathVariable tableID: Long) =
+            columnService.getDataByColumnNameAndTableID(tableID,columnName)
 
     @PostMapping
     fun createColumn(@RequestBody column: Column): ResponseEntity<Column> {
@@ -53,4 +47,6 @@ class ColumnController(
             ResponseEntity.notFound().build()
         }
     }
+
+
 }

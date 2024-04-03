@@ -25,12 +25,20 @@ export default function MemberBoxLayout() {
         setTeamProfile([...newMembers]);
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     return (
         <div>
             <div className={styles.memberBox}>
                 <div className={styles.titleBox}>
                     <MemberTitleUi text="[프로젝트 이름] 협업자 관리"/>
                 </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
                 <div className={styles.memberContainer}>
                     <div className={styles.memberSmallBox}>
                         <SmallTitleUI title="현재 참여자" className={styles.smallTitle} teamMemberCount={teamProfile.length}/>
@@ -45,6 +53,7 @@ export default function MemberBoxLayout() {
                                                onClick={() =>handleDelete(item)}                                    />
                                 </div>
                             ))}
+<<<<<<< HEAD
                         </div>
                     </div>
                     <div className={styles.memberSmallBox}>
@@ -53,6 +62,19 @@ export default function MemberBoxLayout() {
                         </div>
                         <div className={styles.profileBigBox}>
                             {MembersData.map((item) => (
+=======
+
+                        </div>
+                    </div>
+                    <div className={styles.memberSmallBox}>
+
+                        <div className={styles.searchBigBox}>
+                            <SearchUserNameUI/>
+                        </div>
+
+                        <div className={styles.profileBigBox}>
+                            {MembersData.map((item , index) => (
+>>>>>>> origin/master
                                 <div className={styles.profileBox}>
                                     <ProfileUI key={item.id}
                                                img={plus}

@@ -48,7 +48,7 @@ function TreeComponent({ title, tables }) {
                     <div className="table-header">
                         <div className={styles.tableName}>
                             <ImageComponent/> {/* 공통 이미지 컴포넌트 */}
-                            {table.tableName}
+                            {table.columnName}
                             <button className={styles.button} onClick={() => toggleColumns(table.id)}>
                                 {isTableExpanded(table.id) ? <img src={after}/>: <img src={before}/>}
                             </button>
@@ -57,9 +57,9 @@ function TreeComponent({ title, tables }) {
 
                     {isTableExpanded(table.id) && (
                         <ul className={styles.tableList}>
-                            {table.columns.map((column, columnIndex) => (
-                                <li key={columnIndex} className={styles.column}>
-                                    {column}
+                            {table.data.map((data, index) => (
+                                <li key={index} className={styles.column}>
+                                    {data}
                                 </li>
                             ))}
                         </ul>

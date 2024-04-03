@@ -10,6 +10,7 @@
     font-family: "KoPubWorld Dotum Bold", serif;
     border:2px solid #BBBBBB;
     border-radius: 30px;
+<<<<<<< HEAD
     height: 574px;
     width: 75%;
     margin: 0 auto;/* // 모든 디스플레이 정가운데*/
@@ -28,6 +29,26 @@
     text-align: center;
 }
 
+=======
+    height: 650px;
+    width: 75%;
+    margin: 5% auto;/* // 모든 디스플레이 정가운데*/
+}
+.titleBox{
+
+}
+.memberTitle{
+
+    width: 50%;
+    margin: 5% auto 0;
+
+}
+.title{
+    text-align: center;
+
+
+}
+>>>>>>> origin/master
 .memberSmallBox{
     height: 300px;
     width: 40%;
@@ -43,7 +64,11 @@
 .buttonBox{
     width: 90%;
     height: 10%;
+<<<<<<< HEAD
     margin: 3% auto;
+=======
+    margin: 5% auto;
+>>>>>>> origin/master
     padding-right: 70px;
 
 }
@@ -70,10 +95,16 @@
 
 
 .profileBigBox{
+<<<<<<< HEAD
     height: 80%;
     margin-bottom: 10px;
     overflow-y: auto; /* 세로 스크롤바 자동 활성화 */
 
+=======
+    height: 90%;
+    margin-bottom: 10px;
+    overflow-y: auto; /* 세로 스크롤바 자동 활성화 */
+>>>>>>> origin/master
 }
 
 .profile{
@@ -81,12 +112,15 @@
     align-items: center;
 }
 
+<<<<<<< HEAD
 .profileImage{
 
 
 
 
 }
+=======
+>>>>>>> origin/master
 .profileBox{
     margin-bottom: 12px;
     height: 30%;
@@ -100,14 +134,22 @@
 }
 
 .search{
+<<<<<<< HEAD
     margin-top: 5px;
+=======
+    margin-top: 3px;
+>>>>>>> origin/master
     margin-left: 30px;
     padding:5px;
     border: none;
     background-color: #00A3FF;
     width: 80%;
     outline: none;
+<<<<<<< HEAD
 
+=======
+    height:90% ;
+>>>>>>> origin/master
 }
 
 .search::placeholder{
@@ -116,8 +158,13 @@
 
 
 .searchBigBox {
+<<<<<<< HEAD
 
     height: 23%;
+=======
+    height: 20%;
+    margin-top: 5%;
+>>>>>>> origin/master
 }
 
 .searchBox{

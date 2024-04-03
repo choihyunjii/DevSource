@@ -1,9 +1,8 @@
-import TitleUI from "../uI/TitleUI";
-import LinkUI from "../uI/LinkUI";
 import styles from "../styles.module.css";
 import ProjectCardLayOut from "../layout/ProjectCardLayOut";
 import ProjectSideBarLayOut from "../layout/ProjectSideBarLayOut";
-import {Link} from "react-router-dom";
+import LinkUI from "../uI/LinkUI";
+import TitleUI from "../uI/TitleUI";
 
 export default function ProjectShowCasePage(){
     return(

@@ -11,5 +11,5 @@ data class Project(
     val isFavorite: Int?,
     val isDelete: Int?,
     val teamProfile: MutableList<Profile>,
-    val profile: Profile
+    val createProfile: Profile
 )

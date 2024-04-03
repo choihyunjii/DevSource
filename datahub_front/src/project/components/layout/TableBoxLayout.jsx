@@ -22,6 +22,10 @@ export default function TableBoxLayout() {
             dataBaseID : dataBaseID,
             columnList : columnData
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     }
 
     return(
