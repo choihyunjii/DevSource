@@ -5,7 +5,6 @@ import DataBaseShowCasePage from '../project/components/page/DataBaseShowCasePag
 import ProjectShowCasePage from '../project/components/page/ProjectShowCasePage'
 import TemplatePage from '../template/components/page/TemplatePage'
 import ErrorPage from "./ErrorPage";
-import TemplateCodeEditor from "../template/components/page/TemplateCodeEditor";
 import ProjectViewPage from "../project/components/page/ProjectViewPage";
 import TemplateShowCasePage from "../project/components/page/TemplateShowCasePage";
 import TablePage from "../devSource/Components/page/TablePage";
@@ -26,11 +25,9 @@ export default function TemporaryAppRouter() {
                     <Route path='/dataBases' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />
                     <Route path='/template' element={<TemplatePage />} />
-                    <Route path='/template/codeEditor' element={<TemplateCodeEditor />} />
                     <Route path='/projects/ProjectView' element={<ProjectViewPage />} />
                     <Route path='/templates' element={<TemplateShowCasePage />} />
                     <Route path='/template' element={<TemplatePage />} />\
-                    <Route path='/template/codeEditor' element={<TemplateCodeEditor />} />
                     <Route path='/project/:projectId' element={<ProjectViewPage />} />
                     <Route path='/table' element={<TablePage />} />
 

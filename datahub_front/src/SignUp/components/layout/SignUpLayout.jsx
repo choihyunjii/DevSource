@@ -75,15 +75,15 @@ export default function SignUpLayout({ data }) {
                         <InputBoxUI name="비밀번호 확인" way="password" setName={setCheckPW}/>
                     </div>
                 </div>
-
-                <BigButton text="회원가입" onClick={() => setIsSendModalOpen(true)} />
-                <ModalLayOut
-                    isOpen={isSendModalOpen}
-                    data={"회원가입을 진행하시겠습니까?"}
-                    onClose={() => setIsSendModalOpen(false)}
-                    onClickEvent={saveUserData}
-                />
-
+                <div className={styles.ButtonBox}>
+                    <BigButton text="회원가입" onClick={() => setIsSendModalOpen(true)} />
+                    <ModalLayOut
+                        isOpen={isSendModalOpen}
+                        data={"회원가입을 진행하시겠습니까?"}
+                        onClose={() => setIsSendModalOpen(false)}
+                        onClickEvent={saveUserData}
+                    />
+                </div>
             </div>
 
             {falsePwModal && (

@@ -13,29 +13,17 @@ body{font-size: 1rem;}
 .All{
     font-family: "GmarketSansTTFBold", serif;
     width: 99%;
-<<<<<<< HEAD
-    height: 3.25rem;
-=======
     height: 4rem;
->>>>>>> origin/master
 }
 
 .container{
     display: flex;
-<<<<<<< HEAD
-}
-
-.logo {
-    margin: 0 auto 0 1.5rem;
-    font-size: 3.2rem;
-=======
     padding: 15px;
 }
 
 .logo {
     margin: 0 auto 10px 1.5rem;
     font-size: 3.2em;
->>>>>>> origin/master
     color: #00A3FF;
     text-shadow: 0.05rem 0.05rem 0 ,
     -0.05rem -0.05rem 0 ,
@@ -47,11 +35,7 @@ body{font-size: 1rem;}
     display: flex;
     width: 70%;
     height: 2.5rem;
-<<<<<<< HEAD
-    margin-top: 0.4rem;
-=======
     margin-top: 0.04rem;
->>>>>>> origin/master
     font-size: 1.125rem;
 }
 
@@ -63,10 +47,6 @@ body{font-size: 1rem;}
     display: flex;
     gap: 2rem;
     margin-left: 20rem;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 }
 
 .navLink { /**/
@@ -77,9 +57,6 @@ body{font-size: 1rem;}
     align-items: center;
     gap:3rem;
     margin-left: 10rem;
-<<<<<<< HEAD
-
-
 }
 
 .navLink li{
@@ -88,16 +65,6 @@ body{font-size: 1rem;}
     text-align: center;
     padding: 0.3rem;
     cursor: pointer;
-=======
-}
-
-.navLink li{
-        list-style-type: none;
-        flex: 1;
-        text-align: center;
-        padding: 0.3rem;
-        cursor: pointer;
->>>>>>> origin/master
 }
 
 .navLink a{
@@ -111,21 +78,11 @@ body{font-size: 1rem;}
     text-align: center;
     color:white;
     padding: 0.2rem;
-<<<<<<< HEAD
-    width: 4.5rem;
-=======
     width: 5em;
->>>>>>> origin/master
     height: 2rem;
     border-radius: 15px;
 }
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> origin/master
 /*반응형*/
 @media screen and (max-width:1640px) {
     html{font-size: 18px;}
@@ -145,10 +102,4 @@ body{font-size: 1rem;}
 @media screen and (max-width:1340px) {
     html{font-size: 14px;}
     body{font-size: 1rem;}
-<<<<<<< HEAD
 }
-
-
-=======
-}
->>>>>>> origin/master

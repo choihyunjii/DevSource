@@ -1,10 +1,11 @@
 
 .input{
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #797979;
     height: 100%;
     width:100%;
     font-size: 20px;
+    background-color: transparent;
 
 }
 
@@ -17,7 +18,8 @@ input:focus {outline:none;}
 }
 
 .inputBox{
-    /* border:1px solid orange;*/
+
+    background-color: transparent;
     height: 60px;
     width: 75%;
     margin: 10px auto 0;

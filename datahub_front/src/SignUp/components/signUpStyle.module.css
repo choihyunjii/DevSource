@@ -8,6 +8,7 @@
 }
 
 .signUpContainer{
+    border:1px solid orange;
     width: 60%;
     height: 695px;
     margin: 0 auto;
@@ -28,12 +29,11 @@
     text-align: center;
 }
 .ButtonBox{
-    width: 300px;
-    margin: 7px auto 0;
+
 }
 
 .button{
-    font-family: "KoPubWorld Dotum Bold";
+   /* font-family: "KoPubWorld Dotum Bold";
     border-color: #00A3FF;
     background-color: #00A3FF;
     color: #FFFFFF;
@@ -41,19 +41,22 @@
     width: 100%;
     font-size: 24px;
     border-radius: 12px;
-    border-style: none;
+    border-style: none;*/
 }
 .inputContainer{
     font-family: "KoPubWorld Dotum Bold";
     width: 70%;
-    height: 65%;
+    height: 60%;
     margin: 18px auto 0;
+
 }
 
 
 
 .box{
     margin-top: 50px;
+    display: grid;
+    gap: 7px;
 }
 .inputId{
     border: none;
@@ -80,7 +83,7 @@
     color: white;
 }
 .inputBox{
-    /* border:1px solid orange;*/
+     border:1px solid orange;
     height: 60px;
     width: 75%;
     margin: 10px auto 0;
