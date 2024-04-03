@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+.Container{
+    width: 60%;
+    height: 695px;
+    margin: 0 auto;
+}
+.logoContainer{
+    font-family: GmarketSansTTFBold;
+    width: 68%;
+    height: 16%;
+    margin: 0 auto;
+}
+.inputContainer{
+    font-family: "KoPubWorld Dotum Bold";
+    width: 65%;
+    height: 320px;
+    margin: 80px auto 0;
+}
+.box{
+    margin-top: 30px;
+    display: grid;
+    gap:20px;
+}
+.buttonBox{
+    width: 50%;
+    height: 10%;
+    margin: 20px auto 0;
+}

@@ -1,0 +1,66 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+.Container{
+    width: 60%;
+    height: 695px;
+    margin: 0 auto;
+}
+
+.logoContainer{
+    font-family: GmarketSansTTFBold, serif;
+    width: 68%;
+    height: 16%;
+    margin: 0 auto;
+}
+.inputContainer{
+    font-family: KoPubWorld Dotum Bold, serif;
+    width: 65%;
+    height: 300px;
+    margin: 60px auto 0;
+
+}
+.selectContainer{
+    height: 90px;
+}
+.selectBox{
+    height: 60px;
+    display: flex;
+}
+
+
+.selectBox button{
+    border:1px solid #c0c0c0;
+    border-bottom-color: #00A3FF;
+    width: 100%;
+    font-size: 18px;
+}
+.button{
+
+    height: 70px;
+    margin-top: 10px;
+}
+.text{
+
+    width: 140px;
+    margin: 0 auto;
+}
+
+.selectedButton {
+    background-color: #00A3FF; /* 선택된 버튼의 배경색 */
+    color: #FFFFFF;
+}
+.notSelectedButton{
+    background-color: #FFFFFF;
+    color: #989898;
+}
+.box{
+    display: grid;
+    gap: 12px;
+}

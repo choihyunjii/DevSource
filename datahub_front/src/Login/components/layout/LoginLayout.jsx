@@ -1,16 +1,20 @@
 import styles from '../loginStyle.module.css';
 import LogoUI from "../../../Logo/LogoUI";
-import InputBoxUI from "../../../Input/InputBoxUI";
+import InputBoxUI from "../../../Input/InputBoxPWUI";
 import BigButton from "../../../Button/BigButton";
 import TextButton from "../../../Button/TextButton";
 import talk from '../image/kakao.png';
 import google from '../image/google.png';
 import naver from '../image/naver.png';
+import {useState} from "react";
 
 
 
 
 export default function LoginLayout(){
+    const [id,setID] = useState("");
+    const [pw,setPW] = useState("");
+
     return(
         <div>
             <div className={styles.loginContainer}>
@@ -19,8 +23,8 @@ export default function LoginLayout(){
                 </div>
                 <div className={styles.inputContainer}>
                     <div className={styles.box}>
-                        <InputBoxUI name="아이디"/>
-                        <InputBoxUI name="비밀번호"/>
+                        <InputBoxUI way="text" name="아이디"/>
+                        <InputBoxUI way="password" name="비밀번호" />
                     </div>
                 </div>
                 <div className={styles.buttonContainer}>
@@ -39,9 +43,9 @@ export default function LoginLayout(){
                     </div>
 
                     <div className={styles.snsBox}>
-                        <img src={talk} style={{width: '40px'}}/>
-                        <img src={google} style={{width:'40px'}}/>
-                        <img src={naver} style={{width: '40px'}}/>
+                        <a href="링크 주소"> <img src={talk} style={{width: '40px'}}/></a>
+                        <a href="링크 주소"> <img src={google} style={{width: '40px'}}/></a>
+                        <a href="링크 주소"> <img src={naver} style={{width: '40px'}}/></a>
                     </div>
                 </div>
 

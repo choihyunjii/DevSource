@@ -1,4 +1,4 @@
-import styles from '../modalStyle.module.css';
+import styles from './modalStyle.module.css';
 export default function ModalTextUI({text}){
     return(
         <div>

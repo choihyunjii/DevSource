@@ -1,6 +1,6 @@
-import styles from '../modalStyle.module.css';
-import ModalTextUI from "../uI/ModalTextUI";
-import SendButton from "../../../Button/SendButton";
+import styles from './modalStyle.module.css';
+import ModalTextUI from "./ModalTextUI";
+import SendButton from "../Button/SendButton";
 
 export default function DuplicateIDLayout() {
     return(

@@ -86,3 +86,13 @@
     margin: 10px auto 0;
     position: relative;
 }
+
+.modal{
+    border:1px solid black;
+
+
+}
+
+.modalContent{
+    border:1px solid brown;
+}

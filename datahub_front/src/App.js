@@ -9,12 +9,14 @@ import TablePage from "./devSource/Components/page/TablePage";
 import DataTypeUI from "./project/components/uI/DataTypeUI";
 import TableSearchLayout from "./project/components/layout/TableSearchLayout";
 import SignUpLayout from "./SignUp/components/layout/SignUpLayout";
-import DuplicateIDLayout from "./SignUp/components/layout/DuplicateIDLayout";
-import AvailableIDLayout from "./SignUp/components/layout/AvailableIDLayout";
+import DuplicateIDLayout from "./Modal/DuplicateIDLayout";
+import AvailableIDLayout from "./Modal/AvailableIDLayout";
 import ModalLayout from "./SignUp/components/layout/ModalLayout";
 import LoginLayout from "./Login/components/layout/LoginLayout";
 import SendButton from "./Button/SendButton";
 import TextButton from "./Button/TextButton";
+import SearchIDLayout from "./Login/SearchID/SearchIDLayout";
+import ResetPWLayout from "./Login/ResetPW/ResetPWLayout";
 // import TablePage from "./devSource/Components/page/TablePage";
 
 
@@ -24,11 +26,14 @@ function App() {
            {/* <Header/>*/}
           {/*<TemporaryAppRouter/>*/}
           {/*<TableBoxLayout/>*/}
-       {/*   <SignUpLayout/>*/}
+          <SignUpLayout/>
         {/*  <DuplicateIDLayout/>*/}
           {/*<AvailableIDLayout/>*/}
          {/* <ModalLayout/>*/}
-          <LoginLayout/>
+          {/*<LoginLayout/>*/}
+         {/* <SearchIDLayout/>*/}
+          {/*<ResetPWLayout/>*/}
+      {/*    <AvailableIDLayout/>*/}
         {/*  <SendButton/>*/}
          {/*   <TextButton text="아이디 찾기"/>*/}
         {/*  <MemberBoxLayout/>*/}
