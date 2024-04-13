@@ -1,6 +1,6 @@
 import styles from './SearchIDStyle.module.css';
 import { useState } from "react";
-import InputBoxUI from "../../Input/InputBoxPWUI";
+import InputBoxUI from "../../Input/InputBoxUI";
 
 export default function SelectUI() {
     const [name , setName] = useState("");

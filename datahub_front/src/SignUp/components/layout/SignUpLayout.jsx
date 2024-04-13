@@ -1,7 +1,7 @@
 // signUpLayout.js
 import styles from '../signUpStyle.module.css';
-import LogoUI from "../../../Logo/LogoUI";
-import InputBoxUI from "../../../Input/InputBoxPWUI";
+import LogoUI from "../../../Login/components/uI/LogoUI";
+import InputBoxUI from "../../../Input/InputBoxUI";
 import { useState } from "react";
 import BigButton from "../../../Button/BigButton";
 import NotMatchPWLayout from "../../../Modal/NotMatchPWLayout";
@@ -14,10 +14,12 @@ export default function SignUpLayout({ data }) {
     const [pw, setPW] = useState("");
     const [checkPW, setCheckPW] = useState("");
     const [falsePwModal, setFalsePwModal] = useState(false);
-    const [isSendModalOpen , setIsSendModalOpen] = useState(false)
+    const [isSendModalOpen , setIsSendModalOpen] = useState(false);
 
     const checkPasswordMatch = () => {
         if (pw === checkPW) {
+
+
             return true;
         } else {
             return false;

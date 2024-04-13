@@ -28,9 +28,9 @@ export default function SideBarListLayOut({title , tables}){
                 <h4>{isOpen ? '▼' : '▲' }</h4>
             </a>
             <ul className={`menu ${isOpen ? 'open' : ''}`}>
-                {tables.map((table, index) => (
+               {/* {tables.map((table, index) => (
                     <li onClick={() => onClickHandler(table)} key={table.id}>{table.name}</li>
-                ))}
+                ))}*/}
             </ul>
             <SideBarModal
                 data={table}

@@ -30,7 +30,7 @@ export default function AppRouter() {
                     <Route path='/template' element={<TemplatePage />} />
                     <Route path='/projects/ProjectView' element={<ProjectViewPage />} />
                     <Route path='/templates' element={<TemplateShowCasePage />} />
-                    <Route path='/template' element={<TemplatePage />} />\
+                    <Route path='/template' element={<TemplatePage />} />
                     <Route path='/project/:projectId' element={<ProjectViewPage />} />
                     <Route path='/table' element={<TablePage />} />
                     <Route path='/project/teamProfile' element={<TeamProfilePage />} />
